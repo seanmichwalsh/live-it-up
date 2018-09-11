@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
             volunteerCoordinator: req.body.volunteerCoordinator
         })
 
-        user.save().then(data => {
+        volunteerSection.save().then(data => {
             res.send(data);
         }).catch(err => {
             res.status(500).send({
@@ -107,7 +107,7 @@ router.delete('/:id', (req, res) => {
     .then(volunteerSection => {
         if(!volunteerSection) {
             return res.status(404).send({
-                message: "Volunteer section not found with username " + req.params.id
+                message: "Volunteer section not found with ID " + req.params.id
             });
         }
         res.send({message: "Volunteer section deleted successfully!"});
