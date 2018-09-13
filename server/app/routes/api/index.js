@@ -8,5 +8,9 @@ router.get('/', (req, res) => {
 router.use('/users', require('./user'));
 router.use('/committees', require('./committee'));
 router.use('/events', require('./event'));
+router.use('/volunteerCoordinator', require('./volunteerCoordinator'));
+router.use('/volunteerPosition', require('./volunteerPosition'));
+router.use('/volunteerRole', require('./volunteerRole'));
+router.use('/volunteerSection', require('./volunteerSection'));
 
 module.exports = router;
