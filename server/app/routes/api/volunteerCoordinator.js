@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
             message: "A valid volunteer coordinator ID is required to find that volunteer coordinator"
         });
     };
-    VolunteerCoordinator.findOne({ 'id' : req.params.id }).then(volunteerCoordinator => {
+    VolunteerCoordinator.findOne({ _id : req.params.id }).then(volunteerCoordinator => {
         if (!volunteerCoordinator) {
             return res.status(404).send({
                 message: "Volunteer coordinator not found with ID " + req.params.id
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
         });
     };
 
-    if (VolunteerCoordinator.findOne({'id': req.body.id}).then(volunteerCoordinator => {
+    if (VolunteerCoordinator.findOne({_id: req.body.id}).then(volunteerCoordinator => {
         if (volunteerCoordinator) {
             return res.status(400).send({
                 message: "A volunteer coordinator with this ID already exists." + req.body.id
@@ -81,7 +81,7 @@ router.put('/:id', (req, res) => {
         });
     };
 
-    VolunteerCoordinator.findOneAndUpdate({id: req.params.id}, {
+    VolunteerCoordinator.findOneAndUpdate({_id: req.params.id}, {
       volunteerSection: req.body.volunteerSection,
       start_time = req.body.start_time,
       end_time = req.body.end_time,
@@ -103,7 +103,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    VolunteerCoordinator.findOneAndRemove({id: req.params.id})
+    VolunteerCoordinator.findOneAndRemove({_id: req.params.id})
     .then(volunteerCoordinator => {
         if(!volunteerCoordinator) {
             return res.status(404).send({

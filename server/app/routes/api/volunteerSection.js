@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
             message: "A volunteer section is required to find the section"
         });
     };
-    VolunteerSection.findOne({ 'id' : req.params.id }).then(volunteerSection => {
+    VolunteerSection.findOne({ _id : req.params.id }).then(volunteerSection => {
         if (!volunteerSection) {
             return res.status(404).send({
                 message: "Volunteer section not found with id " + req.params.id
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
         });
     };
 
-    if (VolunteerSection.findOne({'id': req.body.id}).then(volunteerSection => {
+    if (VolunteerSection.findOne({_id: req.body.id}).then(volunteerSection => {
         if (volunteerSection) {
             return res.status(400).send({
                 message: "A volunteer section with this username already exists." + req.body.id
@@ -81,7 +81,7 @@ router.put('/:id', (req, res) => {
         });
     };
 
-    VolunteerSection.findOneAndUpdate({id: req.params.id}, {
+    VolunteerSection.findOneAndUpdate({_id: req.params.id}, {
       event: req.body.event,
       date: req.body.date,
       location: req.body.location,
@@ -103,7 +103,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    VolunteerSection.findOneAndRemove({id: req.params.id})
+    VolunteerSection.findOneAndRemove({_id: req.params.id})
     .then(volunteerSection => {
         if(!volunteerSection) {
             return res.status(404).send({
