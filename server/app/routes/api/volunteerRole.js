@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
             message: "A valid volunteer role ID is required to find one volunteer role"
         });
     };
-    VolunteerRole.findOne({ 'id' : req.params.id }).then(volunteerRole => {
+    VolunteerRole.findOne({ _id : req.params.id }).then(volunteerRole => {
         if (!volunteerRole) {
             return res.status(404).send({
                 message: "Volunteer role not found with ID " + req.params.id
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
         });
     };
 
-    if (VolunteerRole.findOne({'id': req.body.id}).then(volunteerRole => {
+    if (VolunteerRole.findOne({_id: req.body.id}).then(volunteerRole => {
         if (volunteerRole) {
             return res.status(400).send({
                 message: "A volunteer role with this ID already exists." + req.body.id
@@ -80,7 +80,7 @@ router.put('/:id', (req, res) => {
         });
     };
 
-    VolunteerRole.findOneAndUpdate({id: req.params.id}, {
+    VolunteerRole.findOneAndUpdate({_id: req.params.id}, {
       volunteerSection: req.body.volunteerSection,
       roleName: req.body.roleName,
       roleDescription: req.body.roleDescription
@@ -101,7 +101,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    VolunteerRole.findOneAndRemove({id: req.params.id})
+    VolunteerRole.findOneAndRemove({_id: req.params.id})
     .then(volunteerRole => {
         if(!volunteerRole) {
             return res.status(404).send({
