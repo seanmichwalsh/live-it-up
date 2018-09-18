@@ -55,11 +55,11 @@ router.post('/', (req, res) => {
         } else {
         const volunteerPosition = new VolunteerPosition({
             section: req.body.section,
-            volunteer = req.body.volunteer,
-            volunteerRole = req.body.volunteerRole,
-            start_time = req.body.start_time,
-            end_time = req.body.end_time,
-            hours = req.body.hours
+            volunteer: req.body.volunteer,
+            volunteerRole: req.body.volunteerRole,
+            start_time: req.body.start_time,
+            end_time: req.body.end_time,
+            hours: req.body.hours
         })
 
         volunteerPosition.save().then(data => {
@@ -86,12 +86,12 @@ router.put('/:id', (req, res) => {
 
     VolunteerPosition.findOneAndUpdate({_id: req.params.id}, {
       section: req.body.section,
-      volunteer = req.body.volunteer,
-      volunteerRole = req.body.volunteerRole,
-      start_time = req.body.start_time,
-      end_time = req.body.end_time,
-      hours = req.body.hours
-    }, {new: true}).then( => {
+      volunteer: req.body.volunteer,
+      volunteerRole: req.body.volunteerRole,
+      start_time: req.body.start_time,
+      end_time: req.body.end_time,
+      hours: req.body.hours
+    }, {new: true}).then( volunteerPosition=> {
         if (!volunteerPosition) {
             return res.status(404).send({
                 message: "Volunteer position not found with id " + req.params.id
