@@ -54,9 +54,9 @@ router.post('/', (req, res) => {
         } else {
         const volunteerCoordinator = new VolunteerCoordinator({
             volunteerSection: req.body.volunteerSection,
-            start_time = req.body.start_time,
-            end_time = req.body.end_time,
-            volunteerCoordinator = req.body.volunteerCoordinator
+            start_time: req.body.start_time,
+            end_time: req.body.end_time,
+            volunteerCoordinator: req.body.volunteerCoordinator
         })
 
         volunteerCoordinator.save().then(data => {
@@ -83,9 +83,9 @@ router.put('/:id', (req, res) => {
 
     VolunteerCoordinator.findOneAndUpdate({_id: req.params.id}, {
       volunteerSection: req.body.volunteerSection,
-      start_time = req.body.start_time,
-      end_time = req.body.end_time,
-      volunteerCoordinator = req.body.volunteerCoordinator
+      start_time: req.body.start_time,
+      end_time: req.body.end_time,
+      volunteerCoordinator: req.body.volunteerCoordinator
     }, {new: true}).then(volunteerCoordinator => {
         if (!volunteerCoordinator) {
             return res.status(404).send({
