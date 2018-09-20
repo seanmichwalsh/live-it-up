@@ -5,6 +5,6 @@ var VolunteerCoordinatorSchema = mongoose.Schema({
     start_time: {type: Date, required: true, required: true},
     end_time: {type: Date, required: true, required: true},
     volunteerCoordinator: {type: mongoose.Schema.ObjectId, ref: 'User', required: true}
-}) 
+})
 
 module.exports = mongoose.model('VolunteerCoordinator', VolunteerCoordinatorSchema);
