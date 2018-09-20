@@ -37,15 +37,15 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    if (!(req.body.name && req.body.type)) {
+    if (!(req.body.eventName && req.body.committees)) {
         return res.status(400).send({
             message: "All required fields must be present cannot be empty"
         });
     };
     
     const event = new Event({
-        name: req.body.name,
-        type: req.body.type
+        eventName: req.body.eventName,
+        committees: req.body.committees
     });
 
     event.save().then(data => {
@@ -64,20 +64,26 @@ router.put('/:id', (req, res) => {
         });
     };
 
+    if (!(req.body.eventName && req.body.committees)) {
+        return res.status(400).send({
+            message: "All required fields must be present cannot be empty"
+        });
+    };
+
     Event.findByIdAndUpdate(req.params.id, {
-        name: req.body.name,
-        type: req.body.type
+        eventName: req.body.eventName,
+        committees: req.body.committees
     }, {new: true}).then(event => {
         if (!event) {
             return res.status(404).send({
-                message: "Event not found with username " + req.params.id
+                message: "Event not found with ID " + req.params.id
             })
         };
         res.send(event); 
     }).catch(err => {
         if (err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Event not found with username " + req.params.id
+                message: "Event not found with ID " + req.params.id
             });
         };
     });
@@ -88,14 +94,14 @@ router.delete('/:id', (req, res) => {
     .then(event => {
         if(!event) {
             return res.status(404).send({
-                message: "Event not found with username " + req.params.id
+                message: "Event not found with ID " + req.params.id
             });
         }
         res.send({message: "Event deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "Event not found with username " + req.params.id
+                message: "Event not found with ID " + req.params.id
             });                
         }
         return res.status(500).send({
