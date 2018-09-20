@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.json({message : ip});
 });
 
-const port = 3000; 
+const port = 3001; 
 app.listen(port, () => {
     console.log("Server is listening on port " + port);
 });
