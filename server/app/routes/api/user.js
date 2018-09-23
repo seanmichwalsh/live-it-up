@@ -1,5 +1,6 @@
 router = require('express').Router()
 const User = require('../../models/user.models');
+const Committee = require('../../models/committee.models');
 
 router.get('/', (req, res) => {
     User.find().then( users => {
