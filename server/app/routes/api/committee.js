@@ -36,6 +36,42 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.get('/', (req, res) => {
+    Committee.find().then( users => {
+        res.send(users)
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occured while retrieving users."
+        });
+    });
+});
+
+//Gets a committee by its name
+// router.get('/findByName/:name', (req, res) => {
+//     if (!req.params.name) {
+//         return res.status(400).send({
+//             message: "You must enter a committee name."
+//         });
+//     };
+//     Committee.findByID(req.params.name).then(committee => {
+//         if (!committee) {
+//             return res.status(404).send({
+//                 message: "Commitee not found with id " + req.params.id
+//             });
+//         };
+//         res.send(committee)
+//     }).catch(err => {
+//         if (err.kind === "ObjectId") {
+//             return res.status(404).send({
+//                 message: "Committee not found with username " + req.params.id
+//             });
+//         }
+//         return res.status(500).send({
+//             message: "There was a problem retrieving Committee " + req.params.id
+//         }); 
+//     });
+// });
+
 router.post('/', (req, res) => {
     if (!(req.body.name && req.body.type)) {
         return res.status(400).send({
