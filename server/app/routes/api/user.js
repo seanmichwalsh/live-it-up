@@ -39,13 +39,21 @@ router.get('/:uid', (req, res) => {
 
 router.post('/', (req, res) => {
     if (!(req.body.firstName && req.body.lastName && req.body.email && 
-        req.body.uid && req.body.onCampus && req.body.activeMember)) {
+        req.body.uid && req.body.mainCommittee && req.body.onCampus 
+        && req.body.activeMember)) {
         
         // error message needs to indicate which field(s) are missing
         return res.status(400).send({
             message: "All required fields must be present."
         });
-    };
+        // Error message: Invalid Committee ID
+    } else if (Committee.findOne({'_id': req.body.mainCommittee}).then(committee => {
+        if (committee === null) {
+            return res.status(400).send({
+                message: "That committee with the ID " + req.body.mainCommittee + " does not exist."
+            });
+        }
+    }));
     
     if (User.findOne({'uid': req.body.uid}).then(user => {
         if (user) {
