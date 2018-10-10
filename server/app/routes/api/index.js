@@ -12,5 +12,6 @@ router.use('/volunteerCoordinator', require('./volunteerCoordinator'));
 router.use('/volunteerPosition', require('./volunteerPosition'));
 router.use('/volunteerRole', require('./volunteerRole'));
 router.use('/volunteerSection', require('./volunteerSection'));
+router.use('/resources', require('./resources'));
 
 module.exports = router;

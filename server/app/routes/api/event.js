@@ -1,4 +1,4 @@
-router = require('express').Router()
+var router = require('express').Router()
 const Event = require('../../models/event.models');
 
 router.get('/', (req, res) => {
