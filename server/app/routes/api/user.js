@@ -2,6 +2,7 @@ router = require('express').Router()
 const User = require('../../models/user.models');
 const Committee = require('../../models/committee.models');
 
+//Gets all users
 router.get('/', (req, res) => {
     User.find().then( users => {
         res.send(users)
@@ -12,6 +13,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//Gets a specific user given an ID
 router.get('/:uid', (req, res) => {
     if (!req.params.uid) {
         return res.status(400).send({
@@ -37,23 +39,45 @@ router.get('/:uid', (req, res) => {
     });
 });
 
+//Posts a new user
 router.post('/', (req, res) => {
     if (!(req.body.firstName && req.body.lastName && req.body.email && 
         req.body.uid && req.body.mainCommittee && req.body.onCampus 
-        && req.body.activeMember)) {
+        && req.body.activeMember && req.body.committees)) {
         
         // error message needs to indicate which field(s) are missing
         return res.status(400).send({
             message: "All required fields must be present."
         });
-        // Error message: Invalid Committee ID
-    } else if (Committee.findOne({'_id': req.body.mainCommittee}).then(committee => {
-        if (committee === null) {
+    }
+
+    //Checks that the mainCommittee has a valid committee ID
+    Committee.count({'_id': req.body.mainCommittee}, (err, count) => {
+        if (err) {
+            console.log("Error counting mainCommittee instances");
+        }
+        if (count <= 0) {
             return res.status(400).send({
-                message: "That committee with the ID " + req.body.mainCommittee + " does not exist."
+                message: "The committee ID " + req.body.mainCommittee + " does not exist."
             });
         }
-    }));
+    })
+    
+    //Checks that each committee in the committees array has a valid, existing ID
+    req.body.committees.forEach((item, index, array) => {
+        Committee.count({'_id': item}, (err, count) => {
+            if (err) {
+                res.status(500).send({
+                    message: err.message
+                })
+            }
+            if (count <= 0) {
+                return res.status(400).send({
+                    message: "The committee ID " + item + " does not exist."
+                });
+            }
+        })
+    });
     
     if (User.findOne({'uid': req.body.uid}).then(user => {
         if (user) {
@@ -90,12 +114,43 @@ router.post('/', (req, res) => {
    
 });
 
+//Updates an existing user
 router.put('/:uid', (req, res) => {
     if (!req.params.uid) {
         return res.status(400).send({
             message: "A username must be provided to update the user."
         });
     };
+
+    //Checks that main committee has a valid committee ID
+    Committee.count({'_id': req.body.mainCommittee}, (err, count) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message
+            })
+        }
+        if (count <= 0) {
+            return res.status(400).send({
+                message: "The committee ID " + req.body.mainCommittee + " does not exist."
+            });
+        }
+    })
+    
+    //Checks that each committee in the committees array has a valid, existing ID
+    req.body.committees.forEach((item, index, array) => {
+        Committee.count({'_id': item}, (err, count) => {
+            if (err) {
+                res.status(500).send({
+                    message: err.message
+                })
+            }
+            if (count <= 0) {
+                return res.status(400).send({
+                    message: "The committee ID " + item + " does not exist."
+                });
+            }
+        })
+    });
 
     User.findOneAndUpdate({uid: req.params.uid}, {
         firstname: req.body.firstName,
@@ -143,4 +198,14 @@ router.delete('/:uid', (req, res) => {
     });
 });
 
-module.exports = router; 
+// Throws an error when an invalid committee ID is passed in
+// function testCommitteeID(committeeID, res) {
+//     console.log(Committee.find({'_id': {'$exists': false}}, {'_id': committeeID}));
+//     if (Committee.find({'_id': {'$exists': true} }, {'_id': committeeID})) {
+//         console.log("Failed");
+//         return res.status(400);
+//     }
+
+// }
+
+module.exports = router;
