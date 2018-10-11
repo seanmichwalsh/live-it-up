@@ -54,7 +54,9 @@ router.post('/', (req, res) => {
     //Checks that the mainCommittee has a valid committee ID
     Committee.count({'_id': req.body.mainCommittee}, (err, count) => {
         if (err) {
-            console.log("Error counting mainCommittee instances");
+            res.status(500).send({
+                message: err.message
+            })
         }
         if (count <= 0) {
             return res.status(400).send({

@@ -1,6 +1,8 @@
 router = require('express').Router()
 const Event = require('../../models/event.models');
+const Committee = require('../../models/committee.models');
 
+//Gets all events
 router.get('/', (req, res) => {
     Event.find().then( users => {
         res.send(users)
@@ -11,6 +13,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//Gets a specific event given an ID
 router.get('/:id', (req, res) => {
     if (!req.params.id) {
         return res.status(400).send({
@@ -36,12 +39,29 @@ router.get('/:id', (req, res) => {
     });
 });
 
+//Posts a new event
 router.post('/', (req, res) => {
     if (!(req.body.eventName && req.body.committees)) {
         return res.status(400).send({
             message: "All required fields must be present cannot be empty"
         });
     };
+
+    //Checks that each committee in the committees array has a valid, existing ID
+    req.body.committees.forEach((item, index, array) => {
+        Committee.count({'_id': item}, (err, count) => {
+            if (err) {
+                res.status(500).send({
+                    message: err.message
+                })
+            }
+            if (count <= 0) {
+                return res.status(400).send({
+                    message: "The committee ID " + item + " does not exist."
+                });
+            }
+        })
+    });
     
     const event = new Event({
         eventName: req.body.eventName,
@@ -57,6 +77,7 @@ router.post('/', (req, res) => {
     })
 });
 
+//Updates an existing event
 router.put('/:id', (req, res) => {
     if (!req.params.id) {
         return res.status(400).send({
@@ -69,6 +90,22 @@ router.put('/:id', (req, res) => {
             message: "All required fields must be present cannot be empty"
         });
     };
+
+    //Checks that each committee in the committees array has a valid, existing ID
+    req.body.committees.forEach((item, index, array) => {
+        Committee.count({'_id': item}, (err, count) => {
+            if (err) {
+                res.status(500).send({
+                    message: err.message
+                })
+            }
+            if (count <= 0) {
+                return res.status(400).send({
+                    message: "The committee ID " + item + " does not exist."
+                });
+            }
+        })
+    });
 
     Event.findByIdAndUpdate(req.params.id, {
         eventName: req.body.eventName,
@@ -89,6 +126,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//Deletes a specified event
 router.delete('/:id', (req, res) => {
     Event.findByIdAndRemove(req.params.id)
     .then(event => {
