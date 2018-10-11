@@ -89,7 +89,7 @@ router.put('/:uid', (req, res) => {
     };
 
     User.findOneAndUpdate({uid: req.params.uid}, {
-        firstname: req.body.firstName,
+        firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         onCampus: req.body.onCampus,
