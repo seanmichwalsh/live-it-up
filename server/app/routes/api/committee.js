@@ -36,6 +36,16 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.get('/', (req, res) => {
+    Committee.find().then( users => {
+        res.send(users)
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occured while retrieving users."
+        });
+    });
+});
+
 router.post('/', (req, res) => {
     if (!(req.body.name && req.body.type)) {
         return res.status(400).send({
