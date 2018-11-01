@@ -1,6 +1,13 @@
 router = require('express').Router()
 const User = require('../../models/user.models');
 const Committee = require('../../models/committee.models');
+// let casLogin = require('../../helpers/cas.js');
+const CAS = require('cas');
+
+let cas = new CAS({
+    base_url: 'https://login.gatech.edu/cas',
+    service: 'live-it-up'
+});
 
 //Gets all users
 router.get('/', (req, res) => {
@@ -116,7 +123,7 @@ router.post('/', (req, res) => {
    
 });
 
-//Updates an existing user
+//Updates an existing user given an ID
 router.put('/:uid', (req, res) => {
     if (!req.params.uid) {
         return res.status(400).send({
@@ -179,6 +186,7 @@ router.put('/:uid', (req, res) => {
     });
 });
 
+// Deletes a specific user given a user ID
 router.delete('/:uid', (req, res) => {
     User.findOneAndRemove({uid: req.params.uid})
     .then(user => {
@@ -200,8 +208,7 @@ router.delete('/:uid', (req, res) => {
     });
 });
 
-// Login authentication function to grab user credentials from GT CAS authentication
-exports.cas_login = (req, res) => {
+router.get('/login', (req, res) => {
     let ticket = req.params('ticket');
     if (ticket) {
         cas.validate(ticket, (err, status, gtUsername) => {
@@ -214,6 +221,6 @@ exports.cas_login = (req, res) => {
     } else {
         res.redirect('/');
     }
-};
+});
 
 module.exports = router;
