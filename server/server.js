@@ -4,12 +4,6 @@ const dbConfig = require('./config/database.config');
 const mongoose = require('mongoose');
 const app = express();
 const port = 3001; 
-const CAS = require('cas');
-
-let cas = new CAS({
-    base_url: 'https://login.gatech.edu/cas',
-    service: 'live-it-up'
-});
 
 app.disable('x-powered-by'); // for security reasons though not fool-proof
 
