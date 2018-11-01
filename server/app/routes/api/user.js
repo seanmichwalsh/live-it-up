@@ -200,14 +200,20 @@ router.delete('/:uid', (req, res) => {
     });
 });
 
-// Throws an error when an invalid committee ID is passed in
-// function testCommitteeID(committeeID, res) {
-//     console.log(Committee.find({'_id': {'$exists': false}}, {'_id': committeeID}));
-//     if (Committee.find({'_id': {'$exists': true} }, {'_id': committeeID})) {
-//         console.log("Failed");
-//         return res.status(400);
-//     }
-
-// }
+// Login authentication function to grab user credentials from GT CAS authentication
+exports.cas_login = (req, res) => {
+    let ticket = req.params('ticket');
+    if (ticket) {
+        cas.validate(ticket, (err, status, gtUsername) => {
+            if (err) {
+                res.send({error: err});
+            } else {
+                res.send({status: status, gtUsername: gtUsername});
+            }
+        });
+    } else {
+        res.redirect('/');
+    }
+};
 
 module.exports = router;
