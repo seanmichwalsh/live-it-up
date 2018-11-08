@@ -215,7 +215,7 @@ router.get('/login', (req, res) => {
             if (err) {
                 res.send({error: err});
             } else {
-                res.send({status: status, gtUsername: gtUsername});
+                res.send({status: status, uid: gtUsername});
             }
         });
     } else {
