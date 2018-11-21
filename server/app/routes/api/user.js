@@ -2,12 +2,6 @@ router = require('express').Router()
 const User = require('../../models/user.models');
 const Committee = require('../../models/committee.models');
 // let casLogin = require('../../helpers/cas.js');
-const CAS = require('cas');
-
-let cas = new CAS({
-    base_url: 'https://login.gatech.edu/cas',
-    service: 'live-it-up'
-});
 
 //Gets all users
 router.get('/', (req, res) => {
@@ -208,19 +202,6 @@ router.delete('/:uid', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-    let ticket = req.params('ticket');
-    if (ticket) {
-        cas.validate(ticket, (err, status, gtUsername) => {
-            if (err) {
-                res.send({error: err});
-            } else {
-                res.send({status: status, uid: gtUsername});
-            }
-        });
-    } else {
-        res.redirect('/');
-    }
-});
+
 
 module.exports = router;
