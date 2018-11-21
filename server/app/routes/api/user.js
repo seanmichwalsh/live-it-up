@@ -1,6 +1,7 @@
 router = require('express').Router()
 const User = require('../../models/user.models');
 const Committee = require('../../models/committee.models');
+// let casLogin = require('../../helpers/cas.js');
 
 //Gets all users
 router.get('/', (req, res) => {
@@ -116,7 +117,7 @@ router.post('/', (req, res) => {
    
 });
 
-//Updates an existing user
+//Updates an existing user given an ID
 router.put('/:uid', (req, res) => {
     if (!req.params.uid) {
         return res.status(400).send({
@@ -179,6 +180,7 @@ router.put('/:uid', (req, res) => {
     });
 });
 
+// Deletes a specific user given a user ID
 router.delete('/:uid', (req, res) => {
     User.findOneAndRemove({uid: req.params.uid})
     .then(user => {
@@ -200,14 +202,6 @@ router.delete('/:uid', (req, res) => {
     });
 });
 
-// Throws an error when an invalid committee ID is passed in
-// function testCommitteeID(committeeID, res) {
-//     console.log(Committee.find({'_id': {'$exists': false}}, {'_id': committeeID}));
-//     if (Committee.find({'_id': {'$exists': true} }, {'_id': committeeID})) {
-//         console.log("Failed");
-//         return res.status(400);
-//     }
 
-// }
 
 module.exports = router;
