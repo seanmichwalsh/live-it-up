@@ -11,7 +11,10 @@
   "license": "UNLICENSED",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cas": "^0.0.3",
+    "cas-authentication-gt": "0.0.9",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.13",
     "mongoose-unique-validator": "^2.0.1",
