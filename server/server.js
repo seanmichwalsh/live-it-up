@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    res.json({message : ip});
+    res.json({ip_address : ip});
 });
 
 app.listen(port, () => {
