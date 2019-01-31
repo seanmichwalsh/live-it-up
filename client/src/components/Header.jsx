@@ -2,7 +2,12 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <h1> Hello </h1>
+        <div id="photoHeader">
+            <img src="%PUBLIC_URL%/images/SCPCHeader.jpg" alt="scpc logo" />
+        </div>
+        
+
+        //<h1> Hello </h1>
         // <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #91298c;">
         //     <div class="navbar-brand">
         //         <img src="%PUBLIC_URL%/images/scpc.png" width="100" />
