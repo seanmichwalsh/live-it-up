@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return (
         <div id="photoHeader">
-            <img src="%PUBLIC_URL%/images/SCPCHeader.jpg" alt="scpc logo" />
+            <img src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"} alt="scpc logo" />
         </div>
         
 
