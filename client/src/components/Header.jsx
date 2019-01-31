@@ -1,10 +1,42 @@
 import React from 'react';
+import { Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-const Header = () => {
+export default class Header extends React.Component {
+    constructor(props) {
+      super(props);
+  
+      this.toggleNavbar = this.toggleNavbar.bind(this);
+      this.state = {
+        collapsed: true
+      };
+    }
+  
+    toggleNavbar() {
+      this.setState({
+        collapsed: !this.state.collapsed
+      });
+    }
+
+render() {
     return (
-        <div id="photoHeader">
+        <div class="header">
             <img src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"} alt="scpc logo" />
+            <Container>
+                <Navbar color="faded" light>
+                    <Nav navbar>
+                        <NavLink href="/components/">HOME</NavLink>
+                        <NavLink href="/components/calendar">CALENDAR</NavLink>
+                        <NavLink href="/components/volunteer">VOLUNTEER</NavLink>
+                        <NavLink href="/components/points">POINTS</NavLink>
+                        <NavLink href="/components/directory">DIRECTORY</NavLink>
+                        <NavLink href="/components/resources">RESOURCES</NavLink>
+                    </Nav>
+                </Navbar>
+            </Container>
         </div>
+    );
+    }
+}
         
 
         //<h1> Hello </h1>
@@ -36,7 +68,7 @@ const Header = () => {
         
         // </nav>
         
-    )
-}
+//     )
+// }
 
-export default Header;
+//export default Header;
