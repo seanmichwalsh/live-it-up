@@ -20,10 +20,10 @@ export default class Header extends React.Component {
 render() {
     return (
         <div class="header">
-            <img src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"} alt="scpc logo" />
+            <img src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"} alt="scpc logo"></img>
             
             <Navbar color="faded" light>
-                <Nav navbar>
+                <Nav class="navbar">
                     <ul class="navbar-nav">
                         <li><NavLink href="/components/home">HOME</NavLink></li>
                         <li><NavLink href="/components/calendar">CALENDAR</NavLink></li>
