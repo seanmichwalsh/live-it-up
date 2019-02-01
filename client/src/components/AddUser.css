@@ -7,7 +7,7 @@
     font-size: 35px; 
 }
 
-.account-details, .middle-space, .committee-access {
+.account-details, .committee-access {
     display: inline-block;
 }
 
@@ -20,6 +20,10 @@
     padding-bottom: 50px;
     padding-left: 40px;
     padding-right: 40px;
+}
+
+.addUser-button {
+    float: left;
 }
 
 .account-details {
@@ -37,8 +41,7 @@
 
 .committee-access {
     float: right;
-    width: 30%;
-    padding-bottom: 80px;
+    width: 90%;
 }
 
 .cm-header {
@@ -50,4 +53,28 @@
 
 .check-boxes {
     float: left;
+}
+
+@media screen and (max-width: 700px) {
+    .add-details {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .account-details {
+        order: 1;
+        margin: auto;
+        padding-bottom: 15px;
+    }
+
+    .committee-access {
+        order: 2;
+        margin: auto;
+        width: 90%
+    }
+
+    .account-details .addUser-button {
+        order: 3;
+        margin: auto;
+    }
 }
