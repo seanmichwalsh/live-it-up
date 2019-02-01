@@ -35,7 +35,7 @@ class Directory extends Component {
                         <div className="editbox" class="char float-right">
                             <Link to="/editcommittee">EDIT COMMITTEE</Link>
                         </div>
-z                    </div>
+                    </div>
                 </div>
                 <div className="committee-name">TECHNOLOGY</div>
             </div>

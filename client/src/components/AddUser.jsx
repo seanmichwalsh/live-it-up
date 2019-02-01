@@ -58,11 +58,12 @@ class AddUser extends Component {
                                         </select>
                                     </div>
                                 </div>
-                            <div class="text-left">
-                                <button type="button" id="add-button" class="btn btn-primary" onClick={this.newUserAdded}>Add New User</button>
-                            </div>
                         </form>
+                        <div class="text-left" className="addUser-button" className="addUser-button">
+                            <button type="button" id="add-button" class="btn btn-primary" onClick={this.newUserAdded}>Add New User</button>
+                        </div>
                     </div>
+                    
                     <div className="committee-access">
                         <div className="cm-header">Committee Access</div>
                         <form>
