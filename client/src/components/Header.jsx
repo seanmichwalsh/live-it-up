@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Col, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -21,54 +21,20 @@ render() {
     return (
         <div class="header">
             <img src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"} alt="scpc logo" />
-            <Container>
-                <Navbar color="faded" light>
-                    <Nav navbar>
-                        <NavLink href="/components/">HOME</NavLink>
-                        <NavLink href="/components/calendar">CALENDAR</NavLink>
-                        <NavLink href="/components/volunteer">VOLUNTEER</NavLink>
-                        <NavLink href="/components/points">POINTS</NavLink>
-                        <NavLink href="/components/directory">DIRECTORY</NavLink>
-                        <NavLink href="/components/resources">RESOURCES</NavLink>
-                    </Nav>
-                </Navbar>
-            </Container>
+            
+            <Navbar color="faded" light>
+                <Nav navbar>
+                    <ul class="navbar-nav">
+                        <li><NavLink href="/components/home">HOME</NavLink></li>
+                        <li><NavLink href="/components/calendar">CALENDAR</NavLink></li>
+                        <li><NavLink href="/components/volunteer">VOLUNTEER</NavLink></li>
+                        <li><NavLink href="/components/points">POINTS</NavLink></li>
+                        <li><NavLink href="/components/directory">DIRECTORY</NavLink></li>
+                        <li><NavLink href="/components/resources">RESOURCES</NavLink></li>
+                    </ul>
+                </Nav>
+            </Navbar>
         </div>
     );
     }
 }
-        
-
-        //<h1> Hello </h1>
-        // <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #91298c;">
-        //     <div class="navbar-brand">
-        //         <img src="%PUBLIC_URL%/images/scpc.png" width="100" />
-        //         <br />
-        //         Live It Up!
-        //     </div>
-        //     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        //         <span class="navbar-toggler-icon"></span>
-        //     </button>
-        //     <div class="collapse navbar-collapse" id="navbarText">
-        //         <ul class="navbar-nav mr-auto">
-        //             <li class="nav-item active">
-        //             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        //             </li>
-        //             <li class="nav-item">
-        //             <a class="nav-link" href="#">Events</a>
-        //             </li>
-        //             <li class="nav-item">
-        //             <a class="nav-link" href="#">Accountability</a>
-        //             </li>
-        //         </ul>
-        //         <ul class="nav navbar-text navbar-right">
-        //         <span> Welcome George P. Burdell </span>
-        //         </ul>
-        //     </div>
-        
-        // </nav>
-        
-//     )
-// }
-
-//export default Header;
