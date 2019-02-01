@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.css';
 import { Col, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 export default class Header extends React.Component {
