@@ -1,40 +1,38 @@
 import React from 'react';
 import './Header.css';
-import { Col, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Navbar, Nav, NavLink, NavItem } from 'reactstrap';
 
 export default class Header extends React.Component {
     constructor(props) {
       super(props);
-  
-      this.toggleNavbar = this.toggleNavbar.bind(this);
-      this.state = {
-        collapsed: true
-      };
-    }
-  
-    toggleNavbar() {
-      this.setState({
-        collapsed: !this.state.collapsed
-      });
     }
 
 render() {
     return (
         <div class="header">
             <img src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"} alt="scpc logo"></img>
-            
-            <Navbar color="faded" light>
-                <Nav class="navbar">
+                <nav class="navbar navbar-expand-sm navbar-fnt sticky-top">
                     <ul class="navbar-nav">
-                        <li><NavLink href="/components/home">HOME</NavLink></li>
-                        <li><NavLink href="/components/calendar">CALENDAR</NavLink></li>
-                        <li><NavLink href="/components/volunteer">VOLUNTEER</NavLink></li>
-                        <li><NavLink href="/components/points">POINTS</NavLink></li>
-                        <li><NavLink href="/components/directory">DIRECTORY</NavLink></li>
-                        <li><NavLink href="/components/resources">RESOURCES</NavLink></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/components/home">HOME</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link"href="/components/calendar">CALENDAR</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/components/volunteer">VOLUNTEER</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href="/components/points">POINTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href="/components/directory">DIRECTORY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/components/resources">RESOURCES</a>
+                        </li>
                     </ul>
-                </Nav>
-            </Navbar>
+                </nav>
         </div>
     );
     }
