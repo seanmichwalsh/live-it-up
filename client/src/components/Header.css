@@ -3,12 +3,23 @@ img {
     height: auto;
 }
 
-navbar-nav {
+.navbar-nav {
+    display: inline-block;
     width: 100%;
+    margin: auto;
     text-align: center;
 }
 
-li {
-    float: none;
+.nav-item {
+    position: relative;
     display: inline-block;
-} 
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nav-link {
+    color: #707070;
+    font-size: 18px;
+    font-family: "Avenir Next";
+    font-weight: bold;
+}
