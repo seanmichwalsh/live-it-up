@@ -1,6 +1,5 @@
 import React from 'react';
 import './Header.css';
-import { Navbar, Nav, NavLink, NavItem } from 'reactstrap';
 
 export default class Header extends React.Component {
     constructor(props) {
