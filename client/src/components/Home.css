@@ -1,0 +1,44 @@
+.right-bar {
+    width: 20%;
+    float: right;
+    margin-right: 25px;
+} 
+
+.gmm-header {
+    width: 100%;
+    background: #AC539B;
+    font-family: "Avenir Next";
+    font-weight: bold;
+    color: #ffffff;
+    text-align: left;
+}
+
+.left-box {
+    margin-top: 10px;
+    float: left;
+    width: 50px;
+    padding: 5px;
+    border: 4px solid blue;
+}
+
+.right-box {
+    float: left;
+    width: 130px;
+    padding-top: 10px;
+    font-family: "Avenir Next";
+}
+
+
+.committee-times-header {
+    margin-top: 90px;
+    width: 100%;
+    background: #AC539B;
+    font-family: "Avenir Next";
+    font-weight: bold;
+    color: #ffffff;
+    text-align: left;
+}
+
+.committee-times {
+    font-family: "Avenir Next";
+}
