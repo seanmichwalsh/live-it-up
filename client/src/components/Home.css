@@ -7,10 +7,12 @@
 .gmm-header {
     width: 100%;
     background: #AC539B;
+    border-radius: 15px;
     font-family: "Avenir Next";
     font-weight: bold;
     color: #ffffff;
     text-align: left;
+    padding-left: 8px;
 }
 
 .left-box {
@@ -19,6 +21,9 @@
     width: 50px;
     padding: 5px;
     border: 4px solid blue;
+    border-radius: 15px;
+    font-family: "Avenir Next";
+    font-weight: bold;
 }
 
 .right-box {
@@ -33,10 +38,12 @@
     margin-top: 90px;
     width: 100%;
     background: #AC539B;
+    border-radius: 15px;
     font-family: "Avenir Next";
     font-weight: bold;
     color: #ffffff;
     text-align: left;
+    padding-left: 8px;
 }
 
 .committee-times {
