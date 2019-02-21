@@ -1,0 +1,55 @@
+.add-user-pg {
+    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+    font-weight: bold;
+    font-size: 35px; 
+}
+
+.account-details, .middle-space, .committee-access {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-details {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.account-details {
+    width: 65%;
+    float: left;
+    padding-bottom: 50px;
+}
+
+.ac-header {
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+
+
+
+.committee-access {
+    float: right;
+    width: 30%;
+    padding-bottom: 80px;
+}
+
+.cm-header {
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+
+.check-boxes {
+    float: left;
+}
