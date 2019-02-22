@@ -1,7 +1,7 @@
-.DIrectory-title {
+.title {
 	column-span: all;
-}
+}	
 
-.Directory{
-	column-span: 1;
+.list{
+	column-count: 4;
 }
