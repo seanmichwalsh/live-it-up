@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom'; 
 import $ from "jquery";
 
-import "./AddUser.css";
+import "./EditUser.css";
 import { throws } from 'assert';
 
-class AddUser extends Component {
+class EditUser extends Component {
 
-    newUserAdded() {
+    userEdited() {
         $('#success-alert').removeClass('hidden');
     }
 
@@ -19,11 +19,11 @@ class AddUser extends Component {
     render() {
         return (
             <div className="add-user-pg">
-                <header className="header">ADD NEW USER</header>
+                <header className="header">EDIT USER</header>
                 <div className="add-details">
                     <div class="alert alert-success hidden" id="success-alert">
                         <button type="button" id="close-button" class="close" onClick={this.exitAlert}>x</button>
-                        <span class="glyphicon glyphicon-ok"></span> New User has been added!
+                        <span class="glyphicon glyphicon-ok"></span> User has been edited!
                     </div>
                     
                     <div className="account-details">
@@ -59,7 +59,7 @@ class AddUser extends Component {
                                     </div>
                                 </div>
                             <div class="text-left">
-                                <button type="button" id="add-button" class="btn btn-primary" onClick={this.newUserAdded}>Add New User</button>
+                                <button type="button" id="add-button" class="btn btn-primary" onClick={this.userEdited}>Edit User</button>
                             </div>
                         </form>
                     </div>
@@ -110,4 +110,4 @@ class AddUser extends Component {
     }
 }
 
-export default AddUser;
+export default EditUser;
