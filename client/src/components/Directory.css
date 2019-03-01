@@ -1,0 +1,27 @@
+.directory-page {
+    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+    font-weight: bold;
+    font-size: 35px; 
+}
+
+.committee-name {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.add-edit-box {
+    font-weight: bold;
+    color: #707070;
+}
+
+a:hover,a:visited  {
+    color: #707070 
+}
+
+a:hover {
+    color: #AC539B
+} 
+
