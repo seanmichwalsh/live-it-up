@@ -1,7 +1,11 @@
 import React from 'react';
+<<<<<<< HEAD
 import './Header.css';
 
 import { Link } from 'react-router-dom';
+=======
+import { Col, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+>>>>>>> add nav bar
 
 export default class Header extends React.Component {
     constructor(props) {
