@@ -10,11 +10,16 @@
 .committee-name {
     font-weight: bold;
     font-size: 20px;
+    width: auto;
 }
 
 .add-edit-box {
     font-weight: bold;
     color: #707070;
+}
+
+.editbox {
+    padding-right: 5px;
 }
 
 a:hover,a:visited  {
