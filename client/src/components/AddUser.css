@@ -51,3 +51,27 @@
 .check-boxes {
     float: left;
 }
+
+@media screen and (max-width: 700px) {
+    .add-details {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .account-details {
+        order: 1;
+        margin: auto;
+        padding-bottom: 15px;
+    }
+
+    .committee-access {
+        order: 2;
+        margin: auto;
+        width: 90%
+    }
+
+    .account-details .addUser-button {
+        order: 3;
+        margin: auto;
+    }
+}
