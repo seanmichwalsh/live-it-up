@@ -1,0 +1,31 @@
+table {
+    font-family: "Avenir Next"
+}
+
+tr:nth-child(odd) {
+    background-color: #AC539B;
+}
+
+.col-name{
+    table-layout: fixed;
+    width: 20%;
+}
+
+.col-description{
+    table-layout: fixed;
+    width: 40%;
+}
+
+.col-other{
+    table-layout: fixed;
+    width: 10%;
+}
+
+a:link, a:visited, a:active {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #AC539B;
+}
