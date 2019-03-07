@@ -7,7 +7,7 @@
     font-size: 35px; 
 }
 
-.account-details, .middle-space, .committee-access {
+.account-details, .committee-access {
     display: inline-block;
 }
 
@@ -20,6 +20,10 @@
     padding-bottom: 50px;
     padding-left: 40px;
     padding-right: 40px;
+}
+
+.addUser-button {
+    float: left;
 }
 
 .account-details {
@@ -37,8 +41,7 @@
 
 .committee-access {
     float: right;
-    width: 30%;
-    padding-bottom: 80px;
+    width: 90%;
 }
 
 .cm-header {
@@ -74,4 +77,8 @@
         order: 3;
         margin: auto;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 40782653a3e180c848cc937454cbaf745b7457ab
