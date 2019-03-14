@@ -1,0 +1,32 @@
+img {
+    width: 100%;
+    height: auto;
+}
+
+.navbar-nav {
+    display: inline-block;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.nav-item {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nav-link {
+    color: #707070;
+    font-size: 18px;
+    font-family: "Avenir Next";
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #AC539B;
+    font-size: 18px;
+    font-family: "Avenir Next";
+    font-weight: bold;
+}
