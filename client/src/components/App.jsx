@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import Directory from "./Directory";
+import Resources from "./Resources";
 import Header from './Header';
 import Footer from './Footer'; 
 import Home from './Home'; 
@@ -22,7 +24,6 @@ class App extends Component {
           </div>
           
         </BrowserRouter>
-        
     );
   }
 }
