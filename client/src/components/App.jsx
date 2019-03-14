@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../images/logo.svg';
 import './App.css';
+import Directory from "./Directory";
 import Resources from "./Resources";
 import Header from './Header';
 import Footer from './Footer'; 
@@ -14,6 +15,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <Directory />
         <Resources />
         <Footer />
       </div>
