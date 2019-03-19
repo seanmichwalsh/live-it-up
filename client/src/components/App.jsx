@@ -5,8 +5,6 @@ import Resources from "./Resources";
 import Header from './Header';
 import Footer from './Footer'; 
 import Home from './Home'; 
-import Directory from './Directory'; 
-import Resources from './Resources';
 import AddUser from './AddUser';
 import Calendar from './Calendar';
 
