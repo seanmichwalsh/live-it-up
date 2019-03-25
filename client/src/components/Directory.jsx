@@ -10,7 +10,7 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     render() {
         return (
-            <div>
+            <div className="directory-page">
           			<h1 className="title">
           				Directory
           			</h1>
