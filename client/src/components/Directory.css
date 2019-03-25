@@ -24,6 +24,7 @@
 .add-edit-box {
     font-weight: bold;
     color: #707070;
+    float: right;
 }
 
 .editbox {
