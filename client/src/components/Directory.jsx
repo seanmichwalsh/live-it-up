@@ -14,19 +14,22 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
             <div className="directory-page">
           			<div className="top-bar">
                     <header className="header">DIRECTORY</header>
-                    <div className="add-edit-box">
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								ADD/EDIT
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="/adduser">Add User</a>
-								<a class="dropdown-item" href="/edituser">Edit User</a>
-								<a class="dropdown-item" href="/addcommittee">Add Committee</a>
-								<a class="dropdown-item" href="/editcommittee">Edit Committee</a>
+					<div id="editingBar">
+						<div className="add-edit-box">
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									ADD/EDIT
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="/adduser">Add User</a>
+									<a class="dropdown-item" href="/edituser">Edit User</a>
+									<a class="dropdown-item" href="/addcommittee">Add Committee</a>
+									<a class="dropdown-item" href="/editcommittee">Edit Committee</a>
+								</div>
 							</div>
 						</div>
-                    </div>
+					</div>
+
                 </div>
                 <div className="committee-name">TECHNOLOGY</div>
 
