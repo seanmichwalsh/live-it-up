@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import "./Footer.css"
 
 const Footer = () => {
-    return <h5> Copyright SCPC </h5>;
-}
+  return <footer className="footer"> Copyright &copy; SCPC, Georgia Tech </footer>;
+};
 
-export default Footer; 
+export default Footer;
