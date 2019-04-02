@@ -1,10 +1,13 @@
+*:not(path):not(g) {
+    color:                    hsla(210, 100%, 100%, 0.9) !important;
+    background:               hsla(210, 100%,  50%, 0.5) !important;
+    outline:    solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+    box-shadow: none !important;
+}
+
 .title {
 	column-span: all;
 }	
-
-.list{
-	column-count: 4;
-}
 
 .directory-page {
     font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
@@ -12,31 +15,72 @@
 
 .header {
     font-weight: bold;
-    font-size: 35px; 
+    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+    display: block;
+}
+
+#header-text {
+    display: inline;
+    text-align: center;
 }
 
 .committee-name {
     font-weight: bold;
-    font-size: 20px;
+    font-size: calc(12px + (25 - 12) * ((100vw - 300px) / (1600 - 300)));
     width: auto;
 }
 
-.add-edit-box {
+#add-edit-box {
     font-weight: bold;
-    color: #707070;
+    color: #707070;  
     float: right;
+    padding-right: 4vw;
 }
 
-
-
-.editbox {
-    padding-right: 5px;
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
-a:hover,a:visited  {
-    color: #707070 
+.list{
+	column-count: 6;
 }
 
-a:hover {
-    color: #AC539B
-} 
+.list div {
+    padding-left: 0vw !important; 
+}
+
+@media all and (max-width: 500px) {
+    .title {
+        column-span: all;
+    }	
+    
+    .list{
+        column-count: 4;
+    }
+    
+    .directory-page {
+        font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+    }
+    
+    .header {
+        font-weight: bold;
+        font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+    }
+    
+    .committee-name {
+        font-weight: bold;
+        font-size: calc(12px + (25 - 12) * ((100vw - 300px) / (1600 - 300)));
+        width: auto;
+    }
+    
+    #add-edit-box {
+        font-weight: bold;
+        color: #707070;  
+        width: 100%;
+        margin: 0 auto;
+        padding-left: 4vw;
+    }
+    
+}
