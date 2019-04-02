@@ -13,9 +13,9 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         return (
             <div className="directory-page">
           			<div className="top-bar">
-                    <header className="header">DIRECTORY</header>
-					<div id="editingBar">
-						<div className="add-edit-box">
+                    <header className="header">
+						<div id="header-text">DIRECTORY</div>
+						<div id="add-edit-box">
 							<div class="dropdown">
 								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									ADD/EDIT
@@ -28,22 +28,23 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 								</div>
 							</div>
 						</div>
-					</div>
+					</header>
+					
 
                 </div>
                 <div className="committee-name">TECHNOLOGY</div>
 
-            		<p className = "list">
+            		<div className = "list">
 						
 						{this.users.map((user) =>
 						<div>
   							<ul> <img src={logo} alt={user}/></ul>
-  							<ul> Name: {user}</ul>
+  							<ul>Name: {user}</ul>
   							<ul>Email: {user}</ul>
   							<ul>Committee: {user}</ul>
   						</div>
 						)}
-					</p>
+					</div>
             </div>
         );
     }
