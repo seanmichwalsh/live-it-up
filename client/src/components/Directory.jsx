@@ -34,14 +34,14 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
                 </div>
                 <div className="committee-name">TECHNOLOGY</div>
 
-            		<div className = "list">
+            		<div className = "userLists">
 						
 						{this.users.map((user) =>
-						<div>
-  							<ul> <img src={logo} alt={user}/></ul>
-  							<ul>Name: {user}</ul>
-  							<ul>Email: {user}</ul>
-  							<ul>Committee: {user}</ul>
+						<div className="individualUser">
+  							<div> <img src={logo} alt={user}/></div>
+  							<div>Name: {user}</div>
+  							<div>Email: {user}</div>
+  							<div>Committee: {user}</div>
   						</div>
 						)}
 					</div>
