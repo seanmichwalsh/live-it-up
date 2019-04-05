@@ -1,10 +1,3 @@
-*:not(path):not(g) {
-    color:                    hsla(210, 100%, 100%, 0.9) !important;
-    background:               hsla(210, 100%,  50%, 0.5) !important;
-    outline:    solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
-    box-shadow: none !important;
-}
-
 .title {
 	column-span: all;
 }	
@@ -43,12 +36,17 @@
     display: table;
 }
 
-.list{
-	column-count: 6;
-}
+.userLists{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    
+    flex-wrap: wrap;
+    align-content: flex-start;
+}    
 
-.list div {
-    padding-left: 0vw !important; 
+.individualUser {
+    width: 200px;
 }
 
 @media all and (max-width: 500px) {
