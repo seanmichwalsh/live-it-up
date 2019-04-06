@@ -42,8 +42,9 @@
     display: flex;
     
     flex-wrap: wrap;
-    align-content: flex-start;
-}    
+    display: flex;
+    justify-content: space-around;
+} 
 
 .individualUser {
     width: 200px;
