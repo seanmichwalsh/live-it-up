@@ -1,9 +1,26 @@
-table {
-    font-family: "Avenir Next"
+#events-page {
+    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+}
+
+#header-text {
+    display: inline;
+    text-align: center;
+    font-weight: bold;
+    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+    display: block;
+    margin-bottom: 1vw;
 }
 
 thead {
     color: #AC539B;
+    border: 3px solid black;
+}
+
+#eventTable {
+    width: 85%;
+    margin: 0 auto;
+    border: 3px solid black;
+    margin-bottom: 2vw;
 }
 
 .col-name{
