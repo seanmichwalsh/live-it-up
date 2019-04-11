@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Resources from "./Resources";
 import Header from './Header';
 import Footer from './Footer'; 
 import Home from './Home'; 
+import EditUser from './EditUser';
 import Directory from './Directory'; 
 
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'; 
@@ -17,6 +17,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path='/directory' component={Directory} />
+              <Route exact path="/edituser" component={EditUser}/>
               {/* We should add other Routes here */}
             </Switch>
             <Footer />
