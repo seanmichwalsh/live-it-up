@@ -1,0 +1,35 @@
+#points-pg {
+    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: bold;
+}
+
+#points-display {
+    width: 75%;
+    float: left;
+}
+
+#display-header {
+    float: left;
+}
+
+#points-sidebar {
+    width: 20%;
+    float: left;
+}
+
+#req-header {
+    width: 100%;
+    font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
+    background: #AC539B;
+    border-radius: 15px;
+    font-family: "Avenir Next";
+    font-weight: bold;
+    position: relative;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 1.2vw;
+}
