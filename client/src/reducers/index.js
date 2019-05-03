@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { combineReducers } from "redux";
 import {
   ADD_USER,
@@ -83,3 +84,12 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+=======
+const initialState = {
+    articles: []
+};
+
+const rootReducer = (state = initialState, action) => state; 
+
+export default rootReducer;
+>>>>>>> cba55c5bfcbf5820805b0812547271927a146499
