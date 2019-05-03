@@ -3,16 +3,20 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./config/database.config');
 const mongoose = require('mongoose');
 const app = express();
-const port = 3001; 
+const port = 3001;
 
 app.disable('x-powered-by'); // for security reasons though not fool-proof
 
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    res.json({ip_address : ip});
+    res.json({
+        ip_address: ip
+    });
 });
 
 app.listen(port, () => {
@@ -21,12 +25,14 @@ app.listen(port, () => {
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(dbConfig.url, { useNewUrlParser: true })
-.then(() => {
-    console.log("Connected to database");
-}).catch(err => {
-    console.log('Could not connect to the database. Exiting now.');
-    process.exit();
-});
+mongoose.connect(dbConfig.url, {
+        useNewUrlParser: true
+    })
+    .then(() => {
+        console.log("Connected to database");
+    }).catch(err => {
+        console.log('Could not connect to the database. Exiting now.');
+        process.exit();
+    });
 
 app.use(require('./app/routes'));

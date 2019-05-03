@@ -1,38 +1,85 @@
+import { combineReducers } from "redux";
 import {
-    combineReducers
-} from 'redux';
-import {
-    RESET_ERROR_MESSAGE
-} from '../actions';
+  ADD_USER,
+  DELETE_USER,
+  EDIT_USER,
+  REQUEST_ALL_USERS,
+  RECEIVE_ALL_USERS,
+  REQUEST_USER,
+  RECEIVE_USER,
+  INVALID_REQUEST
+} from "../actions";
 
-const user = (state = {
-    user: {}
-}, action) => {
-    if (action.user) {
-        return action.user;
-    }
-    return state;
-}
+const selectedUser = (state = null, action) => {
+  switch (action.type) {
+    case DELETE_USER:
+      return Object.assign({}, state, {
+        ...state.filter(item => item.uid !== action.uid)
+      });
+    case EDIT_USER:
+      /*return Object.assign({}, state, {
+        changeProperty: action.value
+      });*/
+      Object.assign({}, state, {
+        ...state.filter(item => item.uid !== action.uid)
+      });
+      return [
+        ...state,
+        {
+          uid: action.uid,
+          firstName: action.firstName,
+          lastName: action.lastName,
+          onCampus: action.onCampus,
+          phoneNumber: action.phoneNumber,
+          email: action.email,
+          activeMember: action.activeMember,
+          committees: action.committees,
+          mainCommittee: action.mainCommittee
+        }
+      ];
+    default:
+      return state;
+  }
+};
 
-const errorMessage = (state = null, action) => {
-    const {
-        type,
-        error
-    } = action;
+const postUser = (state = {}, action) => {
+  switch (action.type) {
+    case ADD_USER:
+      return [
+        ...state,
+        {
+          uid: action.uid,
+          firstName: action.firstName,
+          lastName: action.lastName,
+          onCampus: action.onCampus,
+          phoneNumber: action.phoneNumber,
+          email: action.email,
+          activeMember: action.activeMember,
+          committees: action.committees,
+          mainCommittee: action.mainCommittee
+        }
+      ];
+    default:
+      return state;
+  }
+};
 
-    if (type === RESET_ERROR_MESSAGE) {
-        return null;
-    } else if (error) {
-        return error;
-    }
+const errorMessage = (state = {}, action) => {
+  const { type, error } = action;
 
-    return state;
-}
+  if (type === INVALID_REQUEST) {
+    return null;
+  } else if (error) {
+    return error;
+  }
 
+  return state;
+};
 
-const rootRedcer = combineReducers({
-    user,
-    errorMessage
-})
+const rootReducer = combineReducers({
+  selectedUser,
+  postUser,
+  errorMessage
+});
 
-export default rootRedcer;
+export default rootReducer;
