@@ -26,7 +26,7 @@ class App extends Component {
               <Route exact path="/points" component={Points} />
               {/* We should add other Routes here */}
             </Switch>
-            <Footer />
+            {/* <Footer /> */}
           </div>
           
         </BrowserRouter>
