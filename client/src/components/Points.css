@@ -2,22 +2,34 @@
     font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
 }
 
-.header {
+#header {
     font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
     font-weight: bold;
 }
 
+#mainPG {
+    width: 90%;
+    margin: 0 auto;
+}
+
 #points-display {
-    width: 75%;
+    width: 70%;
     float: left;
+    margin-right: 5%;
+}
+
+#user-table {
+    clear: both;
 }
 
 #display-header {
     float: left;
+    font-size: calc(12px + (22 - 12) * ((100vw - 300px) / (1600 - 300)));
+    margin-bottom: 1vw;
 }
 
 #points-sidebar {
-    width: 20%;
+    width: 25%;
     float: left;
 }
 
