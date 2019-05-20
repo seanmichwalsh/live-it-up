@@ -22,11 +22,19 @@
     padding-right: 5px;
 }
 
-a:hover,a:visited  {
-    color: #707070 
+a:hover,
+a:visited {
+    color: #707070
 }
 
 a:hover {
     color: #AC539B
-} 
+}
 
+.title {
+	column-span: all;
+}	
+
+.list{
+	column-count: 4;
+}
