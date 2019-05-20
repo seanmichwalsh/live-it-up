@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import './Points.css';
-
 
 class Points extends Component {
   render() {
+    var sum = 0.0;
+    $('.points').each(function() {
+        sum += parseInt($(this).text());
+    });
+    alert(sum);
     return (
       <div id="points-pg">
         <header id="header">POINTS</header>
+        <div className="points">5</div>
         <div id="mainPG">
             <div id="points-display">
                 <div id="display-header">Sidartha's Total Points</div>
