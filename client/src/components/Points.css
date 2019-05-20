@@ -10,6 +10,7 @@
 #mainPG {
     width: 90%;
     margin: 0 auto;
+    margin-bottom: 450px;
 }
 
 #points-display {
@@ -38,7 +39,7 @@
     font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
     background: #AC539B;
     border-radius: 15px;
-    font-family: "Avenir Next";
+    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     position: relative;
     color: #ffffff;
