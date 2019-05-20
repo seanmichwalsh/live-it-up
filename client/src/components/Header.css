@@ -8,7 +8,8 @@ img {
     color: #ffffff;
 }
 
-.navbar-toggler-icon, .nabar-toggler {
+.navbar-toggler-icon,
+.nabar-toggler {
     height: 5vw;
     color: #707070;
 }
@@ -32,6 +33,7 @@ img {
     font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1600 - 300)));
     font-family: "Avenir Next";
     font-weight: bold;
+    /* transition: all 500ms ease-in-out; */
 }
 
 .nav-link:hover {
@@ -39,4 +41,5 @@ img {
     font-size: 18px;
     font-family: "Avenir Next";
     font-weight: bold;
+    /* transition: all 500ms ease-in-out; */
 }
