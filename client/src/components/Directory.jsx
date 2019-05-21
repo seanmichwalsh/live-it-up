@@ -13,11 +13,12 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         return (
             <div className="directory-page">
           			<div className="top-bar">
-                    <header className="header">
+                    <header id="header">
 						<div id="header-text">DIRECTORY</div>
+
 						<div id="add-edit-box">
 							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button class="btn btn-secondary btn-small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									ADD/EDIT
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -30,7 +31,6 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 						</div>
 					</header>
 					
-
                 </div>
                 <div className="committee-name">TECHNOLOGY</div>
 
