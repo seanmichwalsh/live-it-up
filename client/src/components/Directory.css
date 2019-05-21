@@ -6,15 +6,18 @@
     font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
 }
 
-.header {
+#header {
     font-weight: bold;
     font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
-    display: block;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
 #header-text {
     display: inline;
     text-align: center;
+    margin: 0 auto;
 }
 
 .committee-name {
@@ -26,7 +29,9 @@
 #add-edit-box {
     font-weight: bold;
     color: #707070;  
-    float: right;
+    position: absolute;
+    right: 0;
+    margin-top: -1vw;;
     padding-right: 4vw;
 }
 
@@ -79,7 +84,7 @@
         color: #707070;  
         width: 100%;
         margin: 0 auto;
-        padding-left: 4vw;
+        padding-right: 7vw;
     }
     
 }
