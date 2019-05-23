@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import Home from './Home'; 
 import EditUser from './EditUser';
+import AddUser from './AddUser';
 import Directory from './Directory'; 
 
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'; 
@@ -17,6 +18,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path='/directory' component={Directory} />
               <Route exact path="/edituser" component={EditUser}/>
+              <Route exact path="/adduser" component={AddUser}/>
               {/* We should add other Routes here */}
             </Switch>
           </div>
