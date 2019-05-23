@@ -4,7 +4,7 @@
 
 .header {
     font-weight: bold;
-    font-size: 35px; 
+    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300))); 
 }
 
 #account-details, .middle-space, #committee-access {
@@ -28,7 +28,7 @@
 .ac-header {
     color: black;
     font-weight: bold;
-    font-size: 18px;
+    font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
     padding-bottom: 15px;
 }
 
@@ -40,7 +40,7 @@
 .cm-header {
     color: black;
     font-weight: bold;
-    font-size: 18px;
+    font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
     padding-bottom: 15px;
 }
 
@@ -54,7 +54,7 @@
     margin-top: 1vw;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 550px) {
     .add-details {
         width: 85%;
     }
