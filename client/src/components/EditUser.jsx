@@ -26,8 +26,8 @@ class EditUser extends Component {
                         <span class="glyphicon glyphicon-ok"></span> User has been edited!
                     </div>
                     
-                    <div className="userInputFields">
-                        <div className="account-details">
+                    <div id="userInputFields">
+                        <div id="account-details">
                             <div className="ac-header">Account Details</div>
                             <form>
                                 <div class="form-row">
@@ -59,12 +59,9 @@ class EditUser extends Component {
                                             </select>
                                         </div>
                                     </div>
-                                <div class="text-left">
-                                    <button type="button" id="add-button" class="btn btn-primary" onClick={this.userEdited}>Edit User</button>
-                                </div>
                             </form>
                         </div>
-                        <div className="committee-access">
+                        <div id="committee-access">
                             <div className="cm-header">Committee Access</div>
                             <form>
                                 <div class="form-group text-left">
@@ -105,9 +102,11 @@ class EditUser extends Component {
                                 </div>
                             </form>
                         </div>
+                        <div class="text-left">
+                        
                     </div>
-
-                
+                    <button type="button" id="edit-button" class="btn btn-primary" onClick={this.userEdited}>Edit User</button>
+                    </div>
                 </div>
             </div>
         );
