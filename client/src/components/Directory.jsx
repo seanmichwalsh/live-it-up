@@ -23,7 +23,6 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<a class="dropdown-item" href="/adduser">Add User</a>
-									<a class="dropdown-item" href="/edituser">Edit User</a>
 									<a class="dropdown-item" href="/addcommittee">Add Committee</a>
 									<a class="dropdown-item" href="/editcommittee">Edit Committee</a>
 								</div>
@@ -38,10 +37,12 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 						
 						{this.users.map((user) =>
 						<div className="individualUser">
-  							<div> <img src={logo} alt={user}/></div>
-  							<div>Name: {user}</div>
-  							<div>Email: {user}</div>
-  							<div>Committee: {user}</div>
+							<a href="/edituser" target="_blank">
+								<div> <img src={logo} alt={user}/></div>
+								<div>Name: {user}</div>
+								<div>Email: {user}</div>
+								<div>Committee: {user}</div>
+							</a>
   						</div>
 						)}
 					</div>
