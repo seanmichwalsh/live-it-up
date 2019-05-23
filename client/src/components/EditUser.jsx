@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom'; 
 import $ from "jquery";
 
 import "./EditUser.css";
-import { throws } from 'assert';
 
 class EditUser extends Component {
 
@@ -33,32 +30,32 @@ class EditUser extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputName">Name</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="Name"/>
+                                        <input type="text" class="form-control" id="inputName" placeholder="Name" required/>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputPreferredName">Preferred Name</label>
-                                        <input type="text" class="form-control" id="inputPreferredName" placeholder="Preferred Name"/>
+                                        <input type="text" class="form-control" id="inputPreferredName" placeholder="Preferred Name" required/>
                                     </div>
                                 </div>
-                                    <div class="form-group text-left">
-                                        <label for="inputGTEmail">GT E-Mail</label>
-                                        <input type="text" class="form-control" id="inputGTEmail" placeholder="email@gatech.edu"/>
+                                <div class="form-group text-left">
+                                    <label for="inputGTEmail">GT E-Mail</label>
+                                    <input type="text" class="form-control" id="inputGTEmail" placeholder="email@gatech.edu" required/>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 text-left">
+                                        <label for="inputNumber">Phone Number</label>
+                                        <input type="text" class="form-control" id="inputNumber" placeholder="Numbers only" required/>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6 text-left">
-                                            <label for="inputNumber">Phone Number</label>
-                                            <input type="text" class="form-control" id="inputNumber" placeholder="Numbers only"/>
-                                        </div>
-                                        <div class="form-group col-md-6 text-left">
-                                            <label for="inputStatus">Status</label>
-                                            <select id="inputStatus" class="form-control">
-                                                <option selected>Choose...</option>
-                                                <option>Active</option>
-                                                <option>Inactive</option>
-                                                <option>No longer a member</option>
-                                            </select>
-                                        </div>
+                                    <div class="form-group col-md-6 text-left">
+                                        <label for="inputStatus">Status</label>
+                                        <select id="inputStatus" class="form-control" required>
+                                            <option selected disabled value="">Choose...</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                            <option value="No Longer a Member">No Longer a Member</option>
+                                        </select>
                                     </div>
+                                </div>
                             </form>
                         </div>
                         <div id="committee-access">
@@ -66,17 +63,17 @@ class EditUser extends Component {
                             <form>
                                 <div class="form-group text-left">
                                 <label for="inputState">Primary Committee</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>Arts & Culture</option>
-                                    <option>Atlanta Life</option>
-                                    <option>Comedy & Entertainment</option>
-                                    <option>Concerts</option>
-                                    <option>Educating the Community</option>
-                                    <option>Festivals</option>
-                                    <option>Homecoming</option>
-                                    <option>Movies</option>
-                                    <option>Ramblin' Nights</option>
+                                <select id="inputState" class="form-control" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="Arts & Culture">Arts & Culture</option>
+                                    <option value="Atlanta Life">Atlanta Life</option>
+                                    <option value="Comedy & Entertainment">Comedy & Entertainment</option>
+                                    <option value="Concerts">Concerts</option>
+                                    <option value="Educating the Community">Educating the Community</option>
+                                    <option value="Festivals">Festivals</option>
+                                    <option value="Homecoming">Homecoming</option>
+                                    <option value="Movies">Movies</option>
+                                    <option value="Ramblin' Nights">Ramblin' Nights</option>
                                 </select>
                                 </div>
                                 <div className="aux-committee">
@@ -105,7 +102,7 @@ class EditUser extends Component {
                         <div class="text-left">
                         
                     </div>
-                    <button type="button" id="edit-button" class="btn btn-secondary" onClick={this.userEdited}>Edit User</button>
+                    <button type="button" type="submit" id="add-button" class="btn btn-secondary" onClick={this.userEdited}>Edit User</button>
                     </div>
                 </div>
             </div>
