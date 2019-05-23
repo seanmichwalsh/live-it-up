@@ -105,7 +105,7 @@ class EditUser extends Component {
                         <div class="text-left">
                         
                     </div>
-                    <button type="button" id="edit-button" class="btn btn-primary" onClick={this.userEdited}>Edit User</button>
+                    <button type="button" id="edit-button" class="btn btn-secondary" onClick={this.userEdited}>Edit User</button>
                     </div>
                 </div>
             </div>
