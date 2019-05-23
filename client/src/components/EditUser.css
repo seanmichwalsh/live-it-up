@@ -7,7 +7,7 @@
     font-size: 35px; 
 }
 
-.account-details, .middle-space, .committee-access {
+#account-details, .middle-space, #committee-access {
     display: inline-block;
 }
 
@@ -16,16 +16,13 @@
 }
 
 .add-details {
-    padding-top: 20px;
-    padding-bottom: 50px;
-    padding-left: 40px;
-    padding-right: 40px;
+    width: 85%;
+    margin: 0 auto;
 }
 
-.account-details {
+#account-details {
     width: 65%;
     float: left;
-    padding-bottom: 50px;
 }
 
 .ac-header {
@@ -35,10 +32,9 @@
     padding-bottom: 15px;
 }
 
-.committee-access {
+#committee-access {
     float: right;
     width: 30%;
-    padding-bottom: 80px;
 }
 
 .cm-header {
@@ -52,6 +48,35 @@
     float: left;
 }
 
+#edit-button {
+    clear: both;
+    float: left;
+    margin-top: 1vw;
+}
+
 @media all and (max-width: 500px) {
-    
+    .add-details {
+        width: 85%;
+    }
+
+    #userInputFields {
+        display: flex; 
+        flex-direction: column;
+    }
+
+    #account-details {
+        order: 1;
+        width: 100%;
+    }
+
+    #committee-access {
+        order: 2;
+        width: 100%;
+    }
+
+    #edit-button {
+        clear: both;
+        order: 3;
+    }
+
 }
