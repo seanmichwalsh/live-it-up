@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import $ from "jquery";
+import $ from 'jquery';
 
-import "./AddUser.css";
+import './AddUser.css';
 
 class AddUser extends Component {
 
