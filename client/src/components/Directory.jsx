@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import logo from '../images/logo.svg';
-import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom'; 
-import ReactDOM from 'react-dom';
 import './Directory.css'
 
 class Directory extends Component {
@@ -19,12 +17,11 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 						<div id="add-edit-box">
 							<div class="dropdown">
 								<button class="btn btn-secondary btn-small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									ADD/EDIT
+									ADD
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<a class="dropdown-item" href="/adduser">Add User</a>
 									<a class="dropdown-item" href="/addcommittee">Add Committee</a>
-									<a class="dropdown-item" href="/editcommittee">Edit Committee</a>
 								</div>
 							</div>
 						</div>
