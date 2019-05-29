@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Header';
-import Home from './Home'; 
 import EditUser from './EditUser';
 import AddUser from './AddUser';
 import Directory from './Directory'; 
@@ -16,7 +15,6 @@ class App extends Component {
           <div className="App">
             <Header />
             <Switch>
-              <Route exact path="/" component={Home} />
               <Route exact path='/directory' component={Directory} />
               <Route exact path="/edituser" component={EditUser}/>
               <Route exact path="/adduser" component={AddUser}/>
