@@ -55,44 +55,8 @@ class AddCommittee extends Component {
                         </div>
                         <div id="committee-access">
                             <div className="cm-header">Committee Access</div>
-                            <form>
-                                <div class="form-group text-left">
-                                <label for="inputState">Primary Committee</label>
-                                <select id="inputState" class="form-control" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option value="Arts & Culture">Arts & Culture</option>
-                                    <option value="Atlanta Life">Atlanta Life</option>
-                                    <option value="Comedy & Entertainment">Comedy & Entertainment</option>
-                                    <option value="Concerts">Concerts</option>
-                                    <option value="Educating the Community">Educating the Community</option>
-                                    <option value="Festivals">Festivals</option>
-                                    <option value="Homecoming">Homecoming</option>
-                                    <option value="Movies">Movies</option>
-                                    <option value="Ramblin' Nights">Ramblin' Nights</option>
-                                </select>
-                                </div>
-                                <div className="aux-committee">
-                                    <div class="form-group text-left">
-                                    <label for="inputState">Auxillary Committee</label>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="technologyCheck"/>
-                                        <label class="custom-control-label" for="technologyCheck">Technology</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="financeCheck"/>
-                                        <label class="custom-control-label" for="financeCheck">Finance</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="marketingCheck"/>
-                                        <label class="custom-control-label" for="marketingCheck">Marketing</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="plcCheck"/>
-                                        <label class="custom-control-label" for="plcCheck">PLC</label>
-                                    </div>
-                                    </div>
-                                </div>
-                            </form>
+                            I'm going to add a box with all the users so you can click users and add them to your new committee with a search feature.
+                            Give me some time for this.
                         </div>
                         <div class="text-left">
                         
