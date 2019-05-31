@@ -18,7 +18,7 @@ class AddUser extends Component {
         
               var clikedForm = $(this); // Select Form
         
-              if (clikedForm.find("[name='inputName']"ß).val() == '') {
+              if (clikedForm.find("[name='inputName']").val() == '') {
                 alert('Enter Valid mobile number');
                 return false;
               }
@@ -46,21 +46,21 @@ class AddUser extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputName">Name</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="Name" required/>
+                                        <input type="text" class="form-control" id="inputName" placeholder="George P. Burdell" required/>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputPreferredName">Preferred Name</label>
-                                        <input type="text" class="form-control" id="inputPreferredName" placeholder="Preferred Name" required/>
+                                        <input type="text" class="form-control" id="inputPreferredName" placeholder="Georgie" required/>
                                     </div>
                                 </div>
                                 <div class="form-group text-left">
                                     <label for="inputGTEmail">GT E-Mail</label>
-                                    <input type="text" class="form-control" id="inputGTEmail" placeholder="email@gatech.edu" required/>
+                                    <input type="text" class="form-control" id="inputGTEmail" placeholder="georgepburdell@gatech.edu" required/>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputNumber">Phone Number</label>
-                                        <input type="text" class="form-control" id="inputNumber" placeholder="Numbers only" required/>
+                                        <input type="text" class="form-control" id="inputNumber" placeholder="6781236789" required/>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputStatus">Status</label>
