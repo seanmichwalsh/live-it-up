@@ -12,24 +12,15 @@ class AddUser extends Component {
         $('#success-alert').addClass('hidden');
     }
 
-    render() {
-        $(document).ready(function () {
-            $('#form1').submit(function () {
-        
-              var clikedForm = $(this); // Select Form
-        
-              if (clikedForm.find("[name='inputName']").val() == '') {
-                alert('Enter Valid mobile number');
-                return false;
-              }
-              if (clikedForm.find("[name='email_id']").val() == '') {
-                alert('Enter  valid email id');
-                return false;
-              }
-        
-            });
+    addUserClick() {
+        $("#add-button").click(function() {
+            $("#account-details-form").submit();
         });
+        $('#success-alert').removeClass('hidden');
 
+    }
+
+    render() {
         return (
             <div className="add-user-pg">
                 <header className="header">ADD USER</header>
@@ -42,7 +33,7 @@ class AddUser extends Component {
                     <div id="userInputFields">
                         <div id="account-details">
                             <div className="ac-header">Account Details</div>
-                            <form className="needs-validation" id="form1" novalidate>
+                            <form className="needs-validation" id="account-details-form" novalidate>
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputName">Name</label>
@@ -72,6 +63,7 @@ class AddUser extends Component {
                                         </select>
                                     </div>
                                 </div>
+                                <button class="btn btn-primary" className="hidden-button" type="submit">Submit form</button>
                             </form>
                         </div>
                         <div id="committee-access">
@@ -119,7 +111,7 @@ class AddUser extends Component {
                         <div class="text-left">
                         
                     </div>
-                    <button type="button" type="submit" id="add-button" class="btn btn-secondary" onClick={this.userEdited}>Add User</button>
+                    <button type="button" type="submit" id="add-button" class="btn btn-secondary" onClick={this.addUserClick}>Add User</button>
                     </div>
                 </div>
             </div>
