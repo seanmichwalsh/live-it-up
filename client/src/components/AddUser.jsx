@@ -4,6 +4,7 @@ import $ from 'jquery';
 import './AddUser.css';
 
 class AddUser extends Component {
+    
     userEdited() {
         $('#success-alert').removeClass('hidden');
     }
@@ -19,9 +20,28 @@ class AddUser extends Component {
         $('#success-alert').removeClass('hidden');
 
     }
+    
+    checkVal() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      };
 
     render() {
         return (
+            
             <div className="add-user-pg">
                 <header className="header">ADD USER</header>
                 <div className="add-details">
@@ -31,13 +51,19 @@ class AddUser extends Component {
                     </div>
                     
                     <div id="userInputFields">
-                        <div id="account-details">
-                            <div className="ac-header">Account Details</div>
-                            <form className="needs-validation" id="account-details-form" novalidate>
+                        <form className="needs-validation" id="account-details-form" novalidate>
+                            <div id="account-details">
+                                <div className="ac-header">Account Details</div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputName">Name</label>
                                         <input type="text" class="form-control" id="inputName" placeholder="George P. Burdell" required/>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid name.
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputPreferredName">Preferred Name</label>
@@ -63,12 +89,10 @@ class AddUser extends Component {
                                         </select>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" className="hidden-button" type="submit">Submit form</button>
-                            </form>
-                        </div>
-                        <div id="committee-access">
-                            <div className="cm-header">Committee Access</div>
-                            <form>
+                            </div>
+
+                            <div id="committee-access">
+                                <div className="cm-header">Committee Access</div>
                                 <div class="form-group text-left">
                                 <label for="inputState">Primary Committee</label>
                                 <select id="inputState" class="form-control" required>
@@ -105,18 +129,15 @@ class AddUser extends Component {
                                     </div>
                                     </div>
                                 </div>
-                                
-                            </form>
-                        </div>
-                        <div class="text-left">
-                        
-                    </div>
-                    <button type="button" type="submit" id="add-button" class="btn btn-secondary" onClick={this.addUserClick}>Add User</button>
-                    </div>
-                </div>
+                            </div>
+                            <button class="btn btn-secondary" type="submit" id="add-button">Add User</button>
+                        </form>
+                    </div>     
+                </div>           
             </div>
+
         );
     }
 }
+export default AddUser;
 
-export default AddUser; 
