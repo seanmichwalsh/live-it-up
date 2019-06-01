@@ -13,6 +13,12 @@ class EditUser extends Component {
         $('#success-alert').addClass('hidden');
     }
 
+    addUserClick() {
+        $("#add-button").click(function() {
+            $("#account-details-form").submit();
+        });
+    }
+
     render() {
         return (
             <div className="add-user-pg">
@@ -26,7 +32,7 @@ class EditUser extends Component {
                     <div id="userInputFields">
                         <div id="account-details">
                             <div className="ac-header">Account Details</div>
-                            <form>
+                            <form id="account-details-form">
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputName">Name</label>
@@ -102,7 +108,7 @@ class EditUser extends Component {
                         <div class="text-left">
                         
                     </div>
-                    <button type="button" type="submit" id="add-button" class="btn btn-secondary" onClick={this.userEdited}>Edit User</button>
+                    <button type="submit" id="add-button" class="btn btn-secondary" onClick={this.addUserClick}>Edit User</button>
                     </div>
                 </div>
             </div>
