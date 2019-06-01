@@ -25,6 +25,10 @@
     float: left;
 }
 
+.hidden-button {
+    display: none;
+}
+
 .ac-header {
     color: black;
     font-weight: bold;
