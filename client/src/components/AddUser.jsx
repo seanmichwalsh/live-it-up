@@ -57,27 +57,21 @@ class AddUser extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputName">Name</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="George P. Burdell" required/>
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Please enter a valid name.
-                                        </div>
+                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="inputName" placeholder="George P. Burdell" required/>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputPreferredName">Preferred Name</label>
-                                        <input type="text" class="form-control" id="inputPreferredName" placeholder="Georgie" required/>
+                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="inputPreferredName" placeholder="Georgie" required/>
                                     </div>
                                 </div>
                                 <div class="form-group text-left">
                                     <label for="inputGTEmail">GT E-Mail</label>
-                                    <input type="text" class="form-control" id="inputGTEmail" placeholder="georgepburdell@gatech.edu" required/>
+                                    <input type="email" pattern=".+@gatech.edu" class="form-control" id="inputGTEmail" placeholder="georgepburdell@gatech.edu" required/>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputNumber">Phone Number</label>
-                                        <input type="text" class="form-control" id="inputNumber" placeholder="6781236789" required/>
+                                        <input type="tel" pattern="^\+?\d{10,13}" class="form-control" id="inputNumber" placeholder="6781236789" required/>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label for="inputStatus">Status</label>
