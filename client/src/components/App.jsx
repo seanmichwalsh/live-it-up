@@ -16,9 +16,9 @@ class App extends Component {
             <Header />
             <Switch>
               <Route exact path='/directory' component={Directory} />
-              <Route exact path="/edituser" component={EditUser}/>
-              <Route exact path="/adduser" component={AddUser}/>
-              <Route exact path="/addcommittee" component={AddCommittee}/>
+              <Route exact path='/edituser' component={EditUser}/>
+              <Route exact path='/adduser' component={AddUser}/>
+              <Route exact path='/addcommittee' component={AddCommittee}/>
               {/* We should add other Routes here */}
             </Switch>
           </div>
