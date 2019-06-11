@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import Directory from "./Directory";
+import Resources from "./Resources";
 import Header from './Header';
 import EditUser from './EditUser';
 import AddUser from './AddUser';
