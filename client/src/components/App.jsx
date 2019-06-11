@@ -5,7 +5,6 @@ import Resources from "./Resources";
 import Header from './Header';
 import EditUser from './EditUser';
 import AddUser from './AddUser';
-import Directory from './Directory'; 
 import AddCommittee from './AddCommittee';
 
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'; 
