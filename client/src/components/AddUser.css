@@ -4,10 +4,10 @@
 
 .header {
     font-weight: bold;
-    font-size: 35px; 
+    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300))); 
 }
 
-.account-details, .committee-access {
+#account-details, .middle-space, #committee-access {
     display: inline-block;
 }
 
@@ -16,38 +16,35 @@
 }
 
 .add-details {
-    padding-top: 20px;
-    padding-bottom: 50px;
-    padding-left: 40px;
-    padding-right: 40px;
+    width: 85%;
+    margin: 0 auto;
 }
 
-.addUser-button {
-    float: left;
-}
-
-.account-details {
+#account-details {
     width: 65%;
     float: left;
-    padding-bottom: 50px;
+}
+
+.hidden-button {
+    display: none;
 }
 
 .ac-header {
     color: black;
     font-weight: bold;
-    font-size: 18px;
+    font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
     padding-bottom: 15px;
 }
 
-.committee-access {
+#committee-access {
     float: right;
-    width: 90%;
+    width: 30%;
 }
 
 .cm-header {
     color: black;
     font-weight: bold;
-    font-size: 18px;
+    font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
     padding-bottom: 15px;
 }
 
@@ -55,26 +52,36 @@
     float: left;
 }
 
-@media screen and (max-width: 700px) {
+#add-button {
+    clear: both;
+    float: left;
+    margin-top: 1vw;
+    margin-bottom: 50px;
+}
+
+@media all and (max-width: 550px) {
     .add-details {
-        display: flex;
-        flex-flow: column;
+        width: 85%;
     }
 
-    .account-details {
+    #userInputFields {
+        display: flex; 
+        flex-direction: column;
+    }
+
+    #account-details {
         order: 1;
-        margin: auto;
-        padding-bottom: 15px;
+        width: 100%;
     }
 
-    .committee-access {
+    #committee-access {
         order: 2;
-        margin: auto;
-        width: 90%
+        width: 100%;
     }
 
-    .account-details .addUser-button {
+    #add-button {
+        clear: both;
         order: 3;
-        margin: auto;
     }
+
 }
