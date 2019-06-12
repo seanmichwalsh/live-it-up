@@ -15,32 +15,6 @@ export default class Header extends React.Component {
           src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"}
           alt="SCPC Logo"
         />
-        {/* <nav className="navbar navbar-expand-sm navbar-fnt sticky-top">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">HOME</Link>
-                            </li> 
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/calendar">CALENDAR</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/calendar">VOLUNTEER</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/points">POINTS</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/directory">DIRECTORY</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/resources">RESOURCES</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/events">EVENTS</Link>
-                            </li>
-                        </ul>
-                    </nav> */}
-
         <nav class="navbar navbar-expand-sm navbar-light bg-white">
           <button
             class="navbar-toggler"
