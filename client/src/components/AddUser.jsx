@@ -4,21 +4,30 @@ import $ from 'jquery';
 import './AddUser.css';
 
 class AddUser extends Component {
+    constructor() {
+        super()
+        this.state = {
+            users: null
+        }
+    }
     
-    userEdited() {
-        $('#success-alert').removeClass('hidden');
-    }
-
-    exitAlert() {
-        $('#success-alert').addClass('hidden');
-    }
-
     addUserClick() {
         $("#add-button").click(function() {
             $("#account-details-form").submit();
         });
         $('#success-alert').removeClass('hidden');
 
+    }
+    
+    addUser() {
+        fetch('localhost:3001/api/v1/users/')
+            .then(response => {
+                const users = response.json();
+                this.setState({ users })
+            })
+            .catch(err => {
+                throw new Error(err)
+            });
     }
     
     checkVal() {
@@ -55,31 +64,50 @@ class AddUser extends Component {
                             <div id="account-details">
                                 <div className="ac-header">Account Details</div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-6 text-left">
-                                        <label for="inputName">Name</label>
-                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="inputName" placeholder="George P. Burdell" required/>
+                                    <div class="form-group col-md-4 text-left">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="firstName" placeholder="George" required/>
                                     </div>
-                                    <div class="form-group col-md-6 text-left">
+                                    <div class="form-group col-md-4 text-left">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="lastName" placeholder="Burdell" required/>
+                                    </div>
+                                    <div class="form-group col-md-4 text-left">
                                         <label for="inputPreferredName">Preferred Name</label>
                                         <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="inputPreferredName" placeholder="Georgie" required/>
                                     </div>
                                 </div>
-                                <div class="form-group text-left">
-                                    <label for="inputGTEmail">GT E-Mail</label>
-                                    <input type="email" pattern=".+@gatech.edu" class="form-control" id="inputGTEmail" placeholder="georgepburdell@gatech.edu" required/>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6 text-left">
-                                        <label for="inputNumber">Phone Number</label>
-                                        <input type="tel" pattern="^\+?\d{10,13}" class="form-control" id="inputNumber" placeholder="6781236789" required/>
+                                <div className="form-row">
+                                    <div class="form-group col-md-3 text-left">
+                                        <label for="uid">GT Username</label>
+                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="uid" placeholder="gpburdell" readOnly/>
                                     </div>
-                                    <div class="form-group col-md-6 text-left">
-                                        <label for="inputStatus">Status</label>
-                                        <select id="inputStatus" class="form-control" required>
+                                    <div class="form-group col-md-9 text-left">
+                                    <label for="email">GT E-Mail</label>
+                                    <input type="email" pattern=".+@gatech.edu" class="form-control" id="email" placeholder="georgepburdell@gatech.edu" required/>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 text-left">
+                                        <label for="phoneNumber">Phone Number</label>
+                                        <input type="tel" pattern="^\+?\d{10,13}" class="form-control" id="phoneNumber" placeholder="6781236789" required/>
+                                    </div>
+                                    <div class="form-group col-md-4 text-left">
+                                        <label for="onCampus">GT Residency</label>
+                                        <select id="onCampus" class="form-control" required>
                                             <option selected disabled value="">Choose...</option>
-                                            <option value="Active">Active</option>
-                                            <option value="Inactive">Inactive</option>
-                                            <option value="No Longer a Member">No Longer a Member</option>
+                                            <option value="true">On Campus</option>
+                                            <option value="false">Off Campus</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 text-left">
+                                        <label for="activeMember">Status</label>
+                                        <select id="activeMember" class="form-control" required>
+                                            <option selected disabled value="">Choose...</option>
+                                            <option value="true">Active</option>
+                                            <option value="false">Inactive</option>
+                                            <option value="false">No Longer a Member</option>
                                         </select>
                                     </div>
                                 </div>
@@ -88,8 +116,8 @@ class AddUser extends Component {
                             <div id="committee-access">
                                 <div className="cm-header">Committee Access</div>
                                 <div class="form-group text-left">
-                                <label for="inputState">Primary Committee</label>
-                                <select id="inputState" class="form-control" required>
+                                <label for="committees">Primary Committee</label>
+                                <select id="committees" class="form-control" required>
                                     <option selected disabled value="">Choose...</option>
                                     <option value="Arts & Culture">Arts & Culture</option>
                                     <option value="Atlanta Life">Atlanta Life</option>
@@ -124,7 +152,7 @@ class AddUser extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-secondary" type="submit" id="add-button">Add User</button>
+                            <button class="btn btn-secondary" type="submit" id="add-button" addUser={this.addUser.bind(this)}>Add User</button>
                         </form>
                     </div>     
                 </div>           
