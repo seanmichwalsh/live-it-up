@@ -28,19 +28,15 @@ class AddCommittee extends Component {
                             <div id="account-details">
                             <div className="ac-header">Committee Details</div>
                             <div class="form-row">
-                                <div class="form-group col-md-6 text-left">
-                                    <label for="inputName">Name</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Committee Name" required/>
-                                </div>
-                                <div class="form-group col-md-6 text-left">
-                                    <label for="inputAbb">Abbreviation</label>
-                                    <input type="text" class="form-control" id="inputAbb" placeholder="If applicable" />
+                                <div class="form-group col-md-12 text-left">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Committee Name" required/>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6 text-left">
-                                    <label for="inputChairName">Chair Name</label>
-                                    <input type="text" class="form-control" id="inputChairName" placeholder="Name" required/>
+                                    <label for="inputChairName">Type of Committee</label>
+                                    <input type="text" class="form-control" id="inputChairName" placeholder="Event Planning" required/>
                                 </div>
                                 <div class="form-group col-md-6 text-left">
                                     <label for="inputStatus">Category</label>
