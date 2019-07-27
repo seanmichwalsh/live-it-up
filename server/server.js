@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dbConfig = require('./config/database.config');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 const port = 3001; 
 
@@ -9,6 +10,8 @@ app.disable('x-powered-by'); // for security reasons though not fool-proof
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
+
+app.use(cors())
 
 app.get('/', (req, res) => {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
