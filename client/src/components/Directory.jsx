@@ -15,13 +15,13 @@ users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 						<div id="header-text">DIRECTORY</div>
 
 						<div id="add-edit-box">
-							<div class="dropdown">
-								<button class="btn btn-secondary btn-small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div className="dropdown">
+								<button className="btn btn-secondary btn-small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									ADD
 								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="/adduser">Add User</a>
-									<a class="dropdown-item" href="/addcommittee">Add Committee</a>
+								<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a className="dropdown-item" href="/adduser">Add User</a>
+									<a className="dropdown-item" href="/addcommittee">Add Committee</a>
 								</div>
 							</div>
 						</div>
