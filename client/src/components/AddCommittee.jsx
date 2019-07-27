@@ -13,35 +13,58 @@ class AddCommittee extends Component {
         $('#success-alert').addClass('hidden');
     }
 
+    postnewcommittee() {
+        let nameHere = document.getElementById('name').value;
+        let typeHere = document.getElementById('type').value;
+
+        fetch('localhost:3001/api/v1/committees/', {
+            method: 'POST',
+            body:JSON.stringify({name:nameHere, type:typeHere})
+        }).then((res) => res.json())
+        .then((data) =>  console.log(data))
+        .catch((err)=> console.log(err))
+        console.log(name);
+        console.log(type);
+ 
+    }
+
+    newBoy() {
+        let name = document.getElementById('name').value;
+        let type = document.getElementById('type').value;
+        console.log(name);
+        console.log(type);
+    }
+    
+
     render() {
         return (
             <div className="add-user-pg">
                 <header className="header">ADD COMMITTEE</header>
                 <div className="add-details">
-                    <div class="alert alert-success hidden" id="success-alert">
-                        <button type="button" id="close-button" class="close" onClick={this.exitAlert}>x</button>
-                        <span class="glyphicon glyphicon-ok"></span> Committee has been added!
+                    <div className="alert alert-success hidden" id="success-alert">
+                        <button type="button" id="close-button" className="close" onClick={this.exitAlert}>x</button>
+                        <span className="glyphicon glyphicon-ok"></span> Committee has been added!
                     </div>
                     
                     <div id="userInputFields">
                         <form>
                             <div id="account-details">
                             <div className="ac-header">Committee Details</div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12 text-left">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Committee Name" required/>
+                            <div className="form-row">
+                                <div className="form-group col-md-12 text-left">
+                                    <label htmlFor="name">Name</label>
+                                    <input type="text" className="form-control" id="name" placeholder="Committee Name" required/>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6 text-left">
-                                    <label for="inputChairName">Type of Committee</label>
-                                    <input type="text" class="form-control" id="inputChairName" placeholder="Event Planning" required/>
+                            <div className="form-row">
+                                <div className="form-group col-md-6 text-left">
+                                    <label htmlFor="type">Type of Committee</label>
+                                    <input type="text" className="form-control" id="type" placeholder="Event Planning" required/>
                                 </div>
-                                <div class="form-group col-md-6 text-left">
-                                    <label for="inputStatus">Category</label>
-                                    <select id="inputStatus" class="form-control" required>
-                                        <option selected disabled value="">Choose...</option>
+                                <div className="form-group col-md-6 text-left">
+                                    <label htmlFor="inputStatus">Category</label>
+                                    <select id="inputStatus" className="form-control" required>
+                                        <option defaultValue disabled value="">Choose...</option>
                                         <option value="Primary">Primary</option>
                                         <option value="Auxillary">Auxillary</option>
                                     </select>
@@ -53,7 +76,7 @@ class AddCommittee extends Component {
                                 I'm going to add a box with all the users so you can click users and add them to your new committee with a search feature.
                                 Give me some time for this.
                             </div>
-                            <button type="button" type="submit" id="add-button" class="btn btn-secondary" onClick={this.userEdited}>Add Committee</button>
+                            <button type="button" id="add-button" className="btn btn-secondary" onClick={this.postnewcommittee}>Add Committee</button>
 
                         </form>
                     </div>
