@@ -27,43 +27,43 @@ class EditUser extends Component {
             <div className="add-user-pg">
                 <header className="header">EDIT USER</header>
                 <div className="add-details">
-                    <div class="alert alert-success hidden" id="success-alert">
-                        <button type="button" id="close-button" class="close" onClick={this.exitAlert}>x</button>
-                        <span class="glyphicon glyphicon-ok"></span> User has been edited!
+                    <div className="alert alert-success hidden" id="success-alert">
+                        <button type="button" id="close-button" className="close" onClick={this.exitAlert}>x</button>
+                        <span className="glyphicon glyphicon-ok"></span> User has been edited!
                     </div>
                     
                     <div id="userInputFields">
                         <form className="needs-validation" id="account-details-form" novalidate>
                             <div id="account-details">
                                 <div className="ac-header">Account Details</div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6 text-left">
+                                <div className="form-row">
+                                    <div className="form-group col-md-6 text-left">
                                         <label for="inputName">Name</label>
-                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="inputName" placeholder="George P. Burdell" required/>
-                                        <div class="valid-feedback">
+                                        <input type="text" pattern="[A-Za-z']{1,32}" className="form-control" id="inputName" placeholder="George P. Burdell" required/>
+                                        <div className="valid-feedback">
                                             Looks good!
                                         </div>
-                                        <div class="invalid-feedback">
+                                        <div className="invalid-feedback">
                                             Please enter a valid name.
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6 text-left">
+                                    <div className="form-group col-md-6 text-left">
                                         <label for="inputPreferredName">Preferred Name</label>
-                                        <input type="text" pattern="[A-Za-z']{1,32}" class="form-control" id="inputPreferredName" placeholder="Georgie" required/>
+                                        <input type="text" pattern="[A-Za-z']{1,32}" className="form-control" id="inputPreferredName" placeholder="Georgie" required/>
                                     </div>
                                 </div>
-                                <div class="form-group text-left">
+                                <div className="form-group text-left">
                                     <label for="inputGTEmail">GT E-Mail</label>
-                                    <input type="text" pattern=".+@gatech.edu" class="form-control" id="inputGTEmail" placeholder="georgepburdell@gatech.edu" required/>
+                                    <input type="text" pattern=".+@gatech.edu" className="form-control" id="inputGTEmail" placeholder="georgepburdell@gatech.edu" required/>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6 text-left">
+                                <div className="form-row">
+                                    <div className="form-group col-md-6 text-left">
                                         <label for="inputNumber">Phone Number</label>
-                                        <input type="tel" pattern="^\+?\d{10,13}" class="form-control" id="inputNumber" placeholder="6781236789" required/>
+                                        <input type="tel" pattern="^\+?\d{10,13}" className="form-control" id="inputNumber" placeholder="6781236789" required/>
                                     </div>
-                                    <div class="form-group col-md-6 text-left">
+                                    <div className="form-group col-md-6 text-left">
                                         <label for="inputStatus">Status</label>
-                                        <select id="inputStatus" class="form-control" required>
+                                        <select id="inputStatus" className="form-control" required>
                                             <option selected disabled value="">Choose...</option>
                                             <option value="Active">Active</option>
                                             <option value="Inactive">Inactive</option>
@@ -75,9 +75,9 @@ class EditUser extends Component {
 
                             <div id="committee-access">
                                 <div className="cm-header">Committee Access</div>
-                                <div class="form-group text-left">
+                                <div className="form-group text-left">
                                 <label for="inputState">Primary Committee</label>
-                                <select id="inputState" class="form-control" required>
+                                <select id="inputState" className="form-control" required>
                                     <option selected disabled value="">Choose...</option>
                                     <option value="Arts & Culture">Arts & Culture</option>
                                     <option value="Atlanta Life">Atlanta Life</option>
@@ -91,28 +91,28 @@ class EditUser extends Component {
                                 </select>
                                 </div>
                                 <div className="aux-committee">
-                                    <div class="form-group text-left">
+                                    <div className="form-group text-left">
                                     <label for="inputState">Auxillary Committee</label>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="technologyCheck"/>
-                                        <label class="custom-control-label" for="technologyCheck">Technology</label>
+                                    <div className="custom-control custom-checkbox">
+                                        <input type="checkbox" className="custom-control-input" id="technologyCheck"/>
+                                        <label className="custom-control-label" for="technologyCheck">Technology</label>
                                     </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="financeCheck"/>
-                                        <label class="custom-control-label" for="financeCheck">Finance</label>
+                                    <div className="custom-control custom-checkbox">
+                                        <input type="checkbox" className="custom-control-input" id="financeCheck"/>
+                                        <label className="custom-control-label" for="financeCheck">Finance</label>
                                     </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="marketingCheck"/>
-                                        <label class="custom-control-label" for="marketingCheck">Marketing</label>
+                                    <div className="custom-control custom-checkbox">
+                                        <input type="checkbox" className="custom-control-input" id="marketingCheck"/>
+                                        <label className="custom-control-label" for="marketingCheck">Marketing</label>
                                     </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="plcCheck"/>
-                                        <label class="custom-control-label" for="plcCheck">PLC</label>
+                                    <div className="custom-control custom-checkbox">
+                                        <input type="checkbox" className="custom-control-input" id="plcCheck"/>
+                                        <label className="custom-control-label" for="plcCheck">PLC</label>
                                     </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-secondary" type="submit" id="add-button">Add User</button>
+                            <button className="btn btn-secondary" type="submit" id="add-button">Add User</button>
                         </form>
                     </div>     
                 </div>           
