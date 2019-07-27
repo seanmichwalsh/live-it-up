@@ -14,18 +14,16 @@ class AddCommittee extends Component {
     }
 
     postnewcommittee() {
-        let nameHere = document.getElementById('name').value;
-        let typeHere = document.getElementById('type').value;
+        let name = document.getElementById('name').value;
+        let type = document.getElementById('type').value;
 
-        fetch('localhost:3001/api/v1/committees/', {
+        fetch('http://localhost:3001/api/v1/committees/', {
             method: 'POST',
-            body:JSON.stringify({name:nameHere, type:typeHere})
+            body:JSON.stringify({name:name, type:type})
         }).then((res) => res.json())
         .then((data) =>  console.log(data))
         .catch((err)=> console.log(err))
-        console.log(name);
-        console.log(type);
- 
+
     }
 
     newBoy() {
