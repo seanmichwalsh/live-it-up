@@ -15,9 +15,9 @@ export default class Header extends React.Component {
           src={process.env.PUBLIC_URL + "/images/SCPCHeader.jpg"}
           alt="SCPC Logo"
         />
-        <nav class="navbar navbar-expand-sm navbar-light bg-white">
+        <nav className="navbar navbar-expand-sm navbar-light bg-white">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarToggler"
@@ -25,11 +25,11 @@ export default class Header extends React.Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon" />
+            <span className="navbar-toggler-icon" />
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <div className="collapse navbar-collapse" id="navbarToggler">
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <Link className="nav-link" to="/">
