@@ -1,50 +1,51 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import "./Directory.css";
-import AddUser from "./AddUser";
-import EditUser from "./EditUser";
-import {
-  BrowserRouter,
-  Route,
-  Link,
-  Switch,
-  withRouter
-} from "react-router-dom";
+import React, { Component } from 'react';
+import logo from '../images/logo.svg';
+import './Directory.css'
 
 class Directory extends Component {
-  constuctor() {
-    this.routeChange = this.routeChange.bind(this);
-  }
 
-  routeChange() {
-    let path = `newPath`;
-    this.props.history.push(path);
-  }
+users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    render() {
+		
 
-  render() {
-    return (
-      <div className="directory-page">
-        <div className="top-bar">
-          <header className="header">DIRECTORY</header>
-          <div className="add-edit-box">
-            <div className="editbox" class="char float-right">
-              <Link to="/adduser">ADD USER</Link>
+        return (
+            <div className="directory-page">
+          			<div className="top-bar">
+                    <header id="header">
+						<div id="header-text">DIRECTORY</div>
+
+						<div id="add-edit-box">
+							<div class="dropdown">
+								<button class="btn btn-secondary btn-small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									ADD
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="/adduser">Add User</a>
+									<a class="dropdown-item" href="/addcommittee">Add Committee</a>
+								</div>
+							</div>
+						</div>
+					</header>
+					
+                </div>
+                <div className="committee-name">TECHNOLOGY</div>
+
+            		<div className = "userLists">
+						
+						{this.users.map((user) =>
+						<div className="individualUser">
+							<a href="/edituser" target="_blank">
+								<div> <img src={logo} alt={user}/></div>
+								<div>Name: {user}</div>
+								<div>Email: {user}</div>
+								<div>Committee: {user}</div>
+							</a>
+  						</div>
+						)}
+					</div>
             </div>
-            <div className="editbox" class="char float-right">
-              <Link to="/edituser">EDIT USER</Link>
-            </div>
-            <div className="editbox" class="char float-right">
-              <Link to="/addcommittee">ADD COMMITTEE</Link>
-            </div>
-            <div className="editbox" class="char float-right">
-              <Link to="/editcommittee">EDIT COMMITTEE</Link>
-            </div>
-          </div>
-        </div>
-        <div className="committee-name">TECHNOLOGY</div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default Directory;

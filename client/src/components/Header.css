@@ -38,7 +38,6 @@ img {
 
 .nav-link:hover {
     color: #AC539B;
-    font-size: 18px;
     font-family: "Avenir Next";
     font-weight: bold;
     /* transition: all 500ms ease-in-out; */
