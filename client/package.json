@@ -3,20 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "bootstrap-table": "^1.14.2",
+    "flat": "^4.1.0",
     "fullcalendar": "^3.10.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "popper.js": "^1.14.4",
+    "prop-types": "^15.7.2",
     "react": "^16.7.0",
+    "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.7.0",
+    "react-intl": "^2.9.0",
     "react-markdown": "^4.0.2",
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "^2.1.8",
+    "react-toastify": "^5.3.2",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
@@ -32,5 +38,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "1.0.1": "^1.0.0",
+    "ts-pnp": "^1.0.1",
+    "xxxxx": "^1.0.3"
+  }
 }

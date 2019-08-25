@@ -6,20 +6,11 @@ import './index.css';
 import './include/bootstrap';
 
 import App from './components/App';
-
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
-
+import configureStore from '../src/redux/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
-const middleware = [thunk]; 
-
-const store = createStore(
-    rootReducer, 
-    applyMiddleware(...middleware)
-); 
+const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
