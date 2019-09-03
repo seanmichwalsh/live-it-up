@@ -4,7 +4,7 @@ import Header from './Common/Header';
 import Home from './Home/Home'; 
 import Points from './Points/Points';
 import EditUser from './Users/EditUser';
-import AddUser from './Users/EditUser';
+import AddUser from './Users/AddUser';
 import AddCommittee from './Committee/AddCommittee';
 import Directory from './Directory/Directory';
 import Resources from './Resources/Resources'; 
