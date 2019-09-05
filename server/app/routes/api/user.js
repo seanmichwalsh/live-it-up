@@ -43,8 +43,8 @@ router.get('/:uid', (req, res) => {
 //Posts a new user
 router.post('/', (req, res) => {
     if (!(req.body.firstName && req.body.lastName && req.body.email && 
-        req.body.uid && req.body.mainCommittee && req.body.onCampus 
-        && req.body.activeMember && req.body.committees)) {
+        req.body.uid && req.body.mainCommittee && req.body.activeMember 
+        && req.body.committees)) {
         
         // error message needs to indicate which field(s) are missing
         return res.status(400).send({
