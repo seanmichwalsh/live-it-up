@@ -3,7 +3,7 @@
 }	
 
 .directory-page {
-    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
     margin-bottom: 3vw;
 }
 
@@ -71,7 +71,7 @@ a, a:hover {
     }
     
     .directory-page {
-        font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+        font-family: 'Roboto', sans-serif;
     }
     
     .header {

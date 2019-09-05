@@ -1,6 +1,5 @@
 #resourcePage {
-    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
-}
+    font-family: 'Roboto', sans-serif;}
 
 #resourceHeader {
     font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
