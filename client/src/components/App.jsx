@@ -9,6 +9,7 @@ import AddUser from './AddUser';
 import AddCommittee from './AddCommittee';
 import Directory from './Directory';
 import Resources from './Resources'; 
+import './../index.css';
 
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'; 
 

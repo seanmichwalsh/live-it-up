@@ -31,14 +31,14 @@ img {
 .nav-link {
     color: #707070;
     font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1600 - 300)));
-    font-family: "Avenir Next";
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     /* transition: all 500ms ease-in-out; */
 }
 
 .nav-link:hover {
     color: #AC539B;
-    font-family: "Avenir Next";
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     /* transition: all 500ms ease-in-out; */
 }
