@@ -42,6 +42,7 @@ router.post('/', (req, res) => {
             message: "All required fields must be present cannot be empty"
         });
     };
+    //Later on, add a check to ensure the committee type is valid once we define types
     
     const committee = new Committee({
         name: req.body.name,
@@ -62,6 +63,10 @@ router.put('/:id', (req, res) => {
         return res.status(400).send({
             message: "An ID must be provided to update the Committee."
         });
+    } else if (!(req.body.name && req.body.type)) {
+        return res.status(400).send({
+            message: "All required fields must be present cannot be empty"
+        });
     };
 
     Committee.findByIdAndUpdate(req.params.id, {
@@ -70,14 +75,14 @@ router.put('/:id', (req, res) => {
     }, {new: true}).then(committee => {
         if (!committee) {
             return res.status(404).send({
-                message: "Committee not found with username " + req.params.id
+                message: "Committee not found with ID " + req.params.id
             })
         };
         res.send(committee); 
     }).catch(err => {
         if (err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Committee not found with username " + req.params.id
+                message: "Committee not found with ID " + req.params.id
             });
         };
     });
@@ -88,18 +93,18 @@ router.delete('/:id', (req, res) => {
     .then(committee => {
         if(!committee) {
             return res.status(404).send({
-                message: "Committee not found with username " + req.params.id
+                message: "Committee not found with ID " + req.params.id
             });
         }
         res.send({message: "Committee deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "Committee not found with username " + req.params.id
+                message: "Committee not found with ID " + req.params.id
             });                
         }
         return res.status(500).send({
-            message: "Could not delete Committee with id " + req.params.id
+            message: "Could not delete Committee with ID " + req.params.id +", server error"
         });
     });
 });

@@ -85,7 +85,7 @@ router.post('/', (req, res) => {
     if (User.findOne({'uid': req.body.uid}).then(user => {
         if (user) {
             return res.status(400).send({
-                message: "A user with this username already exists." + req.body.uid
+                message: "A user with this username already exists: " + req.body.uid
             });
         } else {
         const user = new User({
