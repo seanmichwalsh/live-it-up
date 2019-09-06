@@ -63,10 +63,6 @@ router.put('/:id', (req, res) => {
         return res.status(400).send({
             message: "An ID must be provided to update the Committee."
         });
-    } else if (!(req.body.name && req.body.type)) {
-        return res.status(400).send({
-            message: "All required fields must be present cannot be empty"
-        });
     };
 
     Committee.findByIdAndUpdate(req.params.id, {
