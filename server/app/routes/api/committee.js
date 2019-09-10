@@ -72,7 +72,6 @@ router.put('/:id', (req, res) => {
     if (req.body.type) {
         updatedCommittee['type'] = req.body.type
     }
-    console.log(updatedCommittee)
 
     Committee.findByIdAndUpdate(req.params.id, updatedCommittee,
         {new: true}).then(committee => {
