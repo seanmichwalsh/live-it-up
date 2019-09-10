@@ -65,10 +65,17 @@ router.put('/:id', (req, res) => {
         });
     };
 
-    Committee.findByIdAndUpdate(req.params.id, {
-        name: req.body.name,
-        type: req.body.type
-    }, {new: true}).then(committee => {
+    var updatedCommittee = {}
+    if (req.body.name) {
+        updatedCommittee['name'] = req.body.name
+    }
+    if (req.body.type) {
+        updatedCommittee['type'] = req.body.type
+    }
+    console.log(updatedCommittee)
+
+    Committee.findByIdAndUpdate(req.params.id, updatedCommittee,
+        {new: true}).then(committee => {
         if (!committee) {
             return res.status(404).send({
                 message: "Committee not found with ID " + req.params.id
