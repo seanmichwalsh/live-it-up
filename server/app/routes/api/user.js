@@ -43,8 +43,8 @@ router.get('/:uid', (req, res) => {
 //Posts a new user
 router.post('/', (req, res) => {
     if (!(req.body.firstName && req.body.lastName && req.body.email && 
-        req.body.uid && req.body.phoneNumber && req.body.mainCommittee && req.body.active 
-        && req.body.committees)) {
+        req.body.uid && req.body.phoneNumber && req.body.mainCommittee 
+        && req.body.active && req.body.committees)) {
         
         // error message needs to indicate which field(s) are missing
         return res.status(400).send({
@@ -91,14 +91,13 @@ router.post('/', (req, res) => {
         const user = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            onCampus: req.body.onCampus,
             phoneNumber: req.body.phoneNumber, 
             email: req.body.email,
             uid: req.body.uid,
             active: req.body.active,
             committees: req.body.committees,
             mainCommittee: req.body.mainCommittee,
-            phoneNumber: req.body.phoneNumber,
+            preferredName: req.body.preferredName,
         })
 
         user.save().then(data => {
@@ -125,6 +124,13 @@ router.put('/:uid', (req, res) => {
             message: "A username must be provided to update the user."
         });
     };
+
+    //Makes sure you are not updatinga a user ID
+    if (req.body.uid) {
+        return res.status(400).send({
+            message: "A user's GT username cannot be updated"
+        });
+    }
 
     //Checks that main committee has a valid committee ID
     Committee.count({'_id': req.body.mainCommittee}, (err, count) => {
@@ -155,19 +161,35 @@ router.put('/:uid', (req, res) => {
             }
         })
     });
+    var updatedUser = {}
+    if (req.body.firstName) {
+        updatedUser['firstName'] = req.body.firstName
+    }
+    if (req.body.lastName) {
+        updatedUser['lastName'] = req.body.lastName
+    }
+    if (req.body.email) {
+        updatedUser['email'] = req.body.email
+    }
+    if (req.body.phoneNumber) {
+        updatedUser['phoneNumber'] = req.body.phoneNumber
+    }
+    if (req.body.mainCommittee) {
+        updatedUser['mainCommittee'] = req.body.mainCommittee
+    }
+    if (req.body.committees) {
+        updatedUser['committees'] = req.body.committees
+    }
+    if (req.body.active) {
+        updatedUser['active'] = req.body.active
+    }
+    if (req.body.preferredName) {
+        updatedUser['preferredName'] = req.body.preferredName
+    } else {
+        updatedUser['preferredName'] = null
+    }
 
-    User.findOneAndUpdate({uid: req.params.uid}, {
-        firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            onCampus: req.body.onCampus,
-            phoneNumber: req.body.phoneNumber, 
-            email: req.body.email,
-            uid: req.body.uid,
-            active: req.body.active,
-            committees: req.body.committees,
-            mainCommittee: req.body.mainCommittee,
-            phoneNumber: req.body.phoneNumber,
-    }, {new: true}).then(user => {
+    User.findOneAndUpdate({uid: req.params.uid}, updatedUser, {new: true}).then(user => {
         if (!user) {
             return res.status(404).send({
                 message: "User not found with username " + req.params.uid
