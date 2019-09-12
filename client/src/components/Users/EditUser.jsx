@@ -23,24 +23,25 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
 
   useEffect(() => {
     getCommittees();
-    if (current) {
+    if (current !== null) {
       setFirstName(current.firstName);
       setLastName(current.lastName);
       setPreferredName(current.preferredName);
       setUsername(current.uid);
       setEmail(current.email);
       setPhone(current.phoneNumber);
-      setResidency(current.onCampus);
+      setResidency(true);
       setStatus(current.active);
-      setPrimaryCommittee(current.mainCommittee._id);
+      setPrimaryCommittee(current.mainCommittee);
       setAuxCommittee(
         current.committees
           .filter(committee => committee._id !== primaryCommittee)
-          .map(committee => committee._id)
+          .map(committee => {
+            return committee;
+          })
       );
     }
-    clearCurrent();
-  }, [committees, current]);
+  }, []);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -61,7 +62,6 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
         firstName: firstName,
         lastName: lastName,
         preferredName: preferredName,
-        uid: username,
         email: email,
         phoneNumber: phone,
         onCampus: residency,
@@ -69,7 +69,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
         mainCommittee: primaryCommittee,
         committees: committee
       };
-      updateUser(newUser, current._id);
+      updateUser(newUser, current.uid);
       //Clear Fields
       setFirstName("");
       setLastName("");
@@ -86,12 +86,13 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       $("#activeMember").val("");
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
+      clearCurrent();
     }
   };
 
   return (
     <div className="add-user-pg">
-      <header className="header">ADD USER</header>
+      <header className="header">EDIT USER</header>
       <div className="add-details">
         <ToastContainer autoClose={2000} hideProgressBar={true} />
         <div id="userInputFields">
@@ -148,6 +149,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                   <label htmlFor="uid">GT Username</label>
                   <input
                     type="text"
+                    readOnly
                     pattern="[A-Za-z']{1,32}"
                     className="form-control"
                     id="uid"
@@ -192,7 +194,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     id="onCampus"
                     className="form-control"
                     required
-                    value={residency.toString()}
+                    value={residency ? "true" : "false"}
                     onChange={e => {
                       switch (e.target.value) {
                         case "true":
@@ -284,10 +286,10 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                         <input
                           type="checkbox"
                           className="custom-control-input"
-                          id={committee.name + "Check"}
+                          id={committee._id + "Check"}
                           onChange={() => {
                             if (
-                              $(`#${committee.name}Check`)[0].hasAttribute(
+                              $(`#${committee._id}Check`)[0].hasAttribute(
                                 "checked"
                               )
                             ) {
@@ -295,23 +297,28 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                                 acommittee => acommittee !== committee._id
                               );
                               setAuxCommittee(newAux);
-                              $(`#${committee.name}Check`)[0].removeAttribute(
+                              $(`#${committee._id}Check`)[0].removeAttribute(
                                 "checked"
                               );
                             } else {
                               auxCommittee.push(committee._id);
                               setAuxCommittee(auxCommittee);
-                              $(`#${committee.name}Check`)[0].setAttribute(
+                              $(`#${committee._id}Check`)[0].setAttribute(
                                 "checked",
                                 "checked"
                               );
                             }
                           }}
                         />
+                        {auxCommittee.includes(committee._id) &&
+                          $(`#${committee._id}Check`)[0].setAttribute(
+                            "checked",
+                            "checked"
+                          )}
                         <label
                           className="custom-control-label"
-                          htmlFor={committee.name + "Check"}
-                          id={committee.name}
+                          htmlFor={committee._id + "Check"}
+                          id={committee._id}
                         >
                           {committee.name}
                         </label>

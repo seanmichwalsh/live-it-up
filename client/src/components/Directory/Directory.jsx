@@ -8,7 +8,7 @@ import "./Directory.css";
 const Directory = ({ getUsers, users }) => {
   useEffect(() => {
     getUsers();
-  }, [users]);
+  }, []);
 
   return (
     <div className="directory-page">

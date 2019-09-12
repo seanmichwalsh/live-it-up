@@ -91,12 +91,13 @@ export const deleteUser = uid => async dispatch => {
 };
 
 //Update user on server
-export const updateUser = user => async dispatch => {
+export const updateUser = (user, uid) => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/user/${user.uid}`, {
+    const res = await fetch(`http://localhost:3001/api/v1/user/${uid}`, {
       method: "PUT",
       body: JSON.stringify(user),
       headers: {
+        Accept: "Content-Type",
         "Content-Type": "application/json"
       }
     });
@@ -105,11 +106,13 @@ export const updateUser = user => async dispatch => {
       type: UPDATE_USER,
       payload: data
     });
+    toast("The user is updated succesfully!");
   } catch (err) {
     dispatch({
       type: USER_ERROR,
       payload: err.message
     });
+    toast.error("There was an error updating the user!");
   }
 };
 
