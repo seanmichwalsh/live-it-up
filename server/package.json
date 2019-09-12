@@ -1,0 +1,23 @@
+{
+  "name": "live-it-up-server",
+  "version": "1.0.0",
+  "description": "SCPC's Live It Up API server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "author": "SCPC",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cas": "^0.0.3",
+    "cas-authentication-gt": "0.0.9",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.13",
+    "mongoose-unique-validator": "^2.0.1",
+    "nodemon": "^1.18.4"
+  }
+}
