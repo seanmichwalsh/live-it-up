@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
 import $ from "jquery";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -88,6 +87,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
       clearCurrent();
+      setTimeout(() => window.history.back(), 2000);
     }
   };
 
@@ -304,10 +304,11 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                             } else {
                               auxCommittee.push(committee._id);
                               setAuxCommittee(auxCommittee);
-                              $(`#${committee._id}Check`)[0].setAttribute(
-                                "checked",
-                                "checked"
-                              );
+                              $(`#${committee._id}Check`)[0] !== null &&
+                                $(`#${committee._id}Check`)[0].setAttribute(
+                                  "checked",
+                                  "checked"
+                                );
                             }
                           }}
                         />
