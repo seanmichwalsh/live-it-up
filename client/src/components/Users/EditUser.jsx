@@ -35,12 +35,13 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       setPrimaryCommittee(current.mainCommittee);
       setAuxCommittee(
         current.committees
-          .filter(committee => committee._id !== current.mainCommittee)
+          .filter(committee => committee !== current.mainCommittee)
           .map(committee => {
             return committee;
           })
       );
     }
+    // eslint-disable-next-line
   }, []);
 
   const onSubmit = e => {
@@ -55,6 +56,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
     ) {
       toast("Please fill in all required blanks!");
     } else {
+      setCommittee([]);
       committee.push(primaryCommittee);
       auxCommittee.map(aux => committee.push(aux));
       setCommittee(committee);
@@ -87,7 +89,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
       clearCurrent();
-      setTimeout(() => window.history.back(), 4000);
+      setTimeout(() => window.history.back(), 3000);
     }
   };
 
@@ -288,7 +290,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                           type="checkbox"
                           className="custom-control-input"
                           id={committee._id + "Check"}
-                          onChange={() => {
+                          onClick={() => {
                             if (
                               $(`#${committee._id}Check`)[0].hasAttribute(
                                 "checked"

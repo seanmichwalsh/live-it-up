@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import CommitteeForm from "../CommitteeForm";
 import CommitteeAccess from "../CommitteeAccess";
 import "./AddCommittee.css";
