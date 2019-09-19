@@ -20,7 +20,7 @@
     margin: 0 auto;
 }
 
-#account-details {
+.account-details {
     width: 65%;
     float: left;
 }
@@ -36,7 +36,7 @@
     padding-bottom: 15px;
 }
 
-#committee-access {
+.committee-access {
     float: right;
     width: 30%;
 }
