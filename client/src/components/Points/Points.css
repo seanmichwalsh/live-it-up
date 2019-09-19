@@ -1,5 +1,5 @@
 #points-pg {
-    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #header {
@@ -40,7 +40,6 @@
     font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
     background: #AC539B;
     border-radius: 15px;
-    font-family: "Avenir Next", Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     position: relative;
     color: #ffffff;
