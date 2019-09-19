@@ -47,7 +47,7 @@ export const getCommittee = id => async dispatch => {
 //Add new committee
 export const addCommittee = committee => async dispatch => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/committees/", {
+    const res = await fetch("http://localhost:3001/api/v1/committee/", {
       method: "POST",
       body: JSON.stringify(committee),
       headers: {
