@@ -11,14 +11,15 @@ const User = ({ user, committee, getCommittee, setCurrent }) => {
     if (committee === null) {
       getCommittee(user.mainCommittee);
     }
+    //eslint-disable-next-line
   }, [committee]);
 
   return (
     <div className="individualUser">
-      <Link to="/edituser"  onClick={() => setCurrent(user)}>
+      <Link to="/edituser" onClick={() => setCurrent(user)}>
         <div>
           {" "}
-          <img src={logo} alt="image" />
+          <img src={logo} alt={logo} />
         </div>
         <div>Name: {user.lastName + ". " + user.firstName}</div>
         <div>Email: {user.email}</div>
