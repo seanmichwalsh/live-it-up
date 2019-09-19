@@ -56,11 +56,22 @@ export const addUser = user => async dispatch => {
       }
     });
     const data = await res.json();
-    dispatch({
-      type: ADD_USER,
-      payload: data
-    });
-    toast("A new user is added successfully!");
+    console.log(res);
+    if (res.status == 200) {
+      dispatch({
+        type: ADD_USER,
+        payload: data
+      });
+      toast("A new user is added successfully!");
+    } else {
+      dispatch({
+        type: USER_ERROR,
+        payload: data.message
+      });
+      toast.error(
+        `There was an error adding ${user.firstName + " " + user.lastName}.`
+      );
+    }
   } catch (err) {
     dispatch({
       type: USER_ERROR,
@@ -102,11 +113,19 @@ export const updateUser = (user, uid) => async dispatch => {
       }
     });
     const data = await res.json();
-    dispatch({
-      type: UPDATE_USER,
-      payload: data
-    });
-    toast("The user is updated succesfully!");
+    if (res.status !== 200) {
+      dispatch({
+        type: USER_ERROR,
+        payload: data.message
+      });
+      toast.error("There was an error updating the user!");
+    } else {
+      dispatch({
+        type: UPDATE_USER,
+        payload: data
+      });
+      toast("The user is updated succesfully!");
+    }
   } catch (err) {
     dispatch({
       type: USER_ERROR,

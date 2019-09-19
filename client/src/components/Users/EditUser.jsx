@@ -304,19 +304,22 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                             } else {
                               auxCommittee.push(committee._id);
                               setAuxCommittee(auxCommittee);
-                              $(`#${committee._id}Check`)[0] !== null &&
+                              if ($(`#${committee._id}Check`)[0] !== null) {
                                 $(`#${committee._id}Check`)[0].setAttribute(
                                   "checked",
                                   "checked"
                                 );
+                              }
                             }
                           }}
                         />
                         {auxCommittee.includes(committee._id) &&
-                          $(`#${committee._id}Check`)[0].setAttribute(
-                            "checked",
-                            "checked"
-                          )}
+                        $(`#${committee._id}Check`)[0] !== null
+                          ? $(`#${committee._id}Check`)[0].setAttribute(
+                              "checked",
+                              "checked"
+                            )
+                          : null}
                         <label
                           className="custom-control-label"
                           htmlFor={committee._id + "Check"}
