@@ -1,51 +1,69 @@
-import React, { Component } from 'react';
-import logo from '../../images/logo.svg';
-import './Directory.css'
+import React, { useEffect } from "react";
+import User from "./User";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getUsers } from "../../redux/actions/userActions";
+import "./Directory.css";
 
-class Directory extends Component {
+const Directory = ({ getUsers, users }) => {
+  useEffect(() => {
+    getUsers();
+  }, []);
 
-users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    render() {
-		
+  return (
+    <div className="directory-page">
+      <div className="top-bar">
+        <header id="header">
+          <div id="header-text">DIRECTORY</div>
 
-        return (
-            <div className="directory-page">
-          			<div className="top-bar">
-                    <header id="header">
-						<div id="header-text">DIRECTORY</div>
-
-						<div id="add-edit-box">
-							<div className="dropdown">
-								<button className="btn btn-secondary btn-small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									ADD
-								</button>
-								<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a className="dropdown-item" href="/adduser">Add User</a>
-									<a className="dropdown-item" href="/addcommittee">Add Committee</a>
-								</div>
-							</div>
-						</div>
-					</header>
-					
-                </div>
-                <div className="committee-name">TECHNOLOGY</div>
-
-            		<div className = "userLists">
-						
-						{this.users.map((user) =>
-						<div className="individualUser">
-							<a href="/edituser" target="_blank">
-								<div> <img src={logo} alt={user}/></div>
-								<div>Name: {user}</div>
-								<div>Email: {user}</div>
-								<div>Committee: {user}</div>
-							</a>
-  						</div>
-						)}
-					</div>
+          <div id="add-edit-box">
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary btn-small dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                ADD
+              </button>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <a className="dropdown-item" href="/adduser">
+                  Add User
+                </a>
+                <a className="dropdown-item" href="/addcommittee">
+                  Add Committee
+                </a>
+              </div>
             </div>
-        );
-    }
-}
+          </div>
+        </header>
+      </div>
+      <div className="committee-name">TECHNOLOGY</div>
 
-export default Directory;
+      <div className="userLists">
+        {users.map(user => (
+          <User key={user._id} user={user} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+Directory.propTypes = {
+  getUsers: PropTypes.func.isRequired,
+  users: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => ({
+  users: state.user.users
+});
+
+export default connect(
+  mapStateToProps,
+  { getUsers }
+)(Directory);
