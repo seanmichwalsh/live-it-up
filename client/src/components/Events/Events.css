@@ -8,7 +8,6 @@
     font-weight: bold;
     font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
     display: block;
-    margin-bottom: 1vw;
 }
 
 thead {

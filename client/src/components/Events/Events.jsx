@@ -9,7 +9,7 @@ class Events extends Component {
             <div id="events-page">
                 <div id="header-text">EVENTS</div>
                 <div id="tableHold">
-                    <table class="table table-striped" id="eventTable">
+                    <table className="table table-striped" id="eventTable">
                         <thead>
                             <tr>
                             <th scope="col" className="col-name">Event Name</th>
