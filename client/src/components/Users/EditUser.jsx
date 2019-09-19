@@ -307,7 +307,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                               auxCommittee.push(committee._id);
                               setAuxCommittee(auxCommittee);
                               if ($(`#${committee._id}Check`)[0] !== null) {
-                                $(`#${committee._id}Check`)[0].setAttribute(
+                                $(`#${committee._id}Check`).setAttribute(
                                   "checked",
                                   "checked"
                                 );
