@@ -1,65 +1,151 @@
-import * as types from './actionTypes';
-import { toast } from 'react-toastify';
+import {
+  GET_ALL_USER,
+  GET_USER,
+  ADD_USER,
+  UPDATE_USER,
+  DELETE_USER,
+  USER_ERROR,
+  SET_CURRENT,
+  CLEAR_CURRENT
+} from "./actionTypes";
+import { toast } from "react-toastify";
 
-export function addUser(user) {
-    return (dispatch, getState) => {
-        dispatch({type: types.CREATE_USER});
-        
-        fetch('http://localhost:3001/api/v1/users/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body:JSON.stringify({
-                firstName:user.firstName, 
-                lastName: user.lastName,
-                onCampus: user.onCampus,
-                phoneNumber: user.phoneNumber,
-                email: user.email,
-                uid: user.uid,
-                committees: user.committees,
-                mainCommittee: user.mainCommittee,
-                activeMember: user.activeMember
-            })
-        }).then((res) => res.json())
-        .then((data) =>  dispatch(
-            {type: types.CREATE_USER_SUCCESS, payload: data},
-            toast.success(user.name + " has been added!")))
-        .catch((error)=> dispatch(
-            {type: types.CREATE_USER_ERROR, error: error},
-            toast.error("There was an error adding " + user.firstName + ".")
-        ))
-    }    
-}
+//Get all users from server
+export const getUsers = () => async dispatch => {
+  try {
+    const res = await fetch("http://localhost:3001/api/v1/user/");
+    const data = await res.json();
+    dispatch({
+      type: GET_ALL_USER,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.message
+    });
+  }
+};
 
-export function loadUsers() {
-    return (dispatch) => {
-        dispatch({type: types.LOAD_ALL_USERS});
-        
-        fetch('http://localhost:3001/api/v1/users/', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body:JSON.stringify({
-                firstName:user.firstName, 
-                lastName: user.lastName,
-                onCampus: user.onCampus,
-                phoneNumber: user.phoneNumber,
-                email: user.email,
-                uid: user.uid,
-                committees: user.committees,
-                mainCommittee: user.mainCommittee,
-                activeMember: user.activeMember
-            })
-        }).then((res) => res.json())
-        .then((data) =>  dispatch(
-            {type: types.LOAD_ALL_USERS_SUCCESS, payload: data}
-            ))
-        .catch((error)=> dispatch(
-            {type: types.LOAD_ALL_USERS_ERROR, error: error},
-        ))
-    }    
-}
+//Get a specific user from server
+export const getUser = uid => async dispatch => {
+  try {
+    const res = await fetch(`http://localhost:3001/api/v1/user/${uid}`);
+    const data = await res.json();
+    dispatch({
+      type: GET_USER,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.message
+    });
+  }
+};
+
+//Add new user
+export const addUser = user => async dispatch => {
+  try {
+    const res = await fetch("http://localhost:3001/api/v1/user/", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        Accept: "Content-Type",
+        "Content-Type": "application/json"
+      }
+    });
+    const data = await res.json();
+    console.log(res);
+    if (res.status == 200) {
+      dispatch({
+        type: ADD_USER,
+        payload: data
+      });
+      toast("A new user is added successfully!");
+    } else {
+      dispatch({
+        type: USER_ERROR,
+        payload: data.message
+      });
+      toast.error(
+        `There was an error adding ${user.firstName + " " + user.lastName}.`
+      );
+    }
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.message
+    });
+    toast.error(
+      `There was an error adding ${user.firstName + " " + user.lastName}.`
+    );
+  }
+};
+
+//Delete user from server
+export const deleteUser = uid => async dispatch => {
+  try {
+    await fetch(`http://localhost:3001/api/v1/user/${uid}`, {
+      method: "DELETE"
+    });
+    dispatch({
+      type: DELETE_USER,
+      payload: uid
+    });
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.message
+    });
+  }
+};
+
+//Update user on server
+export const updateUser = (user, uid) => async dispatch => {
+  try {
+    const res = await fetch(`http://localhost:3001/api/v1/user/${uid}`, {
+      method: "PUT",
+      body: JSON.stringify(user),
+      headers: {
+        Accept: "Content-Type",
+        "Content-Type": "application/json"
+      }
+    });
+    const data = await res.json();
+    if (res.status !== 200) {
+      dispatch({
+        type: USER_ERROR,
+        payload: data.message
+      });
+      toast.error("There was an error updating the user!");
+    } else {
+      dispatch({
+        type: UPDATE_USER,
+        payload: data
+      });
+      toast("The user is updated succesfully!");
+    }
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.message
+    });
+    toast.error("There was an error updating the user!");
+  }
+};
+
+//Set Current
+export const setCurrent = user => {
+  return {
+    type: SET_CURRENT,
+    payload: user
+  };
+};
+
+//Clear Current
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT
+  };
+};
