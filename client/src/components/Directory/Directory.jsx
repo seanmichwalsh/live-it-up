@@ -8,6 +8,7 @@ import "./Directory.css";
 const Directory = ({ getUsers, users }) => {
   useEffect(() => {
     getUsers();
+    //eslint-disable-next-line
   }, []);
 
   return (

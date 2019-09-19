@@ -57,7 +57,7 @@ export const addUser = user => async dispatch => {
     });
     const data = await res.json();
     console.log(res);
-    if (res.status == 200) {
+    if (res.status === 200) {
       dispatch({
         type: ADD_USER,
         payload: data

@@ -23,6 +23,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
 
   useEffect(() => {
     getCommittees();
+    //eslint-disable-next-line
   }, [committees]);
 
   const onSubmit = e => {
