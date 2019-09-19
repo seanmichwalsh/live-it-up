@@ -70,6 +70,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
       $("#activeMember").val("");
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
+      setTimeout(() => window.history.back(), 3500);
     }
   };
 

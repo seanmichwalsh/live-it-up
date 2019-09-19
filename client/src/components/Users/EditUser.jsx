@@ -89,7 +89,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
       clearCurrent();
-      setTimeout(() => window.history.back(), 3000);
+      setTimeout(() => window.history.back(), 3500);
     }
   };
 
