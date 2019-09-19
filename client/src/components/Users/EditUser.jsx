@@ -35,7 +35,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       setPrimaryCommittee(current.mainCommittee);
       setAuxCommittee(
         current.committees
-          .filter(committee => committee._id !== primaryCommittee)
+          .filter(committee => committee._id !== current.mainCommittee)
           .map(committee => {
             return committee;
           })
@@ -87,7 +87,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
       clearCurrent();
-      setTimeout(() => window.history.back(), 2000);
+      setTimeout(() => window.history.back(), 4000);
     }
   };
 
