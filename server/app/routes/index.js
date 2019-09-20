@@ -10,7 +10,7 @@ router.use(session({
     saveUninitialized: true
 })) ;
 
-router.use(express.static(path.join(__dirname, '/client/build')));
+// router.use(express.static(path.join(__dirname, '/client/build')));
 
 router.use('/api/v1', require('./api'));
 
