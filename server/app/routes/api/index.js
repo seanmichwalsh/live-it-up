@@ -5,14 +5,14 @@ router.get('/', (req, res) => {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     res.json({ip_address : ip});
 });
-router.use('/users', require('./user'));
-router.use('/committees', require('./committee'));
-router.use('/events', require('./event'));
+router.use('/user', require('./user'));
+router.use('/committee', require('./committee'));
+router.use('/event', require('./event'));
 router.use('/volunteerCoordinator', require('./volunteerCoordinator'));
 router.use('/volunteerPosition', require('./volunteerPosition'));
 router.use('/volunteerRole', require('./volunteerRole'));
 router.use('/volunteerSection', require('./volunteerSection'));
 router.use('/resources', require('./resources'));
-router.use('/auth', require('./auth')); 
+router.use('/auth', require('./auth'));
 
 module.exports = router;

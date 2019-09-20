@@ -1,0 +1,16 @@
+export const USER_ERROR = "USER_ERROR";
+export const GET_ALL_USER = "GET_ALL_USER";
+export const GET_USER = "GET_USER";
+export const ADD_USER = "GET_USER";
+export const UPDATE_USER = "UPDATE_USER";
+export const DELETE_USER = "DELETE_USER";
+export const SET_CURRENT = "SET_CURRENT";
+export const CLEAR_CURRENT = "CLEAR_CURRENT";
+
+export const COMMITTEE_ERROR = "COMMITTEE_ERROR";
+export const GET_ALL_COMMITTEE = "GET_ALL_COMMITTEE";
+export const GET_COMMITTEE = "GET_COMMITTEE";
+export const ADD_COMMITTEE = "ADD_COMMITTEE";
+export const UPDATE_COMMITTEE = "UPDATE_COMMITTEE";
+export const DELETE_COMMITTEE = "DELETE_COMMITTEE";
+export const SET_CURRENT_COMMITTEE = "SET_CURRENT_COMMITTEE";
