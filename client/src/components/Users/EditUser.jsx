@@ -42,7 +42,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       );
     }
     // eslint-disable-next-line
-  }, []);
+  }, [current]);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -306,22 +306,18 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                             } else {
                               auxCommittee.push(committee._id);
                               setAuxCommittee(auxCommittee);
-                              if ($(`#${committee._id}Check`)[0] !== null) {
-                                $(`#${committee._id}Check`).setAttribute(
-                                  "checked",
-                                  "checked"
-                                );
-                              }
+                              $(`#${committee._id}Check`).attr(
+                                "checked",
+                                "checked"
+                              );
                             }
                           }}
                         />
                         {auxCommittee.includes(committee._id) &&
-                        $(`#${committee._id}Check`)[0] !== null
-                          ? $(`#${committee._id}Check`)[0].setAttribute(
-                              "checked",
-                              "checked"
-                            )
-                          : null}
+                          $(`#${committee._id}Check`)[0].setAttribute(
+                            "checked",
+                            "checked"
+                          )}
                         <label
                           className="custom-control-label"
                           htmlFor={committee._id + "Check"}
