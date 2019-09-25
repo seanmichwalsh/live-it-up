@@ -1,7 +1,7 @@
 router = require('express').Router()
-const User = require('../../models/user.models');
-const Committee = require('../../models/committee.models');
-// let casLogin = require('../../helpers/cas.js');
+const User = require('../../models/user.models')
+const Committee = require('../../models/committee.models')
+// let casLogin = require('../../helpers/cas.js')
 
 //Gets all users
 router.get('/', (req, res) => {
