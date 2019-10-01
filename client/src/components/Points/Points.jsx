@@ -23,7 +23,6 @@ class Points extends Component {
       </tr>
       );
 
-   
     return (
       <div id="points-pg">
         <header id="header">POINTS</header>
@@ -52,8 +51,7 @@ class Points extends Component {
             </div>
         </div>
       </div>
-    </div>
   );
 };
-
+}
 export default Points;
