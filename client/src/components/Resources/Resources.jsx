@@ -9,6 +9,7 @@ const Resources = () => {
         <a
           href="https://docs.google.com/spreadsheets/d/1AjOm6V3ZG0Jn0y__CR0vxmwXHJp3bOaETq18uPECrac/edit#gid=1777936343"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="resourceItem">
             <img
@@ -19,7 +20,10 @@ const Resources = () => {
             <div className="resourcesWords">VOLUNTEER SHEET</div>
           </div>
         </a>
-        <a href="https://goo.gl/forms/RjtusxgGqmRm3q6L2" target="_blank">
+        <a href="https://goo.gl/forms/RjtusxgGqmRm3q6L2"
+        target="_blank"
+        rel="noopener noreferrer"
+        >
           <div className="resourceItem">
             <img
               src={process.env.PUBLIC_URL + "/images/google_form.png"}
@@ -32,6 +36,7 @@ const Resources = () => {
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSdXGkAl5uTXE952FiV_XuRejOOQaCx8PnNc_f7iLag6X1U_0A/viewform?usp=sf_link"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="resourceItem">
             <img
@@ -42,7 +47,10 @@ const Resources = () => {
             <div className="resourcesWords">POINTS FORM</div>
           </div>
         </a>
-        <a href="scpctalk.slack.com" target="_blank">
+        <a href="scpctalk.slack.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        >
           <div className="resourceItem">
             <img
               src={process.env.PUBLIC_URL + "/images/slack_logo.png"}
@@ -55,6 +63,7 @@ const Resources = () => {
         <a
           href="https://docs.google.com/document/d/1QpniJ7c3kMnRgT75R3jnyyKuhnNb32e3oNHW4RVtCYU/edit?usp=sharing"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="resourceItem">
             <img
@@ -65,7 +74,10 @@ const Resources = () => {
             <div className="resourcesWords">ACCOUNTABILITY</div>
           </div>
         </a>
-        <a href="https://asana.com" target="_blank">
+        <a href="https://asana.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        >
           <div className="resourceItem">
             <img
               src={process.env.PUBLIC_URL + "/images/asana_logo.png"}
