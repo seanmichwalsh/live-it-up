@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
         Committee.count({'_id': item}, (err, count) => {
             if (err) {
                 res.status(500).send({
-                    message: err.message500
+                    message: "Server error " + err.message
                 })
             }
             if (count <= 0) {
@@ -64,6 +64,23 @@ router.post('/', (req, res) => {
         })
     });
 
+    // Checks that startTime is a valid date object
+    var startTimeStamp = Date.parse(req.body.startTime);
+    if (isNaN(startTimeStamp) == true) {
+        return res.status(400).send({
+            message: "startTime " + req.body.startTime + " is not a valid Date object"
+        })
+    }
+
+    // Checks that endTime is a valid date object
+    var endTimeStamp = Date.parse(req.body.endTime);
+    if (isNaN(endTimeStamp) == true) {
+        return res.status(400).send({
+            message: "endTime " + req.body.endTime + " is not a valid Date object"
+        })
+    }
+
+    // Checks that startTime <= endTime
     if (req.body.endTime < req.body.startTime) {
         return res.status(400).send({
             message: "Event endTime of " + req.body.endTime + " must occur after event startTime of " + req.body.startTime
@@ -92,8 +109,8 @@ router.put('/:id', (req, res) => {
     if (!req.params.id) {
         return res.status(400).send({
             message: "An ID must be provided to update the Event."
-        });
-    };
+        })
+    }
 
     //Checks that each committee in the committees array has a valid, existing ID
     if (req.body.committees) {
@@ -113,20 +130,57 @@ router.put('/:id', (req, res) => {
         });
     }
 
-    var startTimestamp = Date.parse(req.body.startTime);
-    if (isNaN(startTimestamp) == true) {
-        return res.status(400).send({
-            message: "startTime " + req.body.startTime + " is not a valid Date object"
-        })
+    // Gets existing event to update
+    // Required for startTime <= endTime check, in case user does not submit
+    // both a new startTime and endTime in the body of the request
+    var eventToUpdate = {}
+    Event.find({'_id': req.params.id}).then( event => {
+        if (!event) {
+            return res.status(404).send({
+                message: "Event not found with ID " + req.params.id
+            })
+        };
+        eventToUpdate = event
+    }).catch(err => {
+        if (err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Event not found with ID " + req.params.id
+            })
+        }
+    })
+
+    // If new startTime is present, checks that startTime is a valid date object
+    if (req.body.startTime) {
+        var startTimeStamp = Date.parse(req.body.startTime)
+        if (isNaN(startTimeStamp) == true) {
+            return res.status(400).send({
+                message: "startTime " + req.body.startTime + " is not a valid Date object"
+            })
+        }
     }
 
-    var endTimeStamp = Date.parse(req.body.endTime);
-    if (isNaN(endTimeStamp) == true) {
-        return res.status(400).send({
-            message: "endTime " + req.body.endTime + " is not a valid Date object"
-        })
+    // If new endTime is present, checks that endTime is a valid date object
+    if (req.body.endTime) {
+        var endTimeStamp = Date.parse(req.body.endTime);
+        if (isNaN(endTimeStamp) == true) {
+            return res.status(400).send({
+                message: "endTime " + req.body.endTime + " is not a valid Date object"
+            })
+        }
     }
 
+    // If any new time is present, checks that startTime <= endTime
+    if (req.body.endTime || req.body.startTime) {
+        var endTimeStamp = (req.body.endTime) ? req.body.endTime : eventToUpdate['endTime']
+        var startTimeStamp = (req.body.startTime) ? req.body.startTime : eventToUpdate['startTime']
+        if (req.body.endTimeStamp < req.body.startTimeStamp) {
+            return res.status(400).send({
+                message: "Event endTime of " + endTimeStamp + " must occur after event startTime of " + startTimeStamp
+            });
+        }
+    }
+
+    // Creates new event to update existing one
     var updatedEvent = {}
     if (req.body.eventName) {
         updatedEvent['eventName'] = req.body.eventName
@@ -149,16 +203,16 @@ router.put('/:id', (req, res) => {
             return res.status(404).send({
                 message: "Event not found with ID " + req.params.id
             })
-        };
+        }
         res.send(event); 
     }).catch(err => {
         if (err.kind === 'ObjectId') {
             return res.status(404).send({
                 message: "Event not found with ID " + req.params.id
-            });
-        };
-    });
-});
+            })
+        }
+    })
+})
 
 //Deletes a specified event
 router.delete('/:id', (req, res) => {
