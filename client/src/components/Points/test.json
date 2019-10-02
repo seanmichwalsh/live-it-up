@@ -1,0 +1,9 @@
+{"data": {
+	"points": [
+	  	{"group1": 3, "group2": 2, "group3": 1, "semester": "201902", "committeeMissedEvents": 0, "plc": 1, "auxillary": 1, "uid": "Sidartha", "officeHours": 10},
+	  	{"group1": 3, "group2": 3, "group3": 4, "semester": "201808", "committeeMissedEvents": 0, "plc": 1, "auxillary": 1, "uid": "Sean", "officeHours": 10},
+	  	{"group1": 2, "group2": 1, "group3": 2, "semester": "201802", "committeeMissedEvents": 0, "plc": 1, "auxillary": 1, "uid": "Mark", "officeHours": 10}
+	],
+	"pointsDetail": [
+		{"date": 01234, "category": "group1", "uid": ""}]
+}}
