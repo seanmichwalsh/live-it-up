@@ -6,7 +6,7 @@ var PointSchema = mongoose.Schema({
     category: {type: String, required: true},
     uid: {type: String, required: true},
     semester: {type: String, required: true},
-    points: {type: Integer, required: true},
+    points: {type: Number, required: true},
     description: {type: String, required: true},
 }) 
 
