@@ -1,0 +1,37 @@
+{
+    "swalsh38": {
+        "group1": 3,
+        "group2": 1,
+        "group3": 0,
+        "committeeEvents": 0,
+        "plc": 1,
+        "aux": 0,
+        "officeHours": 0,
+        "committeeMeetings": 0,
+        "semester": "201908"
+    },
+    "sidartha": 
+        {
+        "group1": 1,
+        "group2": 0,
+        "group3": 0,
+        "committeeEvents": 0,
+        "plc": 0,
+        "aux": 0,
+        "officeHours": 0,
+        "committeeMeetings": 0,
+        "semester": "201908"
+    },
+    "mwoodson7": 
+        {
+        "group1": 10,
+        "group2": 10,
+        "group3": 10,
+        "committeeEvents": 0,
+        "plc": 10,
+        "aux": 4,
+        "officeHours": 30,
+        "committeeMeetings": 30,
+        "semester": "201908"
+    }
+}
