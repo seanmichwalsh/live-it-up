@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
         Committee.count({'_id': item}, (err, count) => {
             if (err) {
                 res.status(500).send({
-                    message: err.message500
+                    message: "Server error " + err.message
                 })
             }
             if (count <= 0) {
@@ -109,8 +109,8 @@ router.put('/:id', (req, res) => {
     if (!req.params.id) {
         return res.status(400).send({
             message: "An ID must be provided to update the Event."
-        });
-    };
+        })
+    }
 
     //Checks that each committee in the committees array has a valid, existing ID
     if (req.body.committees) {
@@ -203,16 +203,16 @@ router.put('/:id', (req, res) => {
             return res.status(404).send({
                 message: "Event not found with ID " + req.params.id
             })
-        };
+        }
         res.send(event); 
     }).catch(err => {
         if (err.kind === 'ObjectId') {
             return res.status(404).send({
                 message: "Event not found with ID " + req.params.id
-            });
-        };
-    });
-});
+            })
+        }
+    })
+})
 
 //Deletes a specified event
 router.delete('/:id', (req, res) => {
