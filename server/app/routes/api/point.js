@@ -178,31 +178,4 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-// router.get('/getReport:semester', (req, res) => {
-//     var pointDetails = {}
-//     Point.find({'semester' : req.params.semester}).then(point => {
-//         if (!pointDetails.hasOwnProperty(point['uid'])) {
-//             var pointDetail = {}
-//             pointDetail['group1'] = 0
-//             pointDetail['group2'] = 0
-//             pointDetail['group3'] = 0
-//             pointDetail['committeeEvents'] = 0
-//             pointDetail['plc'] = 0
-//             pointDetail['aux'] = 0
-//             pointDetail['officeHours'] = 0
-//             pointDetail['committeeMeetings'] = 0
-//             pointDetail['uid'] = point['uid']
-//             pointDetail['semester'] = point['semester']
-//         } else {
-//             var category = point['category']
-//             pointDetails[point['uid']][category] += 1
-//         }
-//         res.send(pointDetails)
-//     }).catch(err => {
-//         res.status(500).send({
-//             message: err.message || "Some server error occured retrieving point reports."
-//         })
-//     })
-// })
-
 module.exports = router
