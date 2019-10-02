@@ -1,99 +1,87 @@
-import React from "react";
-import "./Points.css";
+import React, { Component } from 'react';
+import $ from 'jquery';
+import './Points.css';
+import jsonData from "./testNew.json";
+import pointsDeats from "./pointsDetail.json";
 
-const Points = () => {
-  //var sum = 0.0;
+class Points extends Component {
 
-  return (
-    <div id="points-pg">
-      <header id="header">POINTS</header>
-      <div id="mainPG">
-        <div id="points-display">
-          <div id="display-header">Sidartha's Total Points: </div>
-          <div id="user-table">
-            <table data-toggle="table" className="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Points</th>
-                  <th>Committee</th>
-                  <th>Category</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="tr-className-1" data-title="bootstrap table">
-                  <td className="td-className-1" data-title="bootstrap table">
-                    <a className="date">Jan 1, 2019</a>
-                  </td>
-                  <td classname="points">1</td>
-                  <td className="committee">PLC</td>
-                  <td className="category">PLC</td>
-                  <td className="description">
-                    Attended Karaoke Night in the Office
-                  </td>
-                </tr>
-                <tr className="tr-className-1" data-title="bootstrap table">
-                  <td className="td-className-1" data-title="bootstrap table">
-                    <a className="date">Jan 2, 2019</a>
-                  </td>
-                  <td classname="points">1</td>
-                  <td className="committee">Ramblin' Nights</td>
-                  <td className="category">Beta</td>
-                  <td className="description">Teasered for Light the Night</td>
-                </tr>
-                <tr className="tr-className-1" data-title="bootstrap table">
-                  <td className="td-className-1" data-title="bootstrap table">
-                    <a className="date">Jan 3, 2019</a>
-                  </td>
-                  <td classname="points">3</td>
-                  <td className="committee">Arts & Culture</td>
-                  <td className="category">Charlie</td>
-                  <td className="description">
-                    Volunteer at Tech Camera Action
-                  </td>
-                </tr>
-                <tr className="tr-className-1" data-title="bootstrap table">
-                  <td className="td-className-1" data-title="bootstrap table">
-                    <a className="date">Jan 4, 2019</a>
-                  </td>
-                  <td classname="points">1</td>
-                  <td className="committee">Atlanta Life</td>
-                  <td className="category">Alpha</td>
-                  <td className="description">
-                    Volunteer at GT Night at the Aquarium
-                  </td>
-                </tr>
-                <tr className="tr-className-1" data-title="bootstrap table">
-                  <td className="td-className-1" data-title="bootstrap table">
-                    <a className="date">Jan 5, 2019</a>
-                  </td>
-                  <td classname="points">1</td>
-                  <td className="committee">ETC</td>
-                  <td className="category">Charlie</td>
-                  <td className="description">Volunteer at Just Brew It</td>
-                </tr>
-                <tr className="tr-className-1" data-title="bootstrap table">
-                  <td className="td-className-1" data-title="bootstrap table">
-                    <a className="date">Jan 6, 2019</a>
-                  </td>
-                  <td classname="points">2</td>
-                  <td className="committee">Ramblin' Nights</td>
-                  <td className="category">Alpha</td>
-                  <td className="description">
-                    Office Hours & Meetings Attended
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div id="points-sidebar">
-          <div id="req-header">REQUIREMENTS</div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      admin: false
+    };
+  }
+
+  render() {
+    var sum = 0.0;
+    var datas = jsonData;
+    var points = pointsDeats.pointsDetail;
+    var galList;
+
+    console.log(Object.keys(datas));
+    console.log(Object.keys(points));
+    if (this.state.admin) {
+      galList = Object.keys(datas).map((item, index) => 
+        <tr className="tr-className-1" data-title="bootstrap table">
+          <td className="td-className-1" data-title="bootstrap table">
+            <a className="date">{datas[item].semester}</a>
+          </td>
+          <td classname="group1">{datas[item].group1}</td>
+          <td className="group2">{datas[item].group2}</td>
+          <td className="group3">{datas[item].group3}</td>
+          <td className="committeeEvents">{datas[item].committeeEvents}</td>
+          <td className="plc">{datas[item].plc}</td>
+          <td classname="aux">{datas[item].aux}</td>
+          <td className="officeHours">{datas[item].officeHours}</td>
+          <td className="committeeMeetings">{datas[item].committeeMeetings}</td>
+        </tr>
+        );
+    } else {
+
+    galList = Object.keys(points).map((item, index) => 
+      <tr className="tr-className-1" data-title="bootstrap table">
+        <td className="td-className-1" data-title="bootstrap table">
+          <a className="date">{points[item].semester}</a>
+        </td>
+        <td classname="group1">{points[item].date}</td>
+        <td className="group2">{points[item].category}</td>
+        <td className="points">{points[item].points}</td>
+      </tr>
+      );
+  }
+
+   
+    return (
+      <div id="points-pg">
+        <header id="header">POINTS</header>
+        <div id="mainPG">
+            <div id="points-display">
+                <div id="display-header">Sidartha's Total Points: </div>
+                <div id="user-table">
+                  <table data-toggle="table" className="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Semester</th>
+                          <th>Category 1 Points</th>
+                          <th>Category 2 Points</th>
+                          <th>Category 3 Points</th>
+                          <th>Committee Points</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {galList}
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="points-sidebar">
+                <div id="req-header">REQUIREMENTS</div>
+            </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Points;
