@@ -49,6 +49,7 @@
 }
 
 #points-sidebar {
+    margin-top: 1vw;
     width: 25%;
     float: left;
 }

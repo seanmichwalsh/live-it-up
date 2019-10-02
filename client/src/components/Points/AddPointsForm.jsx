@@ -152,7 +152,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
             <a id="member-header">Members:</a>
             <div id="user-container">
                 {users.map(user => (
-                    <input type="checkbox" key={user._id}>{user.name}</input>
+                    <input type="checkbox" key={user._id}>{user.firstName}</input>
                 ))}
             </div>
         </div>
