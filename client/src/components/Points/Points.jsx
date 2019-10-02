@@ -5,7 +5,6 @@ import points from "./test.json";
 
 class Points extends Component {
 
-
   render() {
     var sum = 0.0;
     var datas = points.data.schema;
@@ -24,34 +23,65 @@ class Points extends Component {
       );
 
     return (
-      <div id="points-pg">
-        <header id="header">POINTS</header>
-        <div id="mainPG">
-            <div id="points-display">
-                <div id="display-header">Sidartha's Total Points: </div>
-                <div id="user-table">
-                  <table data-toggle="table" className="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Semester</th>
-                          <th>Category 1 Points</th>
-                          <th>Category 2 Points</th>
-                          <th>Category 3 Points</th>
-                          <th>Committee Points</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {galList}
-                      </tbody>
-                    </table>
-                </div>
+      <div className="directory-page">
+      <div className="top-bar">
+        <header id="header">
+          <div id="header-text">POINTS</div>
+
+          <div id="add-edit-box">
+            <div className="dropdown">
+            <a href="/addpoints"
+              class="btn btn-secondary btn-small active"
+              role="button"
+              aria-pressed="true">
+                ADD
+            </a>
             </div>
-            <div id="points-sidebar">
-                <div id="req-header">REQUIREMENTS</div>
-            </div>
-        </div>
+          </div>
+        </header>
       </div>
+      
+
+      
+    </div>
   );
 };
+//       <div id="points-pg">
+//         <header id="header">
+//           <a id="header-text">POINTS</a>
+//           <a href="/addpoints"
+//             class="btn btn-secondary btn-small active"
+//             role="button"
+//             aria-pressed="true">
+//               ADD
+//           </a>
+//         </header> 
+//         <div id="mainPG">
+//             <div id="points-display">
+//                 <div id="display-header">Sidartha's Total Points: </div>
+//                 <div id="user-table">
+//                   <table data-toggle="table" className="table table-bordered">
+//                       <thead>
+//                         <tr>
+//                           <th>Semester</th>
+//                           <th>Category 1 Points</th>
+//                           <th>Category 2 Points</th>
+//                           <th>Category 3 Points</th>
+//                           <th>Committee Points</th>
+//                         </tr>
+//                       </thead>
+//                       <tbody>
+//                         {galList}
+//                       </tbody>
+//                     </table>
+//                 </div>
+//             </div>
+//             <div id="points-sidebar">
+//                 <div id="req-header">REQUIREMENTS</div>
+//             </div>
+//         </div>
+//       </div>
+//   );
+// };
 }
 export default Points;
