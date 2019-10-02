@@ -9,6 +9,7 @@ router.use('/user', require('./user'));
 router.use('/committee', require('./committee'));
 router.use('/event', require('./event'));
 router.use('/point', require('./point'));
+router.use('/pointsReport', require('./pointsReport'));
 router.use('/volunteerCoordinator', require('./volunteerCoordinator'));
 router.use('/volunteerPosition', require('./volunteerPosition'));
 router.use('/volunteerRole', require('./volunteerRole'));
