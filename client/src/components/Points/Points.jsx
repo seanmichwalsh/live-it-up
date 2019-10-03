@@ -44,9 +44,10 @@ class Points extends Component {
         <td className="td-className-1" data-title="bootstrap table">
           <a className="date">{points[item].semester}</a>
         </td>
-        <td classname="group1">{points[item].date}</td>
+        <td className="group1">{points[item].date}</td>
         <td className="group2">{points[item].category}</td>
         <td className="points">{points[item].points}</td>
+        <td className="description">{points[item].description}</td>
       </tr>
       );
   }
