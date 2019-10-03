@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import $ from 'jquery';
 import './Points.css';
-import points from "./test.json";
+import points from "./testNew.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
 import { getPoints } from '../../redux/actions/pointsActions';
@@ -13,6 +13,26 @@ const Points = ({ getUser , user, getPoints }) => {
       getUser();
       getPoints();
     }, [user]);
+
+  var datas = points;
+
+  let pointsDetails = Object.keys(datas).map((item, index) => 
+        <tr className="tr-className-1" data-title="bootstrap table">
+          <td>{item}</td>
+          <td className="td-className-1" data-title="bootstrap table">
+            <a className="date">{datas[item].semester}</a>
+          </td>
+          <td classname="group1">{datas[item].group1}</td>
+          <td className="group2">{datas[item].group2}</td>
+          <td className="group3">{datas[item].group3}</td>
+          <td className="committeeEvents">{datas[item].committeePoints}</td>
+          <td className="adHoc">{datas[item].adHoc}</td>
+          <td className="officeHours">{datas[item].officeHours}</td>
+          <td className="teasering">{datas[item].teasering}</td>
+        </tr>
+        );
+
+
 
     return (
       <div className="directory-page">
@@ -39,6 +59,7 @@ const Points = ({ getUser , user, getPoints }) => {
                   <table data-toggle="table" className="table table-bordered">
                       <thead>
                         <tr>
+                          <th>Member</th>
                           <th>Semester</th>
                           <th>Category 1 Points</th>
                           <th>Category 2 Points</th>
@@ -50,7 +71,7 @@ const Points = ({ getUser , user, getPoints }) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* map user points to specific heading */}
+                        {pointsDetails}
                       </tbody>
                     </table>
                 </div>
