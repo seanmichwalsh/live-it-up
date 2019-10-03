@@ -100,6 +100,10 @@ router.post('/', (req, res) => {
             preferredName: req.body.preferredName,
         })
 
+        if (req.body.isAdmin) {
+            user['isAdmin'] = req.body.isAdmin
+        }
+
         user.save().then(data => {
             res.send(data);
         }).catch(err => {
@@ -182,6 +186,9 @@ router.put('/:uid', (req, res) => {
     }
     if (req.body.active) {
         updatedUser['active'] = req.body.active
+    }
+    if (req.body.isAdmin) {
+        updatedUser['isAdmin'] = req.body.isAdmin
     }
     if (req.body.preferredName) {
         updatedUser['preferredName'] = req.body.preferredName
