@@ -18,17 +18,5 @@ const AddPoints = () => (
   </div>
 );
 
-AddPoints.propTypes = {
-  addPoint: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired
-};
-
-const mapStateToProps = state => ({
-  users: state.user.users
-});
-
-export default connect(
-  mapStateToProps,
-  { AddPoints, getUsers }
-)(AddPoints);
+export default AddPoints;
 
