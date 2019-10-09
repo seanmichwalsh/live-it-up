@@ -4,15 +4,14 @@ import './Points.css';
 import points from "./testNew.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
-import { getPoints } from '../../redux/actions/pointsActions';
+import { getPoints } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
 
-const Points = ({ getUser , user, getPoints }) => {
-    
+const Points = ({ getUser, user, getPoints }) => {
   useEffect(() => {
-      getUser();
-      getPoints();
-    }, [user]);
+    getUser();
+    getPoints();
+  }, [user]);
 
   var datas = points;
 
@@ -39,19 +38,21 @@ const Points = ({ getUser , user, getPoints }) => {
         <div className="top-bar">
           <header id="header">
             <div id="header-text">POINTS</div>
-
-            <div id="add-edit-box">
-              <div className="dropdown">
-              <a href="/addpoints"
+          <div id="add-edit-box">
+            <div className="dropdown">
+              <a
+                href="/addpoints"
                 class="btn btn-secondary btn-small active"
                 role="button"
-                aria-pressed="true">
-                  ADD
+                aria-pressed="true"
+              >
+                ADD
               </a>
-              </div>
             </div>
-          </header>
-        </div>
+          </div>
+        </header>
+      </div>
+      <div id="mainPG">
         <div id="mainPG">
             <div id="points-display">
                 <div id="display-header">{user.firstName} Total Points: </div>
@@ -83,7 +84,7 @@ const Points = ({ getUser , user, getPoints }) => {
                     is in good standing... follow mock-ups */}
             </div>
         </div>
-    
+      </div>
     </div>
   );
 };
@@ -92,7 +93,7 @@ Points.propTypes = {
   getUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   getPoints: PropTypes.func.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   user: state.user,
