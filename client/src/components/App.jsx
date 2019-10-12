@@ -12,6 +12,7 @@ import Directory from './Directory/Directory';
 import Resources from './Resources/Resources';
 import NotFound from './NotFound';
 import Calendar from './Calendar/Calendar';
+import AddEvent from './Calendar/AddEvent';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/points" component={Points} />
           <Route exact path="/calendar" component={Calendar} />
+          <Route exact path="/addevent" component={AddEvent} />
           <Route exact path="/addpoints" component={AddPoints} />
           <Route exact path="/directory" component={Directory} />
           <Route exact path="/edituser" component={EditUser} />
