@@ -15,4 +15,3 @@ const AddPoints = () => (
 );
 
 export default AddPoints;
-
