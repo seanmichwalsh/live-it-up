@@ -5,30 +5,22 @@ import "moment/min/moment.min.js";
 import "fullcalendar/dist/fullcalendar.css";
 import "fullcalendar/dist/fullcalendar.js";
 import "./Calendar.css";
+import eventsJSON from './events.json';
+
 
 class Calendar extends Component {
   componentDidMount() {
     const { calendar } = this.refs;
     $("#calendar").fullCalendar({
-      events: [
-        {
-          title: "event1",
-          start: "2019-03-01"
-        },
-        {
-          title: "Gt Night In",
-          start: "2019-03-05",
-          end: "2019-03-07",
-          url: "https://studentcenter.gatech.edu/events/gt-night"
-        },
-        {
-          title: "event3",
-          start: "2019-03-09T13:30:00",
-          allDay: false // will make the time show
-        }
-      ],
-      eventColor: "#93681",
+      events: eventsJSON,
+      eventColor: "#b259a0",
       timeFormat: "h(:mm)",
+      eventTimeFormat: { // like '14:30:00'
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        meridiem: false
+      },
       eventTextColor: "#f4f4f4",
       header: {
         left: "prev,next today",
@@ -50,6 +42,18 @@ class Calendar extends Component {
   render() {
     return (
         <div id="calendarPage">
+            <header id="header">
+            <div id="add-edit-box">
+              <div className="dropdown">
+              <a href="/addevent"
+                class="btn btn-secondary btn-small active"
+                role="button"
+                aria-pressed="true">
+                  ADD EVENT
+              </a>
+              </div>
+            </div>
+          </header>
             <div id="calendar" />
         </div>
         
