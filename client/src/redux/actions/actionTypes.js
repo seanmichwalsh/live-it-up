@@ -23,4 +23,12 @@ export const UPDATE_POINTS = "UPDATE_POINTS";
 export const DELETE_POINTS = "DELETE_POINTS";
 export const SET_CURRENT_POINTS = "SET_CURRENT_POINTS";
 
+export const EVENT_ERROR = "EVENT_ERROR";
+export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
+export const GET_EVENT = "GET_EVENT";
+export const ADD_EVENT = "ADD_EVENT";
+export const UPDATE_EVENT = "UPDATE_EVENT";
+export const DELETE_EVENT = "DELETE_EVENT";
+
+
 
