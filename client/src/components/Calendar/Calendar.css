@@ -1,0 +1,14 @@
+#calendarPage {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 1vw;
+    padding-bottom: 4vw;
+}
+#calendar {
+    height: 50rem;
+    overflow-y: hidden;
+}
+
+.fc-widget-content {
+    overflow-y: hidden;
+}
