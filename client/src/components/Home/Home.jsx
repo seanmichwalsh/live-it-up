@@ -12,7 +12,7 @@ const Home = () => {
         </div>
         <div className="side-bar">
           <div className="gmm-header">
-            <div className="left">LEFT ALIGNED</div>
+            <div className="left">Next GMM</div>
             <button className="right">
               <a href="#">
                 <FontAwesomeIcon className="icon" icon={faPlusCircle} />
