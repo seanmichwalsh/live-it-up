@@ -17,23 +17,39 @@ const AddEventForm = ({ addEvent }) => {
 
   useEffect(() => {
     getCommittees();
-    //eslint-disable-next-line
   }, [committees]);
 
   const onSubmit = e => {
     e.preventDefault();
-    if (name === "" || location === "") {
+    if (name === "" || location === "" 
+        || date === null || startTime === null || endTime === null) {
       toast("Please fill in every required field!");
     } else {
+
+      // time manipulation to send to api
+      // new Date(year, month, date, hours, minutes, seconds, ms)
+      var newDate = new Date(date);
+      var newStartTime = new Date(startTime);
+      var newEndTime = new Date(endTime);
+      var newStart = new Date(newDate.getYear(), newDate.getMonth(), newDate.getDate());
+      var newEnd = new Date(newDate.getYear(), newDate.getMonth(), newDate.getDate());
+
       const newEvent = {
         name: name,
-        location: location
+        location: location,
+        // committees: committees,
+        startTime: date,
+        endTime: date
       };
       addEvent(newEvent);
+      
       //Clear Fields
-
       setName("");
       setLocation("");
+      setCommittee("");
+      setDate(null);
+      setStartTime(null);
+      setEndTime(null);
     }
   };
 
@@ -66,15 +82,14 @@ const AddEventForm = ({ addEvent }) => {
         </div>
       </div>
       <div className="form-row">
-        <div className="form-group col-md-4 text-left">
+        <div className="form-group col-md-3 text-left">
           <label htmlFor="committees">Committee</label>
           <select
             id="committees"
             className="form-control"
-            required
             onChange={e => setCommittee(e.target.value)}
           >
-            <option selected disabled value="">
+            <option defaultValue disabled value="">
               Choose...
             </option>
             {/* {committees
@@ -86,10 +101,10 @@ const AddEventForm = ({ addEvent }) => {
               ))} */}
           </select>
         </div>
-        <div className="form-group col-md-4 text-left">
+        <div className="form-group col-md-3 text-left">
             <label htmlFor="type">Date</label>
             <input
-                type="text"
+                type="date"
                 className="form-control"
                 id="type"
                 placeholder="2019-10-23"
@@ -98,22 +113,21 @@ const AddEventForm = ({ addEvent }) => {
                 required
             />
             </div>
-            <div className="form-group col-md-2 text-left">
+            <div className="form-group col-md-3 text-left">
             <label htmlFor="type">Start Time</label>
             <input
-                type="text"
+                type="time"
                 className="form-control"
                 id="type"
-                placeholder="7:00"
                 onChange={e => setStartTime(e.target.value)}
                 value={startTime}
                 required
             />
             </div>
-            <div className="form-group col-md-2 text-left">
+            <div className="form-group col-md-3 text-left">
             <label htmlFor="type">End Time</label>
             <input
-                type="text"
+                type="time"
                 className="form-control"
                 id="type"
                 placeholder="9:00"
@@ -136,7 +150,7 @@ const AddEventForm = ({ addEvent }) => {
 };
 
 AddEventForm.propTypes = {
-  addEvents: PropTypes.func.isRequired,
+  // addEvents: PropTypes.func.isRequired,
   committees: PropTypes.array.isRequired
 };
 
