@@ -30,7 +30,7 @@ const AddGMMForm = ({ addGMM }) => {
   };
 
   return (
-    <form className="account-details" id="account-details-form">
+    <form id="gmm-form">
       <span className="ac-header">GMM Details</span>
       <div className="form-row">
         <div className="form-group col-md-12 text-left">
@@ -46,8 +46,8 @@ const AddGMMForm = ({ addGMM }) => {
           />
         </div>
       </div>
-      <div className="form-row div-half input-left">
-        <div className="form-group col-md-12 text-left">
+      <div className="form-row">
+        <div className="form-group col-md-6 text-left">
           <label htmlFor="location">Location</label>
           <input
             type="text"
@@ -59,9 +59,7 @@ const AddGMMForm = ({ addGMM }) => {
             required
           />
         </div>
-      </div>
-      <div className="form-row div-half">
-        <div className="form-group col-md-12 text-left">
+        <div className="form-group col-md-6 text-left">
           <label htmlFor="time">Time</label>
           <input
             type="text"

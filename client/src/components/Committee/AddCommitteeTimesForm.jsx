@@ -30,8 +30,7 @@ const AddCommitteeTimesForm = ({ addCommitteeTimes }) => {
   };
 
   return (
-    <form className="account-details" id="account-details-form">
-      <span className="ac-header">Committee Details</span>
+    <form id="committee-form">
       <div className="form-row">
         <div className="form-group col-md-12 text-left">
           <label htmlFor="name">Committee Name</label>
@@ -46,8 +45,8 @@ const AddCommitteeTimesForm = ({ addCommitteeTimes }) => {
           />
         </div>
       </div>
-      <div className="form-row div-half input-left">
-        <div className="form-group col-md-12 text-left">
+      <div className="form-row">
+        <div className="form-group col-md-6 text-left">
           <label htmlFor="day">Day</label>
           <input
             type="text"
@@ -59,15 +58,13 @@ const AddCommitteeTimesForm = ({ addCommitteeTimes }) => {
             required
           />
         </div>
-      </div>
-      <div className="form-row div-half">
-        <div className="form-group col-md-12 text-left">
+        <div className="form-group col-md-6 text-left">
           <label htmlFor="time">Time</label>
           <input
             type="text"
             className="form-control"
             id="time"
-            placeholder="Time"
+            placeholder="9:00am"
             onChange={e => setTime(e.target.value)}
             value={time}
             required

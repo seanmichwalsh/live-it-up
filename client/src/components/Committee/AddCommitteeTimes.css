@@ -7,9 +7,6 @@
     font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300))); 
 }
 
-#account-details, .middle-space, #committee-access {
-    display: inline-block;
-}
 
 .hidden {
     display: none;
@@ -20,9 +17,9 @@
     margin: 0 auto;
 }
 
-#account-details {
-    width: 65%;
-    float: left;
+#committee-form {
+    width: 80%;
+    margin: 0 auto;
 }
 
 .ac-header {
@@ -30,11 +27,6 @@
     font-weight: bold;
     font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
     padding-bottom: 15px;
-}
-
-#committee-access {
-    float: right;
-    width: 30%;
 }
 
 .cm-header {
