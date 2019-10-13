@@ -8,6 +8,8 @@ import AddUser from './Users/AddUser';
 import AddCommittee from './Committee/AddCommittee';
 import Directory from './Directory/Directory';
 import Resources from './Resources/Resources';
+import AddGMM from './GMM/AddGMM';
+import AddCommitteeTimes from './Committee/AddCommitteeTimes';
 import NotFound from './NotFound';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -25,6 +27,8 @@ const App = () => {
           <Route exact path='/adduser' component={AddUser} />
           <Route exact path='/addcommittee' component={AddCommittee} />
           <Route exact path='/resources' component={Resources} />
+          <Route exact path='/addgmm' component={AddGMM} />
+          <Route exact path='/addcommitteetimes' component={AddCommitteeTimes} />
           <Route component={NotFound} />
           {/* We should add other Routes here */}
         </Switch>

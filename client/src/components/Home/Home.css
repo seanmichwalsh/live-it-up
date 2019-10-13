@@ -27,6 +27,10 @@
     color: #ffffff;
     text-align: left;
     padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
@@ -48,13 +52,18 @@
 .committee-times-header {
     margin-top: 90px;
     width: 100%;
+    font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
     background: #AC539B;
     border-radius: 25px;
-    font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
     font-weight: bold;
+    position: relative;
     color: #ffffff;
     text-align: left;
     padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
@@ -62,3 +71,27 @@
     padding-left: 5px;
     padding-right: 5px;
 }
+
+#add-edit-box {
+    font-weight: bold;
+    color: #707070;  
+    position: absolute;
+    right: 0;
+    margin-top: 0.2vw;
+    padding-right: 9vw;
+}
+
+.right{
+    float: right;
+    padding-right: 10px;
+}
+
+.left{
+    float: left;
+}
+
+/* a:hover {
+    color: #AC539B !important;
+    background:white;
+    border-radius: 50%;
+} */
