@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import $ from 'jquery';
 import './Points.css';
-import points from "./test.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
 import { getPoints } from '../../redux/actions/pointsActions';
