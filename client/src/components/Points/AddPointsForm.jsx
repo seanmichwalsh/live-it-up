@@ -33,7 +33,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
       addPoint(newPoint);
 
       //Clear Fields
-      setDate("");
+      setDate(null);
       $("#category").val("");
       setNumber("");
       setSemester("");
@@ -53,7 +53,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
                 <div className="form-group col-md-4 text-left">
                     <label htmlFor="date">Date</label>
                     <input
-                        type="text"
+                        type="date"
                         className="form-control"
                         id="date"
                         placeholder="01/23/99"
