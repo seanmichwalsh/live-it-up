@@ -20,7 +20,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (date === "" || category === "" || number == "" || semester == "" || description == "") {
+    if (date === "" || category === "" || number === "" || semester === "" || description === "") {
       toast("Please fill in every required field!");
     } else {
       const newPoint = {
