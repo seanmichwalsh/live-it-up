@@ -1,0 +1,32 @@
+{
+"pointsDetail": 
+    [
+        {
+            "date": "date",
+            "category": "group1",
+            "uid": "10210",
+            "_id": "mwoodson7",
+            "semester": "201908",
+            "points": 1,
+            "description": "Six Flags yo"
+        },
+        {
+            "date": "date",
+            "category": "group1",
+            "uid": "10210",
+            "_id": "mwoodson7",
+            "semester": "201908",
+            "points": 2,
+            "description": "Rec Fest yo"
+        },
+        {
+            "date": "date",
+            "category": "group1",
+            "uid": "10210",
+            "_id": "mwoodson7",
+            "semester": "201908",
+            "points": 3,
+            "description": "Halloween Knights yo"
+        }
+    ]
+}

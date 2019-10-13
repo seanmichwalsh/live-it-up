@@ -34,7 +34,7 @@ const AddGMMForm = ({ addGMM }) => {
       <span className="ac-header">GMM Details</span>
       <div className="form-row">
         <div className="form-group col-md-12 text-left">
-          <label htmlFor="name">Date</label>
+          <label htmlFor="date">Date</label>
           <input
             type="text"
             className="form-control"
@@ -46,9 +46,9 @@ const AddGMMForm = ({ addGMM }) => {
           />
         </div>
       </div>
-      <div className="form-row">
-        <div className="form-group col-md-6 text-left">
-          <label htmlFor="type">Location</label>
+      <div className="form-row div-half input-left">
+        <div className="form-group col-md-12 text-left">
+          <label htmlFor="location">Location</label>
           <input
             type="text"
             className="form-control"
@@ -60,9 +60,9 @@ const AddGMMForm = ({ addGMM }) => {
           />
         </div>
       </div>
-      <div className="form-row">
-        <div className="form-group col-md-6 text-left">
-          <label htmlFor="type">Time</label>
+      <div className="form-row div-half">
+        <div className="form-group col-md-12 text-left">
+          <label htmlFor="time">Time</label>
           <input
             type="text"
             className="form-control"

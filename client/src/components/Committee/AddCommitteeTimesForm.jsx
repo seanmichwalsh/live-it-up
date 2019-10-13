@@ -46,9 +46,9 @@ const AddCommitteeTimesForm = ({ addCommitteeTimes }) => {
           />
         </div>
       </div>
-      <div className="form-row">
+      <div className="form-row div-half input-left">
         <div className="form-group col-md-12 text-left">
-          <label htmlFor="name">Day</label>
+          <label htmlFor="day">Day</label>
           <input
             type="text"
             className="form-control"
@@ -60,9 +60,9 @@ const AddCommitteeTimesForm = ({ addCommitteeTimes }) => {
           />
         </div>
       </div>
-      <div className="form-row">
-        <div className="form-group col-md-6 text-left">
-          <label htmlFor="type">Time</label>
+      <div className="form-row div-half">
+        <div className="form-group col-md-12 text-left">
+          <label htmlFor="time">Time</label>
           <input
             type="text"
             className="form-control"

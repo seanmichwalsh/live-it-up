@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Common/Header';
 import Home from './Home/Home';
 import Points from './Points/Points';
+import AddPoints from './Points/AddPoints';
 import EditUser from './Users/EditUser';
 import AddUser from './Users/AddUser';
 import AddCommittee from './Committee/AddCommittee';

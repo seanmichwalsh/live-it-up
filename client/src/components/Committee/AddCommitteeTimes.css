@@ -48,6 +48,14 @@
     float: left;
 }
 
+.div-half {
+    float: left;
+}
+
+.input-left {
+    margin-right: 2%;
+}
+
 #add-button {
     float: left;
 }
