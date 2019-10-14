@@ -2,7 +2,7 @@
 "pointsDetail": 
     [
         {
-            "date": "date",
+            "date": "date1",
             "category": "group1",
             "uid": "10210",
             "_id": "mwoodson7",
@@ -11,7 +11,7 @@
             "description": "Six Flags yo"
         },
         {
-            "date": "date",
+            "date": "date2",
             "category": "group1",
             "uid": "10210",
             "_id": "mwoodson7",
@@ -20,7 +20,7 @@
             "description": "Rec Fest yo"
         },
         {
-            "date": "date",
+            "date": "date3",
             "category": "group1",
             "uid": "10210",
             "_id": "mwoodson7",
