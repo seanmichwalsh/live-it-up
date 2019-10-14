@@ -9,6 +9,42 @@ import {
     CLEAR_CURRENT
   } from "./actionTypes";
   import { toast } from "react-toastify";
+
+  //get semester points report
+  export const getPointsReport = semester => async dispatch => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/v1/pointsReport/${semester}`);
+      const data = await res.json();
+      dispatch({
+        type: GET_ALL_POINTS,
+        payload: data
+      });
+    } catch (err) {
+      dispatch({
+        type: POINTS_ERROR,
+        payload: err.message
+      });
+    }
+  };
+
+
+  export const getUserReport = (semester, id) => async dispatch => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/v1/pointsReport/${semester}/${id}`);
+      const data = await res.json();
+      dispatch({
+        type: GET_ALL_POINTS,
+        payload: data
+      });
+    } catch (err) {
+      dispatch({
+        type: POINTS_ERROR,
+        payload: err.message
+      });
+    }
+  };
+
+
   
   //Get all points from server
   export const getPoints = () => async dispatch => {
