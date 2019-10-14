@@ -59,7 +59,7 @@ export const addEvent = event => async dispatch => {
         type: ADD_EVENT,
         payload: data
       });
-      toast("A new user is added successfully!");
+      toast("A new event is added successfully!");
     } else {
       dispatch({
         type: EVENT_ERROR,

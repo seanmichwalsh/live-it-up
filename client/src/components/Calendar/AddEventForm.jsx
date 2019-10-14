@@ -30,29 +30,12 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
-      // time manipulation to send to api
-      // new Date(year, month, date, hours, minutes, seconds, ms)
-      var newDate = new Date(date);
-      var newStart = new Date(
-        newDate.getYear(),
-        newDate.getMonth(),
-        newDate.getDate(),
-        startTime.substring(0, 2),
-        startTime.substring(3)
-      );
-      var newEnd = new Date(
-        newDate.getYear(),
-        newDate.getMonth(),
-        newDate.getDate(),
-        endTime.substring(0, 2),
-        endTime.substring(3)
-      );
       const newEvent = {
-        name: name,
+        eventName: name,
         location: location,
         committees: committee,
-        startTime: newStart,
-        endTime: newEnd
+        startTime: `${date}T${startTime}:00`,
+        endTime: `${date}T${endTime}:00`
       };
       addEvent(newEvent);
       //Clear Fields
@@ -60,8 +43,8 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
       setLocation("");
       setCommittee("");
       setDate(new Date());
-      setStartTime(new Date());
-      setEndTime(new Date());
+      setStartTime("");
+      setEndTime("");
     }
   };
 
@@ -121,6 +104,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
           <label htmlFor="type">Date</label>
           <input
             type="date"
+            pattern="\d{4}-\d{2}-\d{2}"
             className="form-control"
             id="type"
             onChange={e => setDate(e.target.value)}
