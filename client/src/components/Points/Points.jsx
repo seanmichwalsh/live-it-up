@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import $ from 'jquery';
 import './Points.css';
 import points from "./testNew.json";
+import details from "./pointsDetail.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
 import { getPoints } from "../../redux/actions/pointsActions";
@@ -14,8 +15,27 @@ const Points = ({ getUser, user, getPoints }) => {
   }, [user]);
 
   var datas = points;
+  var detailData = details.pointsDetail;
 
-  let pointsDetails = Object.keys(datas).map((username, index) => 
+  let userDetails = Object.keys(detailData).map((username, index) => 
+        <tr className="tr-className-1" data-title="bootstrap table">
+          <td className="description">{detailData[username].description}</td>
+          <td className="td-className-1" data-title="bootstrap table">
+            <a className="date">{detailData[username].date}</a>
+          </td>
+          <td classname="group1">{detailData[username].category}</td>
+          <td className="committeeEvents">{detailData[username].points}</td>
+        </tr>
+        );
+
+  let userHeader = <tr>
+                      <th>Description</th>
+                      <th>Date</th>
+                      <th>Category</th>
+                      <th>Points</th>
+                    </tr>
+
+  let orgDetails = Object.keys(datas).map((username, index) => 
         <tr className="tr-className-1" data-title="bootstrap table">
           <td>{username}</td>
           <td className="td-className-1" data-title="bootstrap table">
@@ -30,6 +50,17 @@ const Points = ({ getUser, user, getPoints }) => {
           <td className="teasering">{datas[username].teasering}</td>
         </tr>
         );
+  let orgHeader =  <tr>
+                    <th>Member</th>
+                    <th>Semester</th>
+                    <th>Category 1 Points</th>
+                    <th>Category 2 Points</th>
+                    <th>Category 3 Points</th>
+                    <th>Committee Points</th>
+                    <th>Ad Hoc</th>
+                    <th>Office Hours</th>
+                    <th>Teasering</th>
+                  </tr>
 
 
 
@@ -59,20 +90,10 @@ const Points = ({ getUser, user, getPoints }) => {
                 <div id="user-table">
                   <table data-toggle="table" className="table table-bordered">
                       <thead>
-                        <tr>
-                          <th>Member</th>
-                          <th>Semester</th>
-                          <th>Category 1 Points</th>
-                          <th>Category 2 Points</th>
-                          <th>Category 3 Points</th>
-                          <th>Committee Points</th>
-                          <th>Ad Hoc</th>
-                          <th>Office Hours</th>
-                          <th>Teasering</th>
-                        </tr>
+                        {userHeader}
                       </thead>
                       <tbody>
-                        {pointsDetails}
+                        {userDetails}
                       </tbody>
                     </table>
                 </div>
