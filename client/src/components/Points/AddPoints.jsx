@@ -1,8 +1,8 @@
-import React from "react";
-import { ToastContainer } from "react-toastify";
+import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./AddPoints.css";
-import AddPointsForm from "./AddPointsForm";
+import AddPointsForm from './AddPointsForm';
 
 const AddPoints = () => (
   <div className="add-user-pg">
