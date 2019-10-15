@@ -230,6 +230,18 @@ router.delete('/:uid', (req, res) => {
     })
 })
 
+// Returns the active logged-in user
+// ****NOTE: This is placeholder until Harry commits GT Login code
+router.get('/me', (req, res) => {
+    User.findOne({ 'uid' : 'swalsh999' }).then(user => {
+        res.send(user)
+    }).catch(err => {
+        return res.status(404).send({
+            message: "Error retrieving the currently logged in user"
+        })
+    })
+})
+
 //Returns a boolean indicating whether a given user is an admin or not
 router.get('/isAdmin/:uid', (req, res) => {
     if (!req.params.uid) {
