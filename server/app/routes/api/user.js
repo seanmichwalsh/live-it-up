@@ -44,7 +44,7 @@ router.get('/:uid', (req, res) => {
 router.post('/', (req, res) => {
     if (!(req.body.firstName && req.body.lastName && req.body.email && 
         req.body.uid && req.body.phoneNumber && req.body.mainCommittee 
-        && req.body.active && req.body.committees)) {
+        && req.body.active && req.body.committees && req.body.isAdmin)) {
         
         // error message needs to indicate which field(s) are missing
         return res.status(400).send({
@@ -82,6 +82,7 @@ router.post('/', (req, res) => {
         })
     });
     
+    // Main user post logic
     if (User.findOne({'uid': req.body.uid}).then(user => {
         if (user) {
             return res.status(400).send({
@@ -98,11 +99,8 @@ router.post('/', (req, res) => {
             committees: req.body.committees,
             mainCommittee: req.body.mainCommittee,
             preferredName: req.body.preferredName,
+            isAdmin: req.body.isAdmin,
         })
-
-        if (req.body.isAdmin) {
-            user['isAdmin'] = req.body.isAdmin
-        }
 
         user.save().then(data => {
             res.send(data);
