@@ -1,25 +1,40 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import $ from "jquery";
 import "fullcalendar";
 import "moment/min/moment.min.js";
 import "fullcalendar/dist/fullcalendar.css";
 import "fullcalendar/dist/fullcalendar.js";
 import "./Calendar.css";
-import eventsJSON from "./events.json";
+import { getEvents } from "./../../redux/actions/eventActions";
 
-const Calendar = () => {
+const Calendar = ({ getEvents, events }) => {
   useEffect(() => {
+    getEvents();
+    //eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    const correctFormat = [];
+    events.map(event => {
+      correctFormat.push({
+        title: event.eventName,
+        start: event.startTime.substring(0, 19),
+        end: event.endTime.substring(0, 19)
+      });
+    });
     $("#calendar").fullCalendar({
-      events: eventsJSON,
+      events: correctFormat,
       eventColor: "#b259a0",
-      timeFormat: "h(:mm)",
-      eventTimeFormat: {
-        // like '14:30:00'
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        meridiem: false
-      },
+      // timeFormat: "h(:mm)",
+      // eventTimeFormat: {
+      //   // like '14:30:00'
+      //   hour: "2-digit",
+      //   minute: "2-digit",
+      //   second: "2-digit",
+      //   meridiem: false
+      // },
       eventTextColor: "#f4f4f4",
       header: {
         left: "prev,next today",
@@ -27,6 +42,7 @@ const Calendar = () => {
         right: "month,listMonth"
       }
     });
+    $("#calendar").fullCalendar("addEventSource", correctFormat);
     $("#calendar").fullCalendar("option", "aspectRatio", 1);
     $("#calendar").fullCalendar({
       eventClick: function(calEvent, jsEvent, view) {
@@ -35,8 +51,7 @@ const Calendar = () => {
         alert("View: " + view.name);
       }
     });
-    //eslint-disable-next-line
-  }, []);
+  }, [events]);
 
   return (
     <div id="calendarPage">
@@ -59,4 +74,16 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+Calendar.propTypes = {
+  getEvents: PropTypes.func.isRequired,
+  events: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => ({
+  events: state.event.events
+});
+
+export default connect(
+  mapStateToProps,
+  { getEvents }
+)(Calendar);
