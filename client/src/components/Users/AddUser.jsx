@@ -20,6 +20,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
   const [primaryCommittee, setPrimaryCommittee] = useState("");
   const [auxCommittee, setAuxCommittee] = useState([]);
   const [committee, setCommittee] = useState([]);
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     getCommittees();
@@ -51,7 +52,8 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
         onCampus: residency,
         active: status,
         mainCommittee: primaryCommittee,
-        committees: committee
+        committees: committee,
+        admin: admin
       };
       addUser(newUser);
       //Clear Fields
@@ -66,6 +68,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
       setPrimaryCommittee("");
       setAuxCommittee([]);
       setCommittee([]);
+      setAdmin(false);
       $("#onCampus").val("");
       $("#activeMember").val("");
       $("#committees").val("");
@@ -223,6 +226,26 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     <option value="false">Inactive</option>
                     <option value="false">No Longer a Member</option>
                   </select>
+                </div>
+              </div>
+              <div className="form-row" id="adminCheckbox">
+                <div className="form-check">
+                  <input 
+                  id="adminVal"
+                    className="form-check-input"
+                    type="checkbox"
+                    value={admin}
+                    onChange={e => {
+                      if (e.target.checked) {
+                        setAdmin(true);
+                      } else {
+                        setAdmin(false);
+                      }
+                    }}
+                    />
+                  <label className="form-check-label" for="adminVal">
+                    Admin
+                  </label>
                 </div>
               </div>
             </div>
