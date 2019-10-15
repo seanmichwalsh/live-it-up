@@ -1,8 +1,8 @@
 [
   {
-      "title": "TEST",
-      "start":  "2019-10-12T14:30:00",
-      "allDay": true
+    "title": "TEST",
+    "start": "2019-10-12T14:30:00",
+    "allDay": true
   },
   {
     "title": "event1",
