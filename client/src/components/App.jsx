@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import "./App.css";
-import Header from "./Common/Header";
-import Home from "./Home/Home";
-import Points from "./Points/Points";
-import EditUser from "./Users/EditUser";
-import AddUser from "./Users/AddUser";
-import AddCommittee from "./Committee/AddCommittee";
-import Directory from "./Directory/Directory";
-import Resources from "./Resources/Resources";
-import PageNotFound from "./PageNotFound";
-import AddPoints from './Points/AddPoints'
-=======
 import React from 'react';
 import './App.css';
 import Header from './Common/Header';
@@ -23,7 +9,6 @@ import AddCommittee from './Committee/AddCommittee';
 import Directory from './Directory/Directory';
 import Resources from './Resources/Resources';
 import NotFound from './NotFound';
->>>>>>> add 404 page
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -33,15 +18,14 @@ const App = () => {
       <div className='App'>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/points" component={Points} />
-          <Route exact path="/addpoints" component={AddPoints} />
-          <Route exact path="/directory" component={Directory} />
-          <Route exact path="/edituser" component={EditUser} />
-          <Route exact path="/adduser" component={AddUser} />
-          <Route exact path="/addcommittee" component={AddCommittee} />
-          <Route exact path="/resources" component={Resources} />
-          <Route component={PageNotFound} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/points' component={Points} />
+          <Route exact path='/directory' component={Directory} />
+          <Route exact path='/edituser' component={EditUser} />
+          <Route exact path='/adduser' component={AddUser} />
+          <Route exact path='/addcommittee' component={AddCommittee} />
+          <Route exact path='/resources' component={Resources} />
+          <Route component={NotFound} />
           {/* We should add other Routes here */}
         </Switch>
       </div>
