@@ -48,6 +48,10 @@
     padding-bottom: 15px;
 }
 
+#adminCheckbox {
+    float: left;
+}
+
 .check-boxes {
     float: left;
 }
