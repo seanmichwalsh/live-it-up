@@ -90,10 +90,10 @@ const Points = ({ getUser, user, getPoints }) => {
                 <div id="user-table">
                   <table data-toggle="table" className="table table-bordered">
                       <thead>
-                        {userHeader}
+                        {orgHeader}
                       </thead>
                       <tbody>
-                        {userDetails}
+                        {orgDetails}
                       </tbody>
                     </table>
                 </div>
