@@ -25,10 +25,14 @@
     padding-right: 9vw;
 }
 
-#mainPG {
-    width: 90%;
+#directory-page {
     margin: 0 auto;
     margin-bottom: 450px;
+}
+
+#mainPG {
+    width: 95%;
+    margin: 0 auto;
 }
 
 #points-display {
