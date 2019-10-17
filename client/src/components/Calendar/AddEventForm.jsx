@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addEvent } from "../../redux/actions/eventActions";
 import { getCommittees } from "../../redux/actions/committeeActions";
+import Moment from "react-moment";
+import moment from "moment-timezone";
 
 const AddEventForm = ({ addEvent, committees, getCommittees }) => {
   const [name, setName] = useState("");
@@ -30,13 +32,25 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
+      console.log(startTime);
+      console.log(endTime);
+      console.log(`${date}T${startTime}:00`)
+      console.log(`${date}T${endTime}:00`)
+
       const newEvent = {
         eventName: name,
         location: location,
         committees: committee,
-        startTime: `${date}T${startTime}:00`,
-        endTime: `${date}T${endTime}:00`
+        startTime: moment
+          .tz(`${date}T${startTime}:00`, 'America/New_York')
+          .utc()
+          .format(),
+        endTime: moment
+          .tz(`${date}T${endTime}:00`, 'America/New_York')
+          .utc()
+          .format()
       };
+      console.log(newEvent);
       addEvent(newEvent);
       //Clear Fields
       setName("");
