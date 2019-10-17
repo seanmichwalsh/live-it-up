@@ -43,6 +43,7 @@ const Calendar = ({ getEvents, events }) => {
       }
     });
     $("#calendar").fullCalendar("addEventSource", correctFormat);
+    $("#calendar").fullCalendar({ timezone: "America/New_York" });
     $("#calendar").fullCalendar("option", "aspectRatio", 1);
     $("#calendar").fullCalendar({
       eventClick: function(calEvent, jsEvent, view) {
