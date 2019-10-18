@@ -3,8 +3,26 @@
 }
 
 #header {
-    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
     font-weight: bold;
+    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#header-text {
+    display: inline;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#addButton {
+    font-weight: bold;
+    color: #707070;  
+    position: absolute;
+    right: 0;
+    margin-top: 0.2vw;
+    padding-right: 9vw;
 }
 
 #mainPG {
@@ -31,6 +49,7 @@
 }
 
 #points-sidebar {
+    margin-top: 1vw;
     width: 25%;
     float: left;
 }

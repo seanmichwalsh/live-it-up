@@ -14,3 +14,21 @@ export const ADD_COMMITTEE = "ADD_COMMITTEE";
 export const UPDATE_COMMITTEE = "UPDATE_COMMITTEE";
 export const DELETE_COMMITTEE = "DELETE_COMMITTEE";
 export const SET_CURRENT_COMMITTEE = "SET_CURRENT_COMMITTEE";
+
+export const POINTS_ERROR = "POINTS_ERROR";
+export const GET_ALL_POINTS = "GET_ALL_POINTS";
+export const GET_POINTS = "GET_POINTS";
+export const ADD_POINTS = "ADD_POINTS";
+export const UPDATE_POINTS = "UPDATE_POINTS";
+export const DELETE_POINTS = "DELETE_POINTS";
+export const SET_CURRENT_POINTS = "SET_CURRENT_POINTS";
+
+export const EVENT_ERROR = "EVENT_ERROR";
+export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
+export const GET_EVENT = "GET_EVENT";
+export const ADD_EVENT = "ADD_EVENT";
+export const UPDATE_EVENT = "UPDATE_EVENT";
+export const DELETE_EVENT = "DELETE_EVENT";
+
+
+
