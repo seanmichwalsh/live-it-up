@@ -1,66 +1,77 @@
 import React, { useEffect } from 'react';
 import $ from 'jquery';
 import './Points.css';
-import points from "./testNew.json";
-import details from "./pointsDetail.json";
+import pointsJson from "./testNew.json";
+import detailsJson from "./pointsDetail.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
-import { getPoints } from "../../redux/actions/pointsActions";
+import { getPointsReport } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
 
-const Points = ({ getUser, user, getPoints }) => {
+const Points = ({ getUser, user, getPointsReport, points }) => {
   useEffect(() => {
     getUser();
-    getPoints();
-  }, [user]);
+    getPointsReport();
+  }, [user, points]);
 
-  var datas = points;
-  var detailData = details.pointsDetail;
+  var detailData = detailsJson.pointsDetail;
+  var adminStatus = user.isAdmin;
 
-  let userDetails = Object.keys(detailData).map((username, index) => 
-        <tr className="tr-className-1" data-title="bootstrap table">
-          <td className="description">{detailData[username].description}</td>
-          <td className="td-className-1" data-title="bootstrap table">
-            <a className="date">{detailData[username].date}</a>
-          </td>
-          <td classname="group1">{detailData[username].category}</td>
-          <td className="committeeEvents">{detailData[username].points}</td>
-        </tr>
-        );
+  var header = null;
+  var details = null;
 
-  let userHeader = <tr>
-                      <th>Description</th>
-                      <th>Date</th>
-                      <th>Category</th>
-                      <th>Points</th>
-                    </tr>
+  //Delete line once admin function is understoof
+  adminStatus = true;
 
-  let orgDetails = Object.keys(datas).map((username, index) => 
-        <tr className="tr-className-1" data-title="bootstrap table">
-          <td>{username}</td>
-          <td className="td-className-1" data-title="bootstrap table">
-            <a className="date">{datas[username].semester}</a>
-          </td>
-          <td classname="group1">{datas[username].group1}</td>
-          <td className="group2">{datas[username].group2}</td>
-          <td className="group3">{datas[username].group3}</td>
-          <td className="committeeEvents">{datas[username].committeePoints}</td>
-          <td className="adHoc">{datas[username].adHoc}</td>
-          <td className="officeHours">{datas[username].officeHours}</td>
-          <td className="teasering">{datas[username].teasering}</td>
-        </tr>
-        );
-  let orgHeader =  <tr>
-                    <th>Member</th>
-                    <th>Semester</th>
-                    <th>Category 1 Points</th>
-                    <th>Category 2 Points</th>
-                    <th>Category 3 Points</th>
-                    <th>Committee Points</th>
-                    <th>Ad Hoc</th>
-                    <th>Office Hours</th>
-                    <th>Teasering</th>
-                  </tr>
+  if (!adminStatus) {
+
+    details = Object.keys(detailData).map((username, index) => 
+          <tr className="tr-className-1" data-title="bootstrap table">
+            <td className="description">{detailData[username].description}</td>
+            <td className="td-className-1" data-title="bootstrap table">
+              <a className="date">{detailData[username].date}</a>
+            </td>
+            <td classname="group1">{detailData[username].category}</td>
+            <td className="committeeEvents">{detailData[username].points}</td>
+          </tr>
+          );
+    header =  <tr>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Points</th>
+              </tr>
+  } else {
+
+      details = Object.keys(points).map((username, index) => 
+            <tr className="tr-className-1" data-title="bootstrap table">
+              <td>{username}</td>
+              <td className="td-className-1" data-title="bootstrap table">
+                <a className="date">{points[username].semester}</a>
+              </td>
+              <td classname="group1">{points[username].group1}</td>
+              <td className="group2">{points[username].group2}</td>
+              <td className="group3">{points[username].group3}</td>
+              <td className="committeeEvents">{points[username].committeeEvents}</td>
+              <td className="plc">{points[username].plc}</td>
+              <td className="aux">{points[username].aux}</td>
+              <td className="officeHours">{points[username].officeHours}</td>
+              <td className="committeeMeetings">{points[username].committeeMeetings}</td>
+            </tr>
+            );
+      header =  <tr>
+                  <th>Member</th>
+                  <th>Semester</th>
+                  <th>Category 1 Points</th>
+                  <th>Category 2 Points</th>
+                  <th>Category 3 Points</th>
+                  <th>Committee Points</th>
+                  <th>PLC</th>
+                  <th>Auxilliary Committee</th>
+                  <th>Office Hours</th>
+                  <th>Committee Meetings</th>
+                </tr>
+  }
 
 
 
@@ -90,10 +101,10 @@ const Points = ({ getUser, user, getPoints }) => {
                 <div id="user-table">
                   <table data-toggle="table" className="table table-bordered">
                       <thead>
-                        {orgHeader}
+                        {header}
                       </thead>
                       <tbody>
-                        {orgDetails}
+                        {details}
                       </tbody>
                     </table>
                 </div>
@@ -113,16 +124,15 @@ const Points = ({ getUser, user, getPoints }) => {
 Points.propTypes = {
   getUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  getPoints: PropTypes.func.isRequired
+  getPointsReport: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  user: state.user,
-  current: state.current,
-  points: state.points
+  user: state.user.users,
+  points: state.point.points
 });
 
 export default connect(
   mapStateToProps,
-  { getUser, getPoints }
+  { getUser, getPointsReport }
 )(Points);

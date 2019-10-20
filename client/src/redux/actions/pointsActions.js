@@ -13,7 +13,8 @@ import {
   //get semester points report
   export const getPointsReport = semester => async dispatch => {
     try {
-      const res = await fetch(`http://localhost:3001/api/v1/pointsReport/${semester}`);
+      //const res = await fetch(`http://localhost:3001/api/v1/pointsReport/${semester}`);
+      const res = await fetch(`http://localhost:3001/api/v1/pointsReport/2019fall`);
       const data = await res.json();
       dispatch({
         type: GET_ALL_POINTS,
