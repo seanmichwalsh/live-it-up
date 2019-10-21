@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import $ from 'jquery';
 import './Points.css';
 import pointsJson from "./testNew.json";
@@ -9,10 +9,12 @@ import { getPointsReport } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
 
 const Points = ({ getUser, user, getPointsReport, points }) => {
+  const [semester, setSemester] = useState("");
+
   useEffect(() => {
     getUser();
-    getPointsReport();
-  }, [user, points]);
+    getPointsReport(semester);
+  }, [user, points, semester]);
 
   var detailData = detailsJson.pointsDetail;
   var adminStatus = user.isAdmin;
@@ -61,7 +63,21 @@ const Points = ({ getUser, user, getPointsReport, points }) => {
             );
       header =  <tr>
                   <th>Member</th>
-                  <th>Semester</th>
+                  <th>Semester
+                    <div className="dropdown">
+                      <div>
+                        <select 
+                            onChange={e => setSemester(e.target.value)} 
+                            value={semester}
+                        >
+                          <option value=""></option>
+                          <option value="2019fall">Fall 2019</option>
+                          <option value="2019spring">Spring 2019</option>
+                          <option value="2018fall">Fall 2018</option>
+                        </select>
+                      </div>
+                    </div>
+                  </th>
                   <th>Category 1 Points</th>
                   <th>Category 2 Points</th>
                   <th>Category 3 Points</th>
@@ -72,7 +88,6 @@ const Points = ({ getUser, user, getPointsReport, points }) => {
                   <th>Committee Meetings</th>
                 </tr>
   }
-
 
 
     return (
@@ -106,7 +121,7 @@ const Points = ({ getUser, user, getPointsReport, points }) => {
                       <tbody>
                         {details}
                       </tbody>
-                    </table>
+                  </table>
                 </div>
             </div>
             <div id="points-sidebar">
