@@ -144,9 +144,9 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
             </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Points.propTypes = {
   getUser: PropTypes.func.isRequired,
