@@ -13,6 +13,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
 
   useEffect(() => {
     getUser("swalsh385");
+    //console.log(user);
     if (false) {
       getUserReport(semester, "swalsh385");
       // console.log("UserReport");
@@ -26,7 +27,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
   //   getUser("swalsh385");
   //   console.log("Called function");
   // }
-  console.log(user);
+  //console.log(user);
   var detailData = detailsJson.pointsDetail;
   //var adminStatus = user.isAdmin;
 
@@ -62,7 +63,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
               <td className="td-className-1" data-title="bootstrap table">
                 <a className="date">{points[username].semester}</a>
               </td>
-              <td classname="group1">{points[username].group1}</td>
+              <td className="group1">{points[username].group1}</td>
               <td className="group2">{points[username].group2}</td>
               <td className="group3">{points[username].group3}</td>
               <td className="committeeEvents">{points[username].committeeEvents}</td>
@@ -123,7 +124,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
       <div id="mainPG">
         <div id="mainPG">
             <div id="points-display">
-                <div id="display-header">Total Points: </div>
+                <div id="display-header">{user !== null && user !== undefined && user.firstName}'s Total Points: </div>
                 <div id="user-table">
                   <table data-toggle="table" className="table table-bordered">
                       <thead>
