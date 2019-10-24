@@ -5,25 +5,36 @@ import pointsJson from "./testNew.json";
 import detailsJson from "./pointsDetail.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
-import { getPointsReport } from "../../redux/actions/pointsActions";
+import { getPointsReport, getUserReport } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
 
-const Points = ({ getUser, user, getPointsReport, points }) => {
+const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
   const [semester, setSemester] = useState("");
 
   useEffect(() => {
-    getUser();
-    getPointsReport(semester);
-  }, [user, points, semester]);
+    getUser("swalsh385");
+    if (false) {
+      getUserReport(semester, "swalsh385");
+      // console.log("UserReport");
+    } else {
+      getPointsReport(semester);
+      // console.log("SemesterReport");
+    }
+  }, [semester]);
 
+  // if (user == null) {
+  //   getUser("swalsh385");
+  //   console.log("Called function");
+  // }
+  console.log(user);
   var detailData = detailsJson.pointsDetail;
-  var adminStatus = user.isAdmin;
+  //var adminStatus = user.isAdmin;
 
   var header = null;
   var details = null;
 
   //Delete line once admin function is understoof
-  adminStatus = true;
+  var adminStatus = true;
 
   if (!adminStatus) {
 
@@ -33,7 +44,7 @@ const Points = ({ getUser, user, getPointsReport, points }) => {
             <td className="td-className-1" data-title="bootstrap table">
               <a className="date">{detailData[username].date}</a>
             </td>
-            <td classname="group1">{detailData[username].category}</td>
+            <td className="group1">{detailData[username].category}</td>
             <td className="committeeEvents">{detailData[username].points}</td>
           </tr>
           );
@@ -99,7 +110,7 @@ const Points = ({ getUser, user, getPointsReport, points }) => {
             <div className="dropdown">
               <a
                 href="/addpoints"
-                class="btn btn-secondary btn-small active"
+                className="btn btn-secondary btn-small active"
                 role="button"
                 aria-pressed="true"
               >
@@ -112,7 +123,7 @@ const Points = ({ getUser, user, getPointsReport, points }) => {
       <div id="mainPG">
         <div id="mainPG">
             <div id="points-display">
-                <div id="display-header">{user.firstName} Total Points: </div>
+                <div id="display-header">Total Points: </div>
                 <div id="user-table">
                   <table data-toggle="table" className="table table-bordered">
                       <thead>
@@ -138,16 +149,17 @@ const Points = ({ getUser, user, getPointsReport, points }) => {
 
 Points.propTypes = {
   getUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
-  getPointsReport: PropTypes.func.isRequired
+  //user: PropTypes.object.isRequired,
+  getPointsReport: PropTypes.func.isRequired,
+  getUserReport: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  user: state.user.users,
+  user: state.user.user,
   points: state.point.points
 });
 
 export default connect(
   mapStateToProps,
-  { getUser, getPointsReport }
+  { getUser, getPointsReport, getUserReport }
 )(Points);
