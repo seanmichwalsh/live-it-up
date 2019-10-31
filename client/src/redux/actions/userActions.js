@@ -28,9 +28,9 @@ export const getUsers = () => async dispatch => {
 };
 
 //Get a specific user from server
-export const getUser = uid => async dispatch => {
+export const getUser = id => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/user/${uid}`);
+    const res = await fetch(`http://localhost:3001/api/v1/user/${id}`);
     const data = await res.json();
     dispatch({
       type: GET_USER,
