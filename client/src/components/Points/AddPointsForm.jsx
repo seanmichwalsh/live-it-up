@@ -41,7 +41,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
       addPoint(newPoint);
 
       //Clear Fields
-      setDate(new Date("01/23/1999"));
+      setDate(null);
       $("#category").val("");
       setNumber(0);
       setSemester("");
@@ -51,107 +51,111 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
   };
 
   return (
-    <form className="needs-validation" id="account-details-form" noValidate>
-      <div id="add-points-form">
-        <div className="form-row">
-          <div className="form-group col-md-4 text-left">
-            <label htmlFor="date">Date</label>
-            <input
-              type="text"
-              className="form-control"
-              id="date"
-              placeholder="01/23/1999"
-              onChange={e => setDate(new Date(e.target.value))}
-              required
-            />
-          </div>
-          <div className="form-group col-md-4 text-left">
-            <label htmlFor="category">Category</label>
-            <select
-              id="category"
-              className="form-control"
-              required
-              onChange={e => {
-                switch (e.target.value) {
-                  case "Group 1":
-                    setCategory("Group 1");
-                    break;
-                  case "Group 2":
-                    setCategory("Group 2");
-                    break;
-                  case "Group 3":
-                    setCategory("Group 3");
-                    break;
-                  case "Committee Meeting":
-                    setCategory("Committee Meeting");
-                    break;
-                  case "Ad Hoc Committee":
-                    setCategory("Ad Hoc Committee");
-                    break;
-                  case "Office Hours":
-                    setCategory("Office Hours");
-                    break;
-                  case "Teasering":
-                    setCategory("Teasering");
-                    break;
-                  default:
-                    setCategory("Committee Meeting");
-                }
-              }}
-            >
-              <option selected disabled value="">
-                Choose...
-              </option>
-              <option value="Group 1">Group 1</option>
-              <option value="Group 2">Group 2</option>
-              <option value="Group 3">Group 2</option>
-              <option value="Committee Meeting">Committee Meeting</option>
-              <option value="Ad Hoc Committee">Ad Hoc Committee</option>
-              <option value="Office Hours">Office Hours</option>
-              <option value="Teasering"> Teasering</option>
-              <option value="PLC">PLC</option>
-            </select>
-          </div>
-          <div className="form-group col-md-4 text-left">
-            <label htmlFor="number">Number of Points</label>
-            <input
-              type="text"
-              className="form-control"
-              id="number"
-              placeholder="9000"
-              onChange={e => setNumber(e.target.value)}
-              value={number}
-              required
-            />
-          </div>
+    <form
+        className="needs-validation"
+        id="account-details-form"
+        noValidate
+    >
+        <div id="add-points-form">
+            <div className="form-row">
+                <div className="form-group col-md-4 text-left">
+                    <label htmlFor="date">Date</label>
+                    <input
+                        type="date"
+                        className="form-control"
+                        id="date"
+                        placeholder="01/23/99"
+                        onChange={e => setDate(e.target.value)}
+                        value={date}
+                        required
+                    />
+                </div>
+                <div className="form-group col-md-4 text-left">
+                    <label for="category">Category</label>
+                    <select 
+                        id="category"
+                        class="form-control"
+                        required
+                        onChange={e => {
+                            switch (e.target.value) {
+                                case "Group 1":
+                                    setCategory("Group 1");
+                                    break;
+                                case "Group 2":
+                                    setCategory("Group 2");
+                                    break;
+                                case "Group 3":
+                                    setCategory("Group 3");
+                                    break;
+                                case "Committee Meeting":
+                                    setCategory("Committee Meeting");
+                                    break;
+                                case "Ad Hoc Committee":
+                                    setCategory("Ad Hoc Committee");
+                                    break;
+                                case "Office Hours":
+                                    setCategory("Office Hours");
+                                    break;
+                                case "Teasering":
+                                    setCategory("Teasering");
+                                    break;
+                                default:
+                                    setCategory("Committee Meeting")
+                            }
+                        }}
+                        >
+                        <option selected disabled value="">Choose...</option>
+                        <option value="Group 1">Group 1</option>
+                        <option value="Group 2">Group 2</option>
+                        <option value="Group 3">Group 2</option>
+                        <option value="Committee Meeting">Committee Meeting</option>
+                        <option value="Ad Hoc Committee">Ad Hoc Committee</option>
+                        <option value="Office Hours">Office Hours</option>
+                        <option value="Teasering"> Teasering</option>
+                        <option value="PLC">PLC</option>
+                    </select>
+                </div>
+                <div className="form-group col-md-4 text-left">
+                    <label htmlFor="number">Number of Points</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="number"
+                        placeholder="9000"
+                        onChange={e => setNumber(e.target.value)}
+                        value={number}
+                        required
+                    />
+                </div>
+            </div>
+            <div className="form-row">
+                <div className="form-group col-md-6 text-left">
+                <label htmlFor="semester">Semester</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="semester"
+                        placeholder="Fall 2020"
+                        onChange={e => setSemester(e.target.value)}
+                        value={semester}
+                        required
+                    />
+                </div>
+                <div className="form-group col-md-6 text-left">
+                <label htmlFor="description">Description</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="description"
+                        placeholder="Set-up for Fall Festival"
+                        onChange={e => setDescription(e.target.value)}
+                        value={description}
+                        required
+                    />
+                </div>
+            </div>
         </div>
-        <div className="form-row">
-          <div className="form-group col-md-6 text-left">
-            <label htmlFor="semester">Semester</label>
-            <input
-              type="text"
-              className="form-control"
-              id="semester"
-              placeholder="Fall 2020"
-              onChange={e => setSemester(e.target.value)}
-              value={semester}
-              required
-            />
-          </div>
-          <div className="form-group col-md-6 text-left">
-            <label htmlFor="description">Description</label>
-            <input
-              type="text"
-              className="form-control"
-              id="description"
-              placeholder="Set-up for Fall Festival"
-              onChange={e => setDescription(e.target.value)}
-              value={description}
-              required
-            />
-          </div>
-        </div>
-      </div>
+      {/* </div> */}
 
       <div id="member-box">
         <a id="member-header">Members:</a>

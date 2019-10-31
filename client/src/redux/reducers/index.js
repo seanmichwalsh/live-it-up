@@ -1,12 +1,14 @@
-import { combineReducers } from "redux";
-import committeeReducer from "./committeeReducer";
-import userReducer from "./userReducer";
-import pointsReducer from "./pointsReducer"
+import { combineReducers } from 'redux';
+import committeeReducer from './committeeReducer';
+import userReducer from './userReducer';
+import pointsReducer from './pointsReducer';
+import eventReducer from './eventsReducer';
 
-const rootRedcer = combineReducers({
+const rootReducer = combineReducers({
   user: userReducer,
   committee: committeeReducer,
-  point: pointsReducer
+  points:pointsReducer,
+  event: eventReducer
 });
 
-export default rootRedcer;
+export default rootReducer;
