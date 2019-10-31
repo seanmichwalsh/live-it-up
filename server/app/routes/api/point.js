@@ -18,26 +18,45 @@ router.get('/:id', (req, res) => {
     if (!req.params.id) {
         return res.status(400).send({
             message: "A point ID is required to get a given point object"
-        });
-    };
+        })
+    }
     Point.findById( req.params.id ).then(point => {
         if (!point) {
             return res.status(404).send({
                 message: "No points are attached to the user ID " + req.params.uid
-            });
-        };
+            })
+        }
         res.send(point);
     }).catch(err => {
         if (err.kind === "ObjectId") {
             return res.status(404).send({
                 message: "No points are attached to the user ID " + req.params.uid
-            });
+            })
         }
         return res.status(500).send({
             message: "There was a server error retrieving points with User ID " + req.params.uid
-        }); 
-    });
-});
+        })
+    })
+})
+
+//Get a point by UID
+router.get('/user/:uid', (req, res) => {
+    //Ensures a uid parameter is present
+    if (!req.params.uid) {
+        return res.status(400).send({
+            message: "A user ID is required to get the associated point object"
+        })
+    }
+
+    // Finds the point with the given uid and sends it
+    Point.find({'uid' : req.params.uid}).then(point => {
+        res.send(point)
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some server error occured retrieving point reports."
+        })
+    })
+})
 
 // Posts a new individual point
 router.post('/', (req, res) => {
