@@ -122,7 +122,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
         </header>
       </div>
       <div id="mainPG">
-        <div id="mainPG">
+        {/* <div id="mainPG"> */}
             <div id="points-display">
                 <div id="display-header">{user !== null && user !== undefined && user.firstName}'s Total Points: </div>
                 <div id="user-table">
@@ -145,7 +145,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
         </div>
       </div>
     );
-  }
+  // }
 }
 
 Points.propTypes = {
