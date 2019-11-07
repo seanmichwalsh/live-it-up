@@ -1,7 +1,7 @@
 import React, { useEffect , useState } from 'react';
 import $ from 'jquery';
 import './Points.css';
-import pointsJson from "./testNew.json";
+//import pointsJson from "./testNew.json";
 import detailsJson from "./pointsDetail.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
@@ -13,24 +13,17 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
 
   useEffect(() => {
     getUser("swalsh385");
-    //console.log(user);
     if (false) {
       getUserReport(semester, "swalsh385");
-      // console.log("UserReport");
     } else {
       getPointsReport(semester);
-      // console.log("SemesterReport");
     }
   }, [semester]);
 
-  // if (user == null) {
-  //   getUser("swalsh385");
-  //   console.log("Called function");
-  // }
-  //console.log(user);
   var detailData = detailsJson.pointsDetail;
   //var adminStatus = user.isAdmin;
 
+  var title = null;
   var header = null;
   var details = null;
 
@@ -38,6 +31,8 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
   var adminStatus = true;
 
   if (!adminStatus) {
+
+    title = <div>{user !== null && user !== undefined && user.firstName}'s Total Points:</div>
 
     details = Object.keys(detailData).map((username, index) => 
           <tr className="tr-className-1" data-title="bootstrap table">
@@ -56,6 +51,8 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
                 <th>Points</th>
               </tr>
   } else {
+
+      title = <div>Member Points Summary</div>
 
       details = Object.keys(points).map((username, index) => 
             <tr className="tr-className-1" data-title="bootstrap table">
@@ -124,7 +121,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
       <div id="mainPG">
         {/* <div id="mainPG"> */}
             <div id="points-display">
-                <div id="display-header">{user !== null && user !== undefined && user.firstName}'s Total Points: </div>
+                <div id="display-header">{title}</div>
                 <div id="user-table">
                   <table data-toggle="table" className="table table-bordered">
                       <thead>
@@ -146,18 +143,19 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
       </div>
     );
   // }
-}
+};
 
 Points.propTypes = {
   getUser: PropTypes.func.isRequired,
-  //user: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  points: PropTypes.array.isRequired,
   getPointsReport: PropTypes.func.isRequired,
   getUserReport: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   user: state.user.user,
-  points: state.point.points
+  points: state.points.points
 });
 
 export default connect(

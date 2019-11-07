@@ -31,14 +31,17 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
-      const newPoint = {
-        date: date,
-        category: category,
-        number: number,
-        semester: semester,
-        description: description
-      };
-      addPoint(newPoint);
+      member.map( mem => 
+        const newPoint = {
+          date: date,
+          category: category,
+          points: number,
+          semester: semester,
+          description: description,
+          uid: mem
+        };
+        addPoint(newPoint);
+      );
 
       //Clear Fields
       setDate(null);
@@ -211,8 +214,8 @@ AddPointsForm.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  points: state.point.points,
-  current: state.point.current,
+  points: state.points.points,
+  current: state.points.current,
   users: state.user.users
 });
 

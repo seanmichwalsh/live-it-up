@@ -92,6 +92,7 @@ import {
         }
       });
       const data = await res.json();
+      console.log(data);
       dispatch({
         type: ADD_POINTS,
         payload: data
