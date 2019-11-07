@@ -31,7 +31,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
-      member.map( mem => 
+      member.map( mem => {
         const newPoint = {
           date: date,
           category: category,
@@ -40,7 +40,8 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
           description: description,
           uid: mem
         };
-        addPoint(newPoint);
+        console.log(newPoint);
+        addPoint(newPoint)}
       );
 
       //Clear Fields
@@ -82,28 +83,28 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
                         onChange={e => {
                             switch (e.target.value) {
                                 case "Group 1":
-                                    setCategory("Group 1");
+                                    setCategory("group1");
                                     break;
                                 case "Group 2":
-                                    setCategory("Group 2");
+                                    setCategory("group2");
                                     break;
                                 case "Group 3":
-                                    setCategory("Group 3");
+                                    setCategory("group3");
                                     break;
                                 case "Committee Meeting":
-                                    setCategory("Committee Meeting");
+                                    setCategory("committeeMeetings");
                                     break;
-                                case "Ad Hoc Committee":
-                                    setCategory("Ad Hoc Committee");
-                                    break;
+                                // case "Ad Hoc Committee":
+                                //     setCategory("adHocCommittee");
+                                //     break;
                                 case "Office Hours":
-                                    setCategory("Office Hours");
+                                    setCategory("officeHours");
                                     break;
                                 case "Teasering":
-                                    setCategory("Teasering");
+                                    setCategory("teasering");
                                     break;
                                 default:
-                                    setCategory("Committee Meeting")
+                                    setCategory("committeeMeeting")
                             }
                         }}
                         >
