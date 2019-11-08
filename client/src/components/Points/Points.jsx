@@ -9,28 +9,36 @@ import { getPointsReport, getUserReport } from "../../redux/actions/pointsAction
 import { connect } from "react-redux";
 
 const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
-  const [semester, setSemester] = useState("");
+  const [userChange, setUserChange] = useState({
+    semester: "",
+    adminStatus: false,
+  });
 
   useEffect(() => {
     getUser("swalsh385");
-    if (false) {
-      getUserReport(semester, "swalsh385");
-    } else {
-      getPointsReport(semester);
+    if (user !== null && user !== undefined) {
+    setUserChange({adminStatus: user.isAdmin});
     }
-  }, [semester]);
+    if (userChange.adminStatus) {
+      getUserReport("swalsh385");
+    } else {
+      getPointsReport(userChange.semester);
+    }
+  }, [userChange.semester]);
 
   var detailData = detailsJson.pointsDetail;
-  //var adminStatus = user.isAdmin;
+  console.log("Points call.");
+  console.log(points);
+
 
   var title = null;
   var header = null;
   var details = null;
 
   //Delete line once admin function is understoof
-  var adminStatus = true;
+  //var adminStatus = true;
 
-  if (!adminStatus) {
+  if (!userChange.adminStatus) {
 
     title = <div>{user !== null && user !== undefined && user.firstName}'s Total Points:</div>
 
@@ -76,8 +84,8 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
                     <div className="dropdown">
                       <div>
                         <select 
-                            onChange={e => setSemester(e.target.value)} 
-                            value={semester}
+                            onChange={e => setUserChange({semester: e.target.value})} 
+                            value={userChange.semester}
                         >
                           <option value=""></option>
                           <option value="2019fall">Fall 2019</option>

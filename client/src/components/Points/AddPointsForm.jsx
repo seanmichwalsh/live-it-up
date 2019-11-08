@@ -31,7 +31,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
-      member.map( mem => 
+      member.map( mem => {
         const newPoint = {
           date: date,
           category: category,
@@ -41,7 +41,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
           uid: mem
         };
         addPoint(newPoint);
-      );
+      });
 
       //Clear Fields
       setDate(null);
