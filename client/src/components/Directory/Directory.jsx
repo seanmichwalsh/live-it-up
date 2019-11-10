@@ -45,7 +45,6 @@ const Directory = ({ getUsers, users }) => {
           </div>
         </header>
       </div>
-      <div className="committee-name">TECHNOLOGY</div>
 
       <div className="userLists">
         {users.map(user => (
