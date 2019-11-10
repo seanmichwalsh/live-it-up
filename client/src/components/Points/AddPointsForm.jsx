@@ -17,8 +17,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
 
   useEffect(() => {
     getUsers();
-    //eslint-disable-next-line
-  }, [users]);
+  }, []);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -104,14 +103,14 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
                                     setCategory("teasering");
                                     break;
                                 default:
-                                    setCategory("committeeMeeting")
+                                    setCategory("committeeMeetings")
                             }
                         }}
                         >
                         <option selected disabled value="">Choose...</option>
                         <option value="Group 1">Group 1</option>
                         <option value="Group 2">Group 2</option>
-                        <option value="Group 3">Group 2</option>
+                        <option value="Group 3">Group 3</option>
                         <option value="Committee Meeting">Committee Meeting</option>
                         <option value="Ad Hoc Committee">Ad Hoc Committee</option>
                         <option value="Office Hours">Office Hours</option>
@@ -135,15 +134,24 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
             <div className="form-row">
                 <div className="form-group col-md-6 text-left">
                 <label htmlFor="semester">Semester</label>
-                    <input
+                    <select
                         type="text"
                         className="form-control"
                         id="semester"
-                        placeholder="Fall 2020"
                         onChange={e => setSemester(e.target.value)}
                         value={semester}
                         required
-                    />
+                    >
+                      <option selected disabled value="">Choose...</option>
+                      <option value="201908">Fall 2019</option>
+                      <option value="202002">Spring 2020</option>
+                      <option value="202005">Summer 2020</option>
+                      <option value="202008">Fall 2020</option>
+                      <option value="202102">Spring 2021</option>
+                      <option value="202105">Summer 2021</option>
+                    </select>
+
+                        
                 </div>
                 <div className="form-group col-md-6 text-left">
                 <label htmlFor="description">Description</label>
@@ -190,7 +198,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
                 htmlFor={user.uid + "Check"}
                 id={user.firstName}
               >
-                {user.firstName}
+                {user.firstName} {user.lastName}
               </label>
             </div>
           ))}
