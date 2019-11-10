@@ -19,7 +19,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
 
   useEffect(() => {
     getCommittees();
-  }, [committee]);
+  }, []);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -106,7 +106,6 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
             </option>
             {committees !== null &&
               committees
-                .filter(committee => committee.type === "Primary")
                 .map(committee => (
                   <option key={committee._id} value={committee._id}>
                     {committee.name}
