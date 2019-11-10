@@ -8,11 +8,8 @@ import { setCurrent } from "./../../redux/actions/userActions";
 
 const User = ({ user, committee, getCommittee, setCurrent }) => {
   useEffect(() => {
-    if (committee === null) {
-      getCommittee(user.mainCommittee);
-    }
-    //eslint-disable-next-line
-  }, [committee]);
+    getCommittee(user.mainCommittee);
+  }, [user.mainCommittee]);
 
   return (
     <div className="individualUser">
