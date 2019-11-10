@@ -47,7 +47,7 @@ const Resources = () => {
             <div className="resourcesWords">POINTS FORM</div>
           </div>
         </a>
-        <a href="scpctalk.slack.com"
+        <a href="https://scpctalk.slack.com"
         target="_blank"
         rel="noopener noreferrer"
         >
@@ -74,7 +74,7 @@ const Resources = () => {
             <div className="resourcesWords">ACCOUNTABILITY</div>
           </div>
         </a>
-        <a href="https://asana.com"
+        <a href="https://app.asana.com/0/home/736681576241736"
         target="_blank"
         rel="noopener noreferrer"
         >
