@@ -17,6 +17,7 @@ export const SET_CURRENT_COMMITTEE = "SET_CURRENT_COMMITTEE";
 
 export const POINTS_ERROR = "POINTS_ERROR";
 export const GET_ALL_POINTS = "GET_ALL_POINTS";
+export const GET_USER_POINTS = "GET_USER_POINTS";
 export const GET_POINTS = "GET_POINTS";
 export const ADD_POINTS = "ADD_POINTS";
 export const UPDATE_POINTS = "UPDATE_POINTS";
