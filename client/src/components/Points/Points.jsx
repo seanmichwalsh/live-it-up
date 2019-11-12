@@ -44,12 +44,12 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
 
     details = Object.keys(detailData).map((username, index) => 
           <tr className="tr-className-1" data-title="bootstrap table">
-            <td className="description">{points[username].description}</td>
+            <td className="description">{detailData[username].description}</td>
             <td className="td-className-1" data-title="bootstrap table">
-              <a className="date">{points[username].date}</a>
+              <a className="date">{detailData[username].date}</a>
             </td>
-            <td className="group1">{points[username].category}</td>
-            <td className="committeeEvents">{points[username].points}</td>
+            <td className="group1">{detailData[username].category}</td>
+            <td className="committeeEvents">{detailData[username].points}</td>
           </tr>
           );
     header =  <tr>
