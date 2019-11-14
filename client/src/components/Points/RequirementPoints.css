@@ -1,0 +1,29 @@
+.red-block {
+	background-color: red;
+}
+
+.yellow-block {
+	background-color: yellow;
+}
+
+.green-block {
+	background-color: #42F572;
+}
+
+div {
+	border-radius: 15px;
+}
+
+tr {
+	width: 100%;
+}
+
+td {
+	width: 50%;
+	border-radius: 30px;
+}
+
+table {
+	margin: auto;
+	border-radius: 30px;
+}

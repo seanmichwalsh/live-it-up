@@ -7,6 +7,7 @@ import {
     DELETE_POINTS,
     SET_CURRENT_POINTS,
     CLEAR_CURRENT,
+    GET_POINTS_REPORT_FOR_USER,
     GET_USER_POINTS
   } from "./actionTypes";
 import { toast } from "react-toastify";
@@ -44,12 +45,12 @@ import { toast } from "react-toastify";
     };
   }
 
-  export const getUserPointsReport = (semester, id) => async dispatch => {
+  export const getUserPointsReport = (semester, uid) => async dispatch => {
     try {
-      const res = await fetch(`http://localhost:3001/api/v1/pointsReport/${semester}/${id}`);
+      const res = await fetch(`http://localhost:3001/api/v1/pointsReport/${semester}/${uid}`);
       const data = await res.json();
       dispatch({
-        type: GET_ALL_POINTS,
+        type: GET_POINTS_REPORT_FOR_USER,
         payload: data
       });
     } catch (err) {
@@ -59,23 +60,6 @@ import { toast } from "react-toastify";
       });
     }
   };
-
-  export const getUserReport = uid => async dispatch => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/v1/point/user/${uid}`);
-      const data = await res.json();
-      dispatch({
-        type: GET_ALL_POINTS,
-        payload: data
-      });
-    } catch (err) {
-      dispatch({
-        type: POINTS_ERROR,
-        payload: err.message
-      });
-    }
-  };
-
 
   
   //Get all points from server

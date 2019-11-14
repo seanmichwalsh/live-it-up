@@ -2,39 +2,46 @@ import React, { useEffect , useState } from 'react';
 import $ from 'jquery';
 import './Points.css';
 //import pointsJson from "./testNew.json";
-import detailsJson from "./pointsDetail.json";
+// import detailsJson from "./pointsDetail.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
-import { getPointsReport, getUserReport, getPointsDetailForUser } from "../../redux/actions/pointsActions";
+import { getPointsReport, getUserPointsReport, getPointsDetailForUser } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
+import RequirementPoints from './RequirementPoints';
 
-const Points = ({ getUser, user, userPointDetails, getPointsDetailForUser, getPointsReport, getUserReport, points }) => {
+const Points = ({ getUser, user, pointsReport, userPointDetails, getPointsDetailForUser, getPointsReport, getUserPointsReport, points }) => {
   const [userChange, setUserChange] = useState({
     semester: "201908",
     adminStatus: false,
   });
 
+  const tempUser = "mwoodson7";
+
   useEffect(() => {
-    getUser("swalsh385");
+    getUser(tempUser);
     if (user !== null && user !== undefined) {
       setUserChange({semester: userChange.semester, adminStatus: user.isAdmin});
     }
     if (userChange.adminStatus) {
       getPointsReport(userChange.semester);
     } else {
-      getPointsDetailForUser("swalsh385");
+      getPointsDetailForUser(tempUser);
+      getUserPointsReport(userChange.semester, tempUser);
     }
   }, [userChange.semester]);
 
   var detailData = userPointDetails;
+  // console.log(detailData);
+  var requirementPoints = pointsReport;
+  // console.log(requirementPoints);
 
 
   var title = null;
   var header = null;
   var details = null;
 
-  //Delete line once admin function is understoof
-  // var adminStatus = true;
+
+
 
   if (!userChange.adminStatus) {
 
@@ -141,9 +148,7 @@ const Points = ({ getUser, user, userPointDetails, getPointsDetailForUser, getPo
             </div>
             <div id="points-sidebar">
                 <div id="req-header">REQUIREMENTS</div>
-                {/* depending on calculations of each point category
-                    display different color boxes to determine if member
-                    is in good standing... follow mock-ups */}
+                  <RequirementPoints />
             </div>
         </div>
       </div>
@@ -156,16 +161,17 @@ Points.propTypes = {
   user: PropTypes.object.isRequired,
   points: PropTypes.array.isRequired,
   getPointsReport: PropTypes.func.isRequired,
-  getUserReport: PropTypes.func.isRequired
+  getUserPointsReport: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   user: state.user.user,
   points: state.points.points,
-  userPointDetails: state.points.userPointDetails
+  userPointDetails: state.points.userPointDetails,
+  pointsReport: state.points.pointsReport
 });
 
 export default connect(
   mapStateToProps,
-  { getUser, getPointsReport, getUserReport, getPointsDetailForUser }
+  { getUser, getPointsReport, getUserPointsReport, getPointsDetailForUser }
 )(Points);
