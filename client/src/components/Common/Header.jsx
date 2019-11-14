@@ -46,7 +46,7 @@ const Header = () => {
                   CALENDAR
                 </NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink
                   className="nav-link"
                   to="/volunteer"
@@ -54,7 +54,7 @@ const Header = () => {
                 >
                   VOLUNTEER
                 </NavLink>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <NavLink
                   className="nav-link"

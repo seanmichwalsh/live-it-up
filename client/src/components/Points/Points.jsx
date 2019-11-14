@@ -5,30 +5,28 @@ import './Points.css';
 import detailsJson from "./pointsDetail.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
-import { getPointsReport, getUserReport } from "../../redux/actions/pointsActions";
+import { getPointsReport, getUserReport, getPointsDetailForUser } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
 
-const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
+const Points = ({ getUser, user, userPointDetails, getPointsDetailForUser, getPointsReport, getUserReport, points }) => {
   const [userChange, setUserChange] = useState({
-    semester: "",
+    semester: "201908",
     adminStatus: false,
   });
 
   useEffect(() => {
     getUser("swalsh385");
     if (user !== null && user !== undefined) {
-    setUserChange({adminStatus: user.isAdmin});
+      setUserChange({semester: userChange.semester, adminStatus: user.isAdmin});
     }
     if (userChange.adminStatus) {
-      getUserReport("swalsh385");
-    } else {
       getPointsReport(userChange.semester);
+    } else {
+      getPointsDetailForUser("swalsh385");
     }
   }, [userChange.semester]);
 
-  var detailData = detailsJson.pointsDetail;
-  console.log("Points call.");
-  console.log(points);
+  var detailData = userPointDetails;
 
 
   var title = null;
@@ -36,7 +34,7 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
   var details = null;
 
   //Delete line once admin function is understoof
-  //var adminStatus = true;
+  // var adminStatus = true;
 
   if (!userChange.adminStatus) {
 
@@ -84,13 +82,13 @@ const Points = ({ getUser, user, getPointsReport, getUserReport, points }) => {
                     <div className="dropdown">
                       <div>
                         <select 
-                            onChange={e => setUserChange({semester: e.target.value})} 
+                            onChange={e => setUserChange({adminStatus: userChange.adminStatus, semester: e.target.value})} 
                             value={userChange.semester}
                         >
                           <option value=""></option>
-                          <option value="2019fall">Fall 2019</option>
-                          <option value="2019spring">Spring 2019</option>
-                          <option value="2018fall">Fall 2018</option>
+                          <option value="201908">Fall 2019</option>
+                          <option value="202002">Spring 2020</option>
+                          <option value="202005">Summer 2020</option>
                         </select>
                       </div>
                     </div>
@@ -163,10 +161,11 @@ Points.propTypes = {
 
 const mapStateToProps = state => ({
   user: state.user.user,
-  points: state.points.points
+  points: state.points.points,
+  userPointDetails: state.points.userPointDetails
 });
 
 export default connect(
   mapStateToProps,
-  { getUser, getPointsReport, getUserReport }
+  { getUser, getPointsReport, getUserReport, getPointsDetailForUser }
 )(Points);
