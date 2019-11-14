@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import "./AddUser.css";
 import { PropTypes } from "prop-types";
 import { getCommittees } from "./../../redux/actions/committeeActions";
-import { updateUser, clearCurrent } from "./../../redux/actions/userActions";
+import { getUsers, updateUser, clearCurrent } from "./../../redux/actions/userActions";
 
 const EditUser = ({ updateUser, committees, getCommittees, current }) => {
   const [firstName, setFirstName] = useState("");
@@ -89,6 +89,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
       clearCurrent();
+      getUsers();
       setTimeout(() => window.history.back(), 3500);
     }
   };
@@ -264,7 +265,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     Choose...
                   </option>
                   {committees
-                    .filter(committee => committee.type === "Primary")
+                    .filter(committee => committee.type === "Event Planning")
                     .map(committee => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}
@@ -336,7 +337,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
               id="add-button"
               onClick={onSubmit}
             >
-              Edit User
+              Save User Changes
             </button>
           </form>
         </div>

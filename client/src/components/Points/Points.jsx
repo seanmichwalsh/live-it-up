@@ -17,19 +17,16 @@ const Points = ({ getUser, user, userPointDetails, getPointsDetailForUser, getPo
   useEffect(() => {
     getUser("swalsh385");
     if (user !== null && user !== undefined) {
-      setUserChange({adminStatus: user.isAdmin});
+      setUserChange({semester: userChange.semester, adminStatus: user.isAdmin});
     }
     if (userChange.adminStatus) {
-      getUserReport("swalsh385");
+      getPointsReport(userChange.semester);
     } else {
       getPointsDetailForUser("swalsh385");
-      getPointsReport(userChange.semester);
     }
   }, [userChange.semester]);
 
   var detailData = userPointDetails;
-  console.log("Points call.");
-  console.log(points);
 
 
   var title = null;
@@ -85,7 +82,7 @@ const Points = ({ getUser, user, userPointDetails, getPointsDetailForUser, getPo
                     <div className="dropdown">
                       <div>
                         <select 
-                            onChange={e => setUserChange({semester: e.target.value})} 
+                            onChange={e => setUserChange({adminStatus: userChange.adminStatus, semester: e.target.value})} 
                             value={userChange.semester}
                         >
                           <option value=""></option>
