@@ -1,6 +1,7 @@
 router = require('express').Router({mergeParams: true})
 const User = require('../../models/user.models')
 const Committee = require('../../models/committee.models')
+// const email = require('../../helpers/email')
 // let casLogin = require('../../helpers/cas.js')
 
 //Gets all users
@@ -44,7 +45,7 @@ router.get('/:uid', (req, res) => {
 router.post('/', (req, res) => {
     if (!(req.body.firstName && req.body.lastName && req.body.email && 
         req.body.uid && req.body.phoneNumber && req.body.mainCommittee 
-        && req.body.active && req.body.committees && req.body.isAdmin)) {
+        && req.body.active && req.body.committees && req.body.isAdmin && req.body.status)) {
         
         // error message needs to indicate which field(s) are missing
         return res.status(400).send({
@@ -100,6 +101,7 @@ router.post('/', (req, res) => {
             mainCommittee: req.body.mainCommittee,
             preferredName: req.body.preferredName,
             isAdmin: req.body.isAdmin,
+            status: req.body.status,
         })
 
         user.save().then(data => {
@@ -191,6 +193,11 @@ router.put('/:uid', (req, res) => {
     } else {
         updatedUser['preferredName'] = null
     }
+    if (req.body.status) {
+        updatedUser['status'] = req.body.status
+    } else {
+        updatedUser['status'] = 'active'
+    }
 
     User.findOneAndUpdate({uid: req.params.uid}, updatedUser, {new: true}).then(user => {
         if (!user) {
@@ -267,5 +274,15 @@ router.get('/isAdmin/:uid', (req, res) => {
         })
     })
 })
+
+// router.get('/email/:uid&:subject&:message', (req, res) => {
+//     if (!req.params.uid || !req.params.subject || !req.params.message) {
+//         return res.status(400).send({
+//             message: "A user ID, subject, and body are required"
+//         })
+//     }
+//     email.main()
+//     res.
+// })
 
 module.exports = router;

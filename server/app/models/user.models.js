@@ -13,6 +13,7 @@ var UserSchema = mongoose.Schema({
     mainCommittee: {type: mongoose.Schema.ObjectId, ref: 'Committee'},
     active: {type: Boolean, required: true, default: true},
     isAdmin: {type: Boolean, required: true, default: false},
+    status: {type: String, required: true, default: 'active'}
 });
 
 UserSchema.plugin(uniqueValidator);
