@@ -46,7 +46,7 @@ const AddCommitteeForm = ({ addCommittee }) => {
       <div className="form-row">
         <div className="form-group col-md-6 text-left">
           <label htmlFor="type">Type of Committee</label>
-          <input
+          <select
             type="text"
             className="form-control"
             id="type"
@@ -54,7 +54,10 @@ const AddCommitteeForm = ({ addCommittee }) => {
             onChange={e => setType(e.target.value)}
             value={type}
             required
-          />
+          >
+            <option value="Event Planning">Event Planning</option>
+            <option value="Auxiliary">Auxiliary</option>
+          </select>
         </div>
       </div>
       <button

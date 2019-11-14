@@ -23,8 +23,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
 
   useEffect(() => {
     getCommittees();
-    //eslint-disable-next-line
-  }, [committees]);
+  }, []);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -51,7 +50,8 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
         onCampus: residency,
         active: status,
         mainCommittee: primaryCommittee,
-        committees: committee
+        committees: committee,
+        isAdmin: true
       };
       addUser(newUser);
       //Clear Fields
@@ -241,7 +241,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     Choose...
                   </option>
                   {committees
-                    .filter(committee => committee.type === "Primary")
+                    .filter(committee => committee.type === "Event Planning")
                     .map(committee => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}

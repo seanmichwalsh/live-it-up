@@ -8,11 +8,8 @@ import { setCurrent } from "./../../redux/actions/userActions";
 
 const User = ({ user, committee, getCommittee, setCurrent }) => {
   useEffect(() => {
-    if (committee === null) {
-      getCommittee(user.mainCommittee);
-    }
-    //eslint-disable-next-line
-  }, [committee]);
+    getCommittee(user.mainCommittee);
+  }, [user.mainCommittee]);
 
   return (
     <div className="individualUser">
@@ -21,7 +18,7 @@ const User = ({ user, committee, getCommittee, setCurrent }) => {
           {" "}
           <img src={logo} alt={logo} />
         </div>
-        <div>Name: {user.lastName + ". " + user.firstName}</div>
+        <div>Name: {user.lastName + ", " + user.firstName}</div>
         <div>Email: {user.email}</div>
         <div>Committee: {committee !== null && committee.name}</div>
       </Link>
