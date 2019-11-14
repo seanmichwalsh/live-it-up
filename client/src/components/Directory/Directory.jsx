@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import { Link } from 'react-router-dom';
 import User from "./User";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUsers } from "../../redux/actions/userActions";
 import "./Directory.css";
+import { getCommittees } from "./../../redux/actions/committeeActions";
 
-const Directory = ({ getUsers, users }) => {
+const Directory = ({ getUsers, users, getCommittees, committees }) => {
   useEffect(() => {
     getUsers();
-    //eslint-disable-next-line
+    getCommittees();
   }, []);
 
   return (
@@ -34,21 +34,32 @@ const Directory = ({ getUsers, users }) => {
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
               >
-                <Link className="dropdown-item" to="/adduser">
+                <a className="dropdown-item" href="/adduser">
                   Add User
-                </Link>
-                <Link className="dropdown-item" to="/addcommittee">
+                </a>
+                <a className="dropdown-item" href="/addcommittee">
                   Add Committee
-                </Link>
+                </a>
               </div>
             </div>
           </div>
         </header>
       </div>
+      <div className="committee-name">TECHNOLOGY</div>
 
       <div className="userLists">
         {users.map(user => (
-          <User key={user._id} user={user} />
+          <User
+            key={user._id}
+            user={user}
+            committee={
+              committees !== undefined &&
+              committees !== null &&
+              committees.filter(
+                committee => committee._id === user.mainCommittee
+              )[0]
+            }
+          />
         ))}
       </div>
     </div>
@@ -57,14 +68,17 @@ const Directory = ({ getUsers, users }) => {
 
 Directory.propTypes = {
   getUsers: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired
+  getCommittees: PropTypes.func.isRequired,
+  users: PropTypes.array.isRequired,
+  committees: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  users: state.user.users
+  users: state.user.users,
+  committees: state.committee.committees
 });
 
 export default connect(
   mapStateToProps,
-  { getUsers }
+  { getUsers, getCommittees }
 )(Directory);
