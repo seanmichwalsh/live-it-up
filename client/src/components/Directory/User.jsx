@@ -13,7 +13,7 @@ const User = ({ user, committee, setCurrent }) => {
           {" "}
           <img src={logo} alt={logo} />
         </div>
-        <div>Name: {user.lastName + ". " + user.firstName}</div>
+        <div>Name: {user.lastName + ", " + user.firstName}</div>
         <div>Email: {user.email}</div>
         <div>
           Committee:{" "}
