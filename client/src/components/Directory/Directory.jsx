@@ -3,6 +3,7 @@ import User from "./User";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUsers } from "../../redux/actions/userActions";
+import { Link } from 'react-router-dom';
 import "./Directory.css";
 import { getCommittees } from "./../../redux/actions/committeeActions";
 
@@ -34,19 +35,17 @@ const Directory = ({ getUsers, users, getCommittees, committees }) => {
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
               >
-                <a className="dropdown-item" href="/adduser">
+                <Link className="dropdown-item" to="/adduser">
                   Add User
-                </a>
-                <a className="dropdown-item" href="/addcommittee">
+                </Link>
+                <Link className="dropdown-item" to="/addcommittee">
                   Add Committee
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </header>
       </div>
-      <div className="committee-name">TECHNOLOGY</div>
-
       <div className="userLists">
         {users.map(user => (
           <User
