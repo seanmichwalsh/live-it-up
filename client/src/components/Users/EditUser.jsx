@@ -6,7 +6,11 @@ import { connect } from "react-redux";
 import "./AddUser.css";
 import { PropTypes } from "prop-types";
 import { getCommittees } from "./../../redux/actions/committeeActions";
-import { getUsers, updateUser, clearCurrent } from "./../../redux/actions/userActions";
+import {
+  getUsers,
+  updateUser,
+  clearCurrent
+} from "./../../redux/actions/userActions";
 
 const EditUser = ({ updateUser, committees, getCommittees, current }) => {
   const [firstName, setFirstName] = useState("");
@@ -20,6 +24,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
   const [primaryCommittee, setPrimaryCommittee] = useState("");
   const [auxCommittee, setAuxCommittee] = useState([]);
   const [committee, setCommittee] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     getCommittees();
@@ -40,6 +45,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
             return committee;
           })
       );
+      setIsAdmin(current.isAdmin);
     }
     // eslint-disable-next-line
   }, [current]);
@@ -69,7 +75,8 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
         onCampus: residency,
         active: status,
         mainCommittee: primaryCommittee,
-        committees: committee
+        committees: committee,
+        isAdmin: isAdmin
       };
       updateUser(newUser, current.uid);
       //Clear Fields
@@ -84,6 +91,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       setPrimaryCommittee("");
       setAuxCommittee([]);
       setCommittee([]);
+      setIsAdmin(false);
       $("#onCampus").val("");
       $("#activeMember").val("");
       $("#committees").val("");
@@ -329,6 +337,39 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                       </div>
                     ))}
                 </div>
+                <div className="isAdmin">
+                  <div className="form-group text-left">
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        id="isAdminCheck"
+                        className="custom-control-input"
+                        onChange={() => {
+                          if ($("#isAdminCheck")[0].hasAttribute("checked")) {
+                            $("#isAdminCheck")[0].removeAttribute("checked");
+                            setIsAdmin(false);
+                          } else {
+                            $("#isAdminCheck")[0].setAttribute(
+                              "checked",
+                              "checked"
+                            );
+                            setIsAdmin(true);
+                          }
+                        }}
+                      />
+                      <label
+                        htmlFor="isAdminCheck"
+                        className="custom-control-label"
+                        id="isAdmin"
+                      >
+                        Administrator
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                {isAdmin
+                  ? $("#isAdminCheck")[0].setAttribute("checked", "checked")
+                  : $("#isAdminCheck")[0].setAttribute("checked", false)}
               </div>
             </div>
             <button
@@ -357,7 +398,8 @@ const mapStateToProps = state => ({
   current: state.user.current
 });
 
-export default connect(
-  mapStateToProps,
-  { updateUser, getCommittees, clearCurrent }
-)(EditUser);
+export default connect(mapStateToProps, {
+  updateUser,
+  getCommittees,
+  clearCurrent
+})(EditUser);
