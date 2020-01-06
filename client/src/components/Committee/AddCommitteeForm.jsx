@@ -8,7 +8,7 @@ import { addCommittee } from "../../redux/actions/committeeActions";
 
 const AddCommitteeForm = ({ addCommittee }) => {
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("Event Planning");
 
   const onSubmit = e => {
     e.preventDefault();
