@@ -10,14 +10,7 @@
     width: 90%;
     margin: 0 auto;
     list-style: none;
-    
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    
-    -webkit-flex-flow: row wrap;
     justify-content: space-around;
 }
 
@@ -56,28 +49,20 @@
 
 @media all and (max-width: 500px) {
     #allResources {
-        /* display: flex;
-        flex-direction: row;
-        justify-content: space-between; */
         width: 90%;
         margin: 0 auto;
-    
+        flex-direction: column-reverse;
         list-style: none;
         
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
         display: flex;
         
-        -webkit-flex-flow: row wrap;
         justify-content: space-around;
     }
 
-    .resourceItem {
+    /* .resourceItem {
         margin-left: 1.5vw;
         margin-right: 1.5vw;
         margin-top: 3vw;
         margin-bottom: 3vw;
-    }
+    } */
 }

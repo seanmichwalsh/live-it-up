@@ -18,14 +18,14 @@ const EditCommitteeForm = ({ updateCommittee, current }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-      const newCommittee = {
-        name: name,
-        type: type
-      };
-      updateCommittee(newCommittee);
-      //Clear Fields
-      setName("");
-      setType("");
+    const newCommittee = {
+      name: name,
+      type: type
+    };
+    updateCommittee(newCommittee);
+    //Clear Fields
+    setName("");
+    setType("");
   };
 
   return (
@@ -80,7 +80,4 @@ const mapStateToProps = state => ({
   current: state.current
 });
 
-export default connect(
-  mapStateToProps,
-  { updateCommittee }
-)(EditCommitteeForm);
+export default connect(mapStateToProps, { updateCommittee })(EditCommitteeForm);

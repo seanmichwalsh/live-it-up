@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { addCommittee } from "../../redux/actions/committeeActions";
 
 const AddCommitteeForm = ({ addCommittee }) => {
-  const defaultCommitteeType = "Event Planning"
+  const defaultCommitteeType = "Event Planning";
   const [name, setName] = useState("");
   const [type, setType] = useState(defaultCommitteeType);
 
@@ -82,7 +82,4 @@ const mapStateToProps = state => ({
   current: state.current
 });
 
-export default connect(
-  mapStateToProps,
-  { addCommittee }
-)(AddCommitteeForm);
+export default connect(mapStateToProps, { addCommittee })(AddCommitteeForm);
