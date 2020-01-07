@@ -15,7 +15,7 @@ const Resources = () => {
             <img
               src={process.env.PUBLIC_URL + "/images/google_sheet.png"}
               alt="Google Sheet Logo"
-              className="googleFormPic"
+              className="resourcePic"
             ></img>
             <div className="resourcesWords">VOLUNTEER SHEET</div>
           </div>
@@ -29,7 +29,7 @@ const Resources = () => {
             <img
               src={process.env.PUBLIC_URL + "/images/google_form.png"}
               alt="Google Form Logo"
-              className="googleFormPic"
+              className="resourcePic"
             ></img>
             <div className="resourcesWords">MARKETING FORM</div>
           </div>
@@ -43,7 +43,7 @@ const Resources = () => {
             <img
               src={process.env.PUBLIC_URL + "/images/google_doc.png"}
               alt="Google Doc Logo"
-              className="googleFormPic"
+              className="resourcePic"
             ></img>
             <div className="resourcesWords">POINTS FORM</div>
           </div>
@@ -57,7 +57,7 @@ const Resources = () => {
             <img
               src={process.env.PUBLIC_URL + "/images/slack_logo.png"}
               alt="Slack Logo"
-              className="googleFormPic"
+              className="resourcePic"
             ></img>
             <div className="resourcesWords">SLACK: GTSCPC</div>
           </div>
@@ -71,7 +71,7 @@ const Resources = () => {
             <img
               src={process.env.PUBLIC_URL + "/images/google_doc.png"}
               alt="Google Doc Logo"
-              className="googleFormPic"
+              className="resourcePic"
             ></img>
             <div className="resourcesWords">ACCOUNTABILITY</div>
           </div>
@@ -85,7 +85,7 @@ const Resources = () => {
             <img
               src={process.env.PUBLIC_URL + "/images/asana_logo.png"}
               alt="Asana Logo"
-              id="asanaLogo"
+              className="resourcePic"
             ></img>
             <div className="resourcesWords" id="asanaText">
               ASANA
