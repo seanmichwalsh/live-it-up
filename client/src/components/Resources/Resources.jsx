@@ -20,9 +20,10 @@ const Resources = () => {
             <div className="resourcesWords">VOLUNTEER SHEET</div>
           </div>
         </a>
-        <a href="https://goo.gl/forms/RjtusxgGqmRm3q6L2"
-        target="_blank"
-        rel="noopener noreferrer"
+        <a
+          href="https://goo.gl/forms/RjtusxgGqmRm3q6L2"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="resourceItem">
             <img
@@ -47,9 +48,10 @@ const Resources = () => {
             <div className="resourcesWords">POINTS FORM</div>
           </div>
         </a>
-        <a href="https://scpctalk.slack.com"
-        target="_blank"
-        rel="noopener noreferrer"
+        <a
+          href="https://scpctalk.slack.com"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="resourceItem">
             <img
@@ -74,9 +76,10 @@ const Resources = () => {
             <div className="resourcesWords">ACCOUNTABILITY</div>
           </div>
         </a>
-        <a href="https://app.asana.com/0/home/736681576241736"
-        target="_blank"
-        rel="noopener noreferrer"
+        <a
+          href="https://app.asana.com/0/home/736681576241736"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="resourceItem">
             <img
