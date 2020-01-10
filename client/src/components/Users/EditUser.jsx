@@ -343,18 +343,10 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                       <input
                         type="checkbox"
                         id="isAdminCheck"
+                        checked={isAdmin}
                         className="custom-control-input"
-                        onChange={() => {
-                          if ($("#isAdminCheck")[0].hasAttribute("checked")) {
-                            $("#isAdminCheck")[0].removeAttribute("checked");
-                            setIsAdmin(false);
-                          } else {
-                            $("#isAdminCheck")[0].setAttribute(
-                              "checked",
-                              "checked"
-                            );
-                            setIsAdmin(true);
-                          }
+                        onChange={(event) => {
+                          setIsAdmin(event.target.checked)                          
                         }}
                       />
                       <label
@@ -367,9 +359,6 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     </div>
                   </div>
                 </div>
-                {isAdmin
-                  ? $("#isAdminCheck")[0].setAttribute("checked", "checked")
-                  : $("#isAdminCheck")[0].setAttribute("checked", false)}
               </div>
             </div>
             <button
