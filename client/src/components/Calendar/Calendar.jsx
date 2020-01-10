@@ -84,7 +84,4 @@ const mapStateToProps = state => ({
   events: state.event.events
 });
 
-export default connect(
-  mapStateToProps,
-  { getEvents }
-)(Calendar);
+export default connect(mapStateToProps, { getEvents })(Calendar);

@@ -7,8 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { addCommittee } from "../../redux/actions/committeeActions";
 
 const AddCommitteeForm = ({ addCommittee }) => {
+  const defaultCommitteeType = "Event Planning";
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState(defaultCommitteeType);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -21,8 +22,8 @@ const AddCommitteeForm = ({ addCommittee }) => {
       };
       addCommittee(newCommittee);
       //Clear Fields
-      setName("");
-      setType("");
+      setName(defaultCommitteeType);
+      setType(defaultCommitteeType);
     }
   };
 
@@ -81,7 +82,4 @@ const mapStateToProps = state => ({
   current: state.current
 });
 
-export default connect(
-  mapStateToProps,
-  { addCommittee }
-)(AddCommitteeForm);
+export default connect(mapStateToProps, { addCommittee })(AddCommitteeForm);

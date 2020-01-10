@@ -20,6 +20,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
   const [primaryCommittee, setPrimaryCommittee] = useState("");
   const [auxCommittee, setAuxCommittee] = useState([]);
   const [committee, setCommittee] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     getCommittees();
@@ -51,7 +52,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
         active: status,
         mainCommittee: primaryCommittee,
         committees: committee,
-        isAdmin: true
+        isAdmin: isAdmin
       };
       addUser(newUser);
       //Clear Fields
@@ -66,6 +67,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
       setPrimaryCommittee("");
       setAuxCommittee([]);
       setCommittee([]);
+      setIsAdmin(false);
       $("#onCampus").val("");
       $("#activeMember").val("");
       $("#committees").val("");
@@ -300,6 +302,36 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                       </div>
                     ))}
                 </div>
+                <div className="isAdmin">
+                  <div className="form-group text-left">
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        id="isAdminCheck"
+                        className="custom-control-input"
+                        onChange={() => {
+                          if ($("#isAdminCheck")[0].hasAttribute("checked")) {
+                            $("#isAdminCheck")[0].removeAttribute("checked");
+                            setIsAdmin(false);
+                          } else {
+                            $("#isAdminCheck")[0].setAttribute(
+                              "checked",
+                              "checked"
+                            );
+                            setIsAdmin(true);
+                          }
+                        }}
+                      />
+                      <label
+                        htmlFor="isAdminCheck"
+                        className="custom-control-label"
+                        id="isAdmin"
+                      >
+                        Administrator
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <button
@@ -326,7 +358,4 @@ const mapStateToProps = state => ({
   committees: state.committee.committees
 });
 
-export default connect(
-  mapStateToProps,
-  { addUser, getCommittees }
-)(AddUser);
+export default connect(mapStateToProps, { addUser, getCommittees })(AddUser);

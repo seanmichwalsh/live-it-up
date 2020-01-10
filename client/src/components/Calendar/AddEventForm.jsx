@@ -34,19 +34,19 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
     } else {
       console.log(startTime);
       console.log(endTime);
-      console.log(`${date}T${startTime}:00`)
-      console.log(`${date}T${endTime}:00`)
+      console.log(`${date}T${startTime}:00`);
+      console.log(`${date}T${endTime}:00`);
 
       const newEvent = {
         eventName: name,
         location: location,
         committees: committee,
         startTime: moment
-          .tz(`${date}T${startTime}:00`, 'America/New_York')
+          .tz(`${date}T${startTime}:00`, "America/New_York")
           .utc()
           .format(),
         endTime: moment
-          .tz(`${date}T${endTime}:00`, 'America/New_York')
+          .tz(`${date}T${endTime}:00`, "America/New_York")
           .utc()
           .format()
       };
@@ -105,12 +105,11 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
               Choose...
             </option>
             {committees !== null &&
-              committees
-                .map(committee => (
-                  <option key={committee._id} value={committee._id}>
-                    {committee.name}
-                  </option>
-                ))}
+              committees.map(committee => (
+                <option key={committee._id} value={committee._id}>
+                  {committee.name}
+                </option>
+              ))}
           </select>
         </div>
         <div className="form-group col-md-3 text-left">
@@ -172,7 +171,6 @@ const mapStateToProps = state => ({
   committees: state.committee.committees
 });
 
-export default connect(
-  mapStateToProps,
-  { addEvent, getCommittees }
-)(AddEventForm);
+export default connect(mapStateToProps, { addEvent, getCommittees })(
+  AddEventForm
+);
