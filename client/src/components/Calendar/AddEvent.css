@@ -1,47 +1,46 @@
 .add-user-pg {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .header {
-    font-weight: bold;
-    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300))); 
+  font-weight: bold;
+  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .hidden {
-    display: none
+  display: none;
 }
 
 #addeventform {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .check-boxes {
-    float: left;
+  float: left;
 }
 
 #add-button {
-    float: left;
+  float: left;
 }
 
 @media all and (max-width: 550px) {
-    .add-details {
-        width: 85%;
-    }
+  .add-details {
+    width: 85%;
+  }
 
-    #userInputFields {
-        display: flex; 
-        flex-direction: column;
-    }
+  #userInputFields {
+    display: flex;
+    flex-direction: column;
+  }
 
-    #account-details {
-        order: 1;
-        width: 100%;
-    }
+  #account-details {
+    order: 1;
+    width: 100%;
+  }
 
-    #add-button {
-        clear: both;
-        order: 3;
-    }
-
+  #add-button {
+    clear: both;
+    order: 3;
+  }
 }
