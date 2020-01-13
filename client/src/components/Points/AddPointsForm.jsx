@@ -20,7 +20,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (date === "" || category === "" || number == "" || semester == "" || description == "") {
+    if (date === "" || category === "" || number === "" || semester === "" || description === "") {
       toast("Please fill in every required field!");
     } else {
       const newPoint = {
@@ -33,7 +33,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
       addPoint(newPoint);
 
       //Clear Fields
-      setDate("");
+      setDate(null);
       $("#category").val("");
       setNumber("");
       setSemester("");
@@ -53,7 +53,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
                 <div className="form-group col-md-4 text-left">
                     <label htmlFor="date">Date</label>
                     <input
-                        type="text"
+                        type="date"
                         className="form-control"
                         id="date"
                         placeholder="01/23/99"
