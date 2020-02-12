@@ -14,7 +14,7 @@ const Home = () => {
           <div className="gmm-header">
             <div className="left">Next GMM</div>
             <button className="right">
-              <a href="#">
+              <a href="/#">
                 <FontAwesomeIcon className="icon" icon={faPlusCircle} />
               </a>
             </button>
