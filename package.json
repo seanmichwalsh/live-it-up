@@ -1,0 +1,21 @@
+{
+  "name": "live-it-up",
+  "version": "1.0.0",
+  "description": "SCPC's internal web app",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm run start --prefix client",
+    "server": "npm run start --prefix server",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.gatech.edu/scpc/live-it-up.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}

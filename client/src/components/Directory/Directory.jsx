@@ -11,6 +11,7 @@ const Directory = ({ getUsers, users, getCommittees, committees }) => {
   useEffect(() => {
     getUsers();
     getCommittees();
+    //eslint-disable-next-line
   }, []);
 
   return (

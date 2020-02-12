@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import $ from "jquery";
+//import $ from "jquery";
 import "./Points.css";
 //import pointsJson from "./testNew.json";
-import detailsJson from "./pointsDetail.json";
+//import detailsJson from "./pointsDetail.json";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
 import {
@@ -18,7 +18,7 @@ const Points = ({
   userPointDetails,
   getPointsDetailForUser,
   getPointsReport,
-  getUserReport,
+  //getUserReport,
   points
 }) => {
   const [userChange, setUserChange] = useState({
@@ -39,6 +39,7 @@ const Points = ({
     } else {
       getPointsDetailForUser("swalsh385");
     }
+    //eslint-disable-next-line
   }, [userChange.semester]);
 
   var detailData = userPointDetails;
@@ -61,7 +62,7 @@ const Points = ({
       <tr className="tr-className-1" data-title="bootstrap table">
         <td className="description">{detailData[username].description}</td>
         <td className="td-className-1" data-title="bootstrap table">
-          <a className="date">{detailData[username].date}</a>
+          <a className="date" href="/#">{detailData[username].date}</a>
         </td>
         <td className="group1">{detailData[username].category}</td>
         <td className="committeeEvents">{detailData[username].points}</td>
@@ -82,7 +83,7 @@ const Points = ({
       <tr className="tr-className-1" data-title="bootstrap table">
         <td>{username}</td>
         <td className="td-className-1" data-title="bootstrap table">
-          <a className="date">{points[username].semester}</a>
+          <a className="date" href="/#">{points[username].semester}</a>
         </td>
         <td className="group1">{points[username].group1}</td>
         <td className="group2">{points[username].group2}</td>
