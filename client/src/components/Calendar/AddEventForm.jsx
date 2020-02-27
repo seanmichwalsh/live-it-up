@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addEvent } from "../../redux/actions/eventActions";
 import { getCommittees } from "../../redux/actions/committeeActions";
-//import Moment from "react-moment";
 import moment from "moment-timezone";
 
 const AddEventForm = ({ addEvent, committees, getCommittees }) => {
@@ -40,11 +39,9 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
         startTime: moment(`${date}T${startTime}:00`)
           .tz("America/New_York")
           .format(),
-        // startTime: new Date(`${date}T${startTime}:00-05:00`),
         endTime: moment(`${date}T${endTime}:00`)
           .tz("America/New_York")
           .format()
-        // endTime: new Date(`${date}T${endTime}:00-05:00`)
       };
       addEvent(newEvent);
       //Clear Fields

@@ -3,7 +3,7 @@ import User from "./User";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUsers } from "../../redux/actions/userActions";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./Directory.css";
 import { getCommittees } from "./../../redux/actions/committeeActions";
 
@@ -78,7 +78,4 @@ const mapStateToProps = state => ({
   committees: state.committee.committees
 });
 
-export default connect(
-  mapStateToProps,
-  { getUsers, getCommittees }
-)(Directory);
+export default connect(mapStateToProps, { getUsers, getCommittees })(Directory);

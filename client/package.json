@@ -11,6 +11,7 @@
     "@fullcalendar/interaction": "^4.4.0",
     "@fullcalendar/moment-timezone": "^4.4.0",
     "@fullcalendar/react": "^4.4.0",
+    "@fullcalendar/timegrid": "^4.4.0",
     "@sentry/browser": "^5.12.1",
     "bootstrap": "^4.4.1",
     "bootstrap-table": "^1.16.0",
