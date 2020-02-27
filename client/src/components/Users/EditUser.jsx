@@ -345,8 +345,8 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                         id="isAdminCheck"
                         checked={isAdmin}
                         className="custom-control-input"
-                        onChange={(event) => {
-                          setIsAdmin(event.target.checked)                          
+                        onChange={event => {
+                          setIsAdmin(event.target.checked);
                         }}
                       />
                       <label

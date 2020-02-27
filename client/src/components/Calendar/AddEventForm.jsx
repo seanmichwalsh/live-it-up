@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addEvent } from "../../redux/actions/eventActions";
 import { getCommittees } from "../../redux/actions/committeeActions";
-import Moment from "react-moment";
+//import Moment from "react-moment";
 import moment from "moment-timezone";
 
 const AddEventForm = ({ addEvent, committees, getCommittees }) => {
@@ -19,6 +19,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
 
   useEffect(() => {
     getCommittees();
+    //eslint-disable-next-line
   }, []);
 
   const onSubmit = e => {
