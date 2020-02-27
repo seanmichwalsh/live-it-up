@@ -8,10 +8,11 @@ import { getUser } from "../../redux/actions/userActions";
 import {
   getPointsReport,
   getUserReport,
-  getPointsDetailForUser
+  getPointsDetailForUser,
+  getUserPointsReport
 } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
-import RequirementPoints from './RequirementPoints';
+// import RequirementPoints from "./RequirementPoints";
 
 const Points = ({
   getUser,
@@ -19,8 +20,10 @@ const Points = ({
   userPointDetails,
   getPointsDetailForUser,
   getPointsReport,
+  getUserPointsReport,
   //getUserReport,
-  points
+  points,
+  pointsReport
 }) => {
   const [userChange, setUserChange] = useState({
     semester: "201908",
@@ -48,15 +51,12 @@ const Points = ({
 
   var detailData = userPointDetails;
   // console.log(detailData);
-  var requirementPoints = pointsReport;
+  // var requirementPoints = pointsReport;
   // console.log(requirementPoints);
 
   var title = null;
   var header = null;
   var details = null;
-
-
-
 
   if (!userChange.adminStatus) {
     title = (
@@ -69,7 +69,9 @@ const Points = ({
       <tr className="tr-className-1" data-title="bootstrap table">
         <td className="description">{detailData[username].description}</td>
         <td className="td-className-1" data-title="bootstrap table">
-          <a className="date" href="/#">{detailData[username].date}</a>
+          <a className="date" href="/#">
+            {detailData[username].date}
+          </a>
         </td>
         <td className="group1">{detailData[username].category}</td>
         <td className="committeeEvents">{detailData[username].points}</td>
@@ -90,7 +92,9 @@ const Points = ({
       <tr className="tr-className-1" data-title="bootstrap table">
         <td>{username}</td>
         <td className="td-className-1" data-title="bootstrap table">
-          <a className="date" href="/#">{points[username].semester}</a>
+          <a className="date" href="/#">
+            {points[username].semester}
+          </a>
         </td>
         <td className="group1">{points[username].group1}</td>
         <td className="group2">{points[username].group2}</td>
@@ -187,7 +191,8 @@ Points.propTypes = {
   user: PropTypes.object.isRequired,
   points: PropTypes.array.isRequired,
   getPointsReport: PropTypes.func.isRequired,
-  getUserPointsReport: PropTypes.func.isRequired
+  getUserPointsReport: PropTypes.func.isRequired,
+  pointsReport: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -201,5 +206,6 @@ export default connect(mapStateToProps, {
   getUser,
   getPointsReport,
   getUserReport,
-  getPointsDetailForUser
+  getPointsDetailForUser,
+  getUserPointsReport
 })(Points);
