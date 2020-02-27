@@ -30,7 +30,4 @@ User.propTypes = {
   setCurrent: PropTypes.func.isRequired
 };
 
-export default connect(
-  null,
-  { setCurrent }
-)(User);
+export default connect(null, { setCurrent })(User);

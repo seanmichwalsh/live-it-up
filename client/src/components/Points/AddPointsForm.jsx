@@ -169,7 +169,9 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
       {/* </div> */}
 
       <div id="member-box">
-        <a id="member-header" href="/#">Members:</a>
+        <a id="member-header" href="/#">
+          Members:
+        </a>
         <div id="user-container">
           {users.map(user => (
             <div key={user._id}>
