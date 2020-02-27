@@ -11,6 +11,7 @@ import {
   getPointsDetailForUser
 } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
+import RequirementPoints from './RequirementPoints';
 
 const Points = ({
   getUser,
@@ -26,8 +27,10 @@ const Points = ({
     adminStatus: false
   });
 
+  const tempUser = "mwoodson7";
+
   useEffect(() => {
-    getUser("swalsh385");
+    getUser(tempUser);
     if (user !== null && user !== undefined) {
       setUserChange({
         semester: userChange.semester,
@@ -37,19 +40,23 @@ const Points = ({
     if (userChange.adminStatus) {
       getPointsReport(userChange.semester);
     } else {
-      getPointsDetailForUser("swalsh385");
+      getPointsDetailForUser(tempUser);
+      getUserPointsReport(userChange.semester, tempUser);
     }
     //eslint-disable-next-line
   }, [userChange.semester]);
 
   var detailData = userPointDetails;
+  // console.log(detailData);
+  var requirementPoints = pointsReport;
+  // console.log(requirementPoints);
 
   var title = null;
   var header = null;
   var details = null;
 
-  //Delete line once admin function is understoof
-  // var adminStatus = true;
+
+
 
   if (!userChange.adminStatus) {
     title = (
@@ -180,13 +187,14 @@ Points.propTypes = {
   user: PropTypes.object.isRequired,
   points: PropTypes.array.isRequired,
   getPointsReport: PropTypes.func.isRequired,
-  getUserReport: PropTypes.func.isRequired
+  getUserPointsReport: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   user: state.user.user,
   points: state.points.points,
-  userPointDetails: state.points.userPointDetails
+  userPointDetails: state.points.userPointDetails,
+  pointsReport: state.points.pointsReport
 });
 
 export default connect(mapStateToProps, {
