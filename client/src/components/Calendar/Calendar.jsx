@@ -17,7 +17,7 @@ const Calendar = ({ getEvents, events }) => {
 
   useEffect(() => {
     const correctFormat = [];
-    events.map(event => {
+    events.forEach(event => {
       correctFormat.push({
         title: event.eventName,
         start: event.startTime.substring(0, 19),

@@ -76,22 +76,6 @@ const Resources = () => {
             <div className="resourcesWords">ACCOUNTABILITY</div>
           </div>
         </a>
-        <a
-          href="https://app.asana.com/0/home/736681576241736"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className="resourceItem">
-            <img
-              src={process.env.PUBLIC_URL + "/images/asana_logo.png"}
-              alt="Asana Logo"
-              className="resourcePic"
-            ></img>
-            <div className="resourcesWords" id="asanaText">
-              ASANA
-            </div>
-          </div>
-        </a>
       </div>
     </div>
   );
