@@ -1,19 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import { getCommittee } from "./../../redux/actions/committeeActions";
 import { setCurrent } from "./../../redux/actions/userActions";
 
-const User = ({ user, committee, getCommittee, setCurrent }) => {
-  useEffect(() => {
-    if (committee === null) {
-      getCommittee(user.mainCommittee);
-    }
-    //eslint-disable-next-line
-  }, [committee]);
-
+const User = ({ user, committee, setCurrent }) => {
   return (
     <div className="individualUser">
       <Link to="/edituser" onClick={() => setCurrent(user)}>
@@ -21,9 +13,12 @@ const User = ({ user, committee, getCommittee, setCurrent }) => {
           {" "}
           <img src={logo} alt={logo} />
         </div>
-        <div>Name: {user.lastName + ". " + user.firstName}</div>
+        <div>Name: {user.lastName + ", " + user.firstName}</div>
         <div>Email: {user.email}</div>
-        <div>Committee: {committee !== null && committee.name}</div>
+        <div>
+          Committee:{" "}
+          {committee !== null && committee !== undefined && committee.name}
+        </div>
       </Link>
     </div>
   );
@@ -32,15 +27,10 @@ const User = ({ user, committee, getCommittee, setCurrent }) => {
 User.propTypes = {
   user: PropTypes.object.isRequired,
   committee: PropTypes.object.isRequired,
-  getCommittee: PropTypes.func.isRequired,
   setCurrent: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  committee: state.committee.committee
-});
-
 export default connect(
-  mapStateToProps,
-  { getCommittee, setCurrent }
+  null,
+  { setCurrent }
 )(User);

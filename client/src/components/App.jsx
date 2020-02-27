@@ -1,25 +1,25 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import Header from './Common/Header';
-import Home from './Home/Home';
-import Points from './Points/Points';
-import AddPoints from './Points/AddPoints';
-import EditUser from './Users/EditUser';
-import AddUser from './Users/AddUser';
-import AddCommittee from './Committee/AddCommittee';
-import Directory from './Directory/Directory';
-import Resources from './Resources/Resources';
-import NotFound from './NotFound';
-import Calendar from './Calendar/Calendar';
-import AddEvent from './Calendar/AddEvent';
+import Header from "./Common/Header";
+import Home from "./Home/Home";
+import Points from "./Points/Points";
+import AddPoints from "./Points/AddPoints";
+import EditUser from "./Users/EditUser";
+import AddUser from "./Users/AddUser";
+import AddCommittee from "./Committee/AddCommittee";
+import Directory from "./Directory/Directory";
+import Resources from "./Resources/Resources";
+import NotFound from "./NotFound";
+import Calendar from "./Calendar/Calendar";
+import AddEvent from "./Calendar/AddEvent";
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className='App'>
+      <div className="App">
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />

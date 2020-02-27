@@ -7,8 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { addCommittee } from "../../redux/actions/committeeActions";
 
 const AddCommitteeForm = ({ addCommittee }) => {
+  const defaultCommitteeType = "Event Planning";
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState(defaultCommitteeType);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -21,8 +22,8 @@ const AddCommitteeForm = ({ addCommittee }) => {
       };
       addCommittee(newCommittee);
       //Clear Fields
-      setName("");
-      setType("");
+      setName(defaultCommitteeType);
+      setType(defaultCommitteeType);
     }
   };
 
@@ -46,7 +47,7 @@ const AddCommitteeForm = ({ addCommittee }) => {
       <div className="form-row">
         <div className="form-group col-md-6 text-left">
           <label htmlFor="type">Type of Committee</label>
-          <input
+          <select
             type="text"
             className="form-control"
             id="type"
@@ -54,7 +55,10 @@ const AddCommitteeForm = ({ addCommittee }) => {
             onChange={e => setType(e.target.value)}
             value={type}
             required
-          />
+          >
+            <option value="Event Planning">Event Planning</option>
+            <option value="Auxiliary">Auxiliary</option>
+          </select>
         </div>
       </div>
       <button
@@ -78,7 +82,4 @@ const mapStateToProps = state => ({
   current: state.current
 });
 
-export default connect(
-  mapStateToProps,
-  { addCommittee }
-)(AddCommitteeForm);
+export default connect(mapStateToProps, { addCommittee })(AddCommitteeForm);
