@@ -33,25 +33,19 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
-      console.log(startTime);
-      console.log(endTime);
-      console.log(`${date}T${startTime}:00`);
-      console.log(`${date}T${endTime}:00`);
-
       const newEvent = {
         eventName: name,
         location: location,
         committees: committee,
-        startTime: moment
-          .tz(`${date}T${startTime}:00`, "America/New_York")
-          .utc()
+        startTime: moment(`${date}T${startTime}:00`)
+          .tz("America/New_York")
           .format(),
-        endTime: moment
-          .tz(`${date}T${endTime}:00`, "America/New_York")
-          .utc()
+        // startTime: new Date(`${date}T${startTime}:00-05:00`),
+        endTime: moment(`${date}T${endTime}:00`)
+          .tz("America/New_York")
           .format()
+        // endTime: new Date(`${date}T${endTime}:00-05:00`)
       };
-      console.log(newEvent);
       addEvent(newEvent);
       //Clear Fields
       setName("");
