@@ -1,57 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import $ from "jquery";
-import "fullcalendar";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import momentTimezonePlugin from "@fullcalendar/moment-timezone";
+import interactionPlugin from "@fullcalendar/interaction";
+import "@fullcalendar/core/main.css";
+import "@fullcalendar/daygrid/main.css";
 import "moment/min/moment.min.js";
-import "fullcalendar/dist/fullcalendar.css";
-import "fullcalendar/dist/fullcalendar.js";
-import "./Calendar.css";
 import { getEvents } from "./../../redux/actions/eventActions";
+import "./Calendar.css";
 
 const Calendar = ({ getEvents, events }) => {
+  const [correctFormat, setCorrectFormat] = useState([]);
+
   useEffect(() => {
     getEvents();
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    const correctFormat = [];
     events.forEach(event => {
-      correctFormat.push({
-        title: event.eventName,
-        start: event.startTime.substring(0, 19),
-        end: event.endTime.substring(0, 19)
-      });
+      setCorrectFormat(
+        correctFormat.push({
+          title: event.eventName,
+          start: event.startTime.substring(0, 19),
+          end: event.endTime.substring(0, 19)
+        })
+      );
     });
-    $("#calendar").fullCalendar({
-      events: correctFormat,
-      eventColor: "#b259a0",
-      // timeFormat: "h(:mm)",
-      // eventTimeFormat: {
-      //   // like '14:30:00'
-      //   hour: "2-digit",
-      //   minute: "2-digit",
-      //   second: "2-digit",
-      //   meridiem: false
-      // },
-      eventTextColor: "#f4f4f4",
-      header: {
-        left: "prev,next today",
-        center: "title",
-        right: "month,listMonth"
-      }
-    });
-    $("#calendar").fullCalendar("addEventSource", correctFormat);
-    $("#calendar").fullCalendar({ timezone: "America/New_York" });
-    $("#calendar").fullCalendar("option", "aspectRatio", 1);
-    $("#calendar").fullCalendar({
-      eventClick: function(calEvent, jsEvent, view) {
-        alert("Event: " + calEvent.title);
-        alert("Coordinates: " + jsEvent.pageX + "," + jsEvent.pageY);
-        alert("View: " + view.name);
-      }
-    });
+    //eslint-disable-next-line
   }, [events]);
 
   return (
@@ -61,7 +39,7 @@ const Calendar = ({ getEvents, events }) => {
           <div className="dropdown">
             <a
               href="/addevent"
-              class="btn btn-secondary btn-small active"
+              className="btn btn-secondary btn-small active"
               role="button"
               aria-pressed="true"
             >
@@ -70,7 +48,32 @@ const Calendar = ({ getEvents, events }) => {
           </div>
         </div>
       </header>
-      <div id="calendar" />
+      {console.log(correctFormat)}
+      <FullCalendar
+        defaultView="dayGridMonth"
+        aspectRatio="1"
+        plugins={[momentTimezonePlugin, dayGridPlugin, interactionPlugin]}
+        timezone="America/New_York"
+        eventTimeFormat={{
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          meridiem: false
+        }}
+        events={console.log(correctFormat)}
+        eventColor="b259a0"
+        eventTextColor="#f4f4f4"
+        header={{
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+        }}
+        dateClick={(calEvent, jsEvent, view) => {
+          alert("Event: " + calEvent.title);
+          alert("Coordinates: " + jsEvent.pageX + "," + jsEvent.pageY);
+          alert("View: " + view.name);
+        }}
+      />
     </div>
   );
 };
