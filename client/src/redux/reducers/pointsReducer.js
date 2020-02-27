@@ -6,14 +6,18 @@ import {
     UPDATE_POINTS,
     DELETE_POINTS,
     SET_CURRENT_POINTS,
-    CLEAR_CURRENT
+    CLEAR_CURRENT,
+    GET_POINTS_REPORT_FOR_USER,
+    GET_USER_POINTS
 } from '../actions/actionTypes';
 
 const initialState = {
     points: [],
     point: null,
     current: null,
-    error: null
+    error: null,
+    pointsReport: null,
+    userPointDetails: []
   };
   
   export default (state = initialState, action) => {
@@ -23,10 +27,20 @@ const initialState = {
           ...state,
           points: action.payload
         };
+      case GET_USER_POINTS:
+        return {
+          ...state,
+          userPointDetails: action.payload
+        }
       case GET_POINTS:
         return {
           ...state,
           point: action.payload
+        };
+      case GET_POINTS_REPORT_FOR_USER:
+        return {
+          ...state,
+          pointsReport: action.payload
         };
       case ADD_POINTS:
         return {

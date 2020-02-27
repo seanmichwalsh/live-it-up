@@ -1,44 +1,44 @@
 img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .nav {
-    background-color: white;
-    color: #ffffff;
+  background-color: white;
+  color: #ffffff;
 }
 
 .navbar-toggler-icon,
 .nabar-toggler {
-    height: 5vw;
-    color: #707070;
+  height: 5vw;
+  color: #707070;
 }
 
 .navbar-nav {
-    display: inline-block;
-    width: 100%;
-    margin: auto;
-    text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin: auto;
+  text-align: center;
 }
 
 .nav-item {
-    position: relative;
-    display: inline-block;
-    padding-left: 20px;
-    padding-right: 20px;
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .nav-link {
-    color: #707070;
-    font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1600 - 300)));
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    /* transition: all 500ms ease-in-out; */
+  color: #707070;
+  font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1600 - 300)));
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  /* transition: all 500ms ease-in-out; */
 }
 
 .nav-link:hover {
-    color: #AC539B;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    /* transition: all 500ms ease-in-out; */
+  color: #ac539b;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  /* transition: all 500ms ease-in-out; */
 }
