@@ -48,7 +48,6 @@ const Calendar = ({ getEvents, events }) => {
           </div>
         </div>
       </header>
-      {console.log(correctFormat)}
       <FullCalendar
         defaultView="dayGridMonth"
         aspectRatio="1"
@@ -60,7 +59,7 @@ const Calendar = ({ getEvents, events }) => {
           second: "2-digit",
           meridiem: false
         }}
-        events={console.log(correctFormat)}
+        events={correctFormat}
         eventColor="b259a0"
         eventTextColor="#f4f4f4"
         header={{
