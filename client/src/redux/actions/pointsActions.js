@@ -7,7 +7,8 @@ import {
   DELETE_POINTS,
   SET_CURRENT_POINTS,
   CLEAR_CURRENT,
-  GET_USER_POINTS
+  GET_USER_POINTS,
+  GET_POINTS_REPORT_FOR_USER
 } from "./actionTypes";
 import { toast } from "react-toastify";
 
@@ -20,6 +21,24 @@ export const getPointsReport = semester => async dispatch => {
     const data = await res.json();
     dispatch({
       type: GET_ALL_POINTS,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: POINTS_ERROR,
+      payload: err.message
+    });
+  }
+};
+
+export const getPointsReportForUser = (semester, uid) => async dispatch => {
+  try {
+    const res = await fetch(
+      `http://localhost:3001/api/v1/pointsReport/${semester}/${uid}`
+    );
+    const data = await res.json();
+    dispatch({
+      type: GET_POINTS_REPORT_FOR_USER,
       payload: data
     });
   } catch (err) {

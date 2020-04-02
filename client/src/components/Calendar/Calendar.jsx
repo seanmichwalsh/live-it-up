@@ -14,6 +14,7 @@ import { getEvents } from "./../../redux/actions/eventActions";
 import "./Calendar.css";
 
 const Calendar = ({ getEvents, events }) => {
+  const isAdmin = true;
   useEffect(() => {
     getEvents();
     //eslint-disable-next-line
@@ -21,14 +22,16 @@ const Calendar = ({ getEvents, events }) => {
 
   return (
     <div id="calendarPage">
-      <a
-        href="/addevent"
-        className="btn btn-secondary btn-small active addButton"
-        role="button"
-        aria-pressed="true"
-      >
-        ADD EVENT
-      </a>
+      {isAdmin && (
+        <a
+          href="/addevent"
+          className="btn btn-secondary btn-small active addButton"
+          role="button"
+          aria-pressed="true"
+        >
+          ADD EVENT
+        </a>
+      )}
       <FullCalendar
         height="auto"
         defaultView="dayGridMonth"
