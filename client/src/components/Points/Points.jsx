@@ -12,7 +12,7 @@ import {
   getUserPointsReport
 } from "../../redux/actions/pointsActions";
 import { connect } from "react-redux";
-// import RequirementPoints from "./RequirementPoints";
+import RequirementPoints from "./RequirementPoints";
 
 const Points = ({
   getUser,
@@ -26,11 +26,13 @@ const Points = ({
   pointsReport
 }) => {
   const [userChange, setUserChange] = useState({
-    semester: "201908",
+    semester: "2020spring",
     adminStatus: false
   });
 
-  const tempUser = "mwoodson7";
+  const tempUser = "zkang35";
+
+  const isAdmin = true;
 
   useEffect(() => {
     getUser(tempUser);
@@ -79,6 +81,7 @@ const Points = ({
     ));
     header = (
       <tr>
+        <th>Name</th>
         <th>Description</th>
         <th>Date</th>
         <th>Category</th>
@@ -144,7 +147,9 @@ const Points = ({
     );
   }
 
-  return (
+  return !isAdmin ? (
+    <RequirementPoints />
+  ) : (
     <div className="directory-page">
       <div className="top-bar">
         <header id="header">
@@ -188,7 +193,7 @@ const Points = ({
 
 Points.propTypes = {
   getUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
+  // user: PropTypes.object.isRequired,
   points: PropTypes.array.isRequired,
   getPointsReport: PropTypes.func.isRequired,
   getUserPointsReport: PropTypes.func.isRequired,

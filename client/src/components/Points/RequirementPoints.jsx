@@ -5,43 +5,45 @@ import PropTypes from "prop-types";
 // import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./RequirementPoints.css";
-import { getUserPointsReport } from "../../redux/actions/pointsActions";
+import { getPointsReportForUser } from "../../redux/actions/pointsActions";
 import { getUser } from "../../redux/actions/userActions";
 
 const RequirementPoints = ({
   pointsReport,
-  getUserPointsReport,
+  getPointsReportForUser,
   // user,
   getUser
 }) => {
   const [userChange, setUserChange] = useState({
-    semester: "201908",
+    //eslint-disable-next-line
+    semester: "2020spring",
     adminStatus: false
   });
 
-  const tempUser = "mwoodson7";
+  const tempUser = "zkang35";
 
   useEffect(() => {
     getUser(tempUser);
-    getUserPointsReport(userChange.semester, tempUser);
-  }, [pointsReport]);
+    getPointsReportForUser(userChange.semester, tempUser);
+    //eslint-disable-next-line
+  }, []);
 
   var requirementPoints = pointsReport;
 
   var group1Points,
     group2Points,
     group3Points,
-    plc = null;
-  if (requirementPoints != null) {
-    var group1Points = requirementPoints[tempUser].group1;
-    var group2Points = requirementPoints[tempUser].group2;
-    var group3Points = requirementPoints[tempUser].group3;
-    var plcPoints = requirementPoints[tempUser].plc;
+    plcPoints = null;
+  if (requirementPoints !== null) {
+    group1Points = requirementPoints[tempUser].group1;
+    group2Points = requirementPoints[tempUser].group2;
+    group3Points = requirementPoints[tempUser].group3;
+    plcPoints = requirementPoints[tempUser].plc;
   }
-  var group1 = null;
-  var group2 = null;
-  var group3 = null;
-  var plc = null;
+  var group1;
+  var group2;
+  var group3;
+  var plc;
 
   /* Point requirements
 	
@@ -60,7 +62,7 @@ const RequirementPoints = ({
           <p>Not Satisfied</p>
         </div>
       );
-    } else if (group1Points == group1Goal - 1) {
+    } else if (group1Points === group1Goal - 1) {
       group1 = (
         <div className="yellow-block">
           <h4>Group 1</h4>
@@ -99,7 +101,7 @@ const RequirementPoints = ({
           <p>Not Satisfied</p>
         </div>
       );
-    } else if (group3Points == group3Goal - 1) {
+    } else if (group3Points === group3Goal - 1) {
       group3 = (
         <div className="yellow-block">
           <h4>Group 3</h4>
@@ -134,32 +136,36 @@ const RequirementPoints = ({
 
   return (
     <table>
-      <tr>
-        <td>
-          {requirementPoints !== null &&
-            requirementPoints !== undefined &&
-            group1}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {requirementPoints !== null &&
-            requirementPoints !== undefined &&
-            group2}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {requirementPoints !== null &&
-            requirementPoints !== undefined &&
-            group3}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {requirementPoints !== null && requirementPoints !== undefined && plc}
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>
+            {requirementPoints !== null &&
+              requirementPoints !== undefined &&
+              group1}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {requirementPoints !== null &&
+              requirementPoints !== undefined &&
+              group2}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {requirementPoints !== null &&
+              requirementPoints !== undefined &&
+              group3}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {requirementPoints !== null &&
+              requirementPoints !== undefined &&
+              plc}
+          </td>
+        </tr>
+      </tbody>
     </table>
   );
 };
@@ -168,7 +174,7 @@ RequirementPoints.propTypes = {
   getUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   pointsReport: PropTypes.object.isRequired,
-  getUserPointsReport: PropTypes.func.isRequired
+  getPointsReportForUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -176,6 +182,6 @@ const mapStateToProps = state => ({
   pointsReport: state.points.pointsReport
 });
 
-export default connect(mapStateToProps, { getUser, getUserPointsReport })(
+export default connect(mapStateToProps, { getUser, getPointsReportForUser })(
   RequirementPoints
 );
