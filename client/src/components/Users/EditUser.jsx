@@ -6,7 +6,11 @@ import { connect } from "react-redux";
 import "./AddUser.css";
 import { PropTypes } from "prop-types";
 import { getCommittees } from "./../../redux/actions/committeeActions";
-import { updateUser, clearCurrent } from "./../../redux/actions/userActions";
+import {
+  getUsers,
+  updateUser,
+  clearCurrent
+} from "./../../redux/actions/userActions";
 
 const EditUser = ({ updateUser, committees, getCommittees, current }) => {
   const [firstName, setFirstName] = useState("");
@@ -20,6 +24,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
   const [primaryCommittee, setPrimaryCommittee] = useState("");
   const [auxCommittee, setAuxCommittee] = useState([]);
   const [committee, setCommittee] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     getCommittees();
@@ -40,6 +45,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
             return committee;
           })
       );
+      setIsAdmin(current.isAdmin);
     }
     // eslint-disable-next-line
   }, [current]);
@@ -69,7 +75,8 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
         onCampus: residency,
         active: status,
         mainCommittee: primaryCommittee,
-        committees: committee
+        committees: committee,
+        isAdmin: isAdmin
       };
       updateUser(newUser, current.uid);
       //Clear Fields
@@ -84,11 +91,13 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       setPrimaryCommittee("");
       setAuxCommittee([]);
       setCommittee([]);
+      setIsAdmin(false);
       $("#onCampus").val("");
       $("#activeMember").val("");
       $("#committees").val("");
       $("input[type=checkbox]").prop("checked", false);
       clearCurrent();
+      getUsers();
       setTimeout(() => window.history.back(), 3500);
     }
   };
@@ -264,7 +273,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     Choose...
                   </option>
                   {committees
-                    .filter(committee => committee.type === "Primary")
+                    .filter(committee => committee.type === "Event Planning")
                     .map(committee => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}
@@ -328,6 +337,28 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                       </div>
                     ))}
                 </div>
+                <div className="isAdmin">
+                  <div className="form-group text-left">
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        id="isAdminCheck"
+                        checked={isAdmin}
+                        className="custom-control-input"
+                        onChange={event => {
+                          setIsAdmin(event.target.checked);
+                        }}
+                      />
+                      <label
+                        htmlFor="isAdminCheck"
+                        className="custom-control-label"
+                        id="isAdmin"
+                      >
+                        Administrator
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <button
@@ -336,7 +367,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
               id="add-button"
               onClick={onSubmit}
             >
-              Edit User
+              Save User Changes
             </button>
           </form>
         </div>
@@ -356,7 +387,8 @@ const mapStateToProps = state => ({
   current: state.user.current
 });
 
-export default connect(
-  mapStateToProps,
-  { updateUser, getCommittees, clearCurrent }
-)(EditUser);
+export default connect(mapStateToProps, {
+  updateUser,
+  getCommittees,
+  clearCurrent
+})(EditUser);

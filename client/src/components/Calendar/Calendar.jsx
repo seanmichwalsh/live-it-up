@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import $ from "jquery";
-import "fullcalendar";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import momentTimezonePlugin from "@fullcalendar/moment-timezone";
+import interactionPlugin from "@fullcalendar/interaction";
+import "@fullcalendar/core/main.css";
+import "@fullcalendar/daygrid/main.css";
+import "@fullcalendar/timegrid/main.css";
 import "moment/min/moment.min.js";
-import "fullcalendar/dist/fullcalendar.css";
-import "fullcalendar/dist/fullcalendar.js";
-import "./Calendar.css";
 import { getEvents } from "./../../redux/actions/eventActions";
+import "./Calendar.css";
 
 const Calendar = ({ getEvents, events }) => {
   useEffect(() => {
@@ -15,62 +19,51 @@ const Calendar = ({ getEvents, events }) => {
     //eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    const correctFormat = [];
-    events.map(event => {
-      correctFormat.push({
-        title: event.eventName,
-        start: event.startTime.substring(0, 19),
-        end: event.endTime.substring(0, 19)
-      });
-    });
-    $("#calendar").fullCalendar({
-      events: correctFormat,
-      eventColor: "#b259a0",
-      // timeFormat: "h(:mm)",
-      // eventTimeFormat: {
-      //   // like '14:30:00'
-      //   hour: "2-digit",
-      //   minute: "2-digit",
-      //   second: "2-digit",
-      //   meridiem: false
-      // },
-      eventTextColor: "#f4f4f4",
-      header: {
-        left: "prev,next today",
-        center: "title",
-        right: "month,listMonth"
-      }
-    });
-    $("#calendar").fullCalendar("addEventSource", correctFormat);
-    $("#calendar").fullCalendar({ timezone: "America/New_York" });
-    $("#calendar").fullCalendar("option", "aspectRatio", 1);
-    $("#calendar").fullCalendar({
-      eventClick: function(calEvent, jsEvent, view) {
-        alert("Event: " + calEvent.title);
-        alert("Coordinates: " + jsEvent.pageX + "," + jsEvent.pageY);
-        alert("View: " + view.name);
-      }
-    });
-  }, [events]);
-
   return (
     <div id="calendarPage">
-      <header id="header">
-        <div id="add-edit-box">
-          <div className="dropdown">
-            <a
-              href="/addevent"
-              class="btn btn-secondary btn-small active"
-              role="button"
-              aria-pressed="true"
-            >
-              ADD EVENT
-            </a>
-          </div>
-        </div>
-      </header>
-      <div id="calendar" />
+      <a
+        href="/addevent"
+        className="btn btn-secondary btn-small active addButton"
+        role="button"
+        aria-pressed="true"
+      >
+        ADD EVENT
+      </a>
+      <FullCalendar
+        height="auto"
+        defaultView="dayGridMonth"
+        aspectRatio="1"
+        plugins={[
+          momentTimezonePlugin,
+          dayGridPlugin,
+          timeGridPlugin,
+          interactionPlugin
+        ]}
+        timezone="local"
+        eventTimeFormat={{
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          meridiem: false
+        }}
+        events={events.map(event => ({
+          title: event.eventName,
+          start: `${event.startTime.substring(0, 19)}Z`,
+          end: `${event.endTime.substring(0, 19)}Z`
+        }))}
+        eventColor="b259a0"
+        eventTextColor="#f4f4f4"
+        header={{
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+        }}
+        dateClick={(calEvent, jsEvent, view) => {
+          alert("Event: " + calEvent.title);
+          alert("Coordinates: " + jsEvent.pageX + "," + jsEvent.pageY);
+          alert("View: " + view.name);
+        }}
+      />
     </div>
   );
 };
@@ -84,7 +77,4 @@ const mapStateToProps = state => ({
   events: state.event.events
 });
 
-export default connect(
-  mapStateToProps,
-  { getEvents }
-)(Calendar);
+export default connect(mapStateToProps, { getEvents })(Calendar);
