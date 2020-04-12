@@ -20,12 +20,12 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
   const [primaryCommittee, setPrimaryCommittee] = useState("");
   const [auxCommittee, setAuxCommittee] = useState([]);
   const [committee, setCommittee] = useState([]);
-  const [admin, setAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     getCommittees();
     //eslint-disable-next-line
-  }, [committees]);
+  }, []);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -53,7 +53,11 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
         active: status,
         mainCommittee: primaryCommittee,
         committees: committee,
+<<<<<<< HEAD
         admin: admin
+=======
+        isAdmin: isAdmin
+>>>>>>> a3363661cd048a472e69122aef58ffe3d3b03598
       };
       addUser(newUser);
       //Clear Fields
@@ -68,7 +72,11 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
       setPrimaryCommittee("");
       setAuxCommittee([]);
       setCommittee([]);
+<<<<<<< HEAD
       setAdmin(false);
+=======
+      setIsAdmin(false);
+>>>>>>> a3363661cd048a472e69122aef58ffe3d3b03598
       $("#onCampus").val("");
       $("#activeMember").val("");
       $("#committees").val("");
@@ -264,7 +272,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     Choose...
                   </option>
                   {committees
-                    .filter(committee => committee.type === "Primary")
+                    .filter(committee => committee.type === "Event Planning")
                     .map(committee => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}
@@ -323,6 +331,36 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                       </div>
                     ))}
                 </div>
+                <div className="isAdmin">
+                  <div className="form-group text-left">
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        id="isAdminCheck"
+                        className="custom-control-input"
+                        onChange={() => {
+                          if ($("#isAdminCheck")[0].hasAttribute("checked")) {
+                            $("#isAdminCheck")[0].removeAttribute("checked");
+                            setIsAdmin(false);
+                          } else {
+                            $("#isAdminCheck")[0].setAttribute(
+                              "checked",
+                              "checked"
+                            );
+                            setIsAdmin(true);
+                          }
+                        }}
+                      />
+                      <label
+                        htmlFor="isAdminCheck"
+                        className="custom-control-label"
+                        id="isAdmin"
+                      >
+                        Administrator
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <button
@@ -349,7 +387,4 @@ const mapStateToProps = state => ({
   committees: state.committee.committees
 });
 
-export default connect(
-  mapStateToProps,
-  { addUser, getCommittees }
-)(AddUser);
+export default connect(mapStateToProps, { addUser, getCommittees })(AddUser);

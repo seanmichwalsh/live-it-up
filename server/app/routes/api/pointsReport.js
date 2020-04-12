@@ -22,7 +22,7 @@ router.get('/:semester', (req, res) => {
                 pointsReport[points[i]['uid']] = pointReport
             }
             var category = points[i]['category']
-            pointsReport[points[i]['uid']][category] += 1
+            pointsReport[points[i]['uid']][category] += points[i]['points']
         }
 
         res.send(pointsReport)

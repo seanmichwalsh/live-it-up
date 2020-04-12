@@ -1,0 +1,34 @@
+{
+    "swalsh38": {
+        "group1": 3,
+        "group2": 1,
+        "group3": 0,
+        "committeePoints": 0,
+        "adHoc": 1,
+        "officeHours": 0,
+        "teasering": 0,
+        "semester": "fall2019"
+    },
+    "sidartha": 
+        {
+        "group1": 1,
+        "group2": 0,
+        "group3": 0,
+        "committeePoints": 0,
+        "adHoc": 0,
+        "officeHours": 0,
+        "teasering": 0,
+        "semester": "fall2019"
+    },
+    "mwoodson7": 
+        {
+        "group1": 10,
+        "group2": 10,
+        "group3": 10,
+        "committeePoints": 0,
+        "adHoc": 10,
+        "officeHours": 30,
+        "teasering": 30,
+        "semester": "fall2019"
+    }
+}

@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addEvent } from "../../redux/actions/eventActions";
 import { getCommittees } from "../../redux/actions/committeeActions";
-import Moment from "react-moment";
 import moment from "moment-timezone";
 
 const AddEventForm = ({ addEvent, committees, getCommittees }) => {
@@ -19,7 +18,8 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
 
   useEffect(() => {
     getCommittees();
-  }, [committee]);
+    //eslint-disable-next-line
+  }, []);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -32,25 +32,17 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
-      console.log(startTime);
-      console.log(endTime);
-      console.log(`${date}T${startTime}:00`)
-      console.log(`${date}T${endTime}:00`)
-
       const newEvent = {
         eventName: name,
         location: location,
         committees: committee,
-        startTime: moment
-          .tz(`${date}T${startTime}:00`, 'America/New_York')
-          .utc()
+        startTime: moment(`${date}T${startTime}:00`)
+          .tz("America/New_York")
           .format(),
-        endTime: moment
-          .tz(`${date}T${endTime}:00`, 'America/New_York')
-          .utc()
+        endTime: moment(`${date}T${endTime}:00`)
+          .tz("America/New_York")
           .format()
       };
-      console.log(newEvent);
       addEvent(newEvent);
       //Clear Fields
       setName("");
@@ -105,13 +97,11 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
               Choose...
             </option>
             {committees !== null &&
-              committees
-                .filter(committee => committee.type === "Primary")
-                .map(committee => (
-                  <option key={committee._id} value={committee._id}>
-                    {committee.name}
-                  </option>
-                ))}
+              committees.map(committee => (
+                <option key={committee._id} value={committee._id}>
+                  {committee.name}
+                </option>
+              ))}
           </select>
         </div>
         <div className="form-group col-md-3 text-left">
@@ -173,7 +163,6 @@ const mapStateToProps = state => ({
   committees: state.committee.committees
 });
 
-export default connect(
-  mapStateToProps,
-  { addEvent, getCommittees }
-)(AddEventForm);
+export default connect(mapStateToProps, { addEvent, getCommittees })(
+  AddEventForm
+);
