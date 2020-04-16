@@ -16,11 +16,11 @@ const RequirementPoints = ({
 }) => {
   const [userChange, setUserChange] = useState({
     //eslint-disable-next-line
-    semester: "2020spring",
-    adminStatus: false
+    semester: "202002",
+    adminStatus: true
   });
 
-  const tempUser = "zkang35";
+  const tempUser = "mwoodson7";
 
   useEffect(() => {
     getUser(tempUser);
@@ -34,7 +34,8 @@ const RequirementPoints = ({
     group2Points,
     group3Points,
     plcPoints = null;
-  if (requirementPoints !== null) {
+  if (requirementPoints !== null && requirementPoints !== undefined) {
+    // console.log(requirementPoints)
     group1Points = requirementPoints[tempUser].group1;
     group2Points = requirementPoints[tempUser].group2;
     group3Points = requirementPoints[tempUser].group3;
