@@ -24,22 +24,24 @@ const Points = ({
   //getUserReport,
   points,
   pointsReport
+
 }) => {
   const [userChange, setUserChange] = useState({
-    semester: "2020spring",
-    adminStatus: false
+    semester: "202002",
+    adminStatus: true
+
   });
 
-  const tempUser = "zkang35";
-
-  const isAdmin = true;
+  const tempUser = "mwoodson7"; // Not required once user works (getme api call)
+  const isAdmin = true; // Not required once user works (getme api call)
 
   useEffect(() => {
-    getUser(tempUser);
+    getUser(tempUser); 
     if (user !== null && user !== undefined) {
       setUserChange({
         semester: userChange.semester,
-        adminStatus: user.isAdmin
+        // adminStatus: user.isAdmin // Add back when user is functional
+        adminStatus: isAdmin // Used for testing purposes until user is connected
       });
     }
     if (userChange.adminStatus) {
@@ -52,43 +54,10 @@ const Points = ({
   }, [userChange.semester]);
 
   var detailData = userPointDetails;
-  // console.log(detailData);
-  // var requirementPoints = pointsReport;
-  // console.log(requirementPoints);
-
   var title = null;
   var header = null;
   var details = null;
 
-  if (!userChange.adminStatus) {
-    title = (
-      <div>
-        {user !== null && user !== undefined && user.firstName}'s Total Points:
-      </div>
-    );
-
-    details = Object.keys(detailData).map((username, index) => (
-      <tr className="tr-className-1" data-title="bootstrap table">
-        <td className="description">{detailData[username].description}</td>
-        <td className="td-className-1" data-title="bootstrap table">
-          <a className="date" href="/#">
-            {detailData[username].date}
-          </a>
-        </td>
-        <td className="group1">{detailData[username].category}</td>
-        <td className="committeeEvents">{detailData[username].points}</td>
-      </tr>
-    ));
-    header = (
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Category</th>
-        <th>Points</th>
-      </tr>
-    );
-  } else {
     title = <div>Member Points Summary</div>;
 
     details = Object.keys(points).map((username, index) => (
@@ -145,11 +114,9 @@ const Points = ({
         <th>Committee Meetings</th>
       </tr>
     );
-  }
+  // }
 
-  return !isAdmin ? (
-    <RequirementPoints />
-  ) : (
+  var memberView = (
     <div className="directory-page">
       <div className="top-bar">
         <header id="header">
@@ -179,16 +146,17 @@ const Points = ({
             </table>
           </div>
         </div>
-        <div id="points-sidebar">
-          <div id="req-header">REQUIREMENTS</div>
-          {/* depending on calculations of each point category
-                    display different color boxes to determine if member
-                    is in good standing... follow mock-ups */}
-        </div>
       </div>
     </div>
+  )
+
+  return (
+    <div>
+      {user != null && user != undefined && !userChange.adminStatus && <RequirementPoints />}
+      {user != null && user != undefined && userChange.adminStatus && memberView}
+    </div>
   );
-  // }
+
 };
 
 Points.propTypes = {
