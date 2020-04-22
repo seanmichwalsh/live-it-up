@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from "react";
-// import $ from "jquery";
-import { connect } from "react-redux";
+import React from "react";
 import PropTypes from "prop-types";
-// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./RequirementPoints.css";
-import { getPointsReportForUser } from "../../redux/actions/pointsActions";
-import { getUser } from "../../redux/actions/userActions";
 
 const RequirementPoints = ({
   pointsReport,
   getPointsReportForUser,
-  // user,
-  getUser
+  user,
+  getUser,
+  userChange,
+  tempUser,
 }) => {
-  const [userChange, setUserChange] = useState({
-    //eslint-disable-next-line
-    semester: "202002",
-    adminStatus: true
-  });
-
-  const tempUser = "mwoodson7";
-
-  useEffect(() => {
-    getUser(tempUser);
-    getPointsReportForUser(userChange.semester, tempUser);
-    //eslint-disable-next-line
-  }, []);
-
   var requirementPoints = pointsReport;
 
   var group1Points,
@@ -55,7 +38,7 @@ const RequirementPoints = ({
   var group3Goal = 2;
   var plcGoal = 1;
 
-  if (requirementPoints != null) {
+  if (requirementPoints !== null) {
     if (group1Points <= group1Goal - 2) {
       group1 = (
         <div className="red-block">
@@ -175,14 +158,7 @@ RequirementPoints.propTypes = {
   getUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   pointsReport: PropTypes.object.isRequired,
-  getPointsReportForUser: PropTypes.func.isRequired
+  getPointsReportForUser: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  user: state.user.user,
-  pointsReport: state.points.pointsReport
-});
-
-export default connect(mapStateToProps, { getUser, getPointsReportForUser })(
-  RequirementPoints
-);
+export default RequirementPoints;
