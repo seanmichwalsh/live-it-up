@@ -1,6 +1,6 @@
 import React from "react";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SideBar from "./SideBar";
+
 import "./Home.css";
 
 const Home = () => {
@@ -73,24 +73,7 @@ const Home = () => {
           </div>  
         </div>
         <div className="side-bar">
-          <div className="gmm-header">
-            <div className="left">Next GMM</div>
-            <button className="right">
-              <a href="/#">
-                <FontAwesomeIcon className="icon" icon={faPlusCircle} />
-              </a>
-            </button>
-          </div>
-          <div className="gmm-text">
-            <div className="date-box">FEB 5</div>
-            <div className="location-box">
-              Student Center Ballroom at 7:00PM
-            </div>
-          </div>
-          <div className="committee-times-header">COMMITTEE TIMES</div>
-          <div className="committee-times">
-            committee times here but i'm lazy
-          </div>
+          <SideBar />
         </div>
       </div>
     </div>
