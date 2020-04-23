@@ -1,14 +1,30 @@
-.responsive-img {
+.eventDetail {
+    margin-bottom: 5vh;
+    width: 10vw;
+}
+
+.img {
     width: 100%;
     height: auto;
 }
   
 .description {
-    width: 100%;
-    height: auto;
-    font-size: 20px;
+    font-size: calc(12px * ((100vw - 300px) / (1600 - 300)));
+    width: 80%;
+    margin: 0 auto;
     font-weight: bold;
     text-align: left;
 }
+
+/* @media only screen and (max-width: 1000px)  {
+
+
+    .responsive-img {
+        width: 80%;
+    }
+    .description {
+       width: 100%;
+    }
+}
   
-  
+   */

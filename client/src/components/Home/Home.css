@@ -5,7 +5,7 @@
 .main-page {
   width: 75%;
   float: right;
-  padding: 10px;
+  padding-left: 3vw;
 }
 
 .main-header {
@@ -23,4 +23,32 @@
   padding-top: 300px;
   padding-right: 30px;
   overflow-x: hidden; 
+}
+
+@media only screen and (max-width: 1000px) {
+  .entire-page {
+    margin: 0 auto;
+    width: 90%;
+    order: 1;
+  }
+
+  .side-bar {
+    order: 2;
+    width: 80%;
+    float: none;
+    position: static; 
+    padding-top: 2vh;
+    padding-right: 0px;
+  }
+
+  .main-page {
+    order: 3;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .main-header {
+    padding-bottom: 1vw;
+  }
 }
