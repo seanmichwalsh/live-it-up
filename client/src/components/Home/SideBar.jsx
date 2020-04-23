@@ -1,7 +1,7 @@
 import React from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./SideBar.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './SideBar.css';
 
 const SideBar = () => {
     return (
@@ -14,14 +14,13 @@ const SideBar = () => {
                     </a>
                 </button>
             </div>
-            <div id="gmm-text">
-                <div id="date-box">FEB 5</div>
-                <div id="location-box">
-                Student Center Ballroom at 7:00PM
+            <div className="text">
+                <div className="text">
+                    Feb 5 Student Center Ballroom at 7:00PM
                 </div>
             </div>
             <div className="panelHeader">COMMITTEE TIMES</div>
-            <div id="committee-times">
+            <div className="text">
                 committee times here but i'm lazy
             </div>
     </div>
