@@ -71,4 +71,11 @@
   .main-header {
     padding-bottom: 1vw;
   }
+
+  #main-event {
+    width: 100%;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    transform: scale(1);
+  }
 }
