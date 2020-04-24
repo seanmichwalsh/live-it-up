@@ -118,7 +118,7 @@ const MemberView = ({
   }
 
   return (
-    <table>
+    <table className="table">
       <tbody>
         <tr>
           <td>
