@@ -16,12 +16,12 @@ const SideBar = () => {
             </div>
             <div className="text">
                 <div className="text">
-                    Feb 5 Student Center Ballroom at 7:00PM
+                    Lorem ipsum dolor sit amet, consectetur.
                 </div>
             </div>
             <div className="panelHeader">COMMITTEE TIMES</div>
             <div className="text">
-                committee times here but i'm lazy
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu tellus et nisi iaculis iaculis vel ut ante. Quisque aliquet, velit eget dapibus accumsan, purus.
             </div>
     </div>
     );
