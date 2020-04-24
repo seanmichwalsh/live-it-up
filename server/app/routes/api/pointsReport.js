@@ -17,13 +17,11 @@ router.get("/:semester", (req, res) => {
           pointReport["officeHours"] = 0;
           pointReport["committeeMeetings"] = 0;
           pointReport["semester"] = points[i]["semester"];
-
           pointsReport[points[i]["uid"]] = pointReport;
         }
         var category = points[i]["category"];
         pointsReport[points[i]["uid"]][category] += points[i]["points"];
       }
-
       res.send(pointsReport);
     })
     .catch(err => {
