@@ -1,7 +1,3 @@
-.entire-page {
-  font-family: "Roboto", sans-serif;
-}
-
 .main-page {
   width: 75%;
   float: right;
@@ -25,7 +21,13 @@
   overflow-x: hidden; 
 }
 
-@media only screen and (max-width: 1000px) {
+#events-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 1025px) {
   .entire-page {
     margin: 0 auto;
     width: 90%;
