@@ -21,18 +21,27 @@
   overflow-x: hidden;
 }
 
-#main-event {
+.main-event {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(1.5);
-  margin-top: 6rem;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin-top: 0.3rem;
   margin-bottom: 3rem;
 }
 
-#events-container {
+.event-item {
   display: flex;
-  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#events-container {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: auto auto auto;
   justify-content: space-around;
 }
 
