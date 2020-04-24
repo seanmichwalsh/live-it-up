@@ -40,26 +40,26 @@ const Calendar = ({ getEvents, events }) => {
           momentTimezonePlugin,
           dayGridPlugin,
           timeGridPlugin,
-          interactionPlugin
+          interactionPlugin,
         ]}
         timezone="local"
         eventTimeFormat={{
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
-          meridiem: false
+          meridiem: false,
         }}
-        events={events.map(event => ({
+        events={events.map((event) => ({
           title: event.eventName,
           start: `${event.startTime.substring(0, 19)}Z`,
-          end: `${event.endTime.substring(0, 19)}Z`
+          end: `${event.endTime.substring(0, 19)}Z`,
         }))}
         eventColor="b259a0"
         eventTextColor="#f4f4f4"
         header={{
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
         }}
         dateClick={(calEvent, jsEvent, view) => {
           alert("Event: " + calEvent.title);
@@ -73,11 +73,11 @@ const Calendar = ({ getEvents, events }) => {
 
 Calendar.propTypes = {
   getEvents: PropTypes.func.isRequired,
-  events: PropTypes.array.isRequired
+  events: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
-  events: state.event.events
+const mapStateToProps = (state) => ({
+  events: state.event.events,
 });
 
 export default connect(mapStateToProps, { getEvents })(Calendar);

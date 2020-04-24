@@ -16,11 +16,11 @@ const EditCommitteeForm = ({ updateCommittee, current }) => {
     }
   }, [current]);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const newCommittee = {
       name: name,
-      type: type
+      type: type,
     };
     updateCommittee(newCommittee);
     //Clear Fields
@@ -39,7 +39,7 @@ const EditCommitteeForm = ({ updateCommittee, current }) => {
             className="form-control"
             id="name"
             placeholder="Committee Name"
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             value={name}
             required
           />
@@ -53,7 +53,7 @@ const EditCommitteeForm = ({ updateCommittee, current }) => {
             className="form-control"
             id="type"
             placeholder="Event Planning"
-            onChange={e => setType(e.target.value)}
+            onChange={(e) => setType(e.target.value)}
             value={type}
             required
           />
@@ -72,12 +72,12 @@ const EditCommitteeForm = ({ updateCommittee, current }) => {
 };
 
 EditCommitteeForm.propTypes = {
-  updateCommittee: PropTypes.func.isRequired
+  updateCommittee: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   committees: state.committees,
-  current: state.current
+  current: state.current,
 });
 
 export default connect(mapStateToProps, { updateCommittee })(EditCommitteeForm);

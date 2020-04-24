@@ -17,11 +17,7 @@ const Points = ({ user, getUser }) => {
 
   return (
     <div>
-      {isAdmin ? (
-        <AdminView />
-      ) : (
-        <MemberView user={user} tempUser={tempUser} />
-      )}
+      {isAdmin ? <AdminView /> : <MemberView user={user} tempUser={tempUser} />}
     </div>
   );
 };
