@@ -12,13 +12,22 @@
 .side-bar {
   width: 23%;
   float: left;
-  position: fixed; 
-  z-index: 1; 
-  top: 0; 
+  position: fixed;
+  z-index: 1;
+  top: 0;
   right: 0;
   padding-top: 300px;
   padding-right: 30px;
-  overflow-x: hidden; 
+  overflow-x: hidden;
+}
+
+#main-event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.5);
+  margin-top: 6rem;
+  margin-bottom: 3rem;
 }
 
 #events-container {
@@ -38,7 +47,7 @@
     order: 2;
     width: 80%;
     float: none;
-    position: static; 
+    position: static;
     padding-top: 2vh;
     padding-right: 0px;
   }
