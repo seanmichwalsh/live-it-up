@@ -11,8 +11,8 @@ class ManageCommitteePage extends Component {
   state = {
     committee: {
       name: "",
-      type: ""
-    }
+      type: "",
+    },
   };
 
   render() {
@@ -22,17 +22,17 @@ class ManageCommitteePage extends Component {
 
 ManageCommitteePage.propTypes = {
   committees: PropTypes.array.isRequired,
-  loadCommittees: PropTypes.func.isRequired
+  loadCommittees: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    committees: state.committees
+    committees: state.committees,
   };
 }
 
 const mapDispatchToProps = {
-  loadCommittees: committeeActions.loadCommittees
+  loadCommittees: committeeActions.loadCommittees,
 };
 
 export default connect(
