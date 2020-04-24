@@ -1,20 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import "./EventDetail.css";
 
-class EventDetail extends Component {
-  render() {
-    return (
-      <div className="eventDetail">
-        <img className="pic" src={this.props.URL} alt=""></img>
-        <div className="description">
-          <div>Name: {this.props.name}</div>
-          <div>Date: {this.props.date}</div>
-          <div>Time: {this.props.time} </div>
-          <div>Location: {this.props.location}</div>
+const EventDetail = ({ URL, name, date, time, location, mainEvent }) => {
+  return (
+    <div className="eventDetail">
+      <img className="pic" src={URL} alt=""></img>
+      <div className={`description ${mainEvent}`}>
+        <div className="left">
+          <div>Name: {name}</div>
+          <div>Date: {date}</div>
+        </div>
+        <div className="right">
+          <div>Time: {time} </div>
+          <div>Location: {location}</div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default EventDetail;

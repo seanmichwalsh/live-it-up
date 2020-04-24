@@ -44,11 +44,12 @@ const Home = ({ getEvents, events }) => {
                   Moment(event.endTime).format("h:mm a")
                 }
                 location={event.location}
+                mainEvent={true}
               />
             ))}
           </div>
           {events.splice(1, 3).map((event) => (
-            <div className="event-item">
+            <div className="event-item" key={event._id}>
               <EventDetail
                 key={event._id}
                 URL={
@@ -64,6 +65,7 @@ const Home = ({ getEvents, events }) => {
                   Moment(event.endTime).format("h:mm a")
                 }
                 location={event.location}
+                mainEvent={false}
               />
             </div>
           ))}

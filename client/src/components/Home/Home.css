@@ -33,6 +33,10 @@
   margin-bottom: 3rem;
 }
 
+.main-event .description {
+  font-size: 1rem;
+}
+
 .event-item {
   display: flex;
   justify-content: center;
@@ -72,10 +76,16 @@
     padding-bottom: 1vw;
   }
 
-  #main-event {
-    width: 100%;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    transform: scale(1);
+  .main-event {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  #events-container {
+    display: flex;
+    flex-direction: column;
   }
 }
