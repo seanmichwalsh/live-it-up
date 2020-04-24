@@ -9,20 +9,37 @@
 }
 
 .description {
-  font-size: calc(12px * ((100vw - 300px) / (1600 - 300)));
+  /* font-size: calc(12px * ((100vw - 300px) / (1600 - 300))); */
   width: 100%;
   margin: 0 auto;
   font-weight: bold;
   text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.description.true {
+  font-size: 1rem;
+}
+
+.description.false {
+  font-size: 0.7rem;
 }
 
 @media only screen and (max-width: 1025px) {
   .eventDetail {
-    margin-bottom: 2vh;
+    /* margin-bottom: 2vh; */
     width: 100%;
   }
+
   .description {
     width: 100%;
     text-align: center;
+    display: initial;
+  }
+
+  .description.false {
+    font-size: 1rem;
   }
 }
