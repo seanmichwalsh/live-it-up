@@ -31,7 +31,6 @@ const AdminView = ({ points, getPointsReport }) => {
         </header>
       </div>
       <div id="mainPG">
-        {/* <div id="mainPG"> */}
         <div id="points-display">
           <div id="display-header">
             <div>Member Points Summary</div>

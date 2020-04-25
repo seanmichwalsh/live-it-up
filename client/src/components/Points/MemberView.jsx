@@ -29,7 +29,8 @@ const MemberView = ({
   }
   var group1, group2, group3, plc;
 
-  /* Point requirements
+  /* 
+  Point requirements
 	Change these values if the points requirements ever change
 	*/
   var group1Goal = 2;

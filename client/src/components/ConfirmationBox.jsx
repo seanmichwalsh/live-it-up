@@ -1,5 +1,4 @@
 import React from "react";
-import CommitteeAccess from "./CommitteeAccess";
 
 const ConfirmationBox = () => (
   <div className="alert alert-success hidden" id="success-alert">
@@ -15,4 +14,4 @@ const ConfirmationBox = () => (
   </div>
 );
 
-export default CommitteeAccess;
+export default ConfirmationBox;
