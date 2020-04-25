@@ -145,8 +145,6 @@ const MemberView = ({
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user.user,
-  userPointDetails: state.points.userPointDetails,
   pointsReport: state.points.pointsReport,
 });
 

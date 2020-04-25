@@ -8,7 +8,7 @@ import AdminView from "./AdminView";
 
 const Points = ({ user, getUser }) => {
   const tempUser = "zkang35"; // Not required once user works (getme api call)
-  const isAdmin = false; // Not required once user works (getme api call)
+  const isAdmin = true; // Not required once user works (getme api call)
 
   useEffect(() => {
     getUser(tempUser);
@@ -29,8 +29,6 @@ Points.propTypes = {
 
 const mapStateToProps = (state) => ({
   user: state.user.user,
-  userPointDetails: state.points.userPointDetails,
-  pointsReport: state.points.pointsReport,
 });
 
 export default connect(mapStateToProps, {

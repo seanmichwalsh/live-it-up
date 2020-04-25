@@ -38,32 +38,6 @@ const AdminView = ({ points, getPointsReport }) => {
           <div id="user-table">
             <table data-toggle="table" className="table table-bordered">
               <thead>
-                {Object.keys(points).map((username) => (
-                  <tr className="tr-className-1" data-title="bootstrap table">
-                    <td>{username}</td>
-                    <td className="td-className-1" data-title="bootstrap table">
-                      <a className="date" href="/#">
-                        {points[username].semester}
-                      </a>
-                    </td>
-                    <td className="group1">{points[username].group1}</td>
-                    <td className="group2">{points[username].group2}</td>
-                    <td className="group3">{points[username].group3}</td>
-                    <td className="committeeEvents">
-                      {points[username].committeeEvents}
-                    </td>
-                    <td className="plc">{points[username].plc}</td>
-                    <td className="aux">{points[username].aux}</td>
-                    <td className="officeHours">
-                      {points[username].officeHours}
-                    </td>
-                    <td className="committeeMeetings">
-                      {points[username].committeeMeetings}
-                    </td>
-                  </tr>
-                ))}
-              </thead>
-              <tbody>
                 {
                   <tr>
                     <th>Member</th>
@@ -93,6 +67,32 @@ const AdminView = ({ points, getPointsReport }) => {
                     <th>Committee Meetings</th>
                   </tr>
                 }
+              </thead>
+              <tbody>
+                {Object.keys(points).map((username) => (
+                  <tr className="tr-className-1" data-title="bootstrap table">
+                    <td>{username}</td>
+                    <td className="td-className-1" data-title="bootstrap table">
+                      <a className="date" href="/#">
+                        {points[username].semester}
+                      </a>
+                    </td>
+                    <td className="group1">{points[username].group1}</td>
+                    <td className="group2">{points[username].group2}</td>
+                    <td className="group3">{points[username].group3}</td>
+                    <td className="committeeEvents">
+                      {points[username].committeeEvents}
+                    </td>
+                    <td className="plc">{points[username].plc}</td>
+                    <td className="aux">{points[username].aux}</td>
+                    <td className="officeHours">
+                      {points[username].officeHours}
+                    </td>
+                    <td className="committeeMeetings">
+                      {points[username].committeeMeetings}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
