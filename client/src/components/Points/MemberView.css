@@ -1,29 +1,38 @@
 .red-block {
-	background-color: red;
+  background-color: red;
+  transition: all 300ms ease-in-out;
 }
 
 .yellow-block {
-	background-color: yellow;
+  background-color: yellow;
+  transition: all 300ms ease-in-out;
 }
 
 .green-block {
-	background-color: #42F572;
+  background-color: #42f572;
+  transition: all 300ms ease-in-out;
 }
 
 div {
-	border-radius: 15px;
+  border-radius: 15px;
 }
 
 tr {
-	width: 100%;
+  width: 100%;
 }
 
 td {
-	width: 50%;
-	border-radius: 30px;
+  width: 50%;
+  border-radius: 30px;
+}
+
+.dropdown.member-view {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
 table {
-	margin: auto;
-	border-radius: 30px;
+  margin: auto;
+  border-radius: 30px;
 }

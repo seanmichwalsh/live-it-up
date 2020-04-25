@@ -17,9 +17,5 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  },
-  "dependencies": {
-    "@fullcalendar/interaction": "^4.4.0",
-    "@fullcalendar/timegrid": "^4.4.0"
   }
 }

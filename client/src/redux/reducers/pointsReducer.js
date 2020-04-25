@@ -12,7 +12,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-    points: [],
+    points: {},
     point: null,
     current: null,
     error: null,

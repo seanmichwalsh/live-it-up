@@ -11,7 +11,6 @@ const MemberView = ({
   getPointsReportForUser,
   tempUser,
 }) => {
-  //eslint-disable-next-line
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
@@ -19,15 +18,16 @@ const MemberView = ({
     //eslint-disable-next-line
   }, [semester]);
 
-  var group1Points, group2Points, group3Points, plcPoints;
-  if (pointsReport !== null && pointsReport !== undefined) {
-    // console.log(pointsReport)
-    group1Points = pointsReport[tempUser].group1;
-    group2Points = pointsReport[tempUser].group2;
-    group3Points = pointsReport[tempUser].group3;
-    plcPoints = pointsReport[tempUser].plc;
+  if (
+    pointsReport !== null &&
+    pointsReport !== undefined &&
+    pointsReport[tempUser] !== undefined
+  ) {
+    var group1Points = pointsReport[tempUser].group1;
+    var group2Points = pointsReport[tempUser].group2;
+    var group3Points = pointsReport[tempUser].group3;
+    var plcPoints = pointsReport[tempUser].plc;
   }
-  var group1, group2, group3, plc;
 
   /* 
   Point requirements
@@ -38,8 +38,13 @@ const MemberView = ({
   var group3Goal = 2;
   var plcGoal = 1;
 
-  if (pointsReport !== null) {
-    if (group1Points <= group1Goal - 2) {
+  var group1, group2, group3, plc;
+
+  if (pointsReport !== null && pointsReport !== undefined) {
+    if (
+      group1Points <= group1Goal - 2 ||
+      pointsReport[tempUser] === undefined
+    ) {
       group1 = (
         <div className="red-block">
           <h4>Group 1</h4>
@@ -62,7 +67,10 @@ const MemberView = ({
       );
     }
 
-    if (group2Points <= group2Goal - 1) {
+    if (
+      group2Points <= group2Goal - 1 ||
+      pointsReport[tempUser] === undefined
+    ) {
       group2 = (
         <div className="red-block">
           <h4>Group 2</h4>
@@ -78,7 +86,10 @@ const MemberView = ({
       );
     }
 
-    if (group3Points <= group3Goal - 2) {
+    if (
+      group3Points <= group3Goal - 2 ||
+      pointsReport[tempUser] === undefined
+    ) {
       group3 = (
         <div className="red-block">
           <h4>Group 3</h4>
@@ -101,7 +112,7 @@ const MemberView = ({
       );
     }
 
-    if (plcPoints < plcGoal) {
+    if (plcPoints < plcGoal || pointsReport[tempUser] === undefined) {
       plc = (
         <div className="red-block">
           <h4>PLC</h4>
@@ -119,25 +130,48 @@ const MemberView = ({
   }
 
   return (
-    <table className="table">
+    <table className="table table-bordered">
+      <div className="dropdown member-view">
+        {tempUser}'s Points Report for{" "}
+        <select onChange={(e) => setSemester(e.target.value)} value={semester}>
+          <option value=""></option>
+          <option value="2019fall">Fall 2019</option>
+          <option value="2020spring">Spring 2020</option>
+          <option value="2020summer">Summer 2020</option>
+        </select>
+      </div>
       <tbody>
         <tr>
           <td>
-            {pointsReport !== null && pointsReport !== undefined && group1}
+            {pointsReport !== null &&
+              pointsReport !== undefined &&
+              pointsReport !== {} &&
+              group1}
           </td>
         </tr>
         <tr>
           <td>
-            {pointsReport !== null && pointsReport !== undefined && group2}
+            {pointsReport !== null &&
+              pointsReport !== undefined &&
+              pointsReport !== {} &&
+              group2}
           </td>
         </tr>
         <tr>
           <td>
-            {pointsReport !== null && pointsReport !== undefined && group3}
+            {pointsReport !== null &&
+              pointsReport !== undefined &&
+              pointsReport !== {} &&
+              group3}
           </td>
         </tr>
         <tr>
-          <td>{pointsReport !== null && pointsReport !== undefined && plc}</td>
+          <td>
+            {pointsReport !== null &&
+              pointsReport !== undefined &&
+              pointsReport !== {} &&
+              plc}
+          </td>
         </tr>
       </tbody>
     </table>

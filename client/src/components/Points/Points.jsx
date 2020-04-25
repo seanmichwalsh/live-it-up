@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./Points.css";
 import { PropTypes } from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
 import { connect } from "react-redux";
@@ -17,13 +16,17 @@ const Points = ({ user, getUser }) => {
 
   return (
     <div>
-      {isAdmin ? <AdminView /> : <MemberView user={user} tempUser={tempUser} />}
+      {isAdmin ? ( // Change to user.adminStatus once CAS is working
+        <AdminView user={user} tempUser={tempUser} />
+      ) : (
+        <MemberView user={user} tempUser={tempUser} />
+      )}
     </div>
   );
 };
 
 Points.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   getUser: PropTypes.func.isRequired,
 };
 
