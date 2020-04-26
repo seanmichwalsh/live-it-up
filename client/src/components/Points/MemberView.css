@@ -1,8 +1,52 @@
+#entire-page {
+  display: flex;
+  justify-content: center;
+}
+.main-page {
+  width: 85%;
+}
+
+#point-table {
+  width: 75%;
+  float: left;
+}
+
+#rq-table {
+  width: 20%;
+  margin-left: 3vw;
+  float: right;
+  overflow-x: hidden;
+  /* width: 23%;
+  float: left;
+  position: fixed;
+
+  overflow-x: hidden; */
+  /* width: 80%;
+  margin: 0 auto;
+  border-radius: 30px; */
+}
+#panelHeader {
+  width: 100%;
+  font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
+  background: #ac539b;
+  border-radius: 25px;
+  font-weight: bold;
+  position: relative;
+  color: #ffffff;
+  text-align: left;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+}
+
 .red-block {
   background-color: red;
   border-radius: 15px;
   height: 12vh;
   display: grid;
+  margin-bottom: 1vh;
   transition: all 300ms ease-in-out;
 }
 
@@ -10,6 +54,8 @@
   background-color: yellow;
   border-radius: 15px;
   height: 12vh;
+  display: grid;
+  margin-bottom: 1vh;
   transition: all 300ms ease-in-out;
 }
 
@@ -17,6 +63,8 @@
   background-color: #42f572;
   border-radius: 15px;
   height: 12vh;
+  display: grid;
+  margin-bottom: 1vh;
   transition: all 300ms ease-in-out;
 }
 
@@ -32,19 +80,17 @@
   width: 100%;
 }
 
+/* this is getting overwritten by .red.green-block 
+  as its more specific 
+ */
 .member-view-td {
   width: 50%;
   border-radius: 30px;
+  margin-bottom: 1vh;
 }
 
 .dropdown.member-view {
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-size: 2rem;
-}
-
-.table {
-  width: 80%;
-  margin: 0 auto;
-  border-radius: 30px;
 }

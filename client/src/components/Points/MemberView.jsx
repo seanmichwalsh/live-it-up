@@ -150,51 +150,83 @@ const MemberView = ({
   }
 
   return (
-    <table className="table">
-      <div className="dropdown member-view">
-        {tempUser}'s Points Report for{" "}
-        <select onChange={(e) => setSemester(e.target.value)} value={semester}>
-          <option value=""></option>
-          <option value="2019fall">Fall 2019</option>
-          <option value="2020spring">Spring 2020</option>
-          <option value="2020summer">Summer 2020</option>
-        </select>
+    <div id="entire-page">
+      <div className="main-page">
+      <div id="point-table">
+          <table
+            data-toggle="table"
+            className="table table-bordered table-striped admin-view"
+          >
+          <thead>
+            <tr>
+              <th scope="col">Member</th>
+              <th scope="col">Date</th>
+              <th scope="col">Points</th>
+              <th scope="col">Category</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* {Object.keys(points).map((username) => (
+              <AdminViewItem
+                points={points}
+                username={username}
+                key={username}
+              />
+            ))} */}
+          </tbody>
+        </table>
       </div>
-      <tbody>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              group1}
-          </td>
-        </tr>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              group2}
-          </td>
-        </tr>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              group3}
-          </td>
-        </tr>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              plc}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+      <table id="rq-table">
+        <div id="panelHeader">Requirements</div>
+        {/* <div className="dropdown member-view">
+          {tempUser}'s Points Report for{" "}
+          <select onChange={(e) => setSemester(e.target.value)} value={semester}>
+            <option value=""></option>
+            <option value="2019fall">Fall 2019</option>
+            <option value="2020spring">Spring 2020</option>
+            <option value="2020summer">Summer 2020</option>
+          </select>
+        </div> */}
+        <tbody>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                group1}
+            </td>
+          </tr>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                group2}
+            </td>
+          </tr>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                group3}
+            </td>
+          </tr>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                plc}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    
   );
 };
 
