@@ -23,6 +23,7 @@ const AdminView = ({ user, tempUser, points, getPointsReport }) => {
               <a
                 href="/addpoints"
                 className="btn btn-secondary btn-small active"
+                id="addButton"
                 role="button"
                 aria-pressed="true"
               >
@@ -38,34 +39,35 @@ const AdminView = ({ user, tempUser, points, getPointsReport }) => {
             <div>{tempUser}'s Points Summary</div>
           </div>
           <div id="user-table">
-            <table data-toggle="table" className="table table-bordered">
+            <table
+              data-toggle="table"
+              className="table table-bordered table-striped admin-view"
+            >
               <thead>
                 <tr>
-                  <th>Member</th>
-                  <th>
+                  <th scope="col">Member</th>
+                  <th scope="col">
                     Semester
                     <div className="dropdown">
-                      <div>
-                        <select
-                          onChange={(e) => setSemester(e.target.value)}
-                          value={semester}
-                        >
-                          <option value=""></option>
-                          <option value="2019fall">Fall 2019</option>
-                          <option value="2020spring">Spring 2020</option>
-                          <option value="2020summer">Summer 2020</option>
-                        </select>
-                      </div>
+                      <select
+                        onChange={(e) => setSemester(e.target.value)}
+                        value={semester}
+                      >
+                        <option value=""></option>
+                        <option value="2019fall">Fall 2019</option>
+                        <option value="2020spring">Spring 2020</option>
+                        <option value="2020summer">Summer 2020</option>
+                      </select>
                     </div>
                   </th>
-                  <th>Category 1 Points</th>
-                  <th>Category 2 Points</th>
-                  <th>Category 3 Points</th>
-                  <th>Committee Points</th>
-                  <th>PLC</th>
-                  <th>Auxilliary Committee</th>
-                  <th>Office Hours</th>
-                  <th>Committee Meetings</th>
+                  <th scope="col">Category 1 Points</th>
+                  <th scope="col">Category 2 Points</th>
+                  <th scope="col">Category 3 Points</th>
+                  <th scope="col">Committee Points</th>
+                  <th scope="col">PLC</th>
+                  <th scope="col">Auxilliary Committee</th>
+                  <th scope="col">Office Hours</th>
+                  <th scope="col">Committee Meetings</th>
                 </tr>
               </thead>
               <tbody>

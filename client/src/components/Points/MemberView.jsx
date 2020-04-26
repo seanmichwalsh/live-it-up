@@ -130,7 +130,7 @@ const MemberView = ({
   }
 
   return (
-    <table className="table table-bordered">
+    <table className="table">
       <div className="dropdown member-view">
         {tempUser}'s Points Report for{" "}
         <select onChange={(e) => setSemester(e.target.value)} value={semester}>
@@ -142,7 +142,7 @@ const MemberView = ({
       </div>
       <tbody>
         <tr>
-          <td>
+          <td className="member-view-td">
             {pointsReport !== null &&
               pointsReport !== undefined &&
               pointsReport !== {} &&
@@ -150,7 +150,7 @@ const MemberView = ({
           </td>
         </tr>
         <tr>
-          <td>
+          <td className="member-view-td">
             {pointsReport !== null &&
               pointsReport !== undefined &&
               pointsReport !== {} &&
@@ -158,7 +158,7 @@ const MemberView = ({
           </td>
         </tr>
         <tr>
-          <td>
+          <td className="member-view-td">
             {pointsReport !== null &&
               pointsReport !== undefined &&
               pointsReport !== {} &&
@@ -166,7 +166,7 @@ const MemberView = ({
           </td>
         </tr>
         <tr>
-          <td>
+          <td className="member-view-td">
             {pointsReport !== null &&
               pointsReport !== undefined &&
               pointsReport !== {} &&

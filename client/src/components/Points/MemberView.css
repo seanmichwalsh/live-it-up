@@ -21,7 +21,7 @@ tr {
   width: 100%;
 }
 
-td {
+.member-view-td {
   width: 50%;
   border-radius: 30px;
 }

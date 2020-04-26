@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
-import { getUser } from "../../redux/actions/userActions";
 import { connect } from "react-redux";
+import { getUser } from "../../redux/actions/userActions";
 import MemberView from "./MemberView";
 import AdminView from "./AdminView";
 
