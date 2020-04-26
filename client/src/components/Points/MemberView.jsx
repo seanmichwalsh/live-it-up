@@ -47,22 +47,28 @@ const MemberView = ({
     ) {
       group1 = (
         <div className="red-block">
-          <h4>Group 1</h4>
-          <p>Not Satisfied</p>
+          <div className="pr-description">
+            <h4>Group 1</h4>
+            <a>Not Satisfied</a>
+          </div>
         </div>
       );
     } else if (group1Points === group1Goal - 1) {
       group1 = (
         <div className="yellow-block">
-          <h4>Group 1</h4>
-          <p>1 Hour Remaining</p>
+          <div className="pr-description">
+            <h4>Group 1</h4>
+            <a>1 Hour Remaining</a>
+          </div>
         </div>
       );
     } else {
       group1 = (
         <div className="green-block">
-          <h4>Group 1</h4>
-          <p>Satisfied - {group1Points} Hours</p>
+          <div className="pr-description">
+            <h4>Group 1</h4>
+            <a>Satisfied - {group1Points} Hours</a>
+          </div>
         </div>
       );
     }
@@ -73,15 +79,19 @@ const MemberView = ({
     ) {
       group2 = (
         <div className="red-block">
-          <h4>Group 2</h4>
-          <p>Not Satisfied</p>
+          <div className="pr-description">
+            <h4>Group 2</h4>
+            <a>Not Satisfied</a>
+          </div>
         </div>
       );
     } else {
       group2 = (
         <div className="green-block">
-          <h4>Group 2</h4>
-          <p>Satisfied - {group2Points} Hour(s)</p>
+          <div className="pr-description">
+            <h4>Group 2</h4>
+            <a>Satisfied - {group2Points} Hour(s)</a>
+          </div>
         </div>
       );
     }
@@ -92,22 +102,28 @@ const MemberView = ({
     ) {
       group3 = (
         <div className="red-block">
-          <h4>Group 3</h4>
-          <p>Not Satisfied</p>
+          <div className="pr-description">
+            <h4>Group 3</h4>
+            <a>Not Satisfied</a>
+          </div>
         </div>
       );
     } else if (group3Points === group3Goal - 1) {
       group3 = (
         <div className="yellow-block">
-          <h4>Group 3</h4>
-          <p>1 Hour Remaining</p>
+          <div className="pr-description">
+            <h4>Group 3</h4>
+            <a>1 Hour Remaining</a>
+          </div>
         </div>
       );
     } else {
       group3 = (
         <div className="green-block">
-          <h4>Group 3</h4>
-          <p>Satisfied - {group3Points} Hours</p>
+          <div className="pr-description">
+            <h4>Group 3</h4>
+            <a>Satisfied - {group3Points} Hours</a>
+          </div>
         </div>
       );
     }
@@ -115,15 +131,19 @@ const MemberView = ({
     if (plcPoints < plcGoal || pointsReport[tempUser] === undefined) {
       plc = (
         <div className="red-block">
-          <h4>PLC</h4>
-          <p>Not Satisfied</p>
+          <div className="pr-description">
+            <h4>PLC</h4>
+            <a>Not Satisfied</a>
+          </div>
         </div>
       );
     } else {
       plc = (
         <div className="green-block">
-          <h4>PLC</h4>
-          <p>Satisfied - {plcPoints} Event(s)</p>
+          <div className="pr-description">
+            <h4>PLC</h4>
+            <a>Satisfied - {plcPoints} Event(s)</a>
+          </div>
         </div>
       );
     }
