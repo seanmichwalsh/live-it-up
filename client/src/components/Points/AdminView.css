@@ -1,5 +1,5 @@
-#points-pg {
-  font-family: "Roboto", sans-serif;
+.directory-page {
+  width: 100vw;
 }
 
 #header {
@@ -16,13 +16,8 @@
   margin: 0 auto;
 }
 
-#addButton {
-  font-weight: bold;
-  color: #707070;
-  position: absolute;
-  right: 0;
-  margin-top: 0.2vw;
-  padding-right: 9vw;
+table.admin-view thead tr th {
+  vertical-align: middle;
 }
 
 #directory-page {
@@ -36,13 +31,10 @@
 }
 
 #points-display {
-  width: 70%;
-  /* float: left; */
-  /* margin-right: 5%; */
+  width: 100%;
 }
 
 #user-table {
-  clear: both;
   margin-bottom: 50px;
 }
 
@@ -52,24 +44,14 @@
   margin-bottom: 1vw;
 }
 
-#points-sidebar {
-  margin-top: 1vw;
-  width: 25%;
-  float: left;
-}
-
-#req-header {
-  width: 100%;
-  font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
-  background: #ac539b;
-  border-radius: 15px;
-  font-weight: bold;
-  position: relative;
-  color: #ffffff;
-  text-align: left;
-  padding-left: 1.2vw;
-}
-
 @media only screen and (max-width: 1025px) {
-  
+  #header-text {
+    width: 100vw;
+    text-align: initial;
+  }
+
+  #addButton {
+    position: absolute;
+    right: 15%;
+  }
 }
