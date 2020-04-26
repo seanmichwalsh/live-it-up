@@ -57,7 +57,6 @@ const Home = ({ getEvents, events }) => {
                   "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/91873401_10159808570233066_8270082192713973760_o.jpg?_nc_cat=103&_nc_sid=b386c4&_nc_ohc=p1BHxMzZBAEAX8MXlSW&_nc_ht=scontent-lga3-1.xx&oh=651d2f661db11f7086e3f2471429c3d9&oe=5EB67789"
                 }
                 name={event.eventName}
-                // date={event.startTime.substring(0, 10)}
                 date={Moment(event.startTime).format("ddd, MMMM DD, Y")}
                 time={
                   Moment(event.startTime).format("h:mm") +
