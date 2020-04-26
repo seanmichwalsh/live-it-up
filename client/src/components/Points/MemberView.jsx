@@ -1,22 +1,38 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getUser } from "../../redux/actions/userActions";
+import { getPointsReportForUser, getPointsDetailForUser} from "../../redux/actions/pointsActions";
+import MemberViewItem from "./MemberViewItem";
+
 import "react-toastify/dist/ReactToastify.css";
 import "./MemberView.css";
-import { connect } from "react-redux";
-import { getPointsReportForUser } from "../../redux/actions/pointsActions";
 
 const MemberView = ({
   user, // Will be used when CAS is done
+  getUser,
   pointsReport,
   getPointsReportForUser,
+  userPointDetails,
+  getPointsDetailForUser,
   tempUser,
 }) => {
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
+    getUser(tempUser);
+    //eslint-disable-next-line
+  }, [])
+
+  useEffect(() => {
     getPointsReportForUser(semester, tempUser);
     //eslint-disable-next-line
   }, [semester]);
+
+  useEffect(() => {
+    getPointsDetailForUser(tempUser);
+    //eslint-disable-next-line
+  }, []);
 
   if (
     pointsReport !== null &&
@@ -26,7 +42,7 @@ const MemberView = ({
     var group1Points = pointsReport[tempUser].group1;
     var group2Points = pointsReport[tempUser].group2;
     var group3Points = pointsReport[tempUser].group3;
-    var plcPoints = pointsReport[tempUser].plc;
+    var plcPoints = pointsReport[tempUser].plc;  
   }
 
   /* 
@@ -153,13 +169,23 @@ const MemberView = ({
     <div id="entire-page">
       <div className="main-page">
       <div id="point-table">
+        <div id="top-info">
+          <div id="name">{user !== undefined && user !== null && user.firstName + " " + user.lastName}'s Points</div>
+          <div className="dropdownmember-view">
+            Report for{"  "}
+            <select onChange={(e) => setSemester(e.target.value)} value={semester}>
+              <option value=""></option>
+              <option value="2019fall">Fall 2019</option>
+              <option value="2020spring">Spring 2020</option>
+              <option value="2020summer">Summer 2020</option>
+            </select>
+          </div>
+        </div>
           <table
-            data-toggle="table"
-            className="table table-bordered table-striped admin-view"
+            className="table table-bordered table-hover"
           >
           <thead>
             <tr>
-              <th scope="col">Member</th>
               <th scope="col">Date</th>
               <th scope="col">Points</th>
               <th scope="col">Category</th>
@@ -167,28 +193,16 @@ const MemberView = ({
             </tr>
           </thead>
           <tbody>
-            {/* {Object.keys(points).map((username) => (
-              <AdminViewItem
-                points={points}
-                username={username}
-                key={username}
+            {(userPointDetails !== undefined && userPointDetails !== null && userPointDetails).map((event) => (
+              <MemberViewItem
+                event={event}
               />
-            ))} */}
+            ))}
           </tbody>
         </table>
       </div>
-
       <table id="rq-table">
         <div id="panelHeader">Requirements</div>
-        {/* <div className="dropdown member-view">
-          {tempUser}'s Points Report for{" "}
-          <select onChange={(e) => setSemester(e.target.value)} value={semester}>
-            <option value=""></option>
-            <option value="2019fall">Fall 2019</option>
-            <option value="2020spring">Spring 2020</option>
-            <option value="2020summer">Summer 2020</option>
-          </select>
-        </div> */}
         <tbody>
           <tr>
             <td className="member-view-td">
@@ -231,16 +245,21 @@ const MemberView = ({
 };
 
 const mapStateToProps = (state) => ({
+  user: state.user.user,
   pointsReport: state.points.pointsReport,
+  userPointDetails: state.points.userPointDetails,
 });
 
 MemberView.propTypes = {
   user: PropTypes.object.isRequired,
+  getUser: PropTypes.func.isRequired,
   pointsReport: PropTypes.object.isRequired,
   getPointsReportForUser: PropTypes.func.isRequired,
+  userPointDetails: PropTypes.object.isRequired,
+  getPointsDetailForUser: PropTypes.func.isRequired,
   tempUser: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, {
-  getPointsReportForUser,
+  getUser, getPointsReportForUser, getPointsDetailForUser
 })(MemberView);
