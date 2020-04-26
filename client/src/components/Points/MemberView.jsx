@@ -83,7 +83,7 @@ const MemberView = ({
         <div className="green-block">
           <div className="pr-description">
             <h4>Group 1</h4>
-            <a>Satisfied - {group1Points} Hours</a>
+            <a>Satisfied - {group1Points} Hour(s)</a>
           </div>
         </div>
       );
@@ -138,7 +138,7 @@ const MemberView = ({
         <div className="green-block">
           <div className="pr-description">
             <h4>Group 3</h4>
-            <a>Satisfied - {group3Points} Hours</a>
+            <a>Satisfied - {group3Points} Hour(s)</a>
           </div>
         </div>
       );
