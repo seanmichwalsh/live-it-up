@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getUser } from "../../redux/actions/userActions";
-import { getPointsReportForUser, getPointsDetailForUser} from "../../redux/actions/pointsActions";
+import {
+  getPointsReportForUser,
+  getPointsDetailForUser,
+} from "../../redux/actions/pointsActions";
 import MemberViewItem from "./MemberViewItem";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./MemberView.css";
 
 const MemberView = ({
-  user, // Will be used when CAS is done
-  getUser,
+  user,
   pointsReport,
   getPointsReportForUser,
   userPointDetails,
@@ -19,19 +20,14 @@ const MemberView = ({
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
-    getUser(user.uid);
+    getPointsDetailForUser(user.uid);
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
   useEffect(() => {
     getPointsReportForUser(semester, user.uid);
     //eslint-disable-next-line
   }, [semester]);
-
-  useEffect(() => {
-    getPointsDetailForUser(user.uid);
-    //eslint-disable-next-line
-  }, []);
 
   if (
     pointsReport !== null &&
@@ -167,78 +163,89 @@ const MemberView = ({
   return (
     <div id="entire-page">
       <div className="main-page">
-      <div id="point-table">
-        <div id="top-info">
-          <div id="name">{user !== undefined && user !== null && user.firstName + " " + user.lastName}'s Points</div>
-          <div className="dropdownmember-view">
-            Report for{"  "}
-            <select onChange={(e) => setSemester(e.target.value)} value={semester}>
-              <option value=""></option>
-              <option value="2019fall">Fall 2019</option>
-              <option value="2020spring">Spring 2020</option>
-              <option value="2020summer">Summer 2020</option>
-            </select>
+        <div id="point-table">
+          <div id="top-info">
+            <div id="name">
+              {user !== undefined &&
+                user !== null &&
+                user.firstName + " " + user.lastName}
+              's Points Report for{"  "}
+              <div className="dropdownmember-view">
+                <select
+                  onChange={(e) => setSemester(e.target.value)}
+                  value={semester}
+                >
+                  <option value=""></option>
+                  <option value="2019fall">Fall 2019</option>
+                  <option value="2020spring">Spring 2020</option>
+                  <option value="2020summer">Summer 2020</option>
+                </select>
+              </div>
+            </div>
           </div>
+          <table className="table table-bordered table-hover table-responsive-sm">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Points</th>
+                <th scope="col">Category</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(
+                userPointDetails !== undefined &&
+                userPointDetails !== null &&
+                userPointDetails
+              ).map((event) => (
+                <MemberViewItem event={event} key={event._id} />
+              ))}
+            </tbody>
+          </table>
         </div>
-          <table
-            className="table table-bordered table-hover table-responsive-sm"
-          >
-          <thead>
+        <table id="rq-table">
+          <thead id="panelHeader">
             <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Points</th>
-              <th scope="col">Category</th>
-              <th scope="col">Description</th>
+              <th>Requirements</th>
             </tr>
           </thead>
           <tbody>
-            {(userPointDetails !== undefined && userPointDetails !== null && userPointDetails).map((event) => (
-              <MemberViewItem
-                event={event}
-              />
-            ))}
+            <tr>
+              <td className="member-view-td">
+                {pointsReport !== null &&
+                  pointsReport !== undefined &&
+                  pointsReport !== {} &&
+                  group1}
+              </td>
+            </tr>
+            <tr>
+              <td className="member-view-td">
+                {pointsReport !== null &&
+                  pointsReport !== undefined &&
+                  pointsReport !== {} &&
+                  group2}
+              </td>
+            </tr>
+            <tr>
+              <td className="member-view-td">
+                {pointsReport !== null &&
+                  pointsReport !== undefined &&
+                  pointsReport !== {} &&
+                  group3}
+              </td>
+            </tr>
+            <tr>
+              <td className="member-view-td">
+                {pointsReport !== null &&
+                  pointsReport !== undefined &&
+                  pointsReport !== {} &&
+                  plc}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <table id="rq-table">
-        <div id="panelHeader">Requirements</div>
-        <tbody>
-          <tr>
-            <td className="member-view-td">
-              {pointsReport !== null &&
-                pointsReport !== undefined &&
-                pointsReport !== {} &&
-                group1}
-            </td>
-          </tr>
-          <tr>
-            <td className="member-view-td">
-              {pointsReport !== null &&
-                pointsReport !== undefined &&
-                pointsReport !== {} &&
-                group2}
-            </td>
-          </tr>
-          <tr>
-            <td className="member-view-td">
-              {pointsReport !== null &&
-                pointsReport !== undefined &&
-                pointsReport !== {} &&
-                group3}
-            </td>
-          </tr>
-          <tr>
-            <td className="member-view-td">
-              {pointsReport !== null &&
-                pointsReport !== undefined &&
-                pointsReport !== {} &&
-                plc}
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
-  </div>
   );
 };
 
@@ -250,13 +257,13 @@ const mapStateToProps = (state) => ({
 
 MemberView.propTypes = {
   user: PropTypes.object.isRequired,
-  getUser: PropTypes.func.isRequired,
-  pointsReport: PropTypes.object.isRequired,
+  pointsReport: PropTypes.object,
   getPointsReportForUser: PropTypes.func.isRequired,
-  userPointDetails: PropTypes.object.isRequired,
+  userPointDetails: PropTypes.array.isRequired,
   getPointsDetailForUser: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, {
-  getUser, getPointsReportForUser, getPointsDetailForUser
+  getPointsReportForUser,
+  getPointsDetailForUser,
 })(MemberView);
