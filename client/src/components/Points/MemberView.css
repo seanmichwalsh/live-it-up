@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
 }
+
 .main-page {
   width: 85%;
 }
@@ -16,14 +17,18 @@
   margin-bottom: 1vh;
 }
 
-.dropdownmember-view {
-  clear: left;
+#text-dropdown {
+  float: left;
+}
+
+#dropdownmember-view {
+  clear: both;
   margin-bottom: 1rem;
-  display: inline-block;
 }
 
 #point-table {
   width: 75%;
+  clear: both;
   float: left;
 }
 
@@ -81,28 +86,26 @@
   margin: auto;
 }
 
-.div {
-  border-radius: 15px;
-}
-
-.tr {
-  width: 100%;
-}
-
 @media only screen and (max-width: 1025px) {
   #entire-page {
+    display: clear;
     margin: 0 auto;
     width: 90%;
   }
 
-  #point-table {
+  #rq-table {
     order: 2;
     width: 100%;
+    margin-left: 0vw;
+    margin-top: 2vh;
   }
 
-  #rq-table {
+  #top-info {
     order: 1;
+  }
+
+  #point-table {
+    order: 3;
     width: 100%;
-    margin-top: 2vh;
   }
 }

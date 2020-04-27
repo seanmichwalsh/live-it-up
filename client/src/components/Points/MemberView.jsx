@@ -163,26 +163,29 @@ const MemberView = ({
   return (
     <div id="entire-page">
       <div className="main-page">
-        <div id="point-table">
-          <div id="top-info">
-            <div id="name">
-              {user !== undefined &&
-                user !== null &&
-                user.firstName + " " + user.lastName}
-              's Points Report for{"  "}
-              <div className="dropdownmember-view">
-                <select
-                  onChange={(e) => setSemester(e.target.value)}
-                  value={semester}
-                >
-                  <option value=""></option>
-                  <option value="2019fall">Fall 2019</option>
-                  <option value="2020spring">Spring 2020</option>
-                  <option value="2020summer">Summer 2020</option>
-                </select>
-              </div>
+        <div id="top-info">
+          <div id="name">
+            {user !== undefined &&
+              user !== null &&
+              user.firstName + " " + user.lastName}
+            's Points 
+          </div>
+          <div id="dropdownmember-view">
+            <span id="text-dropdown">Report for  {"   "}</span>
+            <div>
+              <select
+                onChange={(e) => setSemester(e.target.value)}
+                value={semester}
+              >
+                <option value=""></option>
+                <option value="2019fall">Fall 2019</option>
+                <option value="2020spring">Spring 2020</option>
+                <option value="2020summer">Summer 2020</option>
+              </select>
             </div>
           </div>
+        </div>
+        <div id="point-table">
           <table className="table table-bordered table-hover table-responsive-sm">
             <thead>
               <tr>
