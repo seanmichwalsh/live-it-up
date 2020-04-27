@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./index.css";
-import "./include/bootstrap";
 
 import * as Sentry from '@sentry/browser';
 
