@@ -47,7 +47,7 @@ const AdminView = ({ user, points, getPointsReport, onChange }) => {
         <div id="points-display">
           <div id="display-header">
             <div>
-              {user.firstName + " " + user.lastName}'s Overall Points Summary
+            {user.firstName + " " + user.lastName}'s Admin Points Summary
             </div>
           </div>
           <div id="user-table">
