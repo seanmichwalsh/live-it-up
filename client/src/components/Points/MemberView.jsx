@@ -168,20 +168,20 @@ const MemberView = ({
             {user !== undefined &&
               user !== null &&
               user.firstName + " " + user.lastName}
-            's Points 
-          </div>
-          <div id="dropdownmember-view">
-            <span id="text-dropdown">Report for  {"   "}</span>
-            <div>
-              <select
-                onChange={(e) => setSemester(e.target.value)}
-                value={semester}
-              >
-                <option value=""></option>
-                <option value="2019fall">Fall 2019</option>
-                <option value="2020spring">Spring 2020</option>
-                <option value="2020summer">Summer 2020</option>
-              </select>
+            's Points {" "}
+            <span id="text-dropdown">Report for {"   "}</span>
+            <div id="dropdownmember-view">
+              <div>
+                <select
+                  onChange={(e) => setSemester(e.target.value)}
+                  value={semester}
+                >
+                  <option value=""></option>
+                  <option value="2019fall">Fall 2019</option>
+                  <option value="2020spring">Spring 2020</option>
+                  <option value="2020summer">Summer 2020</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
