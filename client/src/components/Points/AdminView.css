@@ -44,14 +44,30 @@ table.admin-view thead tr th {
   margin-bottom: 1vw;
 }
 
+#add-edit-box.to-member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+#add-edit-box.to-member > .dropdown {
+  margin-right: 2rem;
+}
+
 @media only screen and (max-width: 1025px) {
   #header-text {
     width: 100vw;
     text-align: initial;
   }
 
-  #addButton {
+  #add-edit-box.to-member {
     position: absolute;
-    right: 15%;
+    top: -150%;
+    right: -20%;
+  }
+
+  #add-edit-box.to-member > .dropdown {
+    margin-right: 1rem;
   }
 }

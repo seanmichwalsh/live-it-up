@@ -5,7 +5,7 @@ import { getPointsReport } from "./../../redux/actions/pointsActions";
 import AdminViewItem from "./AdminViewItem";
 import "./AdminView.css";
 
-const AdminView = ({ user, points, getPointsReport }) => {
+const AdminView = ({ user, points, getPointsReport, onChange }) => {
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const AdminView = ({ user, points, getPointsReport }) => {
       <div className="top-bar">
         <header id="header">
           <div id="header-text">POINTS</div>
-          <div id="add-edit-box">
+          <div id="add-edit-box" className="to-member">
             <div className="dropdown">
               <a
                 href="/addpoints"
@@ -30,17 +30,16 @@ const AdminView = ({ user, points, getPointsReport }) => {
                 ADD
               </a>
             </div>
-            {/* <div className="dropdown">
-              <a
-                href="/addpoints"
+            <div className="dropdown">
+              <button
                 className="btn btn-secondary btn-small active"
-                id="addButton"
-                role="button"
+                id="toMemberButton"
                 aria-pressed="true"
+                onClick={() => onChange()}
               >
                 To Member View
-              </a>
-            </div> */}
+              </button>
+            </div>
           </div>
         </header>
       </div>
@@ -108,6 +107,7 @@ AdminView.propTypes = {
   user: PropTypes.object.isRequired,
   points: PropTypes.object.isRequired,
   getPointsReport: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, { getPointsReport })(AdminView);

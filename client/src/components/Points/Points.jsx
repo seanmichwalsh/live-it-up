@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentUserID } from "../../redux/actions/userActions";
@@ -6,6 +6,8 @@ import MemberView from "./MemberView";
 import AdminView from "./AdminView";
 
 const Points = ({ user, getCurrentUserID }) => {
+  const [memberView, setMemberView] = useState(false);
+
   useEffect(() => {
     getCurrentUserID();
     //eslint-disable-next-line
@@ -15,10 +17,10 @@ const Points = ({ user, getCurrentUserID }) => {
     <div>
       {user !== null &&
         user !== undefined &&
-        (user.isAdmin ? (
-          <AdminView user={user} />
+        (user.isAdmin && !memberView ? (
+          <AdminView user={user} onChange={() => setMemberView(!memberView)} />
         ) : (
-          <MemberView user={user} />
+          <MemberView user={user} onChange={() => setMemberView(!memberView)} />
         ))}
     </div>
   );
