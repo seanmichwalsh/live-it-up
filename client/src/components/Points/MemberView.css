@@ -19,7 +19,7 @@
 .dropdownmember-view {
   clear: left;
   margin-bottom: 1rem;
-  font-size: 1rem;
+  display: inline-block;
 }
 
 #point-table {
