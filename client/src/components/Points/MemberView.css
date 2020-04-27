@@ -89,11 +89,20 @@
   width: 100%;
 }
 
-/* this is getting overwritten by .red.green-block 
-  as its more specific 
- */
-.member-view-td {
-  width: 50%;
-  border-radius: 30px;
-  margin-bottom: 1vh;
+@media only screen and (max-width: 1025px) {
+  #entire-page {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  #point-table {
+    order: 2;
+    width: 100%;
+  }
+
+  #rq-table {
+    order: 1;
+    width: 100%;
+    margin-top: 2vh;
+  }
 }
