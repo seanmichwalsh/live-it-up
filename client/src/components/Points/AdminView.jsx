@@ -30,18 +30,31 @@ const AdminView = ({ user, points, getPointsReport }) => {
                 ADD
               </a>
             </div>
+            {/* <div className="dropdown">
+              <a
+                href="/addpoints"
+                className="btn btn-secondary btn-small active"
+                id="addButton"
+                role="button"
+                aria-pressed="true"
+              >
+                To Member View
+              </a>
+            </div> */}
           </div>
         </header>
       </div>
       <div id="mainPG">
         <div id="points-display">
           <div id="display-header">
-            <div>{user.firstName + " " + user.lastName}'s Points Summary</div>
+            <div>
+              {user.firstName + " " + user.lastName}'s Overall Points Summary
+            </div>
           </div>
           <div id="user-table">
             <table
               data-toggle="table"
-              className="table table-bordered table-striped admin-view"
+              className="table table-bordered table-striped table-hover table-responsive-sm admin-view"
             >
               <thead>
                 <tr>

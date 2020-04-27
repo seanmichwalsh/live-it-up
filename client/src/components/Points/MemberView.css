@@ -17,13 +17,14 @@
   margin-bottom: 1vh;
 }
 
-#text-dropdown {
+/* #text-dropdown {
   float: left;
-}
+} */
 
 #dropdownmember-view {
   clear: both;
   margin-bottom: 1rem;
+  display: inline-block;
 }
 
 #point-table {
@@ -93,11 +94,17 @@
     width: 90%;
   }
 
+  .main-page {
+    display: flex;
+    flex-direction: column;
+  }
+
   #rq-table {
     order: 2;
     width: 100%;
     margin-left: 0vw;
     margin-top: 2vh;
+    margin-bottom: 1vh;
   }
 
   #top-info {

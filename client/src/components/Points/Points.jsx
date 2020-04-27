@@ -15,7 +15,7 @@ const Points = ({ user, getCurrentUserID }) => {
     <div>
       {user !== null &&
         user !== undefined &&
-        (user.adminStatus ? (
+        (user.isAdmin ? (
           <AdminView user={user} />
         ) : (
           <MemberView user={user} />
