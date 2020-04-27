@@ -5,28 +5,23 @@ import "./MemberView.css";
 import { connect } from "react-redux";
 import { getPointsReportForUser } from "../../redux/actions/pointsActions";
 
-const MemberView = ({
-  user, // Will be used when CAS is done
-  pointsReport,
-  getPointsReportForUser,
-  tempUser,
-}) => {
+const MemberView = ({ user, pointsReport, getPointsReportForUser }) => {
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
-    getPointsReportForUser(semester, tempUser);
+    getPointsReportForUser(semester, user.uid);
     //eslint-disable-next-line
   }, [semester]);
 
   if (
     pointsReport !== null &&
     pointsReport !== undefined &&
-    pointsReport[tempUser] !== undefined
+    pointsReport[user.uid] !== undefined
   ) {
-    var group1Points = pointsReport[tempUser].group1;
-    var group2Points = pointsReport[tempUser].group2;
-    var group3Points = pointsReport[tempUser].group3;
-    var plcPoints = pointsReport[tempUser].plc;
+    var group1Points = pointsReport[user.uid].group1;
+    var group2Points = pointsReport[user.uid].group2;
+    var group3Points = pointsReport[user.uid].group3;
+    var plcPoints = pointsReport[user.uid].plc;
   }
 
   /* 
@@ -43,7 +38,7 @@ const MemberView = ({
   if (pointsReport !== null && pointsReport !== undefined) {
     if (
       group1Points <= group1Goal - 2 ||
-      pointsReport[tempUser] === undefined
+      pointsReport[user.uid] === undefined
     ) {
       group1 = (
         <div className="red-block">
@@ -69,7 +64,7 @@ const MemberView = ({
 
     if (
       group2Points <= group2Goal - 1 ||
-      pointsReport[tempUser] === undefined
+      pointsReport[user.uid] === undefined
     ) {
       group2 = (
         <div className="red-block">
@@ -88,7 +83,7 @@ const MemberView = ({
 
     if (
       group3Points <= group3Goal - 2 ||
-      pointsReport[tempUser] === undefined
+      pointsReport[user.uid] === undefined
     ) {
       group3 = (
         <div className="red-block">
@@ -112,7 +107,7 @@ const MemberView = ({
       );
     }
 
-    if (plcPoints < plcGoal || pointsReport[tempUser] === undefined) {
+    if (plcPoints < plcGoal || pointsReport[user.uid] === undefined) {
       plc = (
         <div className="red-block">
           <h4>PLC</h4>
@@ -130,9 +125,9 @@ const MemberView = ({
   }
 
   return (
-    <table className="table">
+    <div>
       <div className="dropdown member-view">
-        {tempUser}'s Points Report for{" "}
+        {user.firstName + " " + user.lastName}'s Points Report for{" "}
         <select onChange={(e) => setSemester(e.target.value)} value={semester}>
           <option value=""></option>
           <option value="2019fall">Fall 2019</option>
@@ -140,41 +135,43 @@ const MemberView = ({
           <option value="2020summer">Summer 2020</option>
         </select>
       </div>
-      <tbody>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              group1}
-          </td>
-        </tr>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              group2}
-          </td>
-        </tr>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              group3}
-          </td>
-        </tr>
-        <tr>
-          <td className="member-view-td">
-            {pointsReport !== null &&
-              pointsReport !== undefined &&
-              pointsReport !== {} &&
-              plc}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <table className="table">
+        <tbody>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                group1}
+            </td>
+          </tr>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                group2}
+            </td>
+          </tr>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                group3}
+            </td>
+          </tr>
+          <tr>
+            <td className="member-view-td">
+              {pointsReport !== null &&
+                pointsReport !== undefined &&
+                pointsReport !== {} &&
+                plc}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
@@ -184,9 +181,8 @@ const mapStateToProps = (state) => ({
 
 MemberView.propTypes = {
   user: PropTypes.object.isRequired,
-  pointsReport: PropTypes.object.isRequired,
+  pointsReport: PropTypes.object,
   getPointsReportForUser: PropTypes.func.isRequired,
-  tempUser: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, {
