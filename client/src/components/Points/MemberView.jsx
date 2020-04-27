@@ -199,6 +199,9 @@ const MemberView = ({
             </div>
           ) : null}
         </div>
+        <div id="point-table-header">
+          Events Volunteered At
+        </div>
         <div id="point-table">
           <table className="table table-bordered table-hover table-responsive-sm">
             <thead>
