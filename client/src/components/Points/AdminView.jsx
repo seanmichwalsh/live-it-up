@@ -53,11 +53,14 @@ const AdminView = ({ user, points, getPointsReport, onChange }) => {
           <div id="user-table">
             <table
               data-toggle="table"
-              className="table table-bordered table-striped table-hover table-responsive-sm admin-view"
-            >
+              className="table table-bordered table-hover table-responsive-sm admin-view"
+              data-sort-name="name"
+              data-sort-order="desc"
+              id="table"
+              >
               <thead>
                 <tr>
-                  <th scope="col">Member</th>
+                <th data-field="uid" data-sortable="true">Member</th>
                   <th scope="col">
                     Semester
                     <div className="dropdown">
@@ -72,25 +75,25 @@ const AdminView = ({ user, points, getPointsReport, onChange }) => {
                       </select>
                     </div>
                   </th>
-                  <th scope="col">Category 1 Points</th>
-                  <th scope="col">Category 2 Points</th>
-                  <th scope="col">Category 3 Points</th>
-                  <th scope="col">Committee Points</th>
-                  <th scope="col">PLC</th>
-                  <th scope="col">Auxilliary Committee</th>
-                  <th scope="col">Office Hours</th>
-                  <th scope="col">Committee Meetings</th>
+                  <th data-field="group1" data-sortable="true">Category 1 Points</th>
+                  <th data-field="group2" data-sortable="true">Category 2 Points</th>
+                  <th data-field="group3" data-sortable="true">Category 3 Points</th>
+                  <th data-field="committeeEvents" data-sortable="true">Committee Events</th>
+                  <th data-field="plc" data-sortable="true">PLC</th>
+                  <th data-field="aux" data-sortable="true">Auxilliary</th>
+                  <th data-field="officeHours" data-sortable="true">Office Hours</th>
+                  <th data-field="committeeMeetings" data-sortable="true">Committee Meetings</th>
                 </tr>
               </thead>
               <tbody>
-                {Object.keys(points).map((username) => (
-                  <AdminViewItem
-                    points={points}
-                    username={username}
-                    key={username}
-                  />
-                ))}
-              </tbody>
+                  {Object.keys(points).map((username) => (
+                    <AdminViewItem
+                      points={points}
+                      username={username}
+                      key={username}
+                    />
+                  ))}
+                </tbody>
             </table>
           </div>
         </div>
