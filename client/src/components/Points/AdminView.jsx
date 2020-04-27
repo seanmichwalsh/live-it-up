@@ -54,8 +54,6 @@ const AdminView = ({ user, points, getPointsReport, onChange }) => {
             <table
               data-toggle="table"
               className="table table-bordered table-hover table-responsive-sm admin-view"
-              data-sort-name="name"
-              data-sort-order="desc"
               id="table"
               >
               <thead>
