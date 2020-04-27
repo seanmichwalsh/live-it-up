@@ -5,7 +5,7 @@ import { getPointsReport } from "./../../redux/actions/pointsActions";
 import AdminViewItem from "./AdminViewItem";
 import "./AdminView.css";
 
-const AdminView = ({ user, tempUser, points, getPointsReport }) => {
+const AdminView = ({ user, points, getPointsReport }) => {
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
