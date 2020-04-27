@@ -5,7 +5,7 @@ import { getPointsReport } from "./../../redux/actions/pointsActions";
 import AdminViewItem from "./AdminViewItem";
 import "./AdminView.css";
 
-const AdminView = ({ user, tempUser, points, getPointsReport }) => {
+const AdminView = ({ user, points, getPointsReport }) => {
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const AdminView = ({ user, tempUser, points, getPointsReport }) => {
       <div id="mainPG">
         <div id="points-display">
           <div id="display-header">
-            <div>{tempUser}'s Points Summary</div>
+            <div>{user.firstName + " " + user.lastName}'s Points Summary</div>
           </div>
           <div id="user-table">
             <table
@@ -92,8 +92,7 @@ const mapStateToProps = (state) => ({
 });
 
 AdminView.propTypes = {
-  user: PropTypes.object,
-  tempUser: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
   points: PropTypes.object.isRequired,
   getPointsReport: PropTypes.func.isRequired,
 };

@@ -15,34 +15,33 @@ const MemberView = ({
   getPointsReportForUser,
   userPointDetails,
   getPointsDetailForUser,
-  tempUser,
 }) => {
   const [semester, setSemester] = useState("2020spring");
 
   useEffect(() => {
-    getUser(tempUser);
+    getUser(user.uid);
     //eslint-disable-next-line
   }, [])
 
   useEffect(() => {
-    getPointsReportForUser(semester, tempUser);
+    getPointsReportForUser(semester, user.uid);
     //eslint-disable-next-line
   }, [semester]);
 
   useEffect(() => {
-    getPointsDetailForUser(tempUser);
+    getPointsDetailForUser(user.uid);
     //eslint-disable-next-line
   }, []);
 
   if (
     pointsReport !== null &&
     pointsReport !== undefined &&
-    pointsReport[tempUser] !== undefined
+    pointsReport[user.uid] !== undefined
   ) {
-    var group1Points = pointsReport[tempUser].group1;
-    var group2Points = pointsReport[tempUser].group2;
-    var group3Points = pointsReport[tempUser].group3;
-    var plcPoints = pointsReport[tempUser].plc;  
+    var group1Points = pointsReport[user.uid].group1;
+    var group2Points = pointsReport[user.uid].group2;
+    var group3Points = pointsReport[user.uid].group3;
+    var plcPoints = pointsReport[user.uid].plc;
   }
 
   /* 
@@ -59,7 +58,7 @@ const MemberView = ({
   if (pointsReport !== null && pointsReport !== undefined) {
     if (
       group1Points <= group1Goal - 2 ||
-      pointsReport[tempUser] === undefined
+      pointsReport[user.uid] === undefined
     ) {
       group1 = (
         <div className="red-block">
@@ -91,7 +90,7 @@ const MemberView = ({
 
     if (
       group2Points <= group2Goal - 1 ||
-      pointsReport[tempUser] === undefined
+      pointsReport[user.uid] === undefined
     ) {
       group2 = (
         <div className="red-block">
@@ -114,7 +113,7 @@ const MemberView = ({
 
     if (
       group3Points <= group3Goal - 2 ||
-      pointsReport[tempUser] === undefined
+      pointsReport[user.uid] === undefined
     ) {
       group3 = (
         <div className="red-block">
@@ -144,7 +143,7 @@ const MemberView = ({
       );
     }
 
-    if (plcPoints < plcGoal || pointsReport[tempUser] === undefined) {
+    if (plcPoints < plcGoal || pointsReport[user.uid] === undefined) {
       plc = (
         <div className="red-block">
           <div className="pr-description">
@@ -240,7 +239,6 @@ const MemberView = ({
       </table>
     </div>
   </div>
-    
   );
 };
 
@@ -257,7 +255,6 @@ MemberView.propTypes = {
   getPointsReportForUser: PropTypes.func.isRequired,
   userPointDetails: PropTypes.object.isRequired,
   getPointsDetailForUser: PropTypes.func.isRequired,
-  tempUser: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, {
