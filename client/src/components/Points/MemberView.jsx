@@ -64,7 +64,7 @@ const MemberView = ({
         <div className="red-block">
           <div className="pr-description">
             <h4>Group 1</h4>
-            <a>Not Satisfied</a>
+            <span>Not Satisfied</span>
           </div>
         </div>
       );
@@ -73,7 +73,7 @@ const MemberView = ({
         <div className="yellow-block">
           <div className="pr-description">
             <h4>Group 1</h4>
-            <a>1 Hour Remaining</a>
+            <span>1 Hour Remaining</span>
           </div>
         </div>
       );
@@ -82,7 +82,7 @@ const MemberView = ({
         <div className="green-block">
           <div className="pr-description">
             <h4>Group 1</h4>
-            <a>Satisfied - {group1Points} Hour(s)</a>
+            <span>Satisfied - {group1Points} Hour(s)</span>
           </div>
         </div>
       );
@@ -96,7 +96,7 @@ const MemberView = ({
         <div className="red-block">
           <div className="pr-description">
             <h4>Group 2</h4>
-            <a>Not Satisfied</a>
+            <span>Not Satisfied</span>
           </div>
         </div>
       );
@@ -105,7 +105,7 @@ const MemberView = ({
         <div className="green-block">
           <div className="pr-description">
             <h4>Group 2</h4>
-            <a>Satisfied - {group2Points} Hour(s)</a>
+            <span>Satisfied - {group2Points} Hour(s)</span>
           </div>
         </div>
       );
@@ -119,7 +119,7 @@ const MemberView = ({
         <div className="red-block">
           <div className="pr-description">
             <h4>Group 3</h4>
-            <a>Not Satisfied</a>
+            <span>Not Satisfied</span>
           </div>
         </div>
       );
@@ -128,7 +128,7 @@ const MemberView = ({
         <div className="yellow-block">
           <div className="pr-description">
             <h4>Group 3</h4>
-            <a>1 Hour Remaining</a>
+            <span>1 Hour Remaining</span>
           </div>
         </div>
       );
@@ -137,7 +137,7 @@ const MemberView = ({
         <div className="green-block">
           <div className="pr-description">
             <h4>Group 3</h4>
-            <a>Satisfied - {group3Points} Hour(s)</a>
+            <span>Satisfied - {group3Points} Hour(s)</span>
           </div>
         </div>
       );
@@ -148,7 +148,7 @@ const MemberView = ({
         <div className="red-block">
           <div className="pr-description">
             <h4>PLC</h4>
-            <a>Not Satisfied</a>
+            <span>Not Satisfied</span>
           </div>
         </div>
       );
@@ -157,7 +157,7 @@ const MemberView = ({
         <div className="green-block">
           <div className="pr-description">
             <h4>PLC</h4>
-            <a>Satisfied - {plcPoints} Event(s)</a>
+            <span>Satisfied - {plcPoints} Event(s)</span>
           </div>
         </div>
       );
