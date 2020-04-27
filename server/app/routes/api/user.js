@@ -275,7 +275,7 @@ router.get("/me/test", (req, res) => {
   //       message: "Error retrieving the currently logged in user"
   //     });
   //   });
-  res.send({ uid: "zkang35" });
+  res.send({ uid: "seanwalsh" });
 });
 
 //Returns a boolean indicating whether a given user is an admin or not

@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./MemberView.css";
 
 const MemberView = ({
+  onChange,
   user,
   pointsReport,
   getPointsReportForUser,
@@ -168,8 +169,7 @@ const MemberView = ({
             {user !== undefined &&
               user !== null &&
               user.firstName + " " + user.lastName}
-            's Points {" "}
-            <span id="text-dropdown">Report for {"   "}</span>
+            's Points <span id="text-dropdown">Report for {"   "}</span>
             <div id="dropdownmember-view">
               <div>
                 <select
@@ -184,6 +184,20 @@ const MemberView = ({
               </div>
             </div>
           </div>
+          {user.isAdmin ? (
+            <div id="add-edit-box" className="to-admin">
+              <div className="dropdown">
+                <button
+                  className="btn btn-secondary btn-small active"
+                  id="addButton"
+                  aria-pressed="true"
+                  onClick={() => onChange()}
+                >
+                  To Admin View
+                </button>
+              </div>
+            </div>
+          ) : null}
         </div>
         <div id="point-table">
           <table className="table table-bordered table-hover table-responsive-sm">
@@ -264,6 +278,7 @@ MemberView.propTypes = {
   getPointsReportForUser: PropTypes.func.isRequired,
   userPointDetails: PropTypes.array.isRequired,
   getPointsDetailForUser: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, {

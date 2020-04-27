@@ -17,10 +17,6 @@
   margin-bottom: 1vh;
 }
 
-/* #text-dropdown {
-  float: left;
-} */
-
 #dropdownmember-view {
   clear: both;
   margin-bottom: 1rem;
@@ -87,6 +83,13 @@
   margin: auto;
 }
 
+#add-edit-box.to-member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+}
+
 @media only screen and (max-width: 1025px) {
   #entire-page {
     display: clear;
@@ -114,5 +117,11 @@
   #point-table {
     order: 3;
     width: 100%;
+  }
+
+  #add-edit-box.to-admin {
+    position: absolute;
+    top: 10%;
+    right: -25%;
   }
 }
