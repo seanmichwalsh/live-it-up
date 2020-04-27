@@ -182,7 +182,7 @@ const MemberView = ({
           </div>
         </div>
           <table
-            className="table table-bordered table-hover"
+            className="table table-bordered table-hover table-responsive-sm"
           >
           <thead>
             <tr>
