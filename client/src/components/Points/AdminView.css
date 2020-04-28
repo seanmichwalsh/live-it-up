@@ -17,7 +17,9 @@
 }
 
 table.admin-view thead tr th {
+  font-size: 0.9rem;
   vertical-align: middle;
+  position: relative;
 }
 
 #directory-page {
@@ -55,6 +57,20 @@ table.admin-view thead tr th {
   margin-right: 2rem;
 }
 
+table.admin-view thead > tr th span button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+table.admin-view thead > tr th span button:first-child {
+  margin-bottom: -80%;
+}
+
+table.admin-view thead > tr th span button:nth-child(2) {
+  margin-top: -80%;
+}
+
 @media only screen and (max-width: 1025px) {
   #header-text {
     width: 100vw;
@@ -69,5 +85,10 @@ table.admin-view thead tr th {
 
   #add-edit-box.to-member > .dropdown {
     margin-right: 1rem;
+  }
+
+  .btn-group-vertical {
+    transform: translateX(-50%);
+    margin: 1px auto;
   }
 }
