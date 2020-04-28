@@ -60,7 +60,7 @@ const AdminPointsTable = ({ points, getPointsReport }) => {
             ? 1
             : -1;
         default:
-          return Object.keys(points);
+          return 1;
       }
     });
   };
