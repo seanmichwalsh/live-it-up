@@ -11,7 +11,7 @@
 }
 
 thead {
-  color: #ac539b;
+  color: #7A15A2;
   border: 3px solid black;
 }
 
@@ -45,7 +45,7 @@ a:active {
 }
 
 a:hover {
-  color: #ac539b;
+  color: #7A15A2;
 }
 
 @media only screen and (max-width: 760px),
