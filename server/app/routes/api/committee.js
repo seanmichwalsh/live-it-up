@@ -1,6 +1,37 @@
 router = require('express').Router()
 const Committee = require('../../models/committee.models');
 
+router.get('/time/:id', (req, res) => {
+    if (!req.params.id) {
+        return res.status(400).send({
+            message: "A committee ID is required to find a committee meeting time."
+        });
+    };
+    Committee.findById(req.params.id).then(committee => {
+        if (!committee) {
+            return res.status(404).send({
+                message: "Commitee not found with id " + req.params.id
+            });
+        };
+
+        let committeeTimes = {};
+        committeeTimes['startTime'] = committee.startTime;
+        committeeTimes['endTime'] = committee.endTime;
+        committeeTimes['meetingDay'] = committee.meetingDay;
+        
+    }).catch(err => {
+        if (err.kind === "ObjectId") {
+            return res.status(404).send({
+                // message: "Committee not found with id " + req.params.id
+                message: "time was hit"
+            });
+        }
+        return res.status(500).send({
+            message: "There was a problem retrieving Committee " + req.params.id
+        }); 
+    });
+});
+
 router.get('/', (req, res) => {
     Committee.find().then( users => {
         res.send(users)
@@ -11,30 +42,30 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-    if (!req.params.id) {
-        return res.status(400).send({
-            message: "A committee ID is required to find a committee."
-        });
-    };
-    Committee.findById(req.params.id).then(committee => {
-        if (!committee) {
-            return res.status(404).send({
-                message: "Commitee not found with id " + req.params.id
-            });
-        };
-        res.send(committee)
-    }).catch(err => {
-        if (err.kind === "ObjectId") {
-            return res.status(404).send({
-                message: "Committee not found with username " + req.params.id
-            });
-        }
-        return res.status(500).send({
-            message: "There was a problem retrieving Committee " + req.params.id
-        }); 
-    });
-});
+// router.get('/:id', (req, res) => {
+//     if (!req.params.id) {
+//         return res.status(400).send({
+//             message: "A committee ID is required to find a committee."
+//         });
+//     };
+//     Committee.findById(req.params.id).then(committee => {
+//         if (!committee) {
+//             return res.status(404).send({
+//                 message: "Commitee not found with id " + req.params.id
+//             });
+//         };
+//         res.send(committee)
+//     }).catch(err => {
+//         if (err.kind === "ObjectId") {
+//             return res.status(404).send({
+//                 message: "Committee not found with id " + req.params.id
+//             });
+//         }
+//         return res.status(500).send({
+//             message: "There was a problem retrieving Committee " + req.params.id
+//         }); 
+//     });
+// });
 
 router.post('/', (req, res) => {
     if (!(
@@ -42,8 +73,8 @@ router.post('/', (req, res) => {
             req.body.type &&
             req.body.startTime &&
             req.body.endTime &&
-            req.body.meetingDay &&
-            typeof req.body.actitve == "boolean"
+            req.body.meetingDay
+            // req.body.active
         )) {
         return res.status(400).send({
             message: "All required fields must be present cannot be empty"
@@ -133,6 +164,5 @@ router.delete('/:id', (req, res) => {
         });
     });
 });
-
 
 module.exports = router;
