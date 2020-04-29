@@ -37,7 +37,14 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    if (!(req.body.name && req.body.type)) {
+    if (!(
+            req.body.name &&
+            req.body.type &&
+            req.body.startTime &&
+            req.body.endTime &&
+            req.body.meetingDay &&
+            typeof req.body.actitve == "boolean"
+        )) {
         return res.status(400).send({
             message: "All required fields must be present cannot be empty"
         });
@@ -46,7 +53,11 @@ router.post('/', (req, res) => {
     
     const committee = new Committee({
         name: req.body.name,
-        type: req.body.type
+        type: req.body.type,
+        active: req.body.active,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
+        meetingDay: req.body.meetingDay
     });
 
     committee.save().then(data => {
@@ -71,6 +82,18 @@ router.put('/:id', (req, res) => {
     }
     if (req.body.type) {
         updatedCommittee['type'] = req.body.type
+    }
+    if (req.body.actitve) {
+        updatedCommittee['active'] = req.body.active
+    }
+    if (req.body.startTime) {
+        updatedCommittee['startTime'] = req.body.startTime
+    }
+    if (req.body.endTime) {
+        updatedCommittee['endTime'] = req.body.endTime
+    }
+    if (req.body.meetingDay) {
+        updatedCommittee['meetingDay'] = req.body.meetingDay
     }
 
     Committee.findByIdAndUpdate(req.params.id, updatedCommittee,
