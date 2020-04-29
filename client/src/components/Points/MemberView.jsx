@@ -163,7 +163,7 @@ const MemberView = ({
 
   return (
     <div id="entire-page">
-      <div className="main-page">
+      <div className="main-page2">
         <div id="top-info">
           <div id="name">
             {user !== undefined &&
