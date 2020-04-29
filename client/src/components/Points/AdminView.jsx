@@ -1,9 +1,18 @@
 import "./AdminView.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import AdminPointsTable from "./AdminPointsTable";
+import { getPointsReport } from "./../../redux/actions/pointsActions";
 
-const AdminView = ({ user, onChange }) => {
+const AdminView = ({ user, points, onChange, getPointsReport }) => {
+  const [semester, setSemester] = useState("2020spring");
+
+  useEffect(() => {
+    getPointsReport(semester);
+    //eslint-disable-next-line
+  }, [semester]);
+
   return (
     <div className="directory-page">
       <div className="top-bar">
@@ -42,7 +51,11 @@ const AdminView = ({ user, onChange }) => {
             </div>
           </div>
           <div id="user-table">
-            <AdminPointsTable />
+            <AdminPointsTable
+              points={points}
+              semester={semester}
+              onChange={(semester) => setSemester(semester)}
+            />
           </div>
         </div>
       </div>
@@ -50,9 +63,14 @@ const AdminView = ({ user, onChange }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  points: state.points.points,
+});
+
 AdminView.propTypes = {
   user: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
+  getPointsReport: PropTypes.func.isRequired,
 };
 
-export default AdminView;
+export default connect(mapStateToProps, { getPointsReport })(AdminView);

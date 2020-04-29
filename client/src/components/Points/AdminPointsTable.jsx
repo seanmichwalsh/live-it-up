@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import AdminViewItem from "./AdminViewItem";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getPointsReport } from "./../../redux/actions/pointsActions";
+import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 
-const AdminPointsTable = ({ points, getPointsReport }) => {
-  const [semester, setSemester] = useState("2020spring");
+const AdminPointsTable = ({ points, semester, onChange }) => {
   const [sortType, setSortType] = useState("");
-
-  useEffect(() => {
-    getPointsReport(semester);
-    //eslint-disable-next-line
-  }, [semester]);
+  const [memberOrder, setMemberOrder] = useState(true);
+  const [group1Order, setGroup1Order] = useState(true);
+  const [group2Order, setGroup2Order] = useState(true);
+  const [group3Order, setGroup3Order] = useState(true);
+  const [ceOrder, setCEOrder] = useState(true);
+  const [plcOrder, setPLCOrder] = useState(true);
+  const [auxOrder, setAuxOrder] = useState(true);
+  const [ohOrder, setOHOrder] = useState(true);
+  const [cmOrder, setCMOrder] = useState(true);
 
   const sortTable = () => {
     return Object.keys(points).sort((a, b) => {
@@ -65,22 +65,38 @@ const AdminPointsTable = ({ points, getPointsReport }) => {
     });
   };
 
+  const style = {
+    opacity: 0.3,
+  };
+
   return (
     <table
+      id="table"
       data-toggle="table"
       className="table table-bordered table-hover table-responsive-sm admin-view"
-      id="table"
+      data-sortable="true"
     >
       <thead>
         <tr>
-          <th data-field="uid" data-sortable="true" scope="true">
+          <th data-field="uid" data-sortable="true">
             Member
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("memberAscend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("memberDescend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(memberOrder ? "memberAscend" : "memberDescend");
+                  setMemberOrder(!memberOrder);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!memberOrder ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={memberOrder ? style : null}
+                />
               </button>
             </span>
           </th>
@@ -88,7 +104,7 @@ const AdminPointsTable = ({ points, getPointsReport }) => {
             Semester
             <div className="dropdown">
               <select
-                onChange={(e) => setSemester(e.target.value)}
+                onChange={(e) => onChange(e.target.value)}
                 value={semester}
               >
                 <option value=""></option>
@@ -101,88 +117,176 @@ const AdminPointsTable = ({ points, getPointsReport }) => {
           <th data-field="group1" data-sortable="true">
             Category 1 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("group1Ascend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("group1Descend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(group1Order ? "group1Ascend" : "group1Descend");
+                  setGroup1Order(!group1Order);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!group1Order ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={group1Order ? style : null}
+                />
               </button>
             </span>
           </th>
           <th data-field="group2" data-sortable="true">
             Category 2 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("group2Ascend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("group2Descend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(group2Order ? "group2Ascend" : "group2Descend");
+                  setGroup2Order(!group2Order);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!group2Order ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={group2Order ? style : null}
+                />
               </button>
             </span>
           </th>
           <th data-field="group3" data-sortable="true">
             Category 3 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("group3Ascend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("group3Descend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(group3Order ? "memberAscend" : "memberDescend");
+                  setGroup3Order(!group3Order);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!group3Order ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={group3Order ? style : null}
+                />
               </button>
             </span>
           </th>
           <th data-field="committeeEvents" data-sortable="true">
             Committee Events
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("CEAscend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("CEDescend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(ceOrder ? "CEAscend" : "CEDescend");
+                  setCEOrder(!ceOrder);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!ceOrder ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={ceOrder ? style : null}
+                />
               </button>
             </span>
           </th>
           <th data-field="plc" data-sortable="true">
             PLC
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("plcAscend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("plcDescend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(plcOrder ? "plcAscend" : "plcDescend");
+                  setPLCOrder(!plcOrder);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!plcOrder ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={plcOrder ? style : null}
+                />
               </button>
             </span>
           </th>
           <th data-field="aux" data-sortable="true">
             Auxilliary
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("auxAscend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("auxDescend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(auxOrder ? "auxAscend" : "auxDescend");
+                  setAuxOrder(!auxOrder);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!auxOrder ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={auxOrder ? style : null}
+                />
               </button>
             </span>
           </th>
           <th data-field="officeHours" data-sortable="true">
             Office Hours
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("ohAscend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("ohDescend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(ohOrder ? "ohAscend" : "ohDescend");
+                  setOHOrder(!ohOrder);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!ohOrder ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={ohOrder ? style : null}
+                />
               </button>
             </span>
           </th>
           <th data-field="committeeMeetings" data-sortable="true">
             Committee Meetings
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button onClick={() => setSortType("cmAscend")}>
-                <FontAwesomeIcon icon={faCaretUp} />
-              </button>
-              <button onClick={() => setSortType("cmDescend")}>
-                <FontAwesomeIcon icon={faCaretDown} />
+              <button
+                onClick={() => {
+                  setSortType(cmOrder ? "cmAscend" : "cmDescend");
+                  setCMOrder(!cmOrder);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faSortUp}
+                  className="icon"
+                  style={!cmOrder ? style : null}
+                />
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="icon"
+                  style={cmOrder ? style : null}
+                />
               </button>
             </span>
           </th>
@@ -197,13 +301,8 @@ const AdminPointsTable = ({ points, getPointsReport }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  points: state.points.points,
-});
-
 AdminPointsTable.propTypes = {
   points: PropTypes.object.isRequired,
-  getPointsReport: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, { getPointsReport })(AdminPointsTable);
+export default AdminPointsTable;
