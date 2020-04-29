@@ -6,15 +6,15 @@ import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 
 const AdminPointsTable = ({ points, semester, onChange }) => {
   const [sortType, setSortType] = useState("");
-  const [memberOrder, setMemberOrder] = useState(true);
-  const [group1Order, setGroup1Order] = useState(true);
-  const [group2Order, setGroup2Order] = useState(true);
-  const [group3Order, setGroup3Order] = useState(true);
-  const [ceOrder, setCEOrder] = useState(true);
-  const [plcOrder, setPLCOrder] = useState(true);
-  const [auxOrder, setAuxOrder] = useState(true);
-  const [ohOrder, setOHOrder] = useState(true);
-  const [cmOrder, setCMOrder] = useState(true);
+  const [memberOrder, setMemberOrder] = useState(null);
+  const [group1Order, setGroup1Order] = useState(null);
+  const [group2Order, setGroup2Order] = useState(null);
+  const [group3Order, setGroup3Order] = useState(null);
+  const [ceOrder, setCEOrder] = useState(null);
+  const [plcOrder, setPLCOrder] = useState(null);
+  const [auxOrder, setAuxOrder] = useState(null);
+  const [ohOrder, setOHOrder] = useState(null);
+  const [cmOrder, setCMOrder] = useState(null);
 
   const sortTable = () => {
     return Object.keys(points).sort((a, b) => {
@@ -78,19 +78,23 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
     >
       <thead>
         <tr>
-          <th data-field="uid" data-sortable="true">
+          <th
+            data-field="uid"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(memberOrder ? "memberAscend" : "memberDescend");
+              setMemberOrder(!memberOrder);
+            }}
+          >
             Member
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(memberOrder ? "memberAscend" : "memberDescend");
-                  setMemberOrder(!memberOrder);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!memberOrder ? style : null}
+                  style={
+                    memberOrder == null ? null : !memberOrder ? style : null
+                  }
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -114,19 +118,23 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </select>
             </div>
           </th>
-          <th data-field="group1" data-sortable="true">
+          <th
+            data-field="group1"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(group1Order ? "group1Ascend" : "group1Descend");
+              setGroup1Order(!group1Order);
+            }}
+          >
             Category 1 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(group1Order ? "group1Ascend" : "group1Descend");
-                  setGroup1Order(!group1Order);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!group1Order ? style : null}
+                  style={
+                    group1Order == null ? null : !group1Order ? style : null
+                  }
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -136,19 +144,23 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </button>
             </span>
           </th>
-          <th data-field="group2" data-sortable="true">
+          <th
+            data-field="group2"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(group2Order ? "group2Ascend" : "group2Descend");
+              setGroup2Order(!group2Order);
+            }}
+          >
             Category 2 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(group2Order ? "group2Ascend" : "group2Descend");
-                  setGroup2Order(!group2Order);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!group2Order ? style : null}
+                  style={
+                    group2Order == null ? null : !group2Order ? style : null
+                  }
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -158,19 +170,23 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </button>
             </span>
           </th>
-          <th data-field="group3" data-sortable="true">
+          <th
+            data-field="group3"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(group3Order ? "memberAscend" : "memberDescend");
+              setGroup3Order(!group3Order);
+            }}
+          >
             Category 3 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(group3Order ? "memberAscend" : "memberDescend");
-                  setGroup3Order(!group3Order);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!group3Order ? style : null}
+                  style={
+                    group3Order == null ? null : !group3Order ? style : null
+                  }
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -180,19 +196,21 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </button>
             </span>
           </th>
-          <th data-field="committeeEvents" data-sortable="true">
+          <th
+            data-field="committeeEvents"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(ceOrder ? "CEAscend" : "CEDescend");
+              setCEOrder(!ceOrder);
+            }}
+          >
             Committee Events
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(ceOrder ? "CEAscend" : "CEDescend");
-                  setCEOrder(!ceOrder);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!ceOrder ? style : null}
+                  style={ceOrder == null ? null : !ceOrder ? style : null}
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -202,19 +220,21 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </button>
             </span>
           </th>
-          <th data-field="plc" data-sortable="true">
+          <th
+            data-field="plc"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(plcOrder ? "plcAscend" : "plcDescend");
+              setPLCOrder(!plcOrder);
+            }}
+          >
             PLC
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(plcOrder ? "plcAscend" : "plcDescend");
-                  setPLCOrder(!plcOrder);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!plcOrder ? style : null}
+                  style={plcOrder == null ? null : !plcOrder ? style : null}
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -224,19 +244,21 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </button>
             </span>
           </th>
-          <th data-field="aux" data-sortable="true">
+          <th
+            data-field="aux"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(auxOrder ? "auxAscend" : "auxDescend");
+              setAuxOrder(!auxOrder);
+            }}
+          >
             Auxilliary
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(auxOrder ? "auxAscend" : "auxDescend");
-                  setAuxOrder(!auxOrder);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!auxOrder ? style : null}
+                  style={auxOrder == null ? null : !auxOrder ? style : null}
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -246,19 +268,21 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </button>
             </span>
           </th>
-          <th data-field="officeHours" data-sortable="true">
+          <th
+            data-field="officeHours"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(ohOrder ? "ohAscend" : "ohDescend");
+              setOHOrder(!ohOrder);
+            }}
+          >
             Office Hours
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(ohOrder ? "ohAscend" : "ohDescend");
-                  setOHOrder(!ohOrder);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!ohOrder ? style : null}
+                  style={ohOrder == null ? null : !ohOrder ? style : null}
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
@@ -268,19 +292,21 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
               </button>
             </span>
           </th>
-          <th data-field="committeeMeetings" data-sortable="true">
+          <th
+            data-field="committeeMeetings"
+            data-sortable="true"
+            onClick={() => {
+              setSortType(cmOrder ? "cmAscend" : "cmDescend");
+              setCMOrder(!cmOrder);
+            }}
+          >
             Committee Meetings
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button
-                onClick={() => {
-                  setSortType(cmOrder ? "cmAscend" : "cmDescend");
-                  setCMOrder(!cmOrder);
-                }}
-              >
+              <button>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
-                  style={!cmOrder ? style : null}
+                  style={cmOrder == null ? null : !cmOrder ? style : null}
                 />
                 <FontAwesomeIcon
                   icon={faSortDown}
