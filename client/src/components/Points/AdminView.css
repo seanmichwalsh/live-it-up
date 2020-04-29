@@ -61,13 +61,15 @@ table.admin-view thead > tr th span button {
   padding: 0;
   background-color: transparent;
   border: none;
+  display: flex;
+  flex-direction: column;
 }
 
-table.admin-view thead > tr th span button:first-child {
+table.admin-view thead > tr th span button .icon:first-child {
   margin-bottom: -80%;
 }
 
-table.admin-view thead > tr th span button:nth-child(2) {
+table.admin-view thead > tr th span button .icon:nth-child(2) {
   margin-top: -80%;
 }
 
