@@ -48,7 +48,7 @@ const Directory = ({ getUsers, users, getCommittees, committees }) => {
         </header>
       </div>
       <div className="userLists">
-        {users.map(user => (
+        {users.map((user) => (
           <User
             key={user._id}
             user={user}
@@ -56,7 +56,7 @@ const Directory = ({ getUsers, users, getCommittees, committees }) => {
               committees !== undefined &&
               committees !== null &&
               committees.filter(
-                committee => committee._id === user.mainCommittee
+                (committee) => committee._id === user.mainCommittee
               )[0]
             }
           />
@@ -70,12 +70,12 @@ Directory.propTypes = {
   getUsers: PropTypes.func.isRequired,
   getCommittees: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired,
-  committees: PropTypes.array.isRequired
+  committees: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   users: state.user.users,
-  committees: state.committee.committees
+  committees: state.committee.committees,
 });
 
 export default connect(mapStateToProps, { getUsers, getCommittees })(Directory);

@@ -27,7 +27,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
     //eslint-disable-next-line
   }, []);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (
       firstName === "" ||
@@ -40,7 +40,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
       toast("Please fill in all required blanks!");
     } else {
       committee.push(primaryCommittee);
-      auxCommittee.map(aux => committee.push(aux));
+      auxCommittee.map((aux) => committee.push(aux));
       setCommittee(committee);
       const newUser = {
         firstName: firstName,
@@ -53,11 +53,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
         active: status,
         mainCommittee: primaryCommittee,
         committees: committee,
-<<<<<<< HEAD
-        admin: admin
-=======
-        isAdmin: isAdmin
->>>>>>> a3363661cd048a472e69122aef58ffe3d3b03598
+        isAdmin: isAdmin,
       };
       addUser(newUser);
       //Clear Fields
@@ -72,11 +68,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
       setPrimaryCommittee("");
       setAuxCommittee([]);
       setCommittee([]);
-<<<<<<< HEAD
-      setAdmin(false);
-=======
       setIsAdmin(false);
->>>>>>> a3363661cd048a472e69122aef58ffe3d3b03598
       $("#onCampus").val("");
       $("#activeMember").val("");
       $("#committees").val("");
@@ -108,7 +100,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="firstName"
                     placeholder="George"
                     required
-                    onChange={e => setFirstName(e.target.value)}
+                    onChange={(e) => setFirstName(e.target.value)}
                     value={firstName}
                   />
                 </div>
@@ -121,7 +113,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="lastName"
                     placeholder="Burdell"
                     required
-                    onChange={e => setLastName(e.target.value)}
+                    onChange={(e) => setLastName(e.target.value)}
                     value={lastName}
                   />
                 </div>
@@ -134,7 +126,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="inputPreferredName"
                     placeholder="Georgie"
                     required
-                    onChange={e => setPreferredName(e.target.value)}
+                    onChange={(e) => setPreferredName(e.target.value)}
                     value={preferredName}
                   />
                 </div>
@@ -149,7 +141,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="uid"
                     placeholder="gpburdell"
                     required
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={(e) => setUsername(e.target.value)}
                     value={username}
                   />
                 </div>
@@ -162,7 +154,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="email"
                     placeholder="georgepburdell@gatech.edu"
                     required
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     value={email}
                   />
                 </div>
@@ -178,7 +170,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="phoneNumber"
                     placeholder="6781236789"
                     required
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(e.target.value)}
                     value={phone}
                   />
                 </div>
@@ -188,7 +180,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="onCampus"
                     className="form-control"
                     required
-                    onChange={e => {
+                    onChange={(e) => {
                       switch (e.target.value) {
                         case "true":
                           setResidency(true);
@@ -214,7 +206,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     id="activeMember"
                     className="form-control"
                     required
-                    onChange={e => {
+                    onChange={(e) => {
                       switch (e.target.value) {
                         case "true":
                           setStatus(true);
@@ -266,14 +258,14 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                   id="committees"
                   className="form-control"
                   required
-                  onChange={e => setPrimaryCommittee(e.target.value)}
+                  onChange={(e) => setPrimaryCommittee(e.target.value)}
                 >
                   <option selected disabled value="">
                     Choose...
                   </option>
                   {committees
-                    .filter(committee => committee.type === "Event Planning")
-                    .map(committee => (
+                    .filter((committee) => committee.type === "Event Planning")
+                    .map((committee) => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}
                       </option>
@@ -285,11 +277,11 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                   <label htmlFor="inputState">Auxillary Committee</label>
                   {committees
                     .filter(
-                      committee =>
+                      (committee) =>
                         committee.type === "Auxiliary" ||
                         committee.type === "Admin"
                     )
-                    .map(committee => (
+                    .map((committee) => (
                       <div
                         key={committee._id}
                         className="custom-control custom-checkbox"
@@ -305,7 +297,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                               )
                             ) {
                               const newAux = auxCommittee.filter(
-                                acommittee => acommittee !== committee._id
+                                (acommittee) => acommittee !== committee._id
                               );
                               setAuxCommittee(newAux);
                               $(`#${committee.name}Check`)[0].removeAttribute(
@@ -380,11 +372,11 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
 
 AddUser.propTypes = {
   addUser: PropTypes.func.isRequired,
-  committees: PropTypes.array.isRequired
+  committees: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
-  committees: state.committee.committees
+const mapStateToProps = (state) => ({
+  committees: state.committee.committees,
 });
 
 export default connect(mapStateToProps, { addUser, getCommittees })(AddUser);
