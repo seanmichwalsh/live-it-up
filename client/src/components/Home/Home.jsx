@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Moment from "moment";
 
 import { getEvents } from "../../redux/actions/eventActions";
 import { getCommittees } from "../../redux/actions/committeeActions";
