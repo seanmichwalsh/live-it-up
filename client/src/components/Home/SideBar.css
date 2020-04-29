@@ -1,0 +1,54 @@
+#gmm-header {
+    font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
+    background: #ac539b;
+    border-radius: 25px;
+    font-weight: bold;
+    position: relative;
+    color: #ffffff;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.panelHeader {
+    width: 100%;
+    font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
+    background: #ac539b;
+    border-radius: 25px;
+    font-weight: bold;
+    position: relative;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#circleIcon {
+    background: transparent;
+    border: none;
+    color: #fff;
+    margin-right: 0.2rem;
+}
+
+#icon {
+    border-radius: 50%;
+    transition: all 300ms ease-in-out;
+}
+
+#icon:hover {
+    background: #fff;
+    color: #ac539b;
+    border: 2px #fff solid;
+    transition: all 300ms ease-in-out;
+}
+
+.text {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2rem;
+}
+
+
