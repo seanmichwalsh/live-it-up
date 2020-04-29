@@ -24,11 +24,15 @@ app.listen(port, () => {
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect(dbConfig.url, { useNewUrlParser: true })
+  .connect(dbConfig.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("Connected to database");
   })
-  .catch(err => {
+  .catch((err) => {
     console.log("Could not connect to the database. Exiting now.");
     process.exit();
   });

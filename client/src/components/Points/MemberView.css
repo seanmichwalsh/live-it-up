@@ -1,0 +1,149 @@
+#entire-page {
+  display: flex;
+  justify-content: center;
+}
+
+.main-page {
+  width: 85%;
+}
+
+#top-info {
+  float: left;
+  font-size: 1.2rem;
+}
+
+#name {
+  float: left;
+  margin-bottom: 1vh;
+}
+
+#dropdownmember-view {
+  clear: both;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+#point-table-header {
+  display: none;
+}
+
+#point-table {
+  width: 75%;
+  clear: both;
+  float: left;
+}
+
+#rq-table {
+  width: 20%;
+  margin-left: 3vw;
+  float: right;
+  overflow-x: hidden;
+}
+
+#panelHeader {
+  width: 100%;
+  font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
+  background: #ac539b;
+  border-radius: 25px;
+  font-weight: bold;
+  position: relative;
+  color: #ffffff;
+  text-align: left;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+}
+
+.red-block {
+  background-color: red;
+  border-radius: 15px;
+  height: 12vh;
+  display: grid;
+  margin-bottom: 1vh;
+  transition: all 300ms ease-in-out;
+}
+
+.yellow-block {
+  background-color: yellow;
+  border-radius: 15px;
+  height: 12vh;
+  display: grid;
+  margin-bottom: 1vh;
+  transition: all 300ms ease-in-out;
+}
+
+.green-block {
+  background-color: #42f572;
+  border-radius: 15px;
+  height: 12vh;
+  display: grid;
+  margin-bottom: 1vh;
+  transition: all 300ms ease-in-out;
+}
+
+.pr-description {
+  margin: auto;
+}
+
+#add-edit-box.to-member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+}
+
+@media only screen and (max-width: 1025px) {
+  #entire-page {
+    display: clear;
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .main-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #rq-table {
+    order: 2;
+    width: 100%;
+    margin-left: 0vw;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+  }
+
+  #top-info {
+    order: 1;
+  }
+
+  #point-table-header {
+    order: 3;
+    width: 100%;
+    font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
+    background: #ac539b;
+    border-radius: 25px;
+    font-weight: bold;
+    position: relative;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+
+  #point-table {
+    order: 4;
+    width: 100%;
+  }
+
+  #add-edit-box.to-admin {
+    position: absolute;
+    top: 10%;
+    right: -25%;
+  }
+}
