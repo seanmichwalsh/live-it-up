@@ -88,7 +88,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Member
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={memberOrder == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -128,7 +128,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Category 1 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={group1Order == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -154,7 +154,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Category 2 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={group2Order == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -180,7 +180,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Category 3 Points
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={group3Order == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -206,7 +206,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Committee Events
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={ceOrder == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -230,7 +230,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             PLC
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={plcOrder == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -254,7 +254,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Auxilliary
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={auxOrder == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -278,7 +278,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Office Hours
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={ohOrder == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
@@ -302,7 +302,7 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
           >
             Committee Meetings
             <span className="btn-group-vertical btn-group-sm ml-2">
-              <button>
+              <button style={cmOrder == null ? style : null}>
                 <FontAwesomeIcon
                   icon={faSortUp}
                   className="icon"
