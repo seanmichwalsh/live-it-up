@@ -4,7 +4,7 @@ import AdminViewItem from "./AdminViewItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 
-const AdminPointsTable = ({ points, semester, onChange }) => {
+const AdminPointsTable = ({ points, context, semester, onChange }) => {
   const [sortType, setSortType] = useState("");
   const [memberOrder, setMemberOrder] = useState(null);
   const [group1Order, setGroup1Order] = useState(null);
@@ -15,6 +15,10 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
   const [auxOrder, setAuxOrder] = useState(null);
   const [ohOrder, setOHOrder] = useState(null);
   const [cmOrder, setCMOrder] = useState(null);
+
+  const memberSearch = (pointsKey) => {
+    return pointsKey.filter((username) => username.includes(context));
+  };
 
   const sortTable = () => {
     return Object.keys(points).sort((a, b) => {
@@ -36,9 +40,13 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
         case "group3Descend":
           return points[a].group3 < points[b].group3 ? 1 : -1;
         case "CEAscend":
-          return points[a].committeeEvent > points[b].committeeEvent ? 1 : -1;
+          return points[a].committeeEvent > points[b].committeeEvent
+            ? 1
+            : -1;
         case "CEDescend":
-          return points[a].committeeEvent < points[b].committeeEvent ? 1 : -1;
+          return points[a].committeeEvent < points[b].committeeEvent
+            ? 1
+            : -1;
         case "plcAscend":
           return points[a].plc > points[b].plc ? 1 : -1;
         case "plcDescend":
@@ -52,11 +60,13 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
         case "ohDescend":
           return points[a].officeHours < points[b].officeHours ? 1 : -1;
         case "cmAscend":
-          return points[a].committeeMeetings > points[b].committeeMeetings
+          return points[a].committeeMeetings >
+            points[b].committeeMeetings
             ? 1
             : -1;
         case "cmDescend":
-          return points[a].committeeMeetings < points[b].committeeMeetings
+          return points[a].committeeMeetings <
+            points[b].committeeMeetings
             ? 1
             : -1;
         default:
@@ -70,17 +80,10 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
   };
 
   return (
-    <table
-      id="table"
-      data-toggle="table"
-      className="table table-bordered table-hover table-responsive-sm admin-view"
-      data-sortable="true"
-    >
+    <table className="table table-bordered table-hover table-responsive-sm admin-view">
       <thead>
         <tr>
           <th
-            data-field="uid"
-            data-sortable="true"
             onClick={() => {
               setSortType(memberOrder ? "memberAscend" : "memberDescend");
               setMemberOrder(!memberOrder);
@@ -119,8 +122,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </div>
           </th>
           <th
-            data-field="group1"
-            data-sortable="true"
             onClick={() => {
               setSortType(group1Order ? "group1Ascend" : "group1Descend");
               setGroup1Order(!group1Order);
@@ -145,8 +146,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </span>
           </th>
           <th
-            data-field="group2"
-            data-sortable="true"
             onClick={() => {
               setSortType(group2Order ? "group2Ascend" : "group2Descend");
               setGroup2Order(!group2Order);
@@ -171,8 +170,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </span>
           </th>
           <th
-            data-field="group3"
-            data-sortable="true"
             onClick={() => {
               setSortType(group3Order ? "memberAscend" : "memberDescend");
               setGroup3Order(!group3Order);
@@ -197,8 +194,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </span>
           </th>
           <th
-            data-field="committeeEvents"
-            data-sortable="true"
             onClick={() => {
               setSortType(ceOrder ? "CEAscend" : "CEDescend");
               setCEOrder(!ceOrder);
@@ -221,8 +216,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </span>
           </th>
           <th
-            data-field="plc"
-            data-sortable="true"
             onClick={() => {
               setSortType(plcOrder ? "plcAscend" : "plcDescend");
               setPLCOrder(!plcOrder);
@@ -245,8 +238,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </span>
           </th>
           <th
-            data-field="aux"
-            data-sortable="true"
             onClick={() => {
               setSortType(auxOrder ? "auxAscend" : "auxDescend");
               setAuxOrder(!auxOrder);
@@ -269,8 +260,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </span>
           </th>
           <th
-            data-field="officeHours"
-            data-sortable="true"
             onClick={() => {
               setSortType(ohOrder ? "ohAscend" : "ohDescend");
               setOHOrder(!ohOrder);
@@ -293,8 +282,6 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
             </span>
           </th>
           <th
-            data-field="committeeMeetings"
-            data-sortable="true"
             onClick={() => {
               setSortType(cmOrder ? "cmAscend" : "cmDescend");
               setCMOrder(!cmOrder);
@@ -319,9 +306,11 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
         </tr>
       </thead>
       <tbody>
-        {sortTable(sortType).map((username) => (
-          <AdminViewItem points={points} username={username} key={username} />
-        ))}
+        {(!context ? sortTable() : memberSearch(sortTable())).map(
+          (username) => (
+            <AdminViewItem points={points} username={username} key={username} />
+          )
+        )}
       </tbody>
     </table>
   );
@@ -329,6 +318,9 @@ const AdminPointsTable = ({ points, semester, onChange }) => {
 
 AdminPointsTable.propTypes = {
   points: PropTypes.object.isRequired,
+  context: PropTypes.string,
+  semester: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default AdminPointsTable;

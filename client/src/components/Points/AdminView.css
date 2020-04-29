@@ -1,5 +1,6 @@
 .directory-page {
   width: 100vw;
+  overflow-x: hidden;
 }
 
 #header {
@@ -7,7 +8,6 @@
   font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
   display: flex;
   justify-content: center;
-  position: relative;
 }
 
 #header-text {
@@ -50,7 +50,7 @@ table.admin-view thead tr th:hover {
 #display-header {
   float: left;
   font-size: calc(12px + (22 - 12) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 1vw;
+  margin: 1vw auto;
 }
 
 #add-edit-box.to-member {
@@ -60,7 +60,7 @@ table.admin-view thead tr th:hover {
   position: absolute;
 }
 
-#add-edit-box.to-member > .dropdown {
+#add-edit-box.to-member .dropdown:first-child {
   margin-right: 2rem;
 }
 
@@ -83,16 +83,27 @@ table.admin-view thead > tr th span button .icon:nth-child(2) {
 @media only screen and (max-width: 1025px) {
   #header-text {
     width: 100vw;
-    text-align: initial;
+    display: block;
+  }
+
+  #display-header {
+    float: initial;
+  }
+
+  #display-header div:first-child {
+    font-size: 1.4rem;
+  }
+
+  #mainPG {
+    margin-top: 3rem;
   }
 
   #add-edit-box.to-member {
-    position: absolute;
-    top: -150%;
-    right: -20%;
+    margin-top: 2rem;
+    right: -7%;
   }
 
-  #add-edit-box.to-member > .dropdown {
+  #add-edit-box.to-member .dropdown:first-child {
     margin-right: 1rem;
   }
 
