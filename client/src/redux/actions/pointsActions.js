@@ -156,7 +156,7 @@ export const addPoint = points => async dispatch => {
       type: POINTS_ERROR,
       payload: err.message
     });
-    toast.error(`There was an error adding ${points.name}.`);
+    toast.error(`There was an error adding ${points.description}.`);
   }
 };
 
