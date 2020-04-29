@@ -234,12 +234,12 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                   id="adminVal"
                     className="form-check-input"
                     type="checkbox"
-                    value={admin}
+                    value={isAdmin}
                     onChange={e => {
                       if (e.target.checked) {
-                        setAdmin(true);
+                        setIsAdmin(true);
                       } else {
-                        setAdmin(false);
+                        setIsAdmin(false);
                       }
                     }}
                     />
