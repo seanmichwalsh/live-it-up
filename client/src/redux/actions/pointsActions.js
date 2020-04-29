@@ -150,7 +150,7 @@ export const addPoint = points => async dispatch => {
       type: ADD_POINTS,
       payload: data
     });
-    toast("A new points is added successfully!");
+    toast("New points were added successfully!");
   } catch (err) {
     dispatch({
       type: POINTS_ERROR,
@@ -170,13 +170,13 @@ export const deletePoint = id => async dispatch => {
       type: DELETE_POINTS,
       payload: id
     });
-    toast("The points is deleted succesfully.");
+    toast("The points were deleted succesfully.");
   } catch (err) {
     dispatch({
       type: POINTS_ERROR,
       payload: err.message
     });
-    toast.error(`There was an error deleting the points`);
+    toast.error(`There was an error deleting the points.`);
   }
 };
 
@@ -195,13 +195,13 @@ export const updatePoint = (points, id) => async dispatch => {
       type: UPDATE_POINTS,
       payload: data
     });
-    toast("The points is updated successfully!");
+    toast("The points were updated successfully!");
   } catch (err) {
     dispatch({
       type: POINTS_ERROR,
       payload: err.message
     });
-    toast.error(`There was an error updating ${points.name}.`);
+    toast.error(`There was an error updating ${points.description}.`);
   }
 };
 

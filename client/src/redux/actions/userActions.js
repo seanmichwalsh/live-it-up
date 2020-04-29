@@ -76,7 +76,7 @@ export const addUser = (user) => async (dispatch) => {
         type: ADD_USER,
         payload: data,
       });
-      toast("A new user is added successfully!");
+      toast("A new user was added successfully!");
     } else {
       dispatch({
         type: USER_ERROR,
@@ -107,11 +107,15 @@ export const deleteUser = (uid) => async (dispatch) => {
       type: DELETE_USER,
       payload: uid,
     });
+    toast("The user was deleted successfully!");
   } catch (err) {
     dispatch({
       type: USER_ERROR,
       payload: err.message,
     });
+    toast.error(
+      `There was an error deleting the user.`
+    );
   }
 };
 
@@ -132,20 +136,20 @@ export const updateUser = (user, uid) => async (dispatch) => {
         type: USER_ERROR,
         payload: data.message,
       });
-      toast.error("There was an error updating the user!");
+      toast.error(`There was an error updating ${user.firstName + " " + user.lastName}.`);
     } else {
       dispatch({
         type: UPDATE_USER,
         payload: data,
       });
-      toast("The user is updated succesfully!");
+      toast(`${user.firstName + " " + user.lastName} was updated successfully!`);
     }
   } catch (err) {
     dispatch({
       type: USER_ERROR,
       payload: err.message,
     });
-    toast.error("There was an error updating the user!");
+    toast.error(`There was an error updating the ${user.firstName + " " + user.lastName}!`);
   }
 };
 
