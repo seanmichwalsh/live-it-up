@@ -11,14 +11,14 @@ const AddCommitteeForm = ({ addCommittee }) => {
   const [name, setName] = useState("");
   const [type, setType] = useState(defaultCommitteeType);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (name === "" || type === "") {
       toast("Please fill in every required field!");
     } else {
       const newCommittee = {
         name: name,
-        type: type
+        type: type,
       };
       addCommittee(newCommittee);
       //Clear Fields
@@ -38,7 +38,7 @@ const AddCommitteeForm = ({ addCommittee }) => {
             className="form-control"
             id="name"
             placeholder="Committee Name"
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             value={name}
             required
           />
@@ -52,7 +52,7 @@ const AddCommitteeForm = ({ addCommittee }) => {
             className="form-control"
             id="type"
             placeholder="Event Planning"
-            onChange={e => setType(e.target.value)}
+            onChange={(e) => setType(e.target.value)}
             value={type}
             required
           >
@@ -74,12 +74,12 @@ const AddCommitteeForm = ({ addCommittee }) => {
 };
 
 AddCommitteeForm.propTypes = {
-  addCommittee: PropTypes.func.isRequired
+  addCommittee: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   committees: state.committees,
-  current: state.current
+  current: state.current,
 });
 
 export default connect(mapStateToProps, { addCommittee })(AddCommitteeForm);
