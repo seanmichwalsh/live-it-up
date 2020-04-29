@@ -9,7 +9,7 @@ import { getCommittees } from "./../../redux/actions/committeeActions";
 import {
   getUsers,
   updateUser,
-  clearCurrent
+  clearCurrent,
 } from "./../../redux/actions/userActions";
 
 const EditUser = ({ updateUser, committees, getCommittees, current }) => {
@@ -40,8 +40,8 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
       setPrimaryCommittee(current.mainCommittee);
       setAuxCommittee(
         current.committees
-          .filter(committee => committee !== current.mainCommittee)
-          .map(committee => {
+          .filter((committee) => committee !== current.mainCommittee)
+          .map((committee) => {
             return committee;
           })
       );
@@ -50,7 +50,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
     // eslint-disable-next-line
   }, [current]);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (
       firstName === "" ||
@@ -64,7 +64,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
     } else {
       setCommittee([]);
       committee.push(primaryCommittee);
-      auxCommittee.map(aux => committee.push(aux));
+      auxCommittee.map((aux) => committee.push(aux));
       setCommittee(committee);
       const newUser = {
         firstName: firstName,
@@ -76,7 +76,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
         active: status,
         mainCommittee: primaryCommittee,
         committees: committee,
-        isAdmin: isAdmin
+        isAdmin: isAdmin,
       };
       updateUser(newUser, current.uid);
       //Clear Fields
@@ -125,7 +125,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     id="firstName"
                     placeholder="George"
                     required
-                    onChange={e => setFirstName(e.target.value)}
+                    onChange={(e) => setFirstName(e.target.value)}
                     value={firstName}
                   />
                 </div>
@@ -138,7 +138,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     id="lastName"
                     placeholder="Burdell"
                     required
-                    onChange={e => setLastName(e.target.value)}
+                    onChange={(e) => setLastName(e.target.value)}
                     value={lastName}
                   />
                 </div>
@@ -151,7 +151,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     id="inputPreferredName"
                     placeholder="Georgie"
                     required
-                    onChange={e => setPreferredName(e.target.value)}
+                    onChange={(e) => setPreferredName(e.target.value)}
                     value={preferredName}
                   />
                 </div>
@@ -167,7 +167,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     id="uid"
                     placeholder="gpburdell"
                     required
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={(e) => setUsername(e.target.value)}
                     value={username}
                   />
                 </div>
@@ -180,7 +180,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     id="email"
                     placeholder="georgepburdell@gatech.edu"
                     required
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     value={email}
                   />
                 </div>
@@ -196,7 +196,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     id="phoneNumber"
                     placeholder="6781236789"
                     required
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(e.target.value)}
                     value={phone}
                   />
                 </div>
@@ -207,7 +207,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     className="form-control"
                     required
                     value={residency ? "true" : "false"}
-                    onChange={e => {
+                    onChange={(e) => {
                       switch (e.target.value) {
                         case "true":
                           setResidency(true);
@@ -234,7 +234,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     className="form-control"
                     required
                     value={status.toString()}
-                    onChange={e => {
+                    onChange={(e) => {
                       switch (e.target.value) {
                         case "true":
                           setStatus(true);
@@ -267,14 +267,14 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                   className="form-control"
                   required
                   value={primaryCommittee}
-                  onChange={e => setPrimaryCommittee(e.target.value)}
+                  onChange={(e) => setPrimaryCommittee(e.target.value)}
                 >
                   <option selected disabled value="">
                     Choose...
                   </option>
                   {committees
-                    .filter(committee => committee.type === "Event Planning")
-                    .map(committee => (
+                    .filter((committee) => committee.type === "Event Planning")
+                    .map((committee) => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}
                       </option>
@@ -286,11 +286,11 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                   <label htmlFor="inputState">Auxillary Committee</label>
                   {committees
                     .filter(
-                      committee =>
+                      (committee) =>
                         committee.type === "Auxiliary" ||
                         committee.type === "Admin"
                     )
-                    .map(committee => (
+                    .map((committee) => (
                       <div
                         key={committee._id}
                         className="custom-control custom-checkbox"
@@ -306,7 +306,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                               )
                             ) {
                               const newAux = auxCommittee.filter(
-                                acommittee => acommittee !== committee._id
+                                (acommittee) => acommittee !== committee._id
                               );
                               setAuxCommittee(newAux);
                               $(`#${committee._id}Check`)[0].removeAttribute(
@@ -345,7 +345,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                         id="isAdminCheck"
                         checked={isAdmin}
                         className="custom-control-input"
-                        onChange={event => {
+                        onChange={(event) => {
                           setIsAdmin(event.target.checked);
                         }}
                       />
@@ -379,16 +379,16 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
 EditUser.propTypes = {
   updateUser: PropTypes.func.isRequired,
   current: PropTypes.object.isRequired,
-  committees: PropTypes.array.isRequired
+  committees: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   committees: state.committee.committees,
-  current: state.user.current
+  current: state.user.current,
 });
 
 export default connect(mapStateToProps, {
   updateUser,
   getCommittees,
-  clearCurrent
+  clearCurrent,
 })(EditUser);

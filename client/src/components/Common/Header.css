@@ -33,12 +33,10 @@ img {
   font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1600 - 300)));
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  /* transition: all 500ms ease-in-out; */
 }
 
 .nav-link:hover {
   color: #ac539b;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  /* transition: all 500ms ease-in-out; */
 }
