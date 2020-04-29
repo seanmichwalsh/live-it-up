@@ -168,7 +168,11 @@ const MemberView = ({
           <div id="name">
             {user !== undefined &&
               user !== null &&
-              user.firstName + " " + user.lastName}
+              (user.preferredName !== null
+                ? user.preferredName
+                : user.firstName) +
+                " " +
+                user.lastName}
             's Points <span id="text-dropdown">Report for {"   "}</span>
             <div id="dropdownmember-view">
               <div>
@@ -199,9 +203,7 @@ const MemberView = ({
             </div>
           ) : null}
         </div>
-        <div id="point-table-header">
-          Events Volunteered At
-        </div>
+        <div id="point-table-header">Events Volunteered At</div>
         <div id="point-table">
           <table className="table table-bordered table-hover table-responsive-sm">
             <thead>
