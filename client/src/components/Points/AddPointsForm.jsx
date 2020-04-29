@@ -20,7 +20,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
     //eslint-disable-next-line
   }, []);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (
       date === null ||
@@ -31,14 +31,14 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
     ) {
       toast("Please fill in every required field!");
     } else {
-      member.forEach(mem => {
+      member.forEach((mem) => {
         const newPoint = {
           date: date,
           category: category,
           points: number,
           semester: semester,
           description: description,
-          uid: mem
+          uid: mem,
         };
         console.log(newPoint);
         addPoint(newPoint);
@@ -65,7 +65,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               className="form-control"
               id="date"
               placeholder="01/23/99"
-              onChange={e => setDate(e.target.value)}
+              onChange={(e) => setDate(e.target.value)}
               value={date}
               required
             />
@@ -76,7 +76,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               id="category"
               class="form-control"
               required
-              onChange={e => {
+              onChange={(e) => {
                 switch (e.target.value) {
                   case "Group 1":
                     setCategory("group1");
@@ -124,7 +124,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               className="form-control"
               id="number"
               placeholder="9000"
-              onChange={e => setNumber(e.target.value)}
+              onChange={(e) => setNumber(e.target.value)}
               value={number}
               required
             />
@@ -137,19 +137,19 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               type="text"
               className="form-control"
               id="semester"
-              onChange={e => setSemester(e.target.value)}
+              onChange={(e) => setSemester(e.target.value)}
               value={semester}
               required
             >
               <option selected disabled value="">
                 Choose...
               </option>
-              <option value="201908">Fall 2019</option>
-              <option value="202002">Spring 2020</option>
-              <option value="202005">Summer 2020</option>
-              <option value="202008">Fall 2020</option>
-              <option value="202102">Spring 2021</option>
-              <option value="202105">Summer 2021</option>
+              <option value="2019fall">Fall 2019</option>
+              <option value="2020spring">Spring 2020</option>
+              <option value="2020summer">Summer 2020</option>
+              <option value="2020fall">Fall 2020</option>
+              <option value="2021spring">Spring 2021</option>
+              <option value="2021summer">Summer 2021</option>
             </select>
           </div>
           <div className="form-group col-md-6 text-left">
@@ -159,7 +159,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               className="form-control"
               id="description"
               placeholder="Set-up for Fall Festival"
-              onChange={e => setDescription(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
               value={description}
               required
             />
@@ -173,7 +173,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
           Members:
         </a>
         <div id="user-container">
-          {users.map(user => (
+          {users.map((user) => (
             <div key={user._id}>
               <input
                 type="checkbox"
@@ -181,7 +181,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
                 id={user.uid + "Check"}
                 onChange={() => {
                   if ($(`#${user.uid}Check`)[0].hasAttribute("checked")) {
-                    const newMember = member.filter(mem => mem !== user.uid);
+                    const newMember = member.filter((mem) => mem !== user.uid);
                     setMember(newMember);
                     $(`#${user.uid}Check`)[0].removeAttribute("checked");
                   } else {
@@ -220,13 +220,13 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
 
 AddPointsForm.propTypes = {
   addPoint: PropTypes.func.isRequired,
-  getUsers: PropTypes.func.isRequired
+  getUsers: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   points: state.points.points,
   current: state.points.current,
-  users: state.user.users
+  users: state.user.users,
 });
 
 export default connect(mapStateToProps, { addPoint, getUsers })(AddPointsForm);

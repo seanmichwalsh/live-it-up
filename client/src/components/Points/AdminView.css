@@ -1,0 +1,114 @@
+.directory-page {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+#header {
+  font-weight: bold;
+  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+  display: flex;
+  justify-content: center;
+}
+
+#header-text {
+  display: inline;
+  text-align: center;
+  margin: 0 auto;
+}
+
+table.admin-view thead tr th {
+  font-size: 0.9rem;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+table.admin-view thead tr th:hover {
+  background-color: #eee;
+  transition: all 300ms ease-in-out;
+}
+
+#directory-page {
+  margin: 0 auto;
+  margin-bottom: 450px;
+}
+
+#mainPG {
+  width: 95%;
+  margin: 0 auto;
+}
+
+#points-display {
+  width: 100%;
+}
+
+#user-table {
+  margin-bottom: 50px;
+}
+
+#display-header {
+  float: left;
+  font-size: calc(12px + (22 - 12) * ((100vw - 300px) / (1600 - 300)));
+  margin: 1vw auto;
+}
+
+#add-edit-box.to-member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+#add-edit-box.to-member .dropdown:first-child {
+  margin-right: 2rem;
+}
+
+table.admin-view thead > tr th span button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+table.admin-view thead > tr th span button .icon:first-child {
+  margin-bottom: -80%;
+}
+
+table.admin-view thead > tr th span button .icon:nth-child(2) {
+  margin-top: -80%;
+}
+
+@media only screen and (max-width: 1025px) {
+  #header-text {
+    width: 100vw;
+    display: block;
+  }
+
+  #display-header {
+    float: initial;
+  }
+
+  #display-header div:first-child {
+    font-size: 1.4rem;
+  }
+
+  #mainPG {
+    margin-top: 3rem;
+  }
+
+  #add-edit-box.to-member {
+    margin-top: 2rem;
+    right: -7%;
+  }
+
+  #add-edit-box.to-member .dropdown:first-child {
+    margin-right: 1rem;
+  }
+
+  .btn-group-vertical {
+    transform: translateX(-50%);
+    margin: 1px auto;
+  }
+}
