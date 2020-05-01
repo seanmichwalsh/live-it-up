@@ -5,8 +5,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddEvent = () => (
-  <div className="add-user-pg">
-    <header className="header">ADD EVENT</header>
+  <div className="entire-pg">
+    <header className="main-header">ADD EVENT</header>
     <div className="add-details">
       <div id="container">
         <AddEventForm id="addeventform" />

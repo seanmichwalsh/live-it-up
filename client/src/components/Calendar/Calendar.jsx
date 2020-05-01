@@ -21,7 +21,7 @@ const Calendar = ({ getEvents, events }) => {
   }, []);
 
   return (
-    <div id="calendarPage">
+    <div className="entire-pg">
       {isAdmin && (
         <a
           href="/addevent"
