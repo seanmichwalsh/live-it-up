@@ -29,8 +29,8 @@ const EditCommitteeForm = ({ updateCommittee, current }) => {
   };
 
   return (
-    <form className="account-details" id="account-details-form">
-      <span className="ac-header">Committee Details</span>
+    <form className="committee-details">
+      <span className="sub-header">Committee Details</span>
       <div className="form-row">
         <div className="form-group col-md-12 text-left">
           <label htmlFor="name">Name</label>
