@@ -30,10 +30,10 @@ const Home = ({ getEvents, events, getCommittees, committees }) => {
 
   return (
     <div className="entire-page">
-      <div className="main-page">
+      <div id="main-page">
         <div className="main-header">Upcoming Events</div>
         <div id="events-container">
-          <div className="main-event">
+          <div id="main-event">
             {events.splice(0, 1).map((event) => (
               <EventDetail
                 key={event._id}
@@ -61,7 +61,7 @@ const Home = ({ getEvents, events, getCommittees, committees }) => {
           ))}
         </div>
       </div>
-      <div className="side-bar">
+      <div id="side-bar">
         <SideBar committees={committees}/>
       </div>
     </div>
