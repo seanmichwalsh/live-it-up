@@ -4,7 +4,7 @@ import "./Resources.css";
 const Resources = () => {
   return (
     <div id="resourcePage">
-      <header id="resourceHeader">RESOURCES</header>
+      <header className="main-header">RESOURCES</header>
       <div id="allResources">
         <a
           href="https://docs.google.com/spreadsheets/d/1AjOm6V3ZG0Jn0y__CR0vxmwXHJp3bOaETq18uPECrac/edit#gid=1777936343"
