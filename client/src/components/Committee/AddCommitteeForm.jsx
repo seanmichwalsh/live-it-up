@@ -28,8 +28,8 @@ const AddCommitteeForm = ({ addCommittee }) => {
   };
 
   return (
-    <form className="account-details" id="account-details-form">
-      <span className="ac-header">Committee Details</span>
+    <form id="committee-details">
+      <span className="sub-header">Committee Details</span>
       <div className="form-row">
         <div className="form-group col-md-12 text-left">
           <label htmlFor="name">Name</label>
@@ -45,7 +45,7 @@ const AddCommitteeForm = ({ addCommittee }) => {
         </div>
       </div>
       <div className="form-row">
-        <div className="form-group col-md-6 text-left">
+        <div className="form-group col-md-12 text-left">
           <label htmlFor="type">Type of Committee</label>
           <select
             type="text"
