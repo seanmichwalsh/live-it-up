@@ -4,11 +4,6 @@
   margin-left: 1vw;
 }
 
-.main-header {
-  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
-  font-weight: bold;
-}
-
 .side-bar {
   width: 20%;
   clear: both;
