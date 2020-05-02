@@ -1,0 +1,31 @@
+.route {
+    font-family: 'Roboto', sans-serif;
+}
+
+.entire-pg {
+    width: 90%;
+    margin: auto;
+    padding-top: 1vw;
+    padding-bottom: 4vw;
+}
+
+.main-header {
+    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: bold;
+}
+
+.sub-header {
+    color: black;
+    font-weight: bold;
+    font-size: calc(5px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+    padding-bottom: 15px;
+}
+
+
+@media all and (max-width: 550px) {
+    .entire-pg {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  

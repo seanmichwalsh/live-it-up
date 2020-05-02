@@ -3,14 +3,14 @@
   overflow-x: hidden;
 }
 
-#header {
-  font-weight: bold;
-  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+#header-bar {
   display: flex;
   justify-content: center;
 }
 
-#header-text {
+.main-header {
+  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+  font-weight: bold;
   display: inline;
   text-align: center;
   margin: 0 auto;
@@ -29,17 +29,7 @@ table.admin-view thead tr th:hover {
   transition: all 300ms ease-in-out;
 }
 
-#directory-page {
-  margin: 0 auto;
-  margin-bottom: 450px;
-}
-
-#mainPG {
-  width: 95%;
-  margin: 0 auto;
-}
-
-#points-display {
+#points-display-container {
   width: 100%;
 }
 
@@ -47,7 +37,7 @@ table.admin-view thead tr th:hover {
   margin-bottom: 50px;
 }
 
-#display-header {
+#admin-header-title {
   float: left;
   font-size: calc(12px + (22 - 12) * ((100vw - 300px) / (1600 - 300)));
   margin: 1vw auto;
@@ -81,20 +71,15 @@ table.admin-view thead > tr th span button .icon:nth-child(2) {
 }
 
 @media only screen and (max-width: 1025px) {
-  #header-text {
-    width: 100vw;
-    display: block;
-  }
-
-  #display-header {
+  #admin-header-title {
     float: initial;
   }
 
-  #display-header div:first-child {
+  #admin-header-title div:first-child {
     font-size: 1.4rem;
   }
 
-  #mainPG {
+  #points-display-container {
     margin-top: 3rem;
   }
 

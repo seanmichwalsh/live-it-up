@@ -162,10 +162,11 @@ const MemberView = ({
   }
 
   return (
-    <div id="entire-page">
-      <div className="main-page">
-        <div id="top-info">
-          <div id="name">
+      <div>
+        <div className="main-header">DIRECTORY</div>
+        <br />
+        <div id="member-header-bar">
+          <div id="member-header-title">
             {user !== undefined &&
               user !== null &&
               (user.preferredName !== null
@@ -225,8 +226,8 @@ const MemberView = ({
             </tbody>
           </table>
         </div>
-        <table id="rq-table">
-          <thead id="panelHeader">
+        <table id="requirements-bar">
+          <thead id="panel-header">
             <tr>
               <th>Requirements</th>
             </tr>
@@ -267,7 +268,6 @@ const MemberView = ({
           </tbody>
         </table>
       </div>
-    </div>
   );
 };
 

@@ -1,12 +1,4 @@
-#resourcePage {
-    font-family: 'Roboto', sans-serif;}
-
-#resourceHeader {
-    font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
-    font-weight: bold;
-}
-
-#allResources {
+#resources-container {
     width: 90%;
     margin: 0 auto;
     list-style: none;
@@ -62,11 +54,4 @@
         
         justify-content: space-around;
     }
-
-    /* .resourceItem {
-        margin-left: 1.5vw;
-        margin-right: 1.5vw;
-        margin-top: 3vw;
-        margin-bottom: 3vw;
-    } */
 }

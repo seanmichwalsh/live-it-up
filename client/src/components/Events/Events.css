@@ -1,16 +1,4 @@
-#events-page {
-  font-family: "Roboto", sans-serif;
-}
-
-#header-text {
-  display: inline;
-  text-align: center;
-  font-weight: bold;
-  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
-  display: block;
-}
-
-thead {
+.thead {
   color: #7A15A2;
   border: 3px solid black;
 }

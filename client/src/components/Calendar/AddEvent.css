@@ -1,34 +1,14 @@
-.add-user-pg {
-  font-family: "Roboto", sans-serif;
-}
-
-.header {
-  font-weight: bold;
-  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
-}
-
-.hidden {
-  display: none;
-}
-
 #addeventform {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
-.check-boxes {
-  float: left;
-}
 
 #add-button {
   float: left;
 }
 
 @media all and (max-width: 550px) {
-  .add-details {
-    width: 85%;
-  }
-
   #userInputFields {
     display: flex;
     flex-direction: column;
