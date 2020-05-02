@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 const AddEvent = () => (
   <div className="entire-pg">
     <header className="main-header">ADD EVENT</header>
-    <div className="add-details">
+    <div>
       <div id="container">
         <AddEventForm id="addeventform" />
         <ToastContainer autoClose={2000} hideProgressBar={true} />
