@@ -5,7 +5,7 @@ import Moment from "moment";
 const EventDetail = ({ URL, event, mainEvent }) => {
   return (
     <div className="eventDetail">
-      <img className="pic" src={URL} alt=""></img>
+      <img className="eventPic" src={URL} alt=""></img>
       <div className={`description ${mainEvent}`}>
         <div className="left">
           <div>Name: {event.eventName}</div>

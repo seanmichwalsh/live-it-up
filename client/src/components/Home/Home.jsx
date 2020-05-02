@@ -33,7 +33,7 @@ const Home = ({ getEvents, events, getCommittees, committees }) => {
       <div id="main-page">
         <div className="main-header">Upcoming Events</div>
         <div id="events-container">
-          <div id="main-event">
+          <div className="main-event">
             {events.splice(0, 1).map((event) => (
               <EventDetail
                 key={event._id}
