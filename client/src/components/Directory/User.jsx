@@ -26,7 +26,7 @@ const User = ({ user, committee, setCurrent }) => {
 
 User.propTypes = {
   user: PropTypes.object.isRequired,
-  committee: PropTypes.object.isRequired,
+  committee: PropTypes.object,
   setCurrent: PropTypes.func.isRequired,
 };
 
