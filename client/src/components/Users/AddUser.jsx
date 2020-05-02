@@ -252,59 +252,64 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     ))}
                 </select>
               </div>
-              <div className="aux-committee">
+              <div id="aux-committee">
                 <div className="form-group text-left">
                   <label htmlFor="inputState">Auxillary Committee</label>
-                  {committees
-                    .filter(
-                      (committee) =>
-                        committee.type === "Auxiliary" ||
-                        committee.type === "Admin"
-                    )
-                    .map((committee) => (
-                      <div
-                        key={committee._id}
-                        className="custom-control custom-checkbox"
-                      >
-                        <input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id={committee.name + "Check"}
-                          onChange={() => {
-                            if (
-                              $(`#${committee.name}Check`)[0].hasAttribute(
-                                "checked"
-                              )
-                            ) {
-                              const newAux = auxCommittee.filter(
-                                (acommittee) => acommittee !== committee._id
-                              );
-                              setAuxCommittee(newAux);
-                              $(`#${committee.name}Check`)[0].removeAttribute(
-                                "checked"
-                              );
-                            } else {
-                              auxCommittee.push(committee._id);
-                              setAuxCommittee(auxCommittee);
-                              $(`#${committee.name}Check`)[0].setAttribute(
-                                "checked",
-                                "checked"
-                              );
-                            }
-                          }}
-                        />
-                        <label
-                          className="custom-control-label"
-                          htmlFor={committee.name + "Check"}
-                          id={committee.name}
+                  <div className="box-states">
+                    {committees
+                      .filter(
+                        (committee) =>
+                          committee.type === "Auxiliary" ||
+                          committee.type === "Admin"
+                      )
+                      .map((committee) => (
+                        <div
+                          key={committee._id}
+                          className="custom-control custom-checkbox"
                         >
-                          {committee.name}
-                        </label>
-                      </div>
-                    ))}
+                          <input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id={committee.name + "Check"}
+                            onChange={() => {
+                              if (
+                                $(`#${committee.name}Check`)[0].hasAttribute(
+                                  "checked"
+                                )
+                              ) {
+                                const newAux = auxCommittee.filter(
+                                  (acommittee) => acommittee !== committee._id
+                                );
+                                setAuxCommittee(newAux);
+                                $(`#${committee.name}Check`)[0].removeAttribute(
+                                  "checked"
+                                );
+                              } else {
+                                auxCommittee.push(committee._id);
+                                setAuxCommittee(auxCommittee);
+                                $(`#${committee.name}Check`)[0].setAttribute(
+                                  "checked",
+                                  "checked"
+                                );
+                              }
+                            }}
+                          />
+                          <label
+                            className="custom-control-label"
+                            htmlFor={committee.name + "Check"}
+                            id={committee.name}
+                          >
+                            {committee.name}
+                          </label>
+                        </div>
+                      ))}
+                  </div>
                 </div>
-                <div className="isAdmin">
+
+                <div id="additional-access">
                   <div className="form-group text-left">
+                  <label htmlFor="additional-access">Additional Access</label>
+                    <div className="box-states">
                     <div className="custom-control custom-checkbox">
                       <input
                         type="checkbox"
@@ -330,6 +335,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                       >
                         Administrator
                       </label>
+                    </div>
                     </div>
                   </div>
                 </div>
