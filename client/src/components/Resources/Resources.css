@@ -1,4 +1,4 @@
-#allResources {
+#resources-container {
     width: 90%;
     margin: 0 auto;
     list-style: none;
@@ -54,11 +54,4 @@
         
         justify-content: space-around;
     }
-
-    /* .resourceItem {
-        margin-left: 1.5vw;
-        margin-right: 1.5vw;
-        margin-top: 3vw;
-        margin-bottom: 3vw;
-    } */
 }
