@@ -18,88 +18,84 @@ const AdminView = ({ user, points, onChange, getPointsReport }) => {
   }, [semester]);
 
   return (
-    <div className="directory-page">
-      <div className="top-bar">
-        <header id="header">
-          <div id="header-text">POINTS</div>
-          <div id="add-edit-box" className="to-member">
-            <div className="dropdown">
-              <a
-                href="/addpoints"
-                className="btn btn-secondary btn-small active"
-                id="addButton"
-                role="button"
-                aria-pressed="true"
-              >
-                ADD
-              </a>
-            </div>
-            <div className="dropdown">
+    <div className="entire-pg">
+      <div id="header-bar">
+        <div className="main-header">POINTS</div>
+        <div id="add-edit-box" className="to-member">
+          <div className="dropdown">
+            <a
+              href="/addpoints"
+              className="btn btn-secondary btn-small active"
+              id="addButton"
+              role="button"
+              aria-pressed="true"
+            >
+              ADD
+            </a>
+          </div>
+          <div className="dropdown">
+            <button
+              className="btn btn-secondary btn-small active"
+              id="toMemberButton"
+              aria-pressed="true"
+              onClick={() => onChange()}
+            >
+              To Member View
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="points-display-container">
+        <div id="admin-header-title">
+          <div>
+            {(user.preferredName !== null
+              ? user.preferredName
+              : user.firstName) +
+              " " +
+              user.lastName}
+            's Admin Points Summary
+          </div>
+          <div className="input-group">
+            <input
+              type="text"
+              id="search-content"
+              className="form-control"
+              placeholder="Input Member Name"
+              aria-label="Input Member Name"
+              aria-describedby="basic-addon2"
+            />
+            <div className="input-group-append">
               <button
-                className="btn btn-secondary btn-small active"
-                id="toMemberButton"
-                aria-pressed="true"
-                onClick={() => onChange()}
+                className="input-group-text"
+                id="basic-addon2"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setContext(null);
+                  $("#search-content")[0].value = "";
+                }}
               >
-                To Member View
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            <div className="input-group-append">
+              <button
+                className="input-group-text"
+                id="basic-addon2"
+                style={{ cursor: "pointer" }}
+                onClick={() => setContext($("#search-content")[0].value)}
+              >
+                Search
               </button>
             </div>
           </div>
-        </header>
-      </div>
-      <div id="mainPG">
-        <div id="points-display">
-          <div id="display-header">
-            <div>
-              {(user.preferredName !== null
-                ? user.preferredName
-                : user.firstName) +
-                " " +
-                user.lastName}
-              's Admin Points Summary
-            </div>
-            <div className="input-group">
-              <input
-                type="text"
-                id="search-content"
-                className="form-control"
-                placeholder="Input Member Name"
-                aria-label="Input Member Name"
-                aria-describedby="basic-addon2"
-              />
-              <div className="input-group-append">
-                <button
-                  className="input-group-text"
-                  id="basic-addon2"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    setContext(null);
-                    $("#search-content")[0].value = "";
-                  }}
-                >
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-              </div>
-              <div className="input-group-append">
-                <button
-                  className="input-group-text"
-                  id="basic-addon2"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setContext($("#search-content")[0].value)}
-                >
-                  Search
-                </button>
-              </div>
-            </div>
-          </div>
-          <div id="user-table">
-            <AdminPointsTable
-              points={points}
-              context={context}
-              semester={semester}
-              onChange={(semester) => setSemester(semester)}
-            />
-          </div>
+        </div>
+        <div id="user-table">
+          <AdminPointsTable
+            points={points}
+            context={context}
+            semester={semester}
+            onChange={(semester) => setSemester(semester)}
+          />
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ const Points = ({ user, getCurrentUserID }) => {
   }, []);
 
   return (
-    <div>
+    <div className="entire-pg">
       {user !== null &&
         user !== undefined &&
         (user.isAdmin && !memberView ? (
