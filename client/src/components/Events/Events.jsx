@@ -3,8 +3,8 @@ import "./Events.css";
 
 const Events = () => {
   return (
-    <div id="events-page">
-      <div id="header-text">EVENTS</div>
+    <div className="entire-pg">
+      <div className="main-header">EVENTS</div>
       <div id="tableHold">
         <table className="table table-striped" id="eventTable">
           <thead>

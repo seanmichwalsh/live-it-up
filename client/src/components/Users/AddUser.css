@@ -1,57 +1,26 @@
-.add-user-pg {
-  font-family: "Roboto", sans-serif;
-}
-
-.header {
-  font-weight: bold;
-  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
-}
-
 #account-details,
-.middle-space,
 #committee-access {
   display: inline-block;
 }
 
-.hidden {
-  display: none;
+#add-details {
+  width: 100%;
 }
 
-.add-details {
-  width: 85%;
-  margin: 0 auto;
-}
-
-.account-details {
+#account-details {
   width: 65%;
   float: left;
 }
 
-.hidden-button {
-  display: none;
-}
-
-.ac-header {
-  color: black;
-  font-weight: bold;
-  font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
-  padding-bottom: 15px;
-}
-
-.committee-access {
+#committee-access {
   float: right;
   width: 30%;
 }
 
-.cm-header {
-  color: black;
-  font-weight: bold;
-  font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
-  padding-bottom: 15px;
-}
-
-.check-boxes {
-  float: left;
+.box-states {
+  border: 1px solid #CFD4DA;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .isAdmin {

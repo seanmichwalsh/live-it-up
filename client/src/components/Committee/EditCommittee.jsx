@@ -5,9 +5,9 @@ import "./AddCommittee.css";
 
 const EditCommittee = () => {
   return (
-    <div className="add-user-pg">
-      <header className="header">ADD COMMITTEE</header>
-      <div className="add-details">
+    <div className="entire-pg">
+      <header className="main-header">EDIT COMMITTEE</header>
+      <div className="committee-details">
         <div className="alert alert-success hidden" id="success-alert">
           <button
             type="button"
@@ -21,7 +21,7 @@ const EditCommittee = () => {
           added!
         </div>
         <div id="container">
-          <CommitteeForm className="account-details" />
+          <CommitteeForm/>
           <CommitteeAccess />
         </div>
         <button type="button" id="add-button" className="btn btn-secondary">
