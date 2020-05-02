@@ -17,6 +17,12 @@
   width: 30%;
 }
 
+.box-states {
+  border: 1px solid #CFD4DA;
+  border-radius: 8px;
+  padding: 10px;
+}
+
 .isAdmin {
   margin-top: 3rem;
 }
