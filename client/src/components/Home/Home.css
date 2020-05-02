@@ -1,22 +1,22 @@
 #main-page {
   width: 75%;
   float: right;
-  margin-left: 1vw;
+  padding-left: 3vw;
 }
 
 #side-bar {
-  width: 20%;
-  clear: both;
+  width: 23%;
+  float: left;
   position: fixed;
   z-index: 1;
   top: 0;
   right: 0;
   padding-top: 300px;
-  margin-right: 3vw;
+  padding-right: 30px;
   overflow-x: hidden;
 }
 
-#main-event {
+.main-event {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@
   margin-bottom: 3rem;
 }
 
-#main-event .description {
+.main-event .description {
   font-size: 1rem;
 }
 
@@ -45,8 +45,7 @@
 }
 
 @media only screen and (max-width: 1025px) {
-  /* really weird but need to change to entire-pg */
-  .entire-page { 
+  .entire-page {
     margin: 0 auto;
     width: 90%;
     order: 1;
@@ -54,14 +53,14 @@
 
   #side-bar {
     order: 2;
-    width: 90%;
+    width: 80%;
     float: none;
     position: static;
     padding-top: 2vh;
     padding-right: 0px;
   }
 
-  .main-page {
+  #main-page {
     order: 3;
     align-items: flex-start;
     margin: 0 auto;
@@ -72,7 +71,7 @@
     padding-bottom: 1vw;
   }
 
-  #main-event {
+  .main-event {
     display: flex;
     align-items: center;
     justify-content: center;

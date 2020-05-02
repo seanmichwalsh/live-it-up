@@ -1,15 +1,13 @@
 .eventDetail {
-  /* margin-bottom: 5vh; */
   width: 80%;
 }
 
-.pic {
+.eventPic {
   width: 100%;
   height: auto;
 }
 
 .description {
-  /* font-size: calc(12px * ((100vw - 300px) / (1600 - 300))); */
   width: 100%;
   margin: 0 auto;
   font-weight: bold;
@@ -29,7 +27,6 @@
 
 @media only screen and (max-width: 1025px) {
   .eventDetail {
-    /* margin-bottom: 2vh; */
     width: 100%;
   }
 

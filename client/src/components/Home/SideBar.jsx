@@ -30,7 +30,7 @@ const fakeData = [
 
 const SideBar = ({ committees }) => {
     return (
-        <div>
+        <div id="sideBar">
             <div id="gmm-header">
                 <div className="panelHeader">Next GMM</div>
                 <button id="circleIcon">
