@@ -78,9 +78,9 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
   };
 
   return (
-    <div className="add-user-pg">
-      <header className="header">ADD USER</header>
-      <div className="add-details">
+    <div className="entire-pg">
+      <header className="main-header">ADD USER</header>
+      <div id="add-details">
         <ToastContainer autoClose={2000} hideProgressBar={true} />
         <div id="userInputFields">
           <form
@@ -89,7 +89,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
             noValidate
           >
             <div id="account-details">
-              <div className="ac-header">Account Details</div>
+              <div className="sub-header">Account Details</div>
               <div className="form-row">
                 <div className="form-group col-md-4 text-left">
                   <label htmlFor="firstName">First Name</label>
@@ -228,30 +228,10 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                   </select>
                 </div>
               </div>
-              <div className="form-row" id="adminCheckbox">
-                <div className="form-check">
-                  <input 
-                  id="adminVal"
-                    className="form-check-input"
-                    type="checkbox"
-                    value={isAdmin}
-                    onChange={e => {
-                      if (e.target.checked) {
-                        setIsAdmin(true);
-                      } else {
-                        setIsAdmin(false);
-                      }
-                    }}
-                    />
-                  <label className="form-check-label" for="adminVal">
-                    Admin
-                  </label>
-                </div>
-              </div>
             </div>
 
             <div id="committee-access">
-              <div className="cm-header">Committee Access</div>
+              <div className="sub-header">Committee Access</div>
               <div className="form-group text-left">
                 <label htmlFor="committees">Primary Committee</label>
                 <select
