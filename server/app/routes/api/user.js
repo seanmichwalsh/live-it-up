@@ -17,6 +17,21 @@ router.get("/", (req, res) => {
     });
 });
 
+// Returns the active logged-in user
+// ****NOTE: This is placeholder until Harry commits GT Login code
+router.get("/me/", (req, res) => {
+  // User.findOne({ uid: "zkang35" })
+  //   .then(user => {
+  //     res.send(user.uid);
+  //   })
+  //   .catch(err => {
+  //     return res.status(404).send({
+  //       message: "Error retrieving the currently logged in user"
+  //     });
+  //   });
+  res.send({ uid: "seanwalsh" });
+});
+
 //Gets a specific user given an ID
 router.get("/:uid", (req, res) => {
   if (!req.params.uid) {
@@ -261,21 +276,6 @@ router.delete("/:uid", (req, res) => {
         message: "Could not delete user with id " + req.params.uid,
       });
     });
-});
-
-// Returns the active logged-in user
-// ****NOTE: This is placeholder until Harry commits GT Login code
-router.get("/me/test", (req, res) => {
-  // User.findOne({ uid: "zkang35" })
-  //   .then(user => {
-  //     res.send(user.uid);
-  //   })
-  //   .catch(err => {
-  //     return res.status(404).send({
-  //       message: "Error retrieving the currently logged in user"
-  //     });
-  //   });
-  res.send({ uid: "seanwalsh" });
 });
 
 //Returns a boolean indicating whether a given user is an admin or not
