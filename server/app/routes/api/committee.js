@@ -11,6 +11,38 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/time/:id', (req, res) => {
+    if (!req.params.id) {
+        return res.status(400).send({
+            message: "A committee ID is required to find a committee meeting time."
+        });
+    };
+    Committee.findById(req.params.id).then(committee => {
+        if (!committee) {
+            return res.status(404).send({
+                message: "Commitee not found with id " + req.params.id
+            });
+        };
+
+        let committeeTimes = {};
+        committeeTimes['startTime'] = committee.startTime;
+        committeeTimes['endTime'] = committee.endTime;
+        committeeTimes['meetingDay'] = committee.meetingDay;
+
+        res.send(committeeTimes);
+        
+    }).catch(err => {
+        if (err.kind === "ObjectId") {
+            return res.status(404).send({
+                message: "Committee not found with id " + req.params.id
+            });
+        }
+        return res.status(500).send({
+            message: "There was a problem retrieving Committee " + req.params.id
+        }); 
+    });
+});
+
 router.get('/:id', (req, res) => {
     if (!req.params.id) {
         return res.status(400).send({
@@ -27,7 +59,7 @@ router.get('/:id', (req, res) => {
     }).catch(err => {
         if (err.kind === "ObjectId") {
             return res.status(404).send({
-                message: "Committee not found with username " + req.params.id
+                message: "Committee not found with id " + req.params.id
             });
         }
         return res.status(500).send({
@@ -37,7 +69,14 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    if (!(req.body.name && req.body.type)) {
+    if (!(
+            req.body.name &&
+            req.body.type &&
+            req.body.startTime &&
+            req.body.endTime &&
+            req.body.meetingDay
+            // req.body.active
+        )) {
         return res.status(400).send({
             message: "All required fields must be present cannot be empty"
         });
@@ -46,7 +85,11 @@ router.post('/', (req, res) => {
     
     const committee = new Committee({
         name: req.body.name,
-        type: req.body.type
+        type: req.body.type,
+        active: req.body.active,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
+        meetingDay: req.body.meetingDay
     });
 
     committee.save().then(data => {
@@ -71,6 +114,18 @@ router.put('/:id', (req, res) => {
     }
     if (req.body.type) {
         updatedCommittee['type'] = req.body.type
+    }
+    if (req.body.actitve) {
+        updatedCommittee['active'] = req.body.active
+    }
+    if (req.body.startTime) {
+        updatedCommittee['startTime'] = req.body.startTime
+    }
+    if (req.body.endTime) {
+        updatedCommittee['endTime'] = req.body.endTime
+    }
+    if (req.body.meetingDay) {
+        updatedCommittee['meetingDay'] = req.body.meetingDay
     }
 
     Committee.findByIdAndUpdate(req.params.id, updatedCommittee,
@@ -110,6 +165,5 @@ router.delete('/:id', (req, res) => {
         });
     });
 });
-
 
 module.exports = router;
