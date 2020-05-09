@@ -50,6 +50,25 @@ router.get('/:semester', (req, res) => {
 })
 
 router.get('/:semester/:uid', (req, res) => {
+
+    let firstName = ""
+    let lastName = ""
+    let preferredName = ""
+    User.findOne({ uid: req.params.uid }).then(user => {
+        if (!user) {
+            return res.status(404).send({
+                message: "User not found with username " + req.params.uid + " while generating points report."
+            });
+        }
+        firstName = user.firstName;
+        lastName = user.lastName;
+        preferredName = user.preferredName;
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message
+        });
+    });
+
     var pointsReport = {}
     Point.find({'semester' : req.params.semester, 'uid' : req.params.uid}).then(points => {
 
@@ -57,6 +76,11 @@ router.get('/:semester/:uid', (req, res) => {
             if (!pointsReport.hasOwnProperty(points[i]['uid'])) {
 
                 var pointReport = {}
+
+                pointReport['firstName'] = firstName;
+                pointReport['lastName'] = lastName;
+                pointReport['preferredName'] = preferredName;
+
                 pointReport['group1'] = 0
                 pointReport['group2'] = 0
                 pointReport['group3'] = 0
@@ -68,22 +92,6 @@ router.get('/:semester/:uid', (req, res) => {
                 pointReport['semester'] = points[i]['semester']
     
                 pointsReport[points[i]['uid']] = pointReport
-
-                User.findOne({ uid: points[i]['uid'] }).then(user => {
-                    
-                    if (!user) {
-                        return res.status(404).send({
-                            message: "User not found with username " + req.params.uid + " while generating points report."
-                        });
-                    }
-                    pointsReport['firstName'] = user.firstName
-                    pointsReport['lastName'] = user.lastName
-                    pointsReport['preferredName'] = user.preferredName
-                }).catch(err => {
-                    res.status(500).send({
-                        message: err.message
-                    });
-                });
             }
             var category = points[i]['category']
             pointsReport[points[i]['uid']][category] += 1
