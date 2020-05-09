@@ -34,10 +34,10 @@ const Directory = ({ getUsers, users, getCommittees, committees }) => {
               className="dropdown-menu"
               aria-labelledby="dropdownMenuButton"
             >
-              <Link className="dropdown-item" to="/adduser">
+              <Link className="dropdown-item" to="directory/adduser">
                 Add User
               </Link>
-              <Link className="dropdown-item" to="/addcommittee">
+              <Link className="dropdown-item" to="directory/addcommittee">
                 Add Committee
               </Link>
             </div>
