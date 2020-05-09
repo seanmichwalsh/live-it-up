@@ -61,7 +61,7 @@
 #req-header {
   width: 100%;
   font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
-  background: #ac539b;
+  background: #7A15A2;
   border-radius: 15px;
   font-weight: bold;
   position: relative;

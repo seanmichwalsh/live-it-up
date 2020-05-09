@@ -40,21 +40,18 @@ router.get('/:semester', (req, res) => {
             var category = points[i]['category']
             pointsReport[points[i]['uid']][category] += points[i]['points']
         }
-
-        res.send(pointsReport)
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some server error occured retrieving point reports."
-        })
+        var category = points[i]["category"];
+        pointsReport[points[i]["uid"]][category] += points[i]["points"];
+      }
+      res.send(pointsReport);
     })
-})
-
-router.get('/:semester/:uid', (req, res) => {
-    var pointsReport = {}
-    Point.find({'semester' : req.params.semester, 'uid' : req.params.uid}).then(points => {
-
-        for (var i = 0, len = points.length; i < len; i++) {
-            if (!pointsReport.hasOwnProperty(points[i]['uid'])) {
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some server error occured retrieving point reports."
+      });
+    });
+});
 
                 var pointReport = {}
                 pointReport['group1'] = 0
@@ -87,13 +84,18 @@ router.get('/:semester/:uid', (req, res) => {
             var category = points[i]['category']
             pointsReport[points[i]['uid']][category] += 1
         }
+        var category = points[i]["category"];
+        pointsReport[points[i]["uid"]][category] += 1;
+      }
 
-        res.send(pointsReport)
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some server error occured retrieving point reports."
-        })
+      res.send(pointsReport);
     })
-})
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some server error occured retrieving point reports."
+      });
+    });
+});
 
-module.exports = router
+module.exports = router;

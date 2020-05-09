@@ -26,8 +26,8 @@ const User = ({ user, committee, setCurrent }) => {
 
 User.propTypes = {
   user: PropTypes.object.isRequired,
-  committee: PropTypes.object.isRequired,
-  setCurrent: PropTypes.func.isRequired
+  committee: PropTypes.object,
+  setCurrent: PropTypes.func.isRequired,
 };
 
 export default connect(null, { setCurrent })(User);

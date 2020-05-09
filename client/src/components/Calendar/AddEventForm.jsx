@@ -21,7 +21,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
     //eslint-disable-next-line
   }, []);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (
       name === "" ||
@@ -41,7 +41,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
           .format(),
         endTime: moment(`${date}T${endTime}:00`)
           .tz("America/New_York")
-          .format()
+          .format(),
       };
       addEvent(newEvent);
       //Clear Fields
@@ -64,7 +64,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
             className="form-control"
             id="name"
             placeholder="GT Night at Six Flags"
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             value={name}
             required
           />
@@ -76,7 +76,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
             className="form-control"
             id="name"
             placeholder="Six Flags"
-            onChange={e => setLocation(e.target.value)}
+            onChange={(e) => setLocation(e.target.value)}
             value={location}
             required
           />
@@ -88,7 +88,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
           <select
             id="committees"
             className="form-control"
-            onChange={e => {
+            onChange={(e) => {
               committee.push(e.target.value);
               setCommittee(committee);
             }}
@@ -97,7 +97,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
               Choose...
             </option>
             {committees !== null &&
-              committees.map(committee => (
+              committees.map((committee) => (
                 <option key={committee._id} value={committee._id}>
                   {committee.name}
                 </option>
@@ -111,7 +111,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
             pattern="\d{4}-\d{2}-\d{2}"
             className="form-control"
             id="type"
-            onChange={e => setDate(e.target.value)}
+            onChange={(e) => setDate(e.target.value)}
             value={date}
             required
           />
@@ -122,7 +122,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
             type="time"
             className="form-control"
             id="type"
-            onChange={e => setStartTime(e.target.value)}
+            onChange={(e) => setStartTime(e.target.value)}
             value={startTime}
             required
           />
@@ -134,7 +134,7 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
             className="form-control"
             id="type"
             placeholder="9:00"
-            onChange={e => setEndTime(e.target.value)}
+            onChange={(e) => setEndTime(e.target.value)}
             value={endTime}
             required
           />
@@ -155,12 +155,12 @@ const AddEventForm = ({ addEvent, committees, getCommittees }) => {
 AddEventForm.propTypes = {
   addEvents: PropTypes.func.isRequired,
   committees: PropTypes.array.isRequired,
-  getCommittees: PropTypes.func.isRequired
+  getCommittees: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   events: state.events,
-  committees: state.committee.committees
+  committees: state.committee.committees,
 });
 
 export default connect(mapStateToProps, { addEvent, getCommittees })(

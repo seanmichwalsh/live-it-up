@@ -7,12 +7,12 @@ const Committee = require("../../models/committee.models");
 //Gets all users
 router.get("/", (req, res) => {
   User.find()
-    .then(users => {
+    .then((users) => {
       res.send(users);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while retrieving users."
+        message: err.message || "Some error occured while retrieving users.",
       });
     });
 });
@@ -21,26 +21,26 @@ router.get("/", (req, res) => {
 router.get("/:uid", (req, res) => {
   if (!req.params.uid) {
     return res.status(400).send({
-      message: "A username is required to find one user"
+      message: "A username is required to find one user",
     });
   }
   User.findOne({ uid: req.params.uid })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return res.status(404).send({
-          message: "User not found with username " + req.params.uid
+          message: "User not found with username " + req.params.uid,
         });
       }
       res.send(user);
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "User not found with username " + req.params.uid
+          message: "User not found with username " + req.params.uid,
         });
       }
       return res.status(500).send({
-        message: "There was a problem retrieving user " + req.params.uid
+        message: "There was a problem retrieving user " + req.params.uid,
       });
     });
 });
@@ -62,7 +62,7 @@ router.post("/", (req, res) => {
   ) {
     // error message needs to indicate which field(s) are missing
     return res.status(400).send({
-      message: "All required fields must be present."
+      message: "All required fields must be present.",
     });
   }
 
@@ -70,13 +70,13 @@ router.post("/", (req, res) => {
   Committee.count({ _id: req.body.mainCommittee }, (err, count) => {
     if (err) {
       res.status(500).send({
-        message: err.message
+        message: err.message,
       });
     }
     if (count <= 0) {
       return res.status(400).send({
         message:
-          "The committee ID " + req.body.mainCommittee + " does not exist."
+          "The committee ID " + req.body.mainCommittee + " does not exist.",
       });
     }
   });
@@ -86,12 +86,12 @@ router.post("/", (req, res) => {
     Committee.count({ _id: item }, (err, count) => {
       if (err) {
         res.status(500).send({
-          message: err.message
+          message: err.message,
         });
       }
       if (count <= 0) {
         return res.status(400).send({
-          message: "The committee ID " + item + " does not exist."
+          message: "The committee ID " + item + " does not exist.",
         });
       }
     });
@@ -100,10 +100,11 @@ router.post("/", (req, res) => {
   // Main user post logic
   if (
     User.findOne({ uid: req.body.uid })
-      .then(user => {
+      .then((user) => {
         if (user) {
           return res.status(400).send({
-            message: "A user with this username already exists: " + req.body.uid
+            message:
+              "A user with this username already exists: " + req.body.uid,
           });
         } else {
           const user = new User({
@@ -117,24 +118,24 @@ router.post("/", (req, res) => {
             mainCommittee: req.body.mainCommittee,
             preferredName: req.body.preferredName,
             isAdmin: req.body.isAdmin,
-            status: req.body.status
+            status: req.body.status,
           });
 
           user
             .save()
-            .then(data => {
+            .then((data) => {
               res.send(data);
             })
-            .catch(err => {
+            .catch((err) => {
               res.status(500).send({
-                message: err.message
+                message: err.message,
               });
             });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         return res.status(500).send({
-          message: "Internal server error"
+          message: "Internal server error",
         });
       })
   );
@@ -144,14 +145,14 @@ router.post("/", (req, res) => {
 router.put("/:uid", (req, res) => {
   if (!req.params.uid) {
     return res.status(400).send({
-      message: "A username must be provided to update the user."
+      message: "A username must be provided to update the user.",
     });
   }
 
   //Makes sure you are not updatinga a user ID
   if (req.body.uid) {
     return res.status(400).send({
-      message: "A user's GT username cannot be updated"
+      message: "A user's GT username cannot be updated",
     });
   }
 
@@ -159,13 +160,13 @@ router.put("/:uid", (req, res) => {
   Committee.count({ _id: req.body.mainCommittee }, (err, count) => {
     if (err) {
       res.status(500).send({
-        message: err.message
+        message: err.message,
       });
     }
     if (count <= 0) {
       return res.status(400).send({
         message:
-          "The committee ID " + req.body.mainCommittee + " does not exist."
+          "The committee ID " + req.body.mainCommittee + " does not exist.",
       });
     }
   });
@@ -175,12 +176,12 @@ router.put("/:uid", (req, res) => {
     Committee.count({ _id: item }, (err, count) => {
       if (err) {
         res.status(500).send({
-          message: err.message
+          message: err.message,
         });
       }
       if (count <= 0) {
         return res.status(400).send({
-          message: "The committee ID " + item + " does not exist."
+          message: "The committee ID " + item + " does not exist.",
         });
       }
     });
@@ -222,18 +223,18 @@ router.put("/:uid", (req, res) => {
   }
 
   User.findOneAndUpdate({ uid: req.params.uid }, updatedUser, { new: true })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return res.status(404).send({
-          message: "User not found with username " + req.params.uid
+          message: "User not found with username " + req.params.uid,
         });
       }
       res.send(user);
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "User not found with username " + req.params.uid
+          message: "User not found with username " + req.params.uid,
         });
       }
     });
@@ -242,53 +243,54 @@ router.put("/:uid", (req, res) => {
 // Deletes a specific user given a user ID
 router.delete("/:uid", (req, res) => {
   User.findOneAndRemove({ uid: req.params.uid })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return res.status(404).send({
-          message: "User not found with username " + req.params.uid
+          message: "User not found with username " + req.params.uid,
         });
       }
       res.send({ message: "User deleted successfully!" });
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.kind === "ObjectId" || err.name === "NotFound") {
         return res.status(404).send({
-          message: "User not found with username " + req.params.uid
+          message: "User not found with username " + req.params.uid,
         });
       }
       return res.status(500).send({
-        message: "Could not delete user with id " + req.params.uid
+        message: "Could not delete user with id " + req.params.uid,
       });
     });
 });
 
 // Returns the active logged-in user
 // ****NOTE: This is placeholder until Harry commits GT Login code
-router.get("/me", (req, res) => {
-  User.findOne({ uid: "swalsh999" })
-    .then(user => {
-      res.send(user);
-    })
-    .catch(err => {
-      return res.status(404).send({
-        message: "Error retrieving the currently logged in user"
-      });
-    });
+router.get("/me/test", (req, res) => {
+  // User.findOne({ uid: "zkang35" })
+  //   .then(user => {
+  //     res.send(user.uid);
+  //   })
+  //   .catch(err => {
+  //     return res.status(404).send({
+  //       message: "Error retrieving the currently logged in user"
+  //     });
+  //   });
+  res.send({ uid: "seanwalsh" });
 });
 
 //Returns a boolean indicating whether a given user is an admin or not
 router.get("/isAdmin/:uid", (req, res) => {
   if (!req.params.uid) {
     return res.status(400).send({
-      message: "A username is required"
+      message: "A username is required",
     });
   }
 
   User.findOne({ uid: req.params.uid })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return res.status(404).send({
-          message: "User not found with username " + req.params.uid
+          message: "User not found with username " + req.params.uid,
         });
       }
 
@@ -297,9 +299,10 @@ router.get("/isAdmin/:uid", (req, res) => {
       adminStatus["isAdmin"] = user.isAdmin;
       res.send(adminStatus);
     })
-    .catch(err => {
+    .catch((err) => {
       return res.status(404).send({
-        message: "Error occurred retrieving user " + req.params.uid + ": " + err
+        message:
+          "Error occurred retrieving user " + req.params.uid + ": " + err,
       });
     });
 });
