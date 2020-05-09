@@ -12,7 +12,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-    points: [],
+    points: {},
     point: null,
     current: null,
     error: null,
@@ -45,7 +45,7 @@ const initialState = {
       case ADD_POINTS:
         return {
           ...state,
-          points: [...state.points, action.payload]
+          points: [action.payload]
         };
       case UPDATE_POINTS:
         return {

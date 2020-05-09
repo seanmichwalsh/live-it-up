@@ -5,14 +5,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddCommittee = () => (
-  <div className="add-user-pg">
-    <header className="header">ADD COMMITTEE</header>
-    <div className="add-details">
+  <div className="entire-pg">
+    <header className="main-header">ADD COMMITTEE</header>
       <div id="container">
-        <AddCommitteeForm className="account-details" />
+        <AddCommitteeForm className="committee-details" />
         <ToastContainer autoClose={2000} hideProgressBar={true} />
       </div>
-    </div>
   </div>
 );
 

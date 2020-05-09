@@ -15,40 +15,37 @@ const Directory = ({ getUsers, users, getCommittees, committees }) => {
   }, []);
 
   return (
-    <div className="directory-page">
-      <div className="top-bar">
-        <header id="header">
-          <div id="header-text">DIRECTORY</div>
-
-          <div id="add-edit-box">
-            <div className="dropdown">
-              <button
-                className="btn btn-secondary btn-small dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                ADD
-              </button>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <Link className="dropdown-item" to="/adduser">
-                  Add User
-                </Link>
-                <Link className="dropdown-item" to="/addcommittee">
-                  Add Committee
-                </Link>
-              </div>
+    <div className="entire-pg">
+      <div id="header-bar">
+        <div className="main-header">DIRECTORY</div>
+        <div id="add-edit-box">
+          <div className="dropdown">
+            <button
+              className="btn btn-secondary btn-small dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              ADD
+            </button>
+            <div
+              className="dropdown-menu"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <Link className="dropdown-item" to="/adduser">
+                Add User
+              </Link>
+              <Link className="dropdown-item" to="/addcommittee">
+                Add Committee
+              </Link>
             </div>
           </div>
-        </header>
+        </div>
       </div>
-      <div className="userLists">
-        {users.map(user => (
+      <div id="userLists">
+        {users.map((user) => (
           <User
             key={user._id}
             user={user}
@@ -56,7 +53,7 @@ const Directory = ({ getUsers, users, getCommittees, committees }) => {
               committees !== undefined &&
               committees !== null &&
               committees.filter(
-                committee => committee._id === user.mainCommittee
+                (committee) => committee._id === user.mainCommittee
               )[0]
             }
           />
@@ -70,12 +67,12 @@ Directory.propTypes = {
   getUsers: PropTypes.func.isRequired,
   getCommittees: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired,
-  committees: PropTypes.array.isRequired
+  committees: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   users: state.user.users,
-  committees: state.committee.committees
+  committees: state.committee.committees,
 });
 
 export default connect(mapStateToProps, { getUsers, getCommittees })(Directory);

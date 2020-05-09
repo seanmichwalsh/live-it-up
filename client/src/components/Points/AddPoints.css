@@ -1,41 +1,11 @@
-.add-user-pg {
-  font-family: "Roboto", sans-serif;
-}
-
-.header {
-  font-weight: bold;
-  font-size: calc(18px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
-}
-
-#account-details,
-.middle-space,
-#committee-access {
-  display: inline-block;
-}
-
-.hidden {
-  display: none;
-}
-
-.add-details {
-  width: 85%;
+#point-container {
+  width: 100%;
   margin: 0 auto;
 }
 
 #add-points-form {
   width: 65%;
   float: left;
-}
-
-.hidden-button {
-  display: none;
-}
-
-.ac-header {
-  color: black;
-  font-weight: bold;
-  font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
-  padding-bottom: 15px;
 }
 
 #member-box {
@@ -54,17 +24,6 @@
   overflow-y: scroll;
 }
 
-.cm-header {
-  color: black;
-  font-weight: bold;
-  font-size: calc(14px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
-  padding-bottom: 15px;
-}
-
-.check-boxes {
-  float: left;
-}
-
 #add-button {
   clear: both;
   float: left;
@@ -72,22 +31,13 @@
   margin-bottom: 50px;
 }
 
-@media all and (max-width: 550px) {
-  .add-details {
-    width: 85%;
-  }
-
-  #userInputFields {
-    display: flex;
-    flex-direction: column;
-  }
-
+@media all and (max-width: 700px) {
   #add-points-form {
     order: 1;
     width: 100%;
   }
 
-  #user-box {
+  #member-box {
     order: 2;
     width: 100%;
   }
