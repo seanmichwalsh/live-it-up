@@ -71,8 +71,7 @@ router.post("/", (req, res) => {
       req.body.phoneNumber &&
       req.body.mainCommittee &&
       req.body.committees &&
-      typeof req.body.isAdmin == "boolean" &&
-      typeof req.body.active == "boolean"
+      typeof req.body.isAdmin == "boolean"
     )
   ) {
     // error message needs to indicate which field(s) are missing
@@ -128,7 +127,6 @@ router.post("/", (req, res) => {
             phoneNumber: req.body.phoneNumber,
             email: req.body.email,
             uid: req.body.uid,
-            active: req.body.active,
             committees: req.body.committees,
             mainCommittee: req.body.mainCommittee,
             preferredName: req.body.preferredName,
@@ -220,9 +218,6 @@ router.put("/:uid", (req, res) => {
   if (req.body.committees) {
     updatedUser["committees"] = req.body.committees;
   }
-  if (req.body.active) {
-    updatedUser["active"] = req.body.active;
-  }
   if (typeof req.body.isAdmin == "boolean") {
     updatedUser["isAdmin"] = req.body.isAdmin;
   }
@@ -231,7 +226,7 @@ router.put("/:uid", (req, res) => {
   } else {
     updatedUser["preferredName"] = null;
   }
-  if (typeof req.body.status == "boolean") {
+  if (req.body.status) {
     updatedUser["status"] = req.body.status;
   } else {
     updatedUser["status"] = "active";
