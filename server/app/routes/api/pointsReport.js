@@ -18,7 +18,9 @@ router.get("/:semester", (req, res) => {
           pointReport["officeHours"] = 0;
           pointReport["committeeMeetings"] = 0;
           pointReport["semester"] = points[i]["semester"];
-
+          pointReport["firstName"] = "";
+          pointReport["lastName"] = "";
+          pointReport["preferredName"] = "";
           pointsReport[points[i]["uid"]] = pointReport;
         }
         var category = points[i]["category"];
@@ -26,11 +28,7 @@ router.get("/:semester", (req, res) => {
       }
     })
     .then(() => {
-        var firstName = "";
-        var lastName = "";
-        var preferredName = "";
       Object.keys(pointsReport).map((uid) => {
-        
         User.findOne({ uid: uid })
           .then((user) => {
             if (!user) {
@@ -41,21 +39,17 @@ router.get("/:semester", (req, res) => {
                   " while generating points report.",
               });
             }
-
-            firstName = user.firstName;
-            lastName = user.lastName;
-            preferredName = user.preferredName;
+            pointsReport[uid]["firstName"] = user.firstName;
+            pointsReport[uid]["lastName"] = user.lastName;
+            pointsReport[uid]["preferredName"] = user.preferredName;
+            res.send(pointsReport);
           })
           .catch((err) => {
             res.status(500).send({
               message: err.message,
             });
           });
-        pointsReport[uid]["firstName"] = firstName;
-        pointsReport[uid]["lastName"] = lastName;
-        pointsReport[uid]["preferredName"] = preferredName;
       });
-      res.send(pointsReport);
     })
     .catch((err) => {
       res.status(500).send({
