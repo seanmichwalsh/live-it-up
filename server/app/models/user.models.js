@@ -11,7 +11,6 @@ var UserSchema = mongoose.Schema({
     uid: {type: String, index: true, uniqueCaseInsensitive: true, required: true},
     committees: [{type: mongoose.Schema.ObjectId, ref: 'Committee'}],
     mainCommittee: {type: mongoose.Schema.ObjectId, ref: 'Committee'},
-    active: {type: Boolean, required: true, default: true},
     isAdmin: {type: Boolean, required: true, default: false},
     status: {type: String, required: true, default: 'active'}
 });

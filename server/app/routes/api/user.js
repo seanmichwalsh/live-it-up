@@ -17,6 +17,21 @@ router.get("/", (req, res) => {
     });
 });
 
+// Returns the active logged-in user
+// ****NOTE: This is placeholder until Harry commits GT Login code
+router.get("/me/", (req, res) => {
+  // User.findOne({ uid: "zkang35" })
+  //   .then(user => {
+  //     res.send(user.uid);
+  //   })
+  //   .catch(err => {
+  //     return res.status(404).send({
+  //       message: "Error retrieving the currently logged in user"
+  //     });
+  //   });
+  res.send({ uid: "seanwalsh" });
+});
+
 //Gets a specific user given an ID
 router.get("/:uid", (req, res) => {
   if (!req.params.uid) {
@@ -56,8 +71,7 @@ router.post("/", (req, res) => {
       req.body.phoneNumber &&
       req.body.mainCommittee &&
       req.body.committees &&
-      typeof req.body.isAdmin == "boolean" &&
-      typeof req.body.active == "boolean"
+      typeof req.body.isAdmin == "boolean"
     )
   ) {
     // error message needs to indicate which field(s) are missing
@@ -113,7 +127,6 @@ router.post("/", (req, res) => {
             phoneNumber: req.body.phoneNumber,
             email: req.body.email,
             uid: req.body.uid,
-            active: req.body.active,
             committees: req.body.committees,
             mainCommittee: req.body.mainCommittee,
             preferredName: req.body.preferredName,
@@ -205,9 +218,6 @@ router.put("/:uid", (req, res) => {
   if (req.body.committees) {
     updatedUser["committees"] = req.body.committees;
   }
-  if (req.body.active) {
-    updatedUser["active"] = req.body.active;
-  }
   if (typeof req.body.isAdmin == "boolean") {
     updatedUser["isAdmin"] = req.body.isAdmin;
   }
@@ -216,7 +226,7 @@ router.put("/:uid", (req, res) => {
   } else {
     updatedUser["preferredName"] = null;
   }
-  if (typeof req.body.status == "boolean") {
+  if (req.body.status) {
     updatedUser["status"] = req.body.status;
   } else {
     updatedUser["status"] = "active";
@@ -261,21 +271,6 @@ router.delete("/:uid", (req, res) => {
         message: "Could not delete user with id " + req.params.uid,
       });
     });
-});
-
-// Returns the active logged-in user
-// ****NOTE: This is placeholder until Harry commits GT Login code
-router.get("/me/test", (req, res) => {
-  // User.findOne({ uid: "zkang35" })
-  //   .then(user => {
-  //     res.send(user.uid);
-  //   })
-  //   .catch(err => {
-  //     return res.status(404).send({
-  //       message: "Error retrieving the currently logged in user"
-  //     });
-  //   });
-  res.send({ uid: "seanwalsh" });
 });
 
 //Returns a boolean indicating whether a given user is an admin or not
