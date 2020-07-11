@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./AdminViewItem.css";
 
 const AdminViewItem = ({ points, username }) => {
   return (
     <tr className="tr-className-1" data-title="bootstrap table">
       <td>
-        {points[username].firstName + " " + points[username].lastName}
-        {username}
+        <h6>{points[username].firstName + " " + points[username].lastName}</h6>
+        <h6>{username}</h6>
       </td>
       <td className="td-className-1" data-title="bootstrap table">
         <a href="/#">{points[username].semester}</a>

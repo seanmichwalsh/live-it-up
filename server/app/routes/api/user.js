@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 
 // Returns the active logged-in user
 // ****NOTE: This is placeholder until Harry commits GT Login code
-router.get("/me/", (req, res) => {
+router.get("/me/test", (req, res) => {
   // User.findOne({ uid: "zkang35" })
   //   .then(user => {
   //     res.send(user.uid);
