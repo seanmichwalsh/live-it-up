@@ -48,7 +48,7 @@ const AdminView = ({ user, points, onChange, getPointsReport }) => {
       <div id="points-display-container">
         <div id="admin-header-title">
           <div>
-            {(user.preferredName !== null
+            {(user.preferredName
               ? user.preferredName
               : user.firstName) +
               " " +

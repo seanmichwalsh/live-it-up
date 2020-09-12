@@ -144,12 +144,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               <option selected disabled value="">
                 Choose...
               </option>
-              <option value="2019fall">Fall 2019</option>
-              <option value="2020spring">Spring 2020</option>
-              <option value="2020summer">Summer 2020</option>
               <option value="2020fall">Fall 2020</option>
-              <option value="2021spring">Spring 2021</option>
-              <option value="2021summer">Summer 2021</option>
             </select>
           </div>
           <div className="form-group col-md-6 text-left">

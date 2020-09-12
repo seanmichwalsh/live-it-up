@@ -115,9 +115,7 @@ const AdminPointsTable = ({ points, context, semester, onChange }) => {
                 value={semester}
               >
                 <option value=""></option>
-                <option value="2019fall">Fall 2019</option>
-                <option value="2020spring">Spring 2020</option>
-                <option value="2020summer">Summer 2020</option>
+                <option value="2020fall">Fall 2020</option>
               </select>
             </div>
           </th>

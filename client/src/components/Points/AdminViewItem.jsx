@@ -6,7 +6,6 @@ const AdminViewItem = ({ points, username }) => {
     <tr className="tr-className-1" data-title="bootstrap table">
       <td>
         {points[username].firstName + " " + points[username].lastName}
-        {username}
       </td>
       <td className="td-className-1" data-title="bootstrap table">
         <a href="/#">{points[username].semester}</a>
