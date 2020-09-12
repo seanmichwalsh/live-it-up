@@ -1,0 +1,11 @@
+.tr-className-1 {
+  padding: 0
+}
+
+.tr-className-1 td {
+  vertical-align: middle;
+}
+
+.tr-className-1 td h6:first-child {
+  white-space: nowrap;
+}
