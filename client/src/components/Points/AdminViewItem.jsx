@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./AdminViewItem.css";
 
 const AdminViewItem = ({ points, username }) => {
   return (

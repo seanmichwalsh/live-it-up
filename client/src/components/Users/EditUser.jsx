@@ -273,7 +273,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     Choose...
                   </option>
                   {committees
-                    .filter((committee) => committee.type === "Event Planning")
+                    .filter((committee) => committee.type === "Primary")
                     .map((committee) => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}
