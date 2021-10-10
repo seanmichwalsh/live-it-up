@@ -18,7 +18,7 @@ const MemberView = ({
   userPointDetails,
   getPointsDetailForUser,
 }) => {
-  const [semester, setSemester] = useState("2020spring");
+  const [semester, setSemester] = useState("2020fall");
 
   useEffect(() => {
     getPointsDetailForUser(user.uid);
@@ -169,7 +169,7 @@ const MemberView = ({
           <div id="member-header-title">
             {user !== undefined &&
               user !== null &&
-              (user.preferredName !== null
+              (user.preferredName
                 ? user.preferredName
                 : user.firstName) +
                 " " +
@@ -182,9 +182,7 @@ const MemberView = ({
                   value={semester}
                 >
                   <option value=""></option>
-                  <option value="2019fall">Fall 2019</option>
-                  <option value="2020spring">Spring 2020</option>
-                  <option value="2020summer">Summer 2020</option>
+                  <option value="2020fall">Fall 2020</option>
                 </select>
               </div>
             </div>

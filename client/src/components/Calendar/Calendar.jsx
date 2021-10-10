@@ -24,7 +24,7 @@ const Calendar = ({ getEvents, events }) => {
     <div className="entire-pg">
       {isAdmin && (
         <a
-          href="/addevent"
+          href="/calendar/addevent"
           className="btn btn-secondary btn-small active addButton"
           role="button"
           aria-pressed="true"
