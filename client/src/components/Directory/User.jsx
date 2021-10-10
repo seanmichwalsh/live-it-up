@@ -8,7 +8,7 @@ import { setCurrent } from "./../../redux/actions/userActions";
 const User = ({ user, committee, setCurrent }) => {
   return (
     <div className="individualUser">
-      <Link to="/edituser" onClick={() => setCurrent(user)}>
+      <Link to="/directory/edituser" onClick={() => setCurrent(user)}>
         <div>
           {" "}
           <img src={logo} alt={logo} />

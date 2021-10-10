@@ -25,12 +25,12 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/points" component={Points} />
           <Route exact path="/calendar" component={Calendar} />
-          <Route exact path="/addevent" component={AddEvent} />
-          <Route exact path="/addpoints" component={AddPoints} />
+          <Route exact path="/calendar/addevent" component={AddEvent} />
+          <Route exact path="/points/addpoints" component={AddPoints} />
           <Route exact path="/directory" component={Directory} />
-          <Route exact path="/edituser" component={EditUser} />
-          <Route exact path="/adduser" component={AddUser} />
-          <Route exact path="/addcommittee" component={AddCommittee} />
+          <Route exact path="/directory/edituser" component={EditUser} />
+          <Route exact path="/directory/adduser" component={AddUser} />
+          <Route exact path="/directory/addcommittee" component={AddCommittee} />
           <Route exact path="/resources" component={Resources} />
           <Route component={NotFound} />
           {/* We should add other Routes here */}

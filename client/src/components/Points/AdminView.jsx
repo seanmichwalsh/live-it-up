@@ -24,7 +24,7 @@ const AdminView = ({ user, points, onChange, getPointsReport }) => {
         <div id="add-edit-box" className="to-member">
           <div className="dropdown">
             <a
-              href="/addpoints"
+              href="/points/addpoints"
               className="btn btn-secondary btn-small active"
               id="addButton"
               role="button"
@@ -48,7 +48,7 @@ const AdminView = ({ user, points, onChange, getPointsReport }) => {
       <div id="points-display-container">
         <div id="admin-header-title">
           <div>
-            {(user.preferredName !== null
+            {(user.preferredName
               ? user.preferredName
               : user.firstName) +
               " " +

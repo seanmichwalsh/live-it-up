@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 //Get current login user id
 export const getCurrentUserID = () => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/user/me/test");
+    const res = await fetch("http://localhost:3001/api/v1/user/me");
     const data = await res.json();
     dispatch(getUser(data.uid));
   } catch (err) {

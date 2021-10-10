@@ -70,6 +70,10 @@ table.admin-view thead > tr th span button .icon:nth-child(2) {
   margin-top: -80%;
 }
 
+th span.btn-group-vertical.btn-group-sm.ml-2 {
+  transform: translateX(-50%);
+}
+
 @media only screen and (max-width: 1025px) {
   #admin-header-title {
     float: initial;

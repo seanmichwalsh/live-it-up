@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 
 // Returns the active logged-in user
 // ****NOTE: This is placeholder until Harry commits GT Login code
-router.get("/me/", (req, res) => {
+router.get("/me", (req, res) => {
   // User.findOne({ uid: "zkang35" })
   //   .then(user => {
   //     res.send(user.uid);
@@ -29,7 +29,7 @@ router.get("/me/", (req, res) => {
   //       message: "Error retrieving the currently logged in user"
   //     });
   //   });
-  res.send({ uid: "seanwalsh" });
+  res.send({ uid: "swalsh38" });
 });
 
 //Gets a specific user given an ID
@@ -71,7 +71,8 @@ router.post("/", (req, res) => {
       req.body.phoneNumber &&
       req.body.mainCommittee &&
       req.body.committees &&
-      typeof req.body.isAdmin == "boolean"
+      req.body.isAdmin
+      // typeof req.body.isAdmin == "boolean"
     )
   ) {
     // error message needs to indicate which field(s) are missing
