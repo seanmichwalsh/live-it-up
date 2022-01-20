@@ -2,11 +2,11 @@ router = require('express').Router()
 const Committee = require('../../models/committee.models');
 
 router.get('/', (req, res) => {
-    Committee.find().then( users => {
-        res.send(users)
+    Committee.find().then( committees => {
+        res.send(committees)
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occured while retrieving users."
+            message: err.message || "Some error occured while retrieving committees."
         });
     });
 });

@@ -56,11 +56,16 @@ export const addCommittee = committee => async dispatch => {
       }
     });
     const data = await res.json();
+
+    if (!(res.ok)) {
+      throw ({message: res.body});
+    }
+
     dispatch({
       type: ADD_COMMITTEE,
       payload: data
     });
-    toast("A new committee is added successfully!");
+    toast("A new committee was added successfully!");
   } catch (err) {
     dispatch({
       type: COMMITTEE_ERROR,
@@ -80,7 +85,7 @@ export const deleteCommittee = id => async dispatch => {
       type: DELETE_COMMITTEE,
       payload: id
     });
-    toast("The committee is deleted succesfully.");
+    toast("The committee was deleted succesfully.");
   } catch (err) {
     dispatch({
       type: COMMITTEE_ERROR,
@@ -105,7 +110,7 @@ export const updateCommittee = (committee, id) => async dispatch => {
       type: UPDATE_COMMITTEE,
       payload: data
     });
-    toast("The committee is updated successfully!");
+    toast("The committee was updated successfully!");
   } catch (err) {
     dispatch({
       type: COMMITTEE_ERROR,

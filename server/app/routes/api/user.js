@@ -17,19 +17,19 @@ router.get("/", (req, res) => {
     });
 });
 
-// Returns the active logged-in user
-// ****NOTE: This is placeholder until Harry commits GT Login code
+//Returns the active logged-in user
 router.get("/me", (req, res) => {
-  // User.findOne({ uid: "zkang35" })
-  //   .then(user => {
-  //     res.send(user.uid);
-  //   })
-  //   .catch(err => {
-  //     return res.status(404).send({
-  //       message: "Error retrieving the currently logged in user"
-  //     });
-  //   });
-  res.send({ uid: "swalsh38" });
+  //TODO: test if null
+  //send 401 to client, which should then initiate login
+   User.findOne({ uid: req.session.uid })
+     .then(user => {
+       res.send(user);
+     })
+     .catch(err => {
+       return res.status(404).send({
+         message: "Error retrieving the currently logged in user"
+       });
+     });
 });
 
 //Gets a specific user given an ID
@@ -57,6 +57,78 @@ router.get("/:uid", (req, res) => {
       return res.status(500).send({
         message: "There was a problem retrieving user " + req.params.uid,
       });
+    });
+});
+
+//Updates certian fields on the current user. Provides less control than PUT /:uid, even if the user has Admin permissions.
+/*
+   Can users update it? Here are my guesses:
+   _id: impossible
+   uid: no, not even admins can
+   firstName: maybe?
+   lastName: maybe?
+   preferredName: yes? (Institute standard: preferredName yes, lastName no)
+   email: yes
+   phoneNumber: yes
+   status: no?
+   comittees: no
+   isAdmin: obv no
+*/
+   
+router.put("/me", (req, res) => {
+
+  //Makes sure you are not updating a user ID
+  if (req.body.uid) {
+    return res.status(400).send({
+      message: "A user's GT username cannot be updated",
+    });
+  }
+
+  if (req.body.isAdmin || req.body.mainCommittee || req.body.committees) {
+    return res.status(403).send({
+      message: "These fields can only be updated through the admin interface",
+    });
+  }
+
+  var updatedUser = {};
+  if (req.body.firstName) {
+    updatedUser["firstName"] = req.body.firstName;
+  }
+  if (req.body.lastName) {
+    updatedUser["lastName"] = req.body.lastName;
+  }
+  if (req.body.email) {
+    updatedUser["email"] = req.body.email;
+  }
+  if (req.body.phoneNumber) {
+    updatedUser["phoneNumber"] = req.body.phoneNumber;
+  }
+  if (req.body.preferredName) {
+    updatedUser["preferredName"] = req.body.preferredName;
+  } else {
+    updatedUser["preferredName"] = null;
+  }
+  if (req.body.status) {
+    updatedUser["status"] = req.body.status;
+  } else {
+    updatedUser["status"] = "active";
+  }
+
+  User.findOneAndUpdate({ uid:req.session.uid }, updatedUser, { new: true })
+    .then((user) => {
+      if (!user) {
+        return res.status(404).send({
+          message: "User not found with username " + req.session.uid,
+        });
+      }
+      res.send(user);
+    })
+    .catch((err) => {
+      if (err.kind === "ObjectId") {
+        return res.status(404).send({
+          message: "User not found with username " + req.session.uid,
+        });
+      }
     });
 });
 
@@ -163,7 +235,7 @@ router.put("/:uid", (req, res) => {
     });
   }
 
-  //Makes sure you are not updatinga a user ID
+  //Makes sure you are not updating a user ID
   if (req.body.uid) {
     return res.status(400).send({
       message: "A user's GT username cannot be updated",

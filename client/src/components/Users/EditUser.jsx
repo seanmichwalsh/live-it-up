@@ -227,7 +227,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     <option value="false">Off Campus</option>
                   </select>
                 </div>
-                <div className="form-group col-md-4 text-left">
+                {<div className="form-group col-md-4 text-left">
                   <label htmlFor="activeMember">Status</label>
                   <select
                     id="activeMember"
@@ -254,7 +254,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     <option value="false">Inactive</option>
                     <option value="false">No Longer a Member</option>
                   </select>
-                </div>
+                  </div>}
               </div>
             </div>
 
@@ -273,7 +273,7 @@ const EditUser = ({ updateUser, committees, getCommittees, current }) => {
                     Choose...
                   </option>
                   {committees
-                    .filter((committee) => committee.type === "Primary")
+                    .filter((committee) => committee.type === "Event Planning")
                     .map((committee) => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}
