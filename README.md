@@ -1,5 +1,5 @@
 # Live-It-Up
-Live-It-Up is SCPC's internal web app for managing volunteers and events within the organization. It's current focus is on maintaining an up-to-date list of all events and members, including each member's current standing regarding the fulfillment of their volunteering requirements. Future iterations of Live-It-Up aim may assist in volunteer coordination, alumni records, etc.
+Live-It-Up is SCPC's internal web app for managing volunteers and events within the organization. It's current focus is on maintaining an up-to-date list of all events and members, including each member's current standing regarding the fulfillment of their volunteering requirements. Future iterations of Live-It-Up may assist in volunteer coordination, maintaining alumni records, etc.
 
 ## Development Technologies
 Live-It-Up is developed using the popular MERN stack. MERN is an acronym for the four core frameworks used to build the entire web stack for the app: MongoDB, Express, React, and Node.js. These are popular open-source JavaScript frameworks that allow for the various components of the project (frontend, backend, database) to be developed and interoperate more easily. Each piece of the MERN stack is used for a core piece of the application:
