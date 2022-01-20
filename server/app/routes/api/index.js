@@ -1,10 +1,5 @@
 var router = require('express').Router();
 
-// simply returns the IP of the user. For testing purposes only
-router.get('/', (req, res) => {
-    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    res.json({ip_address : ip});
-});
 router.use('/user', require('./user'));
 router.use('/committee', require('./committee'));
 router.use('/event', require('./event'));

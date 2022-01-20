@@ -244,7 +244,7 @@ const AddUser = ({ addUser, committees, getCommittees }) => {
                     Choose...
                   </option>
                   {committees
-                    .filter((committee) => committee.type === "Primary")
+                    .filter((committee) => committee.type === "Event Planning")
                     .map((committee) => (
                       <option key={committee._id} value={committee._id}>
                         {committee.name}

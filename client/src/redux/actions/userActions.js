@@ -15,7 +15,24 @@ export const getCurrentUserID = () => async (dispatch) => {
   try {
     const res = await fetch("http://localhost:3001/api/v1/user/me");
     const data = await res.json();
-    dispatch(getUser(data.uid));
+    dispatch(data.uid);
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.message,
+    });
+  }
+};
+
+//Get current user object
+export const getCurrentUser = () => async (dispatch) => {
+  try {
+    const res = await fetch("http://localhost:3001/api/v1/user/me");
+    const data = await res.json();
+    dispatch({
+      type: GET_USER,
+      payload: data,
+    });
   } catch (err) {
     dispatch({
       type: USER_ERROR,

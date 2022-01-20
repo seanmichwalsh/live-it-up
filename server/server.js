@@ -12,11 +12,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  var ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  res.json({ ip_address: ip });
-});
-
 app.listen(port, () => {
   console.log("Server is listening on port " + port);
 });
@@ -34,7 +29,8 @@ mongoose
   })
   .catch((err) => {
     console.log("Could not connect to the database. Exiting now.");
-    process.exit();
+    console.log(err);
+    process.exit(1);
   });
 
 app.use(require("./app/routes"));
