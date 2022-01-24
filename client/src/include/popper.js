@@ -1,4 +1,4 @@
 //popper.js is a requirement for bootstrap v4
-import Popper  from 'popper.js'
+import { createPopper } from '@popperjs/core'
 
-window.Popper = Popper
+window.Popper = createPopper
