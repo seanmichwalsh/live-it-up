@@ -17,8 +17,5 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.0.0"
-  },
-  "dependencies": {
-    "package-lock.json": "^1.0.0"
   }
 }
