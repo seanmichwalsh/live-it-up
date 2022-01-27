@@ -1,0 +1,22 @@
+# Build stage
+FROM node:16.13.2-alpine as build-stage
+
+WORKDIR /live-it-up/client
+COPY package*.json /live-it-up/client/
+RUN npm ci --production --silent
+COPY . /live-it-up/client/
+
+ARG REACT_APP_API_BASE_URL
+ENV REACT_APP_API_BASE_URL $REACT_APP_API_BASE_URL
+
+RUN npm run build
+
+# Deploy stage
+FROM nginx:alpine
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build-stage /live-it-up/client/build /usr/share/nginx/html
+EXPOSE $CLIENT_DOCKER_PORT
+
+CMD nginx -g 'daemon off;'

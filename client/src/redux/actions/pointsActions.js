@@ -11,12 +11,13 @@ import {
   GET_POINTS_REPORT_FOR_USER
 } from "./actionTypes";
 import { toast } from "react-toastify";
+const apiBaseURL = process.env.REACT_APP_API_BASE_URL
 
 //get semester points report
 export const getPointsReport = semester => async dispatch => {
   try {
     const res = await fetch(
-      `http://localhost:3001/api/v1/pointsReport/${semester}`
+      `${apiBaseURL}/pointsReport/${semester}`
     );
     const data = await res.json();
     dispatch({
@@ -34,7 +35,7 @@ export const getPointsReport = semester => async dispatch => {
 export const getPointsReportForUser = (semester, uid) => async dispatch => {
   try {
     const res = await fetch(
-      `http://localhost:3001/api/v1/pointsReport/${semester}/${uid}`
+      `${apiBaseURL}/pointsReport/${semester}/${uid}`
     );
     const data = await res.json();
     dispatch({
@@ -51,7 +52,7 @@ export const getPointsReportForUser = (semester, uid) => async dispatch => {
 
 export const getPointsDetailForUser = uid => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/point/user/${uid}`);
+    const res = await fetch(`${apiBaseURL}/point/user/${uid}`);
     const data = await res.json();
     dispatch({
       type: GET_USER_POINTS,
@@ -68,7 +69,7 @@ export const getPointsDetailForUser = uid => async dispatch => {
 export const getUserPointsReport = (semester, id) => async dispatch => {
   try {
     const res = await fetch(
-      `http://localhost:3001/api/v1/pointsReport/${semester}/${id}`
+      `${apiBaseURL}/pointsReport/${semester}/${id}`
     );
     const data = await res.json();
     dispatch({
@@ -85,7 +86,7 @@ export const getUserPointsReport = (semester, id) => async dispatch => {
 
 export const getUserReport = uid => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/point/user/${uid}`);
+    const res = await fetch(`${apiBaseURL}/point/user/${uid}`);
     const data = await res.json();
     dispatch({
       type: GET_ALL_POINTS,
@@ -102,7 +103,7 @@ export const getUserReport = uid => async dispatch => {
 //Get all points from server
 export const getPoints = () => async dispatch => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/point/");
+    const res = await fetch(`${apiBaseURL}/point/`);
     const data = await res.json();
     dispatch({
       type: GET_ALL_POINTS,
@@ -119,7 +120,7 @@ export const getPoints = () => async dispatch => {
 //Get a specific point from server
 export const getPoint = id => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/point/${id}`);
+    const res = await fetch(`${apiBaseURL}/point/${id}`);
     const data = await res.json();
     dispatch({
       type: GET_POINTS,
@@ -136,7 +137,7 @@ export const getPoint = id => async dispatch => {
 //Add new points
 export const addPoint = points => async dispatch => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/point/", {
+    const res = await fetch(`${apiBaseURL}/point/`, {
       method: "POST",
       body: JSON.stringify(points),
       headers: {
@@ -163,7 +164,7 @@ export const addPoint = points => async dispatch => {
 //Delete points from server
 export const deletePoint = id => async dispatch => {
   try {
-    await fetch(`http://localhost:3001/api/v1/point/${id}`, {
+    await fetch(`${apiBaseURL}/point/${id}`, {
       method: "DELETE"
     });
     dispatch({
@@ -183,7 +184,7 @@ export const deletePoint = id => async dispatch => {
 //Update points on server
 export const updatePoint = (points, id) => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/point/${id}`, {
+    const res = await fetch(`${apiBaseURL}/point/${id}`, {
       method: "PUT",
       body: JSON.stringify(points),
       headers: {

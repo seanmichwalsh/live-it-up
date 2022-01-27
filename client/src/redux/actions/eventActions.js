@@ -7,11 +7,14 @@ import {
   EVENT_ERROR
 } from "./actionTypes";
 import { toast } from "react-toastify";
+const apiBaseURL = process.env.REACT_APP_API_BASE_URL
 
 //Get all events from server
 export const getEvents = () => async dispatch => {
+  console.log("****** Called getEvents")
+  console.log(`${apiBaseURL}`)
   try {
-    const res = await fetch("http://localhost:3001/api/v1/event/");
+    const res = await fetch(`${apiBaseURL}/event/`);
     const data = await res.json();
     dispatch({
       type: GET_ALL_EVENTS,
@@ -28,7 +31,7 @@ export const getEvents = () => async dispatch => {
 //Get a specific event from server
 export const getEvent = _id => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/event/${_id}`);
+    const res = await fetch(`${apiBaseURL}/event/${_id}`);
     const data = await res.json();
     dispatch({
       type: GET_EVENT,
@@ -45,7 +48,7 @@ export const getEvent = _id => async dispatch => {
 //Add new event
 export const addEvent = event => async dispatch => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/event/", {
+    const res = await fetch(`${apiBaseURL}/event/`, {
       method: "POST",
       body: JSON.stringify(event),
       headers: {
@@ -79,7 +82,7 @@ export const addEvent = event => async dispatch => {
 //Delete event from server
 export const deleteEvent = _id => async dispatch => {
   try {
-    await fetch(`http://localhost:3001/api/v1/event/${_id}`, {
+    await fetch(`${apiBaseURL}/event/${_id}`, {
       method: "DELETE"
     });
     dispatch({
@@ -97,7 +100,7 @@ export const deleteEvent = _id => async dispatch => {
 //Update event on server
 export const updateEvent = (event, _id) => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/event/${_id}`, {
+    const res = await fetch(`${apiBaseURL}/event/${_id}`, {
       method: "PUT",
       body: JSON.stringify(event),
       headers: {

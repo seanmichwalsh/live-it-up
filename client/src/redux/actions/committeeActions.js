@@ -9,11 +9,12 @@ import {
   CLEAR_CURRENT
 } from "./actionTypes";
 import { toast } from "react-toastify";
+const apiBaseURL = process.env.REACT_APP_API_BASE_URL
 
 //Get all committees from server
 export const getCommittees = () => async dispatch => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/committee/");
+    const res = await fetch(`${apiBaseURL}/committee/`);
     const data = await res.json();
     dispatch({
       type: GET_ALL_COMMITTEE,
@@ -30,7 +31,7 @@ export const getCommittees = () => async dispatch => {
 //Get a specific committee from server
 export const getCommittee = id => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/committee/${id}`);
+    const res = await fetch(`${apiBaseURL}/committee/${id}`);
     const data = await res.json();
     dispatch({
       type: GET_COMMITTEE,
@@ -47,7 +48,7 @@ export const getCommittee = id => async dispatch => {
 //Add new committee
 export const addCommittee = committee => async dispatch => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/committee/", {
+    const res = await fetch(`${apiBaseURL}/committee/`, {
       method: "POST",
       body: JSON.stringify(committee),
       headers: {
@@ -56,11 +57,16 @@ export const addCommittee = committee => async dispatch => {
       }
     });
     const data = await res.json();
+
+    if (!(res.ok)) {
+      throw ({message: res.body});
+    }
+
     dispatch({
       type: ADD_COMMITTEE,
       payload: data
     });
-    toast("A new committee is added successfully!");
+    toast("A new committee was added successfully!");
   } catch (err) {
     dispatch({
       type: COMMITTEE_ERROR,
@@ -73,14 +79,14 @@ export const addCommittee = committee => async dispatch => {
 //Delete committee from server
 export const deleteCommittee = id => async dispatch => {
   try {
-    await fetch(`http://localhost:3001/api/v1/committee/${id}`, {
+    await fetch(`${apiBaseURL}/committee/${id}`, {
       method: "DELETE"
     });
     dispatch({
       type: DELETE_COMMITTEE,
       payload: id
     });
-    toast("The committee is deleted succesfully.");
+    toast("The committee was deleted succesfully.");
   } catch (err) {
     dispatch({
       type: COMMITTEE_ERROR,
@@ -93,7 +99,7 @@ export const deleteCommittee = id => async dispatch => {
 //Update committee on server
 export const updateCommittee = (committee, id) => async dispatch => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/committee/${id}`, {
+    const res = await fetch(`${apiBaseURL}/committee/${id}`, {
       method: "PUT",
       body: JSON.stringify(committee),
       headers: {
@@ -105,7 +111,7 @@ export const updateCommittee = (committee, id) => async dispatch => {
       type: UPDATE_COMMITTEE,
       payload: data
     });
-    toast("The committee is updated successfully!");
+    toast("The committee was updated successfully!");
   } catch (err) {
     dispatch({
       type: COMMITTEE_ERROR,
