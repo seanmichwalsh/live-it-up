@@ -9,13 +9,31 @@ import {
   CLEAR_CURRENT,
 } from "./actionTypes";
 import { toast } from "react-toastify";
+const apiBaseURL = process.env.REACT_APP_API_BASE_URL
 
 //Get current login user id
 export const getCurrentUserID = () => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/user/me");
+    const res = await fetch(`${apiBaseURL}/user/me`);
     const data = await res.json();
-    dispatch(getUser(data.uid));
+    dispatch(data.uid);
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.message,
+    });
+  }
+};
+
+//Get current user object
+export const getCurrentUser = () => async (dispatch) => {
+  try {
+    const res = await fetch(`${apiBaseURL}/user/me`);
+    const data = await res.json();
+    dispatch({
+      type: GET_USER,
+      payload: data,
+    });
   } catch (err) {
     dispatch({
       type: USER_ERROR,
@@ -27,7 +45,7 @@ export const getCurrentUserID = () => async (dispatch) => {
 //Get all users from server
 export const getUsers = () => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/user/");
+    const res = await fetch(`${apiBaseURL}/user/`);
     const data = await res.json();
     dispatch({
       type: GET_ALL_USER,
@@ -44,7 +62,7 @@ export const getUsers = () => async (dispatch) => {
 //Get a specific user from server
 export const getUser = (id) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/user/${id}`);
+    const res = await fetch(`${apiBaseURL}/user/${id}`);
     const data = await res.json();
     dispatch({
       type: GET_USER,
@@ -61,7 +79,7 @@ export const getUser = (id) => async (dispatch) => {
 //Add new user
 export const addUser = (user) => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:3001/api/v1/user/", {
+    const res = await fetch(`${apiBaseURL}/user/`, {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
@@ -100,7 +118,7 @@ export const addUser = (user) => async (dispatch) => {
 //Delete user from server
 export const deleteUser = (uid) => async (dispatch) => {
   try {
-    await fetch(`http://localhost:3001/api/v1/user/${uid}`, {
+    await fetch(`${apiBaseURL}/user/${uid}`, {
       method: "DELETE",
     });
     dispatch({
@@ -122,7 +140,7 @@ export const deleteUser = (uid) => async (dispatch) => {
 //Update user on server
 export const updateUser = (user, uid) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:3001/api/v1/user/${uid}`, {
+    const res = await fetch(`${apiBaseURL}/user/${uid}`, {
       method: "PUT",
       body: JSON.stringify(user),
       headers: {

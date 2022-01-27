@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentUserID } from "../../redux/actions/userActions";
+import { getCurrentUser } from "../../redux/actions/userActions";
 import MemberView from "./MemberView";
 import AdminView from "./AdminView";
 
-const Points = ({ user, getCurrentUserID }) => {
+const Points = ({ user, getCurrentUser }) => {
   const [memberView, setMemberView] = useState(false);
 
   useEffect(() => {
-    getCurrentUserID();
+    getCurrentUser();
     //eslint-disable-next-line
   }, []);
 
@@ -28,7 +28,7 @@ const Points = ({ user, getCurrentUserID }) => {
 
 Points.propTypes = {
   user: PropTypes.object,
-  getCurrentUserID: PropTypes.func.isRequired,
+  getCurrentUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -36,5 +36,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  getCurrentUserID,
+   getCurrentUser,
 })(Points);

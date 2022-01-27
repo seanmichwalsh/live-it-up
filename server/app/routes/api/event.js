@@ -4,11 +4,11 @@ const Committee = require('../../models/committee.models');
 
 //Gets all events
 router.get('/', (req, res) => {
-    Event.find().then( users => {
-        res.send(users)
+    Event.find().then( events => {
+        res.send(events)
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occured while retrieving users."
+            message: err.message || "Some error occured while retrieving events."
         });
     });
 });
@@ -23,14 +23,14 @@ router.get('/:id', (req, res) => {
     Event.findById(req.params.id).then(event => {
         if (!event) {
             return res.status(404).send({
-                message: "Commitee not found with id" + req.params.id
+                message: "Event not found with id " + req.params.id
             });
         };
         res.send(event)
     }).catch(err => {
         if (err.kind === "ObjectId") {
             return res.status(404).send({
-                message: "Event not found with username " + req.params.id
+                message: "Event not found with id " + req.params.id
             });
         }
         return res.status(500).send({
