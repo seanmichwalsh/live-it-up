@@ -1,0 +1,8 @@
+FROM node:16.13.2-alpine
+
+WORKDIR /live-it-up/server
+COPY package*.json /live-it-up/server/
+RUN npm ci --production --silent
+COPY . /live-it-up/server/
+
+CMD ["npm", "run", "start"]
