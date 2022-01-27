@@ -1,12 +1,13 @@
 var express = require('express');
 var router  = express.Router();
 var path = require('path');
+const dotenv = require("dotenv").config()
 
 var session = require('express-session');
 //const MongoStore = require('connect-mongo');
 
 router.use(session({
-    secret: 'secret', 
+    secret: `${process.env.EXPRESS_SESSION_SECRET}`, 
     resave: false, 
     saveUninitialized: true,
     //store: MongoStore.create({}). Persistence (ish) of sessions.
