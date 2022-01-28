@@ -3,7 +3,8 @@ FROM node:16
 RUN npm install -g nodemon
 WORKDIR /live-it-up/server
 COPY package*.json /live-it-up/server/
-RUN npm install
+
+RUN npm ci
 COPY . /live-it-up/server/
 
 CMD ["npm", "run", "dev"]
