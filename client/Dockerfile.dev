@@ -2,10 +2,12 @@ FROM node:16
 
 WORKDIR /live-it-up/client
 COPY package*.json /live-it-up/client/
-RUN npm install
+
+RUN npm ci
 COPY . /live-it-up/client/
 
 ARG REACT_APP_API_BASE_URL
 ENV REACT_APP_API_BASE_URL $REACT_APP_API_BASE_URL
+
 
 CMD ["npm", "run", "start"]
