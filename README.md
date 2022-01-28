@@ -41,7 +41,7 @@ npm install
 ```
 
 Live it up is now setup to fully run on Docker. Head over to https://docs.docker.com/get-docker/ for instructions on how to setup Docker for your environment. 
-Once Docker is fully installed and setup, first create a new file in root - ".env" which is a copy of ".sample.env".
+Once Docker is fully installed and setup, first create a new file in root - `.env` which is a copy of ".sample.env".
 Tip: Always make sure you have the latest version of the code with 
 ```bash
 git fetch
@@ -55,7 +55,7 @@ Then, run
 ```bash
 docker-compose -f .\docker-compose-dev.yml build
 ```
-Wait patiently while docker works its magic. 
+Wait patiently while docker works its magic. **NOTE:** You may need to run `docker-compose` commands with sudo / administrator permissions.
 Once completed without errors, run
 ```bash
 docker-compose -f .\docker-compose-dev.yml up
