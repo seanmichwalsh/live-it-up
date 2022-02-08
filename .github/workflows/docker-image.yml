@@ -17,15 +17,15 @@ jobs:
     - name: Build the Docker dev image
       run: docker-compose -f docker-compose-dev.yml up -d
       env:
-        MONGODB_USER: ${{secrets.MONGODB_USER}}
-        MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
-        MONGODB_DATABASE: ${{secrets.MONGODB_DATABASE}}
-        MONGODB_HOST_PORT: ${{secrets.MONGODB_HOST_PORT}}
-        MONGODB_DOCKER_PORT: ${{secrets.MONGODB_DOCKER_PORT}}
-        SERVER_HOST_PORT: ${{secrets.SERVER_HOST_PORT}}
-        SERVER_DOCKER_PORT: ${{secrets.SERVER_DOCKER_PORT}}
-        CLIENT_HOST_PORT: ${{secrets.CLIENT_HOST_PORT}}
-        CLIENT_DOCKER_PORT: ${{secrets.CLIENT_DOCKER_PORT}}
-        APP_URL: ${{secrets.APP_URL}}
-        REACT_APP_API_BASE_URL: ${{secrets.REACT_APP_API_BASE_URL}}
-        EXPRESS_SESSION_SECRET: ${{secrets.EXPRESS_SESSION_SECRET}}
+        MONGODB_USER: ${{ secrets.MONGODB_USER }}
+        MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+        MONGODB_DATABASE: ${{ secrets.MONGODB_DATABASE }}
+        MONGODB_HOST_PORT: ${{ secrets.MONGODB_HOST_PORT }}
+        MONGODB_DOCKER_PORT: ${{ secrets.MONGODB_DOCKER_PORT }}
+        SERVER_HOST_PORT: ${{ secrets.SERVER_HOST_PORT }}
+        SERVER_DOCKER_PORT: ${{ secrets.SERVER_DOCKER_PORT }}
+        CLIENT_HOST_PORT: ${{ secrets.CLIENT_HOST_PORT }}
+        CLIENT_DOCKER_PORT: ${{ secrets.CLIENT_DOCKER_PORT }}
+        APP_URL: ${{ secrets.APP_URL}}
+        REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL }}
+        EXPRESS_SESSION_SECRET: ${{ secrets.EXPRESS_SESSION_SECRET }}
