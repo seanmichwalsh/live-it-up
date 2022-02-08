@@ -1,4 +1,4 @@
-name: Build Docker
+name: Build Docker images for development
 
 on:
   push:
@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker dev image
-      run: docker-compose up -d
+      run: docker-compose up -f docker-compose-dev.yml -d
