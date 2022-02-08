@@ -10,7 +10,8 @@ jobs:
 
   build:
 
-    runs-on: [ self-hosted ]
+    runs-on: self-hosted
+    environment: Development
 
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +27,6 @@ jobs:
         SERVER_DOCKER_PORT: ${{ secrets.SERVER_DOCKER_PORT }}
         CLIENT_HOST_PORT: ${{ secrets.CLIENT_HOST_PORT }}
         CLIENT_DOCKER_PORT: ${{ secrets.CLIENT_DOCKER_PORT }}
-        APP_URL: ${{ secrets.APP_URL}}
+        APP_URL: ${{ secrets.APP_URL }}
         REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL }}
         EXPRESS_SESSION_SECRET: ${{ secrets.EXPRESS_SESSION_SECRET }}
