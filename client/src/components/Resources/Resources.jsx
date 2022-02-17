@@ -7,7 +7,7 @@ const Resources = () => {
       <header className="main-header">RESOURCES</header>
       <div id="resources-container">
         <a
-          href="https://docs.google.com/spreadsheets/d/1AjOm6V3ZG0Jn0y__CR0vxmwXHJp3bOaETq18uPECrac/edit#gid=1777936343"
+          href="https://docs.google.com/spreadsheets/d/14U26K1GhsUgjzrSAjAqoWInlMPRz02MO4CG7dr-9b9E/edit#gid=1005775354"
           target="_blank"
           rel="noopener noreferrer"
         >
