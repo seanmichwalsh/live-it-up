@@ -35,7 +35,7 @@ const Resources = () => {
           </div>
         </a>
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdXGkAl5uTXE952FiV_XuRejOOQaCx8PnNc_f7iLag6X1U_0A/viewform?usp=sf_link"
+          href="https://gatech.box.com/s/hgj2a0ptmn10u00gmcibs53f8y818x6b"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -45,7 +45,7 @@ const Resources = () => {
               alt="Google Doc Logo"
               className="resourcePic"
             ></img>
-            <div className="resourcesWords">POINTS FORM</div>
+            <div className="resourcesWords">PROPOSAL FORM</div>
           </div>
         </a>
         <a
