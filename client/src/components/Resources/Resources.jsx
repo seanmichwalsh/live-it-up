@@ -63,7 +63,7 @@ const Resources = () => {
           </div>
         </a>
         <a
-          href="https://docs.google.com/document/d/1QpniJ7c3kMnRgT75R3jnyyKuhnNb32e3oNHW4RVtCYU/edit?usp=sharing"
+          href="https://slack-files.com/files-pri-safe/TKM8PQGNP-F030LKM95LK/accountability_plan_sp22.pdf?c=1645460822-792ab714b1a8d492"
           target="_blank"
           rel="noopener noreferrer"
         >
