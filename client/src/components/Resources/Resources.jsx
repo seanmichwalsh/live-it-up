@@ -21,7 +21,7 @@ const Resources = () => {
           </div>
         </a>
         <a
-          href="https://goo.gl/forms/RjtusxgGqmRm3q6L2"
+          href="https://gatech.co1.qualtrics.com/jfe/form/SV_4Jf6O7Vw0lClwuW"
           target="_blank"
           rel="noopener noreferrer"
         >
