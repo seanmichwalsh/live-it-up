@@ -15,7 +15,8 @@ jobs:
     environment: Development
 
     steps:
+    - uses: actions/checkout@v2
     - name: Lint frontend and backend
       run: |
-        npm prefix --server run lint
-        npm prefix --client run lint
+        npm prefix --server run lint --max-warnings=0
+        npm prefix --client run lint --max-warnings=0
