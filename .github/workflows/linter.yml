@@ -18,6 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Lint frontend and backend
       run: |
-        npm install eslint
-        eslint ./client/src/**/*.js --max-warnings=0
-        eslint ./server/server.js ./app/**/*.js --max-warnings=0
+        npm --prefix server install
+        npm --prefix client install
+        npm --prefix server run lint
+        npm --prefix client run lint
