@@ -31,6 +31,7 @@ jobs:
         echo EXPRESS_SESSION_SECRET=${{ secrets.EXPRESS_SESSION_SECRET }} >> .env
     - name: Lint the backend
       run: |
+        docker-compose -f docker-compose-dev.yml build
         docker-compose -f docker-compose-dev.yml run server npm run lint
         docker-compose -f docker-compose-dev.yml down
     - name: Lint the frontend
