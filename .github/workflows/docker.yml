@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Create .env file
+    - name: Configure environment
       run: |
         touch .env
         echo MONGODB_USER=${{ secrets.MONGODB_USER }} >> .env
@@ -31,4 +31,14 @@ jobs:
         echo REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }} >> .env
         echo EXPRESS_SESSION_SECRET=${{ secrets.EXPRESS_SESSION_SECRET }} >> .env
     - name: Build the Docker dev image
-      run: docker-compose -f docker-compose-dev.yml up -d
+      run: |
+        docker-compose -f docker-compose-dev.yml up -d
+        docker-compose -f docker-compose-dev.yml down
+    - name: Run backend tests
+      run: |
+        docker-compose -f docker-compose-dev.yml run server npm test
+        docker-compose -f docker-compose-dev.yml down
+    - name: Run frontend tests
+      run: |
+        docker-compose -f docker-compose-dev.yml run client npm test
+        docker-compose -f docker-compose-dev.yml down
