@@ -1,4 +1,4 @@
-name: Build Docker images for development
+name: Build Images and Run Unit Tests
 
 on:
   push:
@@ -8,8 +8,7 @@ on:
 
 jobs:
 
-  build:
-
+  test:
     runs-on: self-hosted
     environment: Development
 
