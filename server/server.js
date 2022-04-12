@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 const dotenv = require("dotenv").config()
 const dbConfig = require("./config/database.config")
+const ready = require('readyness')
 
 const app = express()
 const port = process.env.SERVER_HOST_PORT || 3001;
@@ -21,6 +22,8 @@ app.listen(port, () => {
   console.log("Server is listening on port " + port);
 })
 
+var dbReady = ready.waitFor('database');
+
 mongoose.Promise = global.Promise;
 
 mongoose
@@ -31,6 +34,7 @@ mongoose
   })
   .then(() => {
     console.log("Connected to database");
+    dbReady();
   })
   .catch((err) => {
     console.log("Could not connect to the database. Exiting now.");
@@ -40,3 +44,4 @@ mongoose
   })
 
 app.use(require("./app/routes"))
+module.exports = app
