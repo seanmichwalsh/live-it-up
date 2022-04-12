@@ -11,8 +11,6 @@ const apiBaseURL = process.env.REACT_APP_API_BASE_URL
 
 //Get all events from server
 export const getEvents = () => async dispatch => {
-  console.log("****** Called getEvents")
-  console.log(`${apiBaseURL}`)
   try {
     const res = await fetch(`${apiBaseURL}/event/`);
     const data = await res.json();

@@ -40,21 +40,27 @@ npm install
 npm install
 ```
 
-- Now Live-It-Up is fully installed, but we need to setup a database for it to interact with. The MacOS / Linux process for doing so is outlined below. For additional detail, refer to MongoDB's official setup instructions for [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/), or refer to their [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/) guide if you use that OS.
-- In your root directory, create the following two nested directories where your MongoDB documents and metadata will live when you test locally on your machine (this may require super user permissions):
+Live it up is now setup to fully run on Docker. Head over to https://docs.docker.com/get-docker/ for instructions on how to setup Docker for your environment. 
+Once Docker is fully installed and setup, first create a new file in root - `.env` which is a copy of ".sample.env".
+Tip: Always make sure you have the latest version of the code with 
 ```bash
-/data/db
-```
-- Note: You can create your MongoDB data directory in another location that doesn't require super user permission (like your Home dir) with some additional steps if desired. Refer to the linked MongoDB guides.
-- Start the MongoDB daemon using the below command. Ensure it starts successfully without error, and runs waiting for input. Note this daemon needs to persist separately from the terminal used to interact with Live-It-Up, so either run it in a 2nd terminal tab or headlessly. You can also set it to run on system startup, so you don't need to worry about this step in the future.
+git fetch
+````
+and
 ```bash
-sudo mongod
+git pull (if required)
 ```
-- Now that Live-It-Up is installed and MongoDB is waiting for input, you can run the application! To do this, run the following command in the project's top-level directory to start the application:
+
+Then, run 
 ```bash
-npm run dev
+docker-compose -f .\docker-compose-dev.yml build
 ```
-This will run two NPM servers: the frontend on port 3000, and the backend on port 3001. Check that the backend successfully connects to the database in the terminal, and that the frontend launches in your default browser. Now Live-It-Up is up and running!
+Wait patiently while docker works its magic. **NOTE:** You may need to run `docker-compose` commands with sudo / administrator permissions.
+Once completed without errors, run
+```bash
+docker-compose -f .\docker-compose-dev.yml up
+```
+And Voila! The application should be up, the frontend on port 3000, and the backend on port 3001. Now Live-It-Up is up and running!
 
 ## Backend
 The contents of the backend are contained within the `server` directory. As stated above, note the presence of the `package.json` and `package-lock.json` files that define the backend NPM project and NPM package dependencies, respectively. Also note the file `server.js` - this is the first file that is inspected when the server is started, and does the job of initializing the backend Node server, connecting to the database, and defining the top-level route (more on routes below).

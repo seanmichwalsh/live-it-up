@@ -95,12 +95,13 @@ const AddCommitteeForm = ({ addCommittee }) => {
             type="text"
             className="form-control"
             id="meetingDay"
-            placeholder="Choose a day"
+            placeholder="Monday"
+            autocomplete="off"
             onChange={(e) => setMeetingDay(e.target.value)}
             value={meetingDay}
             required
           >
-            <option value="Monday">Monday</option>
+            <option value="Monday" selected>Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
             <option value="Thursday">Thursday</option>
