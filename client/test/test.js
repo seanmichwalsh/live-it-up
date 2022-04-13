@@ -1,5 +1,4 @@
-import React from 'react'
-import { expect } from 'chai'
+const expect = require('chai').expect
 
 describe('Dummy test to ensure CI/CD works', () => {
     it('Should be equal', () => {
