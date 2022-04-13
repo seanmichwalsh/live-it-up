@@ -13,26 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Configure environment
-      run: |
-        touch .env
-        echo MONGODB_USER=${{ secrets.MONGODB_USER }} >> .env
-        echo MONGODB_PASSWORD=${{ secrets.MONGODB_PASSWORD }} >> .env
-        echo MONGODB_DATABASE=${{ secrets.MONGODB_DATABASE }} >> .env
-        echo MONGODB_HOST_PORT=${{ secrets.MONGODB_HOST_PORT }} >> .env
-        echo MONGODB_DOCKER_PORT=${{ secrets.MONGODB_DOCKER_PORT }} >> .env
-        echo SERVER_HOST_PORT=${{ secrets.SERVER_HOST_PORT }} >> .env
-        echo SERVER_DOCKER_PORT=${{ secrets.SERVER_DOCKER_PORT }} >> .env
-        echo CLIENT_HOST_PORT=${{ secrets.CLIENT_HOST_PORT }} >> .env
-        echo CLIENT_DOCKER_PORT=${{ secrets.CLIENT_DOCKER_PORT }} >> .env
-        echo APP_URL=${{ secrets.APP_URL }} >> .env
-        echo REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }} >> .env
-        echo EXPRESS_SESSION_SECRET=${{ secrets.EXPRESS_SESSION_SECRET }} >> .env
     - name: Lint the backend
       run: |
-        docker-compose -f docker-compose-dev.yml run server npm run lint
-        docker-compose -f docker-compose-dev.yml down
+        npm ci --prefix server
+        npm run lint --prefix server
     - name: Lint the frontend
       run: |
-        docker-compose -f docker-compose-dev.yml run client npm run lint
-        docker-compose -f docker-compose-dev.yml down
+        npm ci --prefix client
+        npm run lint --prefix client
