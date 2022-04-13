@@ -40,7 +40,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "NODE_PATH=./src mocha --require @babel/register --require ./test/dom.js './test/**/*.js'",
-    "lint": "eslint ./src/**/*.js",
+    "lint": "eslint ./src/**/*.js --max-warnings=0",
     "eject": "react-scripts eject"
   },
   "browserslist": [
