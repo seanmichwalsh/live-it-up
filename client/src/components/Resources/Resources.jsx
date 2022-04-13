@@ -7,7 +7,7 @@ const Resources = () => {
       <header className="main-header">RESOURCES</header>
       <div id="resources-container">
         <a
-          href="https://docs.google.com/spreadsheets/d/1AjOm6V3ZG0Jn0y__CR0vxmwXHJp3bOaETq18uPECrac/edit#gid=1777936343"
+          href="https://docs.google.com/spreadsheets/d/14U26K1GhsUgjzrSAjAqoWInlMPRz02MO4CG7dr-9b9E/edit#gid=1005775354"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -21,7 +21,7 @@ const Resources = () => {
           </div>
         </a>
         <a
-          href="https://goo.gl/forms/RjtusxgGqmRm3q6L2"
+          href="https://gatech.co1.qualtrics.com/jfe/form/SV_4Jf6O7Vw0lClwuW"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -35,7 +35,7 @@ const Resources = () => {
           </div>
         </a>
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdXGkAl5uTXE952FiV_XuRejOOQaCx8PnNc_f7iLag6X1U_0A/viewform?usp=sf_link"
+          href="https://gatech.box.com/s/hgj2a0ptmn10u00gmcibs53f8y818x6b"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -45,7 +45,7 @@ const Resources = () => {
               alt="Google Doc Logo"
               className="resourcePic"
             ></img>
-            <div className="resourcesWords">POINTS FORM</div>
+            <div className="resourcesWords">PROPOSAL FORM</div>
           </div>
         </a>
         <a
@@ -63,7 +63,7 @@ const Resources = () => {
           </div>
         </a>
         <a
-          href="https://docs.google.com/document/d/1QpniJ7c3kMnRgT75R3jnyyKuhnNb32e3oNHW4RVtCYU/edit?usp=sharing"
+          href="https://drive.google.com/file/d/1WMQ_dgp2YaveptBJbkdtFLAFp5oSn4KP/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
