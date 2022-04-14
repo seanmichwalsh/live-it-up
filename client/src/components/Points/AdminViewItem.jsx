@@ -13,7 +13,6 @@ const AdminViewItem = ({ points, username }) => {
       </td>
       <td>{points[username].group1}</td>
       <td>{points[username].group2}</td>
-      <td>{points[username].group3}</td>
       <td>{points[username].committeeEvents}</td>
       <td>{points[username].plc}</td>
       <td>{points[username].aux}</td>

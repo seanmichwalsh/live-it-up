@@ -84,9 +84,6 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
                   case "Group 2":
                     setCategory("group2");
                     break;
-                  case "Group 3":
-                    setCategory("group3");
-                    break;
                   case "Committee Meeting":
                     setCategory("committeeMeetings");
                     break;
@@ -109,7 +106,6 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               </option>
               <option value="Group 1">Group 1</option>
               <option value="Group 2">Group 2</option>
-              <option value="Group 3">Group 3</option>
               <option value="Committee Meeting">Committee Meeting</option>
               <option value="Ad Hoc Committee">Ad Hoc Committee</option>
               <option value="Office Hours">Office Hours</option>
@@ -144,7 +140,7 @@ const AddPointsForm = ({ addPoint, users, getUsers }) => {
               <option selected disabled value="">
                 Choose...
               </option>
-              <option value="2020fall">Fall 2020</option>
+              <option value="2022fall">Fall 2022</option>
             </select>
           </div>
           <div className="form-group col-md-6 text-left">

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getPointsReport } from "./../../redux/actions/pointsActions";
 
 const AdminView = ({ user, points, onChange, getPointsReport }) => {
-  const [semester, setSemester] = useState("2020spring");
+  const [semester, setSemester] = useState("2022fall");
   const [context, setContext] = useState("");
 
   useEffect(() => {

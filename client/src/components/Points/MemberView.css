@@ -57,6 +57,15 @@
   transition: all 300ms ease-in-out;
 }
 
+.orange-block {
+  background-color: orange;
+  border-radius: 15px;
+  height: 12vh;
+  display: grid;
+  margin-bottom: 1vh;
+  transition: all 300ms ease-in-out;
+}
+
 .yellow-block {
   background-color: yellow;
   border-radius: 15px;

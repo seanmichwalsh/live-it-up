@@ -9,7 +9,6 @@ const AdminPointsTable = ({ points, context, semester, onChange }) => {
   const [memberOrder, setMemberOrder] = useState(null);
   const [group1Order, setGroup1Order] = useState(null);
   const [group2Order, setGroup2Order] = useState(null);
-  const [group3Order, setGroup3Order] = useState(null);
   const [ceOrder, setCEOrder] = useState(null);
   const [plcOrder, setPLCOrder] = useState(null);
   const [auxOrder, setAuxOrder] = useState(null);
@@ -35,10 +34,6 @@ const AdminPointsTable = ({ points, context, semester, onChange }) => {
           return points[a].group2 > points[b].group2 ? 1 : -1;
         case "group2Descend":
           return points[a].group2 < points[b].group2 ? 1 : -1;
-        case "group3Ascend":
-          return points[a].group3 > points[b].group3 ? 1 : -1;
-        case "group3Descend":
-          return points[a].group3 < points[b].group3 ? 1 : -1;
         case "CEAscend":
           return points[a].committeeEvent > points[b].committeeEvent
             ? 1
@@ -115,7 +110,7 @@ const AdminPointsTable = ({ points, context, semester, onChange }) => {
                 value={semester}
               >
                 <option value=""></option>
-                <option value="2020fall">Fall 2020</option>
+                <option value="2022fall">Fall 2022</option>
               </select>
             </div>
           </th>
@@ -163,30 +158,6 @@ const AdminPointsTable = ({ points, context, semester, onChange }) => {
                   icon={faSortDown}
                   className="icon"
                   style={group2Order ? style : null}
-                />
-              </button>
-            </span>
-          </th>
-          <th
-            onClick={() => {
-              setSortType(group3Order ? "memberAscend" : "memberDescend");
-              setGroup3Order(!group3Order);
-            }}
-          >
-            Category 3 Points
-            <span className="btn-group-vertical btn-group-sm ml-2">
-              <button style={group3Order == null ? style : null}>
-                <FontAwesomeIcon
-                  icon={faSortUp}
-                  className="icon"
-                  style={
-                    group3Order == null ? null : !group3Order ? style : null
-                  }
-                />
-                <FontAwesomeIcon
-                  icon={faSortDown}
-                  className="icon"
-                  style={group3Order ? style : null}
                 />
               </button>
             </span>
