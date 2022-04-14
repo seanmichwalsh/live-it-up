@@ -2,6 +2,6 @@ FROM node:16
 
 COPY ./ /live-it-up/server/
 WORKDIR /live-it-up/server
-RUN npm ci
+RUN mkdir node_modules && npm ci
 
 CMD ["npm", "run", "dev"]
