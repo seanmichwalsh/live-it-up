@@ -25,5 +25,5 @@ resourceSchema.statics = {
       })
   }
 }
-var Resource = mongoose.model('Resource', resourceSchema)
+const Resource = mongoose.model('Resource', resourceSchema)
 module.exports = Resource

@@ -66,7 +66,7 @@ router.post('/', (req, res) => {
 
   // Checks that startTime is a valid date object
   const startTimeStamp = Date.parse(req.body.startTime)
-  if (isNaN(startTimeStamp) == true) {
+  if (isNaN(startTimeStamp) === true) {
     return res.status(400).send({
       message: 'startTime ' + req.body.startTime + ' is not a valid Date object'
     })
@@ -74,7 +74,7 @@ router.post('/', (req, res) => {
 
   // Checks that endTime is a valid date object
   const endTimeStamp = Date.parse(req.body.endTime)
-  if (isNaN(endTimeStamp) == true) {
+  if (isNaN(endTimeStamp) === true) {
     return res.status(400).send({
       message: 'endTime ' + req.body.endTime + ' is not a valid Date object'
     })
@@ -149,10 +149,12 @@ router.put('/:id', (req, res) => {
     }
   })
 
+  let startTimeStamp
+  let endTimeStamp
   // If new startTime is present, checks that startTime is a valid date object
   if (req.body.startTime) {
-    var startTimeStamp = Date.parse(req.body.startTime)
-    if (isNaN(startTimeStamp) == true) {
+    startTimeStamp = Date.parse(req.body.startTime)
+    if (isNaN(startTimeStamp) === true) {
       return res.status(400).send({
         message: 'startTime ' + req.body.startTime + ' is not a valid Date object'
       })
@@ -161,8 +163,8 @@ router.put('/:id', (req, res) => {
 
   // If new endTime is present, checks that endTime is a valid date object
   if (req.body.endTime) {
-    var endTimeStamp = Date.parse(req.body.endTime)
-    if (isNaN(endTimeStamp) == true) {
+    endTimeStamp = Date.parse(req.body.endTime)
+    if (isNaN(endTimeStamp) === true) {
       return res.status(400).send({
         message: 'endTime ' + req.body.endTime + ' is not a valid Date object'
       })
@@ -171,8 +173,8 @@ router.put('/:id', (req, res) => {
 
   // If any new time is present, checks that startTime <= endTime
   if (req.body.endTime || req.body.startTime) {
-    var endTimeStamp = (req.body.endTime) ? req.body.endTime : eventToUpdate.endTime
-    var startTimeStamp = (req.body.startTime) ? req.body.startTime : eventToUpdate.startTime
+    endTimeStamp = (req.body.endTime) ? req.body.endTime : eventToUpdate.endTime
+    startTimeStamp = (req.body.startTime) ? req.body.startTime : eventToUpdate.startTime
     if (req.body.endTimeStamp < req.body.startTimeStamp) {
       return res.status(400).send({
         message: 'Event endTime of ' + endTimeStamp + ' must occur after event startTime of ' + startTimeStamp
