@@ -2,6 +2,6 @@ FROM node:16
 
 COPY ./ /live-it-up/server/
 WORKDIR /live-it-up/server
-RUN npm install
+RUN npm ci --omit=optional
 
 CMD ["npm", "run", "dev"]
