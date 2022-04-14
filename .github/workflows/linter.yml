@@ -16,9 +16,10 @@ jobs:
 
     - name: Lint the backend
       run: |
-        eslint -c server/.eslintrc.yml server/server.js server/app/**/*.js --max-warnings=0
+        npm ci
+        npm run lint-server
 
     - name: Lint the frontend
       if: always()
       run: |
-        eslint -c client/.eslintrc.yml client/serc/**/*.js --max-warnings=0
+        npm run lint-client
