@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.4'
 
 services:
   mongodb:
@@ -19,6 +19,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile.dev
+      network: host
     image: liveitup-server-dev
     restart: unless-stopped
     env_file: ./.env
@@ -44,6 +45,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile.dev
+      network: host
       args:
         - REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
     image: liveitup-client-dev
