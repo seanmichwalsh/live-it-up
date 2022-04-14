@@ -20,7 +20,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "eslint": "^8.13.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-only-warn": "^1.0.3",
     "eslint-plugin-react": "^7.29.4"
   }
 }
