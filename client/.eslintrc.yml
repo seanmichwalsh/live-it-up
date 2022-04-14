@@ -3,6 +3,7 @@ env:
   es2021: true
 extends:
   - plugin:react/recommended
+  - plugin:mocha/recommended
   - standard
 parserOptions:
   ecmaFeatures:
@@ -11,5 +12,6 @@ parserOptions:
   sourceType: module
 plugins:
   - react
+  - mocha
   - only-warn
 rules: {}
