@@ -2,7 +2,7 @@ FROM node:16
 
 COPY ./ /live-it-up/client
 WORKDIR /live-it-up/client
-RUN mkdir node_modules && npm ci
+RUN npm ci --omit=optional
 
 ARG REACT_APP_API_BASE_URL
 ENV REACT_APP_API_BASE_URL $REACT_APP_API_BASE_URL
