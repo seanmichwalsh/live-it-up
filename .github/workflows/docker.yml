@@ -7,13 +7,13 @@ on:
     branches: [ master, dev ]
 
 jobs:
-
-  test:
+  tests:
     runs-on: self-hosted
     environment: Development
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Configure environment
       run: |
         touch .env
@@ -29,15 +29,17 @@ jobs:
         echo APP_URL=${{ secrets.APP_URL }} >> .env
         echo REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }} >> .env
         echo EXPRESS_SESSION_SECRET=${{ secrets.EXPRESS_SESSION_SECRET }} >> .env
+
     - name: Build the Docker dev image
       run: |
+        docker-compose -f docker-compose-dev.yml build
         docker-compose -f docker-compose-dev.yml up -d
-        docker-compose -f docker-compose-dev.yml down
     - name: Run backend tests
-      run: |
-        docker-compose -f docker-compose-dev.yml run server npm test
-        docker-compose -f docker-compose-dev.yml down
+      run: docker-compose -f docker-compose-dev.yml run server npm test
+
     - name: Run frontend tests
-      run: |
-        docker-compose -f docker-compose-dev.yml run client npm test
-        docker-compose -f docker-compose-dev.yml down
+      run: docker-compose -f docker-compose-dev.yml run client npm test
+
+    - name: Bring down Docker containers
+      if: always()
+      run: docker-compose -f docker-compose-dev.yml down

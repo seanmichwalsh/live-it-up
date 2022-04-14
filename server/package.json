@@ -7,7 +7,7 @@
     "start": "node server.js",
     "dev": "nodemon -L server",
     "test": "mocha --recursive './test/**/*.js' --exit",
-    "lint": "eslint ./server.js ./app/**/*.js"
+    "lint": "eslint ./server.js ./app/**/*.js --max-warnings=0"
   },
   "author": "SCPC",
   "license": "UNLICENSED",

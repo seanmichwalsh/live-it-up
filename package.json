@@ -8,7 +8,8 @@
     "server": "npm run start --prefix server",
     "start": "concurrently \"npm run start --prefix client\" \"npm run start --prefix server\"",
     "dev": "concurrently \"npm run start --prefix client\" \"npm run dev --prefix server\"",
-    "lint": "eslint ./client/src/**/*.js ./server/server.js ./server/app/**/*.js --max-warnings 0"
+    "lint-client": "eslint -c client/.eslintrc.yml client/src/**/*.js --max-warnings=0",
+    "lint-server": "eslint -c server/.eslintrc.yml server/server.js server/app/**/*.js --max-warnings=0"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "eslint": "^8.13.0"
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-only-warn": "^1.0.3",
+    "eslint-plugin-react": "^7.29.4"
   }
 }
