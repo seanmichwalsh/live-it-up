@@ -19,7 +19,7 @@ const tokenChecker = (req, res, next) => {
         req.token = token
         next()
       } else {
-        return Promise.reject()
+        return Promise.reject(new Error(`User ${data.uid} specified by toekn does not exist`))
       }
     }).catch((e) => {
       console.log(e)
@@ -32,12 +32,11 @@ const tokenChecker = (req, res, next) => {
 
 const priviligeChecker = (access, require) => {
   if (access) {
-    const length = require.length
-    for (i = 0; i < length; i++) {
-      if (access[require[i]] === false) {
+    Object.values(require).forEach(value => {
+      if (!access[value]) {
         return false
       }
-    }
+    })
   } else {
     return false
   }

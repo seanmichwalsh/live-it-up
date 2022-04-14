@@ -1,4 +1,4 @@
-router = require('express').Router()
+const router = require('express').Router()
 const VolunteerRole = require('../../models/volunteerRole.models')
 
 router.get('/', (req, res) => {
@@ -67,7 +67,7 @@ router.post('/', (req, res) => {
     }
   }).catch(err => {
     return res.status(500).send({
-      message: 'Internal server error'
+      message: 'Internal server error: ' + err
     })
   }));
 })

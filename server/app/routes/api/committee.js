@@ -1,4 +1,4 @@
-router = require('express').Router()
+const router = require('express').Router()
 const Committee = require('../../models/committee.models')
 
 router.get('/', (req, res) => {

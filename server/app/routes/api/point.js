@@ -1,4 +1,4 @@
-router = require('express').Router()
+const router = require('express').Router()
 const Point = require('../../models/point.models')
 const User = require('../../models/user.models')
 
@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
 
   // Checks that date is a valid date object
   const dateTimeStamp = Date.parse(req.body.date)
-  if (isNaN(dateTimeStamp) == true) {
+  if (isNaN(dateTimeStamp) === true) {
     return res.status(400).send({
       message: 'date ' + req.body.date + ' is not a valid Date object'
     })
@@ -120,7 +120,7 @@ router.put('/:id', (req, res) => {
   // If present, checks that date is a valid date object
   if (req.body.date) {
     const dateTimeStamp = Date.parse(req.body.date)
-    if (isNaN(dateTimeStamp) == true) {
+    if (isNaN(dateTimeStamp) === true) {
       return res.status(400).send({
         message: 'date ' + req.body.date + ' is not a valid Date object'
       })

@@ -1,4 +1,4 @@
-router = require('express').Router({ mergeParams: true })
+const router = require('express').Router({ mergeParams: true })
 const User = require('../../models/user.models')
 const Committee = require('../../models/committee.models')
 // const email = require('../../helpers/email')
@@ -27,7 +27,7 @@ router.get('/me', (req, res) => {
     })
     .catch(err => {
       return res.status(404).send({
-        message: 'Error retrieving the currently logged in user'
+        message: 'Error retrieving the currently logged in user: ' + err
       })
     })
 })
@@ -220,7 +220,7 @@ router.post('/', (req, res) => {
       })
       .catch((err) => {
         return res.status(500).send({
-          message: 'Internal server error'
+          message: 'Internal server error: ' + err
         })
       })
   );
@@ -361,7 +361,7 @@ router.get('/isAdmin/:uid', (req, res) => {
         })
       }
 
-      adminStatus = {}
+      const adminStatus = {}
       adminStatus.uid = req.params.uid
       adminStatus.isAdmin = user.isAdmin
       res.send(adminStatus)

@@ -1,4 +1,4 @@
-router = require('express').Router()
+const router = require('express').Router()
 const Point = require('../../models/point.models')
 const User = require('../../models/user.models')
 

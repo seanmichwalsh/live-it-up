@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
   Resource.returnInstance((err, data) => {
     if (data == null) {
       return res.status(500).send({
-        message: 'There was a problem retrieving the resources. '
+        message: 'There was a problem retrieving the resources: ' + err
       })
     } else {
       return res.send(data)
