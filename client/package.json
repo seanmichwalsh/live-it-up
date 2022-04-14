@@ -39,9 +39,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "NODE_PATH=./src mocha --require @babel/register --require ./test/dom.js './test/**/*.js'",
-    "lint": "eslint ./src/**/*.js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "mocha --recursive './test/**/*.js'",
+    "lint": "eslint ./src/**/*.js --max-warnings=0"
   },
   "browserslist": [
     ">0.2%",
