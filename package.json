@@ -7,8 +7,7 @@
     "client": "npm run start --prefix client",
     "server": "npm run start --prefix server",
     "start": "concurrently \"npm run start --prefix client\" \"npm run start --prefix server\"",
-    "dev": "concurrently \"npm run start --prefix client\" \"npm run dev --prefix server\"",
-    "lint": "eslint ./client/src/**/*.js ./server/server.js ./server/app/**/*.js"
+    "dev": "concurrently \"npm run start --prefix client\" \"npm run dev --prefix server\""
   },
   "repository": {
     "type": "git",
