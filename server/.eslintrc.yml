@@ -3,7 +3,10 @@ env:
   commonjs: true
   es2021: true
 extends:
+  - plugin:mocha/recommended
   - standard
 parserOptions:
   ecmaVersion: latest
+plugins:
+  - mocha
 rules: {}

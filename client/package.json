@@ -41,7 +41,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "mocha --recursive './test/**/*.js'",
-    "lint": "eslint ./src/**/*.js --max-warnings=0"
+    "lint": "eslint ./src/**/*.js ./test/**/*.js --max-warnings=0"
   },
   "browserslist": [
     ">0.2%",
