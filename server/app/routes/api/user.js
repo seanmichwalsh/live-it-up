@@ -21,7 +21,8 @@ router.get('/', (req, res) => {
 router.get('/me', (req, res) => {
   // TODO: test if null
   // send 401 to client, which should then initiate login
-  User.findOne({ uid: req.session.uid })
+  const user_id = 903307013
+  User.findOne({ uid: user_id })
     .then(user => {
       res.send(user)
     })
